@@ -8,12 +8,12 @@
 	export let metadescription:string
 	export let ogLanguage:string = 'en_UK'
 	export let pageTitle:string
-	export let siteTitle:string = "Surround Parliament"
+	export let siteTitle:string = "Heat Strike"
 	export let siteUrl:string
 </script>
 
 <svelte:head>
-  <meta name="keywords" content="Surround Parliament, activism, cost of living, protest, anti-government, Just Stop Oil, Extinction Rebellion, Greenpeace, RSPB, RMT, Royal College of Nurses, Rishi Sunak, civil disobedience, Suffragettes, MLK, Berlin Wall, London, United Kingdom "/>
+  <meta name="keywords" content="Heat Strike, heat wave, scorcher, activism, cost of living, protest, anti-government, Just Stop Oil, Extinction Rebellion, Greenpeace, RSPB, RMT, Royal College of Nurses, Rishi Sunak, civil disobedience, Suffragettes, MLK, Berlin Wall, London, United Kingdom "/>
 	<meta name="description" content={metadescription} />
 
   <meta property="og:site_name" content={siteTitle} />

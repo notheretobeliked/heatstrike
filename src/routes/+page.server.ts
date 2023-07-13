@@ -24,11 +24,11 @@ export const load = (async ({ params }) => {
 				"June was the hottest month ever recorded and it will get worse. This summer, send a message to Government that things aren't cool, Rishi",
 			temp: data.current_weather.temperature,
 			image: {
-				url: '/HeatStrike.webp',
+				url: '/HeatStrike.png',
 				alt: 'Heat Strike this summer'
 			},
 			squareImage: {
-				url: '/HeatStroke-sq.webp',
+				url: '/HeatStroke-sq.png',
 				alt: 'Heat Strike this summer'
 			}
 		}
