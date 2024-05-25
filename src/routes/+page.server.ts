@@ -1,6 +1,6 @@
 import { PUBLIC_URL } from '$env/static/public'
 import { error } from '@sveltejs/kit'
-import type { PageServerLoad } from './$types'
+import type { PageServerLoad, Actions } from './$types'
 
 export const config = {
 	isr: {
@@ -9,6 +9,16 @@ export const config = {
 		expiration: 3600
 	}
 }
+
+export const actions = {
+	default: async (event) => {
+		signup: async ({ request }) => {
+			// TODO log the user in
+			const data = await request.formData()
+			console.log(data)
+		}
+	}
+} satisfies Actions
 
 export const load = (async ({ params }) => {
 	const res = await fetch(
@@ -34,5 +44,5 @@ export const load = (async ({ params }) => {
 		}
 	}
 
-	throw error(404, 'Not found')
+	error(404, 'Not found');
 }) satisfies PageServerLoad

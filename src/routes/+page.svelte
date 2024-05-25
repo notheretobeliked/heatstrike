@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types'
+	import Signup from '$lib/components/Signup.svelte';
 	import OpenGraph from '$lib/components/SEO/OpenGraph.svelte'
 	import Twitter from '$lib/components/SEO/Twitter.svelte'
 
@@ -21,6 +22,7 @@
 	</div>
 	<div class="bg-danger justify-center h-full flex content-center">
 		<h1 class="self-center font-anton fluid-text-xl uppercase text-center">Heat Strike</h1>
+		<Signup></Signup>
 	</div>
 </div>
 
