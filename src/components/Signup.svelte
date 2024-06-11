@@ -90,7 +90,7 @@
 					By signing up, you agree to receive email updates from Heat Strike and Tipping Point UK.
 					Heat Strike is hosted by Tipping Point UK who provide powerful tools to support grassroots
 					groups organising for climate justice. Tipping Point handles your data securely in line
-					with our privacy policy. We only communicate directly with you in crucial moments for the
+					with our <a class="underline underline-offset-2" target="_blank" href="https://tippingpointuk.org/privacy/">privacy policy</a>. We only communicate directly with you in crucial moments for the
 					wider movement and you can unsubscribe at any time.
 				</p>
 			</div>
