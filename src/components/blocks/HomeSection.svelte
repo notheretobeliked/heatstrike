@@ -20,11 +20,11 @@
 <div class="px-2 md:px-0 py-4">
 	<div class="m-auto {bgColor === 'black' ? '!text-white' : ''}">
 		{#if children.length > 0}
-			<header class="py-12 relative">
+			<header class="py-12 relative cursor-pointer"  on:click={toggleAccordion}>
 				<BlockRenderer block={children[0]} className="header-title" />
 				<div class="absolute bottom-4 right-4">
 					<Button
-						on:clicked={toggleAccordion}
+						on:click={toggleAccordion}
 						label={buttonLabel}
 						variant="wonky"
 						active={isExpanded}
