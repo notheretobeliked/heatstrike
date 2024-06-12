@@ -1,24 +1,56 @@
 /** @type {import('tailwindcss').Config}*/
 const config = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
-
+	safelist: [
+		'md:grid-cols-2',
+		'md:grid-cols-3',
+		'bg-black',
+		'bg-white',
+		'object-cover',
+		'object-fit',
+		'object-fill',
+		'object-none',
+		'text-xl',
+		'object-contain',
+		'stroke-green',
+		'stroke-black',
+		'rotate-3',
+		{
+			pattern: /bg-+/
+		},
+		{
+			pattern: /text-+/
+		},
+		...Array.from({ length: 8 }, (_, i) => `pt-${i + 1}`),
+		...Array.from({ length: 8 }, (_, i) => `pb-${i + 1}`)
+	],
 	theme: {
 		colors: {
 			white: '#ffffff',
 			black: '#000000',
 			caution: '#e8ff4a',
-			extremeCaution: '#ffa05b',
+			extremecaution: '#ffa05b',
 			danger: '#ff521a',
-			extremeDanger: '#cd0000'
-			
+			extremedanger: '#cd0000'
 		},
 		fontFamily: {
 			anton: ['Anton', 'sans-serif'],
-			sans: ['Inter', 'sans-serif'],
+			sans: ['Inter', 'sans-serif']
+		},
+		fontSize: {
+			xs: '0.75rem',
+			sm: '0.875rem',
+			base: '1.2rem',
+			lg: '1.35rem',
+			xl: '1.5rem',
+			'2xl': '1.7rem',
+			'3xl': '1.875rem',
+			'4xl': '2.25rem',
+			'5xl': '3rem',
+			'6xl': '4rem'
 		},
 
-		extend: {
-		}
+		extend: {}
 	},
 
 	plugins: [
@@ -34,15 +66,21 @@ const config = {
 				prefix: 'fluid-'
 			},
 			values: {
-				'base': [0, {
-						lineHeight: 1.2,
-						letterSpacing: '-0.1rem',
-				}],
-				'xl': [13, {
-					lineHeight: 1.2,
-					letterSpacing: '-0.05rem',
-			}],
-		}
+				base: [
+					0,
+					{
+						lineHeight: 1.1,
+						letterSpacing: '-0.1rem'
+					}
+				],
+				xl: [
+					13.4,
+					{
+						lineHeight: 1,
+						letterSpacing: '-0.05rem'
+					}
+				]
+			}
 		})
 	]
 }
