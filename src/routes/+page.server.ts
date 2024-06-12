@@ -65,7 +65,7 @@ export const actions = {
 			})
 		}
 
-		const addTags = ['Website signup', 'Test user']
+		const addTags = ['Website signup']
 		if (organiser) {
 			addTags.push('organiser')
 		}
