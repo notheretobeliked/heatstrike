@@ -15,7 +15,7 @@ export const config = {
 // Function to fetch city and country from postal code using OpenCage API
 async function getCityAndCountry(postcode) {
 	if (!postcode) {
-		return { city: null, country: null }
+		return { city: null, country: null, state: null, county: null }
 	}
 	// Append ", UK" to ensure the search is within the UK
 	const query = `${postcode}, UK`
