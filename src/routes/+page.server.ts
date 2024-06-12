@@ -8,7 +8,8 @@ import { flatListToHierarchical } from '$lib/utilities/utilities'
 
 export const config = {
 	isr: {
-		expiration: 3600
+		expiration: 3600,
+		bypassToken: 'rogerhallam666'
 	}
 }
 
