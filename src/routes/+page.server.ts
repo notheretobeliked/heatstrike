@@ -1,4 +1,4 @@
-import { AN_KEY } from '$env/static/private'
+import { AN_KEY, OPENCAGE_KEY } from '$env/static/private' // Include your OpenCage API key
 import { error } from '@sveltejs/kit'
 import PageContent from '$lib/graphql/query/page.graphql?raw'
 import { checkResponse, graphqlQuery } from '$lib/utilities/graphql'
@@ -12,31 +12,86 @@ export const config = {
 	}
 }
 
+// Function to fetch city and country from postal code using OpenCage API
+async function getCityAndCountry(postcode) {
+	if (!postcode) {
+		return { city: null, country: null }
+	}
+	// Append ", UK" to ensure the search is within the UK
+	const query = `${postcode}, UK`
+	const url = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(query)}&key=${
+		process.env.OPENCAGE_KEY
+	}`
+	const response = await fetch(url)
+
+	if (response.ok) {
+		const data = await response.json()
+
+		if (data.results.length > 0) {
+			const components = data.results[0].components
+			const city = components.city || components.town || components.village || components.locality
+			const country = components.country
+			const county = components.county
+			const state = components.state
+			console.log(city, country, state, county)
+			return { city, country, state, county }
+		}
+	}
+
+	return { city: null, country: null, state: null, county: null }
+}
+
 export const actions = {
 	default: async ({ request }) => {
 		const data = await request.formData()
 		const email = data.get('email')
 		const firstname = data.get('firstname')
 		const lastname = data.get('lastname')
+		const postcode = data.get('postcode')?.toString();
+
+		const organiser = data.get('organiser') === 'on' // Check if the checkbox is checked
+
+		// Fetch city and country from postal code if provided
+		const { city, country, county, state } = await getCityAndCountry(postcode)
+
+		const postalAddresses = []
+		if (postcode || city || country) {
+			postalAddresses.push({
+				postal_code: postcode,
+				locality: city,
+				county: county,
+				state: state,
+				country: 'GB'
+			})
+		}
+
+		const addTags = ['Website signup', 'Test user']
+		if (organiser) {
+			addTags.push('organiser')
+		}
 
 		const activistObject = {
 			person: {
 				family_name: lastname,
 				given_name: firstname,
-				email_addresses: [{ address: email }]
+				email_addresses: [{ address: email }],
+				postal_addresses: postalAddresses
 			},
-			add_tags: ['Website signup', 'Test user']
+			add_tags: addTags
 		}
 
 		try {
-			const response = await fetch('https://actionnetwork.org/api/v2/people', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-					'OSDI-API-Token': AN_KEY
-				},
-				body: JSON.stringify(activistObject)
-			})
+			const response = await fetch(
+				'https://actionnetwork.org/api/v2/forms/1e49bee5-7886-4cc3-9ab5-b987ccce6139/submissions',
+				{
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+						'OSDI-API-Token': AN_KEY
+					},
+					body: JSON.stringify(activistObject)
+				}
+			)
 
 			if (!response.ok) {
 				const errorData = await response.json()
@@ -75,13 +130,12 @@ export const load: PageServerLoad = async function load({ params, url }) {
 			'https://api.open-meteo.com/v1/forecast?latitude=51.503553657200996&longitude=-0.12779310629778032&current_weather=true&hourly=temperature_2m,relativehumidity_2m,windspeed_10m'
 		)
 		const weatherData = await weatherRes.json()
-        console.log(weatherData)
 
 		const response = await graphqlQuery(PageContent, { uri: uri })
 		checkResponse(response)
 
 		const { data }: { data: any } = await response.json()
-        console.log(data)
+
 		if (data.page === null) {
 			error(404, {
 				message: 'Not found'

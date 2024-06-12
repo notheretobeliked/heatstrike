@@ -6,7 +6,7 @@
 	const children: EditorBlock[] = block.children ?? []
 
 	const bgColor = block.attributes.backgroundColor ?? ''
-    console.log(block)
+    
 </script>
 
 <div class="px-2 md:px-0">
