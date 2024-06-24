@@ -25,7 +25,7 @@
 </script>
 
 <div class="fixed -z-10 w-full h-[30vh] md:h-[50vh]">
-	<div class="flex w-full h-[30vh] md:h-[50vh] relative">
+	<div class="flex w-full h-[50vh] md:h-[50vh] relative">
 		{#each statements as statement, index (index)}
 			{#if index === currentIndex}
 				<div
@@ -43,4 +43,4 @@
 		{/each}
 	</div>
 </div>
-<div class="h-[30vh] md:h-[50vh]" />
+<div class="h-[50vh] md:h-[50vh]" />

@@ -16,19 +16,16 @@
 
 {#if menuItems.length > 0}
 	<header>
-		<nav class="w-full flex px-4 pt-4 justify-between items-center h-12 md:h-24">
-			<a href="/" class="z-30">Home</a>
-			<div class="block md:hidden z-50"><Hamburger bind:open /></div>
+		<nav class="w-full flex px-4 pt-4 justify-between items-center h-12 md:h-24 absolute">
+			
 			<ul
 				role="navigation"
 				aria-label="Main"
-				class="fixed w-full items-center md:static md:content-center md:flex-wrap h-screen md:h-24 inset-0 z-10 bg-nhtbl-green-base md:bg-transparent justify-center md:flex flex-row gap-6 md:justify-end {open
-					? 'flex flex-col'
-					: 'hidden'}"
+				class="w-full flex flex-row justify-end"
 			>
 				{#each menuItems as menuItem}
-					<li>
-						<Button active={menuItem.current} label={menuItem.label} url={menuItem.uri} />
+					<li >
+						<Button active={menuItem.current} label={menuItem.label} url={menuItem.uri} colourClass="bg-caution" textColourClass="text-extremedanger" />
 					</li>
 				{/each}
 			</ul>
