@@ -20,7 +20,7 @@
 	let errorMessage = ''
 </script>
 
-<div class="fixed bottom-[45vh] md:bottom-[40vh] scale-75 md:scale-100 left-6 md:left-24 z-50">
+<div class="absolute md:fixed bottom-[45vh] md:bottom-[40vh] scale-75 md:scale-100 left-6 md:left-24 z-50">
 	<div class="relative w-36 h-36">
 		<svg
 			class="w-full h-full"
