@@ -26,7 +26,7 @@
   
   <button
 	on:click={openFormModal}
-	class="border-white border w-full rounded-md px py-2 hover:bg-caution hover:text-extremedanger bg-black text-extremecaution transition-all duration-300"
+	class="border-white border w-full rounded-full px py-5 my-5 hover:bg-caution hover:text-extremedanger bg-black uppercase text-extremecaution transition-all duration-300"
   >Sign up now</button>
   
   {#if openModal}
