@@ -9,11 +9,14 @@
 	let { seo, menu, uri } = data
 
 	const menuItems = menu?.menuItems?.nodes ?? []
-	const image = seo.opengraphImage
-	const metadescription = seo.metaDesc
-	const pageTitle = seo.title
-	const siteUrl = seo.siteUrl
-	const siteTitle = seo.opengraphSiteName // Assuming this is used for og:site_name
+	
+	// Only set SEO variables if seo object exists
+	const hasSeoData = !!seo
+	const image = hasSeoData ? seo.opengraphImage : null
+	const metadescription = hasSeoData ? seo.metaDesc : ''
+	const pageTitle = hasSeoData ? seo.title : ''
+	const siteUrl = hasSeoData ? seo.opengraphUrl : ''
+	const siteTitle = hasSeoData ? seo.opengraphSiteName : ''
 
 	$: {
 		menuItems
@@ -23,8 +26,10 @@
 </script>
 
 {#key $page.url.pathname}
-	<OpenGraph {image} {metadescription} {pageTitle} {siteTitle} {siteUrl} />
-	<Twitter {image} {metadescription} {pageTitle} {siteUrl} />
+	{#if hasSeoData}
+		<OpenGraph {image} {metadescription} {pageTitle} {siteTitle} {siteUrl} />
+		<Twitter {image} {metadescription} {pageTitle} {siteUrl} />
+	{/if}
 {/key}
 
 {#key $page.url.pathname}

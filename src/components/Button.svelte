@@ -26,7 +26,7 @@
 {#if variant === 'default'}
 	<a
 		href={url}
-		class="{colourClass} rounded-full transition-all duration-500 hover:bg-black hover:text-white hover:border-white py-2 px-4 border-black border {textClass} {textColourClass} font-display cursor-pointer"
+		class="{colourClass} rounded-full text-center transition-all duration-500 hover:bg-black hover:text-white hover:border-white py-2 px-4 border-black border {textClass} {textColourClass} font-display cursor-pointer"
 		role="button"
 	>
 		{label}
