@@ -34,7 +34,6 @@ async function getCityAndCountry(postcode) {
 			const country = components.country
 			const county = components.county
 			const state = components.state
-			console.log(city, country, state, county)
 			return { city, country, state, county }
 		}
 	}
@@ -44,7 +43,6 @@ async function getCityAndCountry(postcode) {
 
 export const actions = {
 	default: async ({ request, params }) => {
-		console.log('Form submission starting in [all] route, params:', params)
 		const data = await request.formData()
 		const email = data.get('email')
 		const firstname = data.get('firstname')
@@ -52,7 +50,6 @@ export const actions = {
 		const postcode = data.get('postcode')?.toString()
 
 		const organiser = data.get('organiser') === 'on' // Check if the checkbox is checked
-		console.log('Form data:', { email, firstname, lastname, postcode, organiser })
 
 		// Fetch city and country from postal code if provided
 		const { city, country, county, state } = await getCityAndCountry(postcode)
@@ -88,7 +85,6 @@ export const actions = {
 			}
 		}
 
-		console.log('Sending to Action Network:', JSON.stringify(activistObject, null, 2))
 
 		try {
 			const response = await fetch(
@@ -104,9 +100,6 @@ export const actions = {
 			)
 
 			const responseText = await response.text()
-			console.log('Action Network response status:', response.status)
-			console.log('Action Network response headers:', Object.fromEntries(response.headers.entries()))
-			console.log('Action Network response body:', responseText)
 
 			if (!response.ok) {
 				let errorData = null
@@ -135,7 +128,6 @@ export const actions = {
 					email: email as string
 				}
 				
-				console.log('Form submission successful')
 				return {
 					status: 200,
 					success: true,

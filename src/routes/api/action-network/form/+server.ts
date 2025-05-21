@@ -140,16 +140,12 @@ export const GET: RequestHandler = async ({ url, request }) => {
 	const additionalFieldsParam = url.searchParams.get('additionalFields') || new URL(request.url).searchParams.get('additionalFields')
 	const additionalFields = additionalFieldsParam?.split(',') || []
 
-	console.log('Request URL:', request.url)
-	console.log('Parsed formId:', formId)
 
 	if (!formId) {
 		return json({ error: 'Form ID is required' }, { status: 400 })
 	}
 
 	try {
-		console.log('Fetching form details for formId:', formId)
-
 		// First, fetch the form details from Action Network
 		const formResponse = await fetch(`https://actionnetwork.org/api/v2/forms/${formId}`, {
 			headers: {
@@ -159,9 +155,6 @@ export const GET: RequestHandler = async ({ url, request }) => {
 		})
 
 		const formResponseText = await formResponse.text()
-		console.log('Form API Response Status:', formResponse.status)
-		console.log('Form API Response Headers:', Object.fromEntries(formResponse.headers.entries()))
-		
 		if (!formResponse.ok) {
 			console.error('Action Network form error:', formResponseText)
 			return json({ 
@@ -173,7 +166,6 @@ export const GET: RequestHandler = async ({ url, request }) => {
 
 		const formData = JSON.parse(formResponseText)
 
-		console.log('Fetching custom fields metadata')
 
 		// Then, fetch the custom fields metadata
 		const customFieldsResponse = await fetch('https://actionnetwork.org/api/v2/metadata/custom_fields', {
@@ -184,7 +176,6 @@ export const GET: RequestHandler = async ({ url, request }) => {
 		})
 
 		const customFieldsResponseText = await customFieldsResponse.text()
-		console.log('Custom Fields API Response Status:', customFieldsResponse.status)
 		
 		if (!customFieldsResponse.ok) {
 			console.error('Action Network custom fields error:', customFieldsResponseText)
@@ -205,7 +196,6 @@ export const GET: RequestHandler = async ({ url, request }) => {
 
 		// Add any requested additional custom fields
 		if (additionalFields.length > 0 && customFieldsData['action_network:custom_fields']) {
-			console.log('Processing additional fields:', additionalFields)
 			
 			const customFields = customFieldsData['action_network:custom_fields']
 				.filter((field: any) => additionalFields.includes(field.name))
@@ -220,7 +210,6 @@ export const GET: RequestHandler = async ({ url, request }) => {
 			fields.push(...customFields)
 		}
 
-		console.log('Successfully processed form fields')
 		return json({ fields })
 	} catch (error) {
 		console.error('Error fetching form details:', error)
