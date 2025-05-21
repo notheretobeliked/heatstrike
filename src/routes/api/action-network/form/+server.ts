@@ -2,18 +2,7 @@ import { AN_KEY } from '$env/static/private'
 import { json } from '@sveltejs/kit'
 import type { RequestHandler } from './$types'
 
-// Cache form metadata for 1 hour and allow revalidation with a bypass token
-export const config = {
-	isr: {
-		expiration: 3600, // 1 hour in seconds
-		bypassToken: 'formMetadataRevalidateOrElseYouWillPayForthisIn2026'
-	},
-	prerender: {
-		entries: [
-			'/api/action-network/form?formId=1e49bee5-7886-4cc3-9ab5-b987ccce6139'
-		]
-	}
-};
+
 
 type ActionNetworkField = {
 	name: string        // Original name with spaces (for Action Network)
