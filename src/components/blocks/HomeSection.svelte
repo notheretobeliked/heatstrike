@@ -4,12 +4,10 @@
 	import type { EditorBlock } from '$types/wp-types'
 	import BlockRenderer from '$components/BlockRenderer.svelte'
 	export let block: EditorBlock
-	console.log(block)
 	const children: EditorBlock[] = block.children ?? []
 
 	const bgColor = block.attributes.backgroundColor ?? 'white'
 	let isExpanded = block.homeSection.defaultActive
-	console.log(block.homeSection.accordeonlabel)
 	const buttonLabel = block.homeSection.accordeonlabel
 
 	function toggleAccordion() {

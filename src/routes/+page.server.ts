@@ -43,14 +43,16 @@ async function getCityAndCountry(postcode) {
 }
 
 export const actions = {
-	default: async ({ request }) => {
+	default: async ({ request, params }) => {
+		console.log('Form submission starting in [all] route, params:', params)
 		const data = await request.formData()
 		const email = data.get('email')
 		const firstname = data.get('firstname')
 		const lastname = data.get('lastname')
-		const postcode = data.get('postcode')?.toString();
+		const postcode = data.get('postcode')?.toString()
 
 		const organiser = data.get('organiser') === 'on' // Check if the checkbox is checked
+		console.log('Form data:', { email, firstname, lastname, postcode, organiser })
 
 		// Fetch city and country from postal code if provided
 		const { city, country, county, state } = await getCityAndCountry(postcode)
@@ -75,11 +77,18 @@ export const actions = {
 			person: {
 				family_name: lastname,
 				given_name: firstname,
-				email_addresses: [{ address: email }],
+				email_addresses: [{ address: email, status: 'subscribed' }],
 				postal_addresses: postalAddresses
 			},
-			add_tags: addTags
+			add_tags: addTags,
+			triggers: {
+				autoresponse: {
+					enabled: true
+				}
+			}
 		}
+
+		console.log('Sending to Action Network:', JSON.stringify(activistObject, null, 2))
 
 		try {
 			const response = await fetch(
@@ -94,8 +103,20 @@ export const actions = {
 				}
 			)
 
+			const responseText = await response.text()
+			console.log('Action Network response status:', response.status)
+			console.log('Action Network response headers:', Object.fromEntries(response.headers.entries()))
+			console.log('Action Network response body:', responseText)
+
 			if (!response.ok) {
-				const errorData = await response.json()
+				let errorData = null
+				try {
+					errorData = JSON.parse(responseText)
+				} catch (e) {
+					errorData = { message: 'Failed to parse error response' }
+				}
+				
+				console.error('Action Network error:', errorData)
 				return {
 					status: response.status,
 					error: errorData,
@@ -103,21 +124,40 @@ export const actions = {
 				}
 			}
 
-			const responseData = await response.json()
-			const data: PersonResponse = {
-				given_name: responseData.given_name,
-				family_name: responseData.family_name,
-				email: responseData.email_addresses[0].address
-			}
-			return {
-				status: 200,
-				success: true,
-				data
+			let responseData = null
+			try {
+				responseData = JSON.parse(responseText)
+				
+				// Success! Create the response object
+				const data: PersonResponse = {
+					given_name: firstname as string, // Use submitted data since the API might not return it
+					family_name: lastname as string,
+					email: email as string
+				}
+				
+				console.log('Form submission successful')
+				return {
+					status: 200,
+					success: true,
+					data
+				}
+			} catch (parseError) {
+				console.error('Error parsing Action Network response:', parseError)
+				return {
+					status: 200, // The request was successful even if we couldn't parse the response
+					success: true,
+					data: {
+						given_name: firstname as string,
+						family_name: lastname as string,
+						email: email as string
+					}
+				}
 			}
 		} catch (err) {
+			console.error('Error submitting to Action Network:', err)
 			return {
 				status: 500,
-				error: err.message,
+				error: { message: err.message || 'An unexpected error occurred' },
 				success: false
 			}
 		}
