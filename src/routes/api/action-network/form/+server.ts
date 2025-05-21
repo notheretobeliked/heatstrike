@@ -6,7 +6,7 @@ import type { RequestHandler } from './$types'
 export const config = {
 	isr: {
 		expiration: 3600, // 1 hour in seconds
-		bypassToken: 'formMetadataRevalidate'
+		bypassToken: 'formMetadataRevalidateOrElseYouWillPayForthisIn2026'
 	}
 };
 
