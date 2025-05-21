@@ -7,6 +7,11 @@ export const config = {
 	isr: {
 		expiration: 3600, // 1 hour in seconds
 		bypassToken: 'formMetadataRevalidateOrElseYouWillPayForthisIn2026'
+	},
+	prerender: {
+		entries: [
+			'/api/action-network/form?formId=1e49bee5-7886-4cc3-9ab5-b987ccce6139'
+		]
 	}
 };
 
@@ -140,42 +145,68 @@ const TRADE_UNION_FIELDS: ActionNetworkField[] = [
 	}
 ]
 
-export const GET: RequestHandler = async ({ url }) => {
-	const formId = url.searchParams.get('formId')
-	const additionalFields = url.searchParams.get('additionalFields')?.split(',') || []
+export const GET: RequestHandler = async ({ url, request }) => {
+	// Try both URL and Request objects to handle both SSR and ISR cases
+	const formId = url.searchParams.get('formId') || new URL(request.url).searchParams.get('formId')
+	const additionalFieldsParam = url.searchParams.get('additionalFields') || new URL(request.url).searchParams.get('additionalFields')
+	const additionalFields = additionalFieldsParam?.split(',') || []
+
+	console.log('Request URL:', request.url)
+	console.log('Parsed formId:', formId)
 
 	if (!formId) {
 		return json({ error: 'Form ID is required' }, { status: 400 })
 	}
 
 	try {
+		console.log('Fetching form details for formId:', formId)
+
 		// First, fetch the form details from Action Network
 		const formResponse = await fetch(`https://actionnetwork.org/api/v2/forms/${formId}`, {
 			headers: {
-				'OSDI-API-Token': AN_KEY
+				'OSDI-API-Token': AN_KEY,
+				'Content-Type': 'application/json'
 			}
 		})
 
+		const formResponseText = await formResponse.text()
+		console.log('Form API Response Status:', formResponse.status)
+		console.log('Form API Response Headers:', Object.fromEntries(formResponse.headers.entries()))
+		
 		if (!formResponse.ok) {
-			console.error('Action Network form error:', await formResponse.text())
-			return json({ error: 'Failed to fetch form details' }, { status: formResponse.status })
+			console.error('Action Network form error:', formResponseText)
+			return json({ 
+				error: 'Failed to fetch form details',
+				status: formResponse.status,
+				details: formResponseText
+			}, { status: formResponse.status })
 		}
 
-		const formData = await formResponse.json()
+		const formData = JSON.parse(formResponseText)
+
+		console.log('Fetching custom fields metadata')
 
 		// Then, fetch the custom fields metadata
 		const customFieldsResponse = await fetch('https://actionnetwork.org/api/v2/metadata/custom_fields', {
 			headers: {
-				'OSDI-API-Token': AN_KEY
+				'OSDI-API-Token': AN_KEY,
+				'Content-Type': 'application/json'
 			}
 		})
 
+		const customFieldsResponseText = await customFieldsResponse.text()
+		console.log('Custom Fields API Response Status:', customFieldsResponse.status)
+		
 		if (!customFieldsResponse.ok) {
-			console.error('Action Network custom fields error:', await customFieldsResponse.text())
-			return json({ error: 'Failed to fetch custom fields' }, { status: customFieldsResponse.status })
+			console.error('Action Network custom fields error:', customFieldsResponseText)
+			return json({ 
+				error: 'Failed to fetch custom fields',
+				status: customFieldsResponse.status,
+				details: customFieldsResponseText
+			}, { status: customFieldsResponse.status })
 		}
 
-		const customFieldsData = await customFieldsResponse.json()
+		const customFieldsData = JSON.parse(customFieldsResponseText)
 
 		// Start with default fields
 		const fields = [...DEFAULT_FIELDS]
@@ -185,6 +216,8 @@ export const GET: RequestHandler = async ({ url }) => {
 
 		// Add any requested additional custom fields
 		if (additionalFields.length > 0 && customFieldsData['action_network:custom_fields']) {
+			console.log('Processing additional fields:', additionalFields)
+			
 			const customFields = customFieldsData['action_network:custom_fields']
 				.filter((field: any) => additionalFields.includes(field.name))
 				.map((field: any) => ({
@@ -198,9 +231,14 @@ export const GET: RequestHandler = async ({ url }) => {
 			fields.push(...customFields)
 		}
 
+		console.log('Successfully processed form fields')
 		return json({ fields })
 	} catch (error) {
 		console.error('Error fetching form details:', error)
-		return json({ error: 'Failed to fetch form details' }, { status: 500 })
+		// Include more error details in the response
+		return json({ 
+			error: 'Failed to fetch form details',
+			details: error instanceof Error ? error.message : String(error)
+		}, { status: 500 })
 	}
 }
