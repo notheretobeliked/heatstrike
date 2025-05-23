@@ -73,6 +73,13 @@ const config = {
 						letterSpacing: '-0.1rem'
 					}
 				],
+				lg: [
+					9.4,
+					{
+						lineHeight: 1,
+						letterSpacing: '-0.05rem'
+					}
+				],
 				xl: [
 					13.4,
 					{
