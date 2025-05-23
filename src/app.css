@@ -9,3 +9,7 @@
 strong {
     @apply font-medium;
 }
+
+h2 {
+    @apply font-anton uppercase !text-2xl;
+}

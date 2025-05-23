@@ -25,6 +25,12 @@ export const load: PageServerLoad = async function load({ params }: { params: { 
       }
     }
 
+		const weatherRes = await fetch(
+			'https://api.open-meteo.com/v1/forecast?latitude=51.503553657200996&longitude=-0.12779310629778032&current_weather=true&hourly=temperature_2m,relativehumidity_2m,windspeed_10m'
+		)
+		const weatherData = await weatherRes.json()
+
+
     // Modify menu items to add 'current' key
     if (data.menu && data.menu.menuItems && data.menu.menuItems.nodes) {
       data.menu.menuItems.nodes = data.menu.menuItems.nodes.map(node => ({
@@ -43,6 +49,7 @@ export const load: PageServerLoad = async function load({ params }: { params: { 
 
     return {
       data: data,
+      temp: weatherData.current_weather.temperature,
       menu: data.menu,
       seo: { ...data.page.seo, opengraphUrl: siteUrl },
       uri: uri,

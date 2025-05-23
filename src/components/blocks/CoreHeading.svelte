@@ -55,7 +55,7 @@
 	</h1>
 {/if}
 {#if level === 2}
-	<h2 class="{classNames(fontSize, textColor, textAlign)} font-display {className}">
+	<h2 class="{classNames(fontSize, textColor, textAlign)} font-display {className} my-5">
 		{@html content}
 	</h2>
 {/if}
