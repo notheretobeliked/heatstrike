@@ -54,6 +54,11 @@ function determineRegion(gazetteerEntry: any): string {
 }
 
 export const GET: RequestHandler = async ({ url }) => {
+    if (!OS_KEY) {
+        console.error('OS_KEY environment variable is not set');
+        return json({ error: 'Server configuration error' }, { status: 500 });
+    }
+
     const postcode = url.searchParams.get('postcode');
     
     if (!postcode) {
