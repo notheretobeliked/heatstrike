@@ -1,14 +1,6 @@
 import { OS_KEY } from '$env/static/private';
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-
-// Cache postcode lookups for 24 hours (in seconds)
-export const config = {
-    isr: {
-        expiration: 86400 // 24 hours
-    }
-};
-
 // Map regions to their WhatsApp group invite links
 const WHATSAPP_LINKS: Record<string, string> = {
     'South West': 'https://chat.whatsapp.com/Jd9Wee9nLO7BIf0It7BLwv',
