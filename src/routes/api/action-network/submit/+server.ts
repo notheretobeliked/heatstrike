@@ -1,4 +1,4 @@
-import { AN_KEY, OS_KEY } from '$env/static/private'
+import { AN_KEY } from '$env/static/private'
 import { json } from '@sveltejs/kit'
 import type { RequestHandler } from './$types'
 
@@ -13,88 +13,28 @@ const FIELD_NAME_MAP: Record<string, string> = {
 	'workplace': 'Workplace'
 }
 
-// Function to determine region based on OS Names API data
-function determineRegion(gazetteerEntry: any): string {
-	const region = gazetteerEntry.REGION;
-	const countyUnitary = gazetteerEntry.COUNTY_UNITARY;
-	const country = gazetteerEntry.COUNTRY;
-
-	// Check for London first
-	if (region === 'London' || countyUnitary === 'Greater London') {
-		return 'London';
-	}
-
-	// Check for Scotland and Northern Ireland
-	if (country === 'Northern Ireland' || country === 'Scotland') {
-		return 'Scotland & Northern Ireland';
-	}
-
-	// Check for Wales
-	if (country === 'Wales') {
-		return 'Cymru';
-	}
-
-	// Map regions to our defined regions
-	const regionMapping: Record<string, string> = {
-		'London': 'London',
-		'South West': 'South West',
-		'South East': 'South East',
-		'East of England': 'East of England',
-		'West Midlands': 'Midlands',
-		'East Midlands': 'Midlands',
-		'Yorkshire and the Humber': 'North of England',
-		'North West': 'North of England',
-		'North East': 'North of England'
-	};
-
-	if (region && regionMapping[region]) {
-		return regionMapping[region];
-	}
-
-	return 'Unknown';
-}
-
-// Function to fetch geocoding data from OS Names API
-async function getGeocodingData(postcode: string) {
+// Function to fetch region and WhatsApp data using our endpoint
+async function getRegionData(postcode: string, baseUrl: string) {
 	if (!postcode) {
 		return null;
 	}
 
-	const url = `https://api.os.uk/search/names/v1/find?query=${encodeURIComponent(postcode)}&maxresults=1&fq=LOCAL_TYPE:Postcode&key=${OS_KEY}`;
-	
 	try {
-		const response = await fetch(url);
+		const response = await fetch(`${baseUrl}/api/whatsapp-finder?postcode=${encodeURIComponent(postcode)}`);
 		if (!response.ok) {
 			const errorText = await response.text();
-			console.error('OS Names API error status:', response.status);
-			console.error('OS Names API error:', errorText);
+			console.error('WhatsApp finder API error:', errorText);
 			return null;
 		}
 
-		const data = await response.json();
-		if (!data.results || data.results.length === 0) {
-			return null;
-		}
-
-		const result = data.results[0].GAZETTEER_ENTRY;
-
-		return {
-			lat: result.GEOMETRY_Y / 100000, // Convert to decimal degrees
-			lng: result.GEOMETRY_X / 100000, // Convert to decimal degrees
-			region: determineRegion(result),
-			components: {
-				locality: result.POPULATED_PLACE,
-				county: result.COUNTY_UNITARY,
-				state: result.REGION
-			}
-		};
+		return await response.json();
 	} catch (error) {
-		console.error('Error fetching geocoding data:', error);
+		console.error('Error fetching region data:', error);
 		return null;
 	}
 }
 
-export const POST: RequestHandler = async ({ request }) => {
+export const POST: RequestHandler = async ({ request, url }) => {
 	const { formId, formData } = await request.json()
 
 	if (!formId) {
@@ -102,35 +42,37 @@ export const POST: RequestHandler = async ({ request }) => {
 	}
 
 	try {
-		// Get geocoding data if postcode is provided
-		const geocodingData = formData.postal_code ? await getGeocodingData(formData.postal_code) : null;
+		// Get the base URL from the request
+		const baseUrl = `${url.protocol}//${url.host}`;
+		
+		// Get region data if postcode is provided and not empty
+		const regionData = formData.postcode && formData.postcode.trim() !== '' 
+			? await getRegionData(formData.postcode, baseUrl) 
+			: null;
 
 		// Transform form data into Action Network format
 		const activistObject = {
 			person: {
-				given_name: formData.given_name,
-				family_name: formData.family_name,
+				given_name: formData.firstname || '',
+				family_name: formData.lastname || '',
 				email_addresses: [
 					{
 						address: formData.email,
 						status: 'subscribed'
 					}
 				],
-				postal_addresses: formData.postal_code
+				postal_addresses: formData.postcode && formData.postcode.trim() !== ''
 					? [
 							{
-								postal_code: formData.postal_code,
-								country: 'GB',
-								...(geocodingData?.components?.locality && { locality: geocodingData.components.locality }),
-								...(geocodingData?.components?.county && { county: geocodingData.components.county }),
-								...(geocodingData?.components?.state && { state: geocodingData.components.state })
+								postal_code: formData.postcode,
+								country: 'GB'
 							}
 					  ]
 					: [],
 				custom_fields: {
-					...(geocodingData?.region && { 'Region': geocodingData.region }),
-					...(geocodingData?.lat && { 'Latitude': geocodingData.lat.toString() }),
-					...(geocodingData?.lng && { 'Longitude': geocodingData.lng.toString() })
+					...(regionData?.region && { 'Region': regionData.region }),
+					...(formData.trade_union && { 'Trade Union': formData.trade_union }),
+					...(formData.workplace && { 'Workplace': formData.workplace })
 				} as Record<string, string>
 			},
 			add_tags: ['Website signup'],
@@ -141,21 +83,12 @@ export const POST: RequestHandler = async ({ request }) => {
 			}
 		}
 
-		// Add any custom fields to the submission
-		for (const [key, value] of Object.entries(formData)) {
-			// Skip the main fields and trade union member (which is handled as a tag)
-			if (!['given_name', 'family_name', 'email', 'postal_code', 'organiser', 'Trade Union Member'].includes(key)) {
-				activistObject.person.custom_fields[key] = value as string
-			}
-		}
-
 		// Add tags based on form data
-		if (formData.organiser === 'on') {
-			activistObject.add_tags.push('organiser')
-		}
-		if (formData['Trade Union Member'] === 'on') {
+		if (formData.trade_union_member === 'on') {
 			activistObject.add_tags.push('Trade Union Member')
 		}
+
+		console.log('Sending to Action Network:', JSON.stringify(activistObject, null, 2));
 
 		const response = await fetch(`https://actionnetwork.org/api/v2/forms/${formId}/submissions`, {
 			method: 'POST',
@@ -167,6 +100,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		})
 
 		const responseText = await response.text()
+		console.log('Action Network response:', responseText);
 
 		if (!response.ok) {
 			console.error('Action Network error:', responseText)
@@ -182,9 +116,11 @@ export const POST: RequestHandler = async ({ request }) => {
 		return json({
 			success: true,
 			data: {
-				given_name: formData.given_name,
-				family_name: formData.family_name,
-				email: formData.email
+				given_name: formData.firstname,
+				family_name: formData.lastname,
+				email: formData.email,
+				region: regionData?.region || null,
+				whatsappLink: regionData?.whatsappLink || null
 			}
 		})
 	} catch (error) {

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition'
 	import { onMount } from 'svelte'
+	import Button from '../components/Button.svelte'
 
 	export let formId: string = '1e49bee5-7886-4cc3-9ab5-b987ccce6139'
 	export let additionalFields: string[] = []
@@ -21,6 +22,7 @@
 	let errorMessage = ''
 	let formData: Record<string, any> = {}
 	let isTradeUnionMember = false
+	let submissionResult: { region?: string; whatsappLink?: string } | null = null
 
 	// Group fields for better organization
 	let fieldGroups = {
@@ -87,19 +89,27 @@
 		event.preventDefault()
 		const form = event.target as HTMLFormElement
 		const formDataObj = new FormData(form)
+		
+		console.log('Raw form data:', Object.fromEntries(formDataObj))
+		console.log('Fields:', fields)
+
 		const processedFormData: Record<string, any> = {}
 
-		// Process form data to use original field names for Action Network
+		// Process form data using HTML names first
 		for (const field of fields) {
 			const value = formDataObj.get(field.htmlName)
-			if (value !== null) {
-				processedFormData[field.name] = value // Use original name with spaces
+			console.log(`Processing field: ${field.htmlName} = ${value}`)
+			if (value !== null && value !== '') {
+				processedFormData[field.htmlName] = value
 			}
 		}
+
+		console.log('Processed form data:', processedFormData)
 
 		isLoading = true
 		isSubmitted = false
 		errorMessage = ''
+		submissionResult = null
 
 		try {
 			const response = await fetch('/api/action-network/submit', {
@@ -114,13 +124,19 @@
 			})
 
 			const result = await response.json()
+			console.log('Server response:', result)
 
 			if (response.ok) {
 				isLoading = false
 				isSubmitted = true
+				submissionResult = {
+					region: result.data.region,
+					whatsappLink: result.data.whatsappLink
+				}
 			} else {
 				isLoading = false
 				errorMessage = result.error || 'Something went wrong. Please try again.'
+				console.error('Server error:', result)
 			}
 		} catch (error) {
 			isLoading = false
@@ -132,10 +148,30 @@
 
 <div class="mb-8">
 	{#if isSubmitted}
-		<div class="confirmation" transition:slide>
-			<p class="text-xl italic py-7">
+		<div class="confirmation bg-caution rounded-xl p-8" transition:slide>
+			<p class="text-lg font-sans">
 				Thank you for signing up! We will contact you soon with more information.
 			</p>
+			{#if submissionResult?.region && submissionResult?.whatsappLink}
+				<div class="mt-4">
+					<Button
+						label="Join your local WhatsApp group in {submissionResult.region}"
+						url={submissionResult.whatsappLink}
+						colourClass="bg-caution"
+						textColourClass="text-extremedanger"
+					/>
+				</div>
+			{:else}
+				<div class="mt-4">
+					<p class="mb-4">Find your local WhatsApp group by entering your postcode:</p>
+					<Button
+						label="Find your local group"
+						url="/find-your-group"
+						colourClass="bg-caution"
+						textColourClass="text-extremedanger"
+					/>
+				</div>
+			{/if}
 		</div>
 	{:else}
 		{#if errorMessage}

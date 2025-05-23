@@ -43,14 +43,14 @@ const DEFAULT_FIELDS: ActionNetworkField[] = [
 		htmlName: 'email',
 		type: 'email',
 		required: true,
-		placeholder: 'Your email'
+		placeholder: 'Your email*'
 	},
 	{
 		name: 'postal_code',
 		htmlName: 'postcode',
 		type: 'text',
-		required: false,
-		placeholder: 'Your postcode (optional)'
+		required: true,
+		placeholder: 'Your postcode*'
 	}
 ]
 
