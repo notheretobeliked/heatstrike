@@ -17,7 +17,6 @@
 		className = ''
 	} = block.attributes ?? {}
 
-	$inspect(level)
 </script>
 
 {#if content}
