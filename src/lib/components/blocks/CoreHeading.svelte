@@ -13,34 +13,42 @@
 		textColor = '',
 		textAlign = 'left',
 		level = 1,
-		fontFamily = 'inter',
+		fontFamily = 'sans',
 		className = ''
 	} = block.attributes ?? {}
+
+	$inspect(level)
 </script>
 
 {#if content}
-{#if level === 1}
-	<h1 class="{classNames(fontSize, textColor, textAlign)} font-display {className}">
-		{@html content}
-	</h1>
-{/if}
-{#if level === 2}
-	<h2 class="{classNames(fontSize, textColor, textAlign)} font-display {className} my-5">
-		{@html content}
-	</h2>
-{/if}
-{#if level === 3}
-	<h3 class="{classNames(fontSize, textColor, textAlign)} font-display {className}">
-		{@html content}
-	</h3>
-{/if}
-{#if level === 4}
-	<div class="py-4">
-		<h3 class=" {classNames(fontSize, textColor, textAlign)} font-sans origin-top-left -rotate-6 {className}">
+	{#if level === 1}
+		<h1 class="{classNames(fontSize, textColor, textAlign, 'display')} {className}">
+			{@html content}
+		</h1>
+	{/if}
+	{#if level === 2}
+		<h2 class="{classNames(fontSize, textColor, textAlign, 'sans')} {className} my-5">
+			{@html content}
+		</h2>
+	{/if}
+	{#if level === 3}
+		<h3 class="{classNames(fontSize, textColor, textAlign, 'sans')} {className}">
 			{@html content}
 		</h3>
-	</div>
-{/if}
+	{/if}
+	{#if level === 4}
+		<div class="py-4">
+			<h3
+				class=" {classNames(
+					fontSize,
+					textColor,
+					textAlign
+				)} font-sans origin-top-left -rotate-6 {className}"
+			>
+				{@html content}
+			</h3>
+		</div>
+	{/if}
 
 	{#if level === 5}
 		<h5
