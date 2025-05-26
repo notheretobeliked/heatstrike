@@ -10,6 +10,7 @@ const config = {
 	kit: {
 		adapter: adapter(),
 		prerender: {
+			entries: ['/']
 		},
 		alias: {
 			$components: 'src/lib/components',
