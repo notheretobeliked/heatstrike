@@ -74,10 +74,21 @@ export interface CoreButtonBlock extends EditorBlock {
 
 export interface EditorBlock {
   name: string
-  parentClientId: string | null
   clientId: string
-  attributes: Attributes
+  parentClientId: string | null
+  attributes: {
+    [key: string]: any
+  }
   children?: EditorBlock[]
+  innerBlocks?: EditorBlock[]
+  signupForm?: {
+    formId: string
+    emailField: boolean
+    phoneField: boolean
+    postcodeField: boolean
+    unionList: boolean
+    workplace: boolean
+  }
 }
 
 export interface Attributes {

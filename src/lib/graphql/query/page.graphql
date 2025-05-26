@@ -39,26 +39,23 @@ fragment AcfHeaderAnimationFragment on AcfHeaderAnimation {
 	}
 }
 
+
 fragment AcfSignupFormFragment on AcfSignupForm {
-	innerBlocks {
-		name
-		parentClientId
-		clientId
-		...CoreParagraphFragment
-		...CoreHeadingFragment
-		...CoreColumnsFragment
-		...CoreGroupFragment
-		...CoreButtonFragment
-		...CoreButtonsFragment
-		...CoreSpacerFragment
-		...AcfHomeSectionFragment
-	}
-	attributes {
-		alignment: align
-		backgroundColor
-		textColor
-	}
+  signupForm {
+    formId
+    emailField
+    phoneField
+    postcodeField
+    unionList
+    workplace
+  }
+  attributes {
+    alignment: align
+    backgroundColor
+    textColor
+  }
 }
+
 fragment AcfHomeSectionFragment on AcfHomeSection {
 	attributes {
 		alignment: align

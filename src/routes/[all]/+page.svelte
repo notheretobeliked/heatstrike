@@ -9,15 +9,6 @@
 		;({ editorBlocks, uri } = data)
 	}
 
-	import type { PersonResponse, ActionData } from '$lib/types/types'
-
-	export let form: ActionData
-	
-
-	const { temp } = data as PageData
-
-	let isSubmitting = false
-	let errorMessage = ''
 </script>
 
 
