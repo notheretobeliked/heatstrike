@@ -1,19 +1,14 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import Button from '$components/Button.svelte'
+	import { page } from '$app/state';
 </script>
 
-<div class="error-container bg-extremecaution">
-	<div class="error-content flex flex-col gap-9 w-full max-w-[852px] mx-auto  py-48">
-        
-		{#if $page.status === 404}
-            <h1 class=" text-extremedanger font-display !self-center !font-anton !fluid-text-xl !uppercase !text-center md:!px-14">404!</h1>
-			<p>Sorry, we couldn't find the page you were looking for.</p>
-		{:else}
-			<h1>Error {$page.status}</h1>
-			<p>{$page.error?.message || 'An unexpected error occurred'}</p>
-		{/if}
-        <Button label="Go to homepage" url="/" colourClass="bg-caution" />
-		
-	</div>
+<div class="mt-40 min-h-[calc(100vh-60vw)]">
+<h1 class="text-[10rem] leading-42">{page.status}</h1>
+{#if (page.status === 404) }
+<p class="text-base mb-3">You seem to be looking for a page that doesn't exist</p>
+<p class="text-base mb-3">Go back to the <a href="/">homepage</a> to learn more about Citizen's Arrest Network.</p>
+{:else}
+<p class="text-base">{page.error.message}</p>
+{/if}
+
 </div>

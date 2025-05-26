@@ -1,28 +1,169 @@
-query PageContent($uri: ID!) {
-	page(id: $uri, idType: URI) {
-		id
-		editorBlocks {
-			name
-			parentClientId
-			clientId
-			...CoreParagraphFragment
-			...CoreHeadingFragment
-			...CoreColumnsFragment
-			...CoreGroupFragment
-			...CoreButtonFragment
-			...CoreButtonsFragment
-			...CoreSpacerFragment
-			...AcfHomeSectionFragment
-			...AcfSignupFormFragment
-			...AcfHeaderAnimationFragment
-		}
-		seo {
-			...SeoFragment
-		}
-	}
+query PageContent($uri: String = "") {
+  nodeByUri(uri: $uri) {
+    ... on Page {
+      id
+      title
+      date
+      editorBlocks {
+        ...CommonBlockFields
+      }
+    }
+    ... on Post {
+      id
+      title
+      date
+      featuredImage {
+        node {
+          altText
+          mediaDetails {
+            sizes {
+              name
+              mimeType
+              height
+              width
+              sourceUrl
+            }
+          }
+        }
+      }
+      editorBlocks {
+        ...CommonBlockFields
+      }
+    }
+  }
 }
 
-fragment AcfHeaderAnimationFragment on AcfHeaderAnimation {
+fragment BlockBasicFields on EditorBlock {
+  name
+  parentClientId
+  clientId
+  __typename
+
+}
+
+fragment CommonBlockFields on EditorBlock {
+  ...BlockBasicFields
+  ... on CoreVideo {
+    attributes {
+      autoplay
+      preload
+      src
+      muted
+      controls
+      caption
+      poster
+      align
+      loop
+      className
+    }
+  }
+  ... on CoreEmbed {
+    renderedHtml
+    attributes {
+      align
+      url
+      className
+    }
+  }
+  ... on AcfSignupForm {
+    signupForm {
+      formId
+      emailField
+      phoneField
+      postcodeField
+      unionList
+      workplace
+    }
+    attributes {
+      align
+      backgroundColor
+      textColor
+      className
+    }
+  }
+  ... on AcfHomeSection {
+    attributes {
+      align
+      backgroundColor
+      textColor
+      className
+    }
+    innerBlocks {
+      name
+      parentClientId
+      clientId
+    }
+    homeSection {
+      accordeonlabel
+      defaultActive
+    }
+  }
+  ... on CoreQuery {
+    apiVersion
+    blockEditorCategoryName
+    isDynamic
+    attributes {
+      align
+      layout
+      metadata
+      query
+    }
+  }
+  ... on CorePostTemplate {
+    attributes {
+      align
+      backgroundColor
+      fontFamily
+      fontSize
+      layout
+      metadata
+    }
+  }
+  ... on CoreImage {
+    mediaDetails {
+      sizes(exclude: [MEDIUM_LARGE, MEDIUM]) {
+        sourceUrl
+        height
+        width
+        mimeType
+        name
+      }
+    }
+    attributes {
+      title
+      alt
+      url
+      caption
+      aspectRatio
+      className
+    }
+  }
+  ... on CoreParagraph {
+    attributes {
+      content
+      fontFamily
+      fontSize
+      textColor
+      align
+      className
+    }
+  }
+  ... on CoreFootnotes {
+    renderedHtml
+    innerBlocks {
+      name
+    }
+    attributes {
+      metadata
+      className
+    }
+  }
+  ... on CoreMore {
+    attributes {
+      customText
+    }
+  }
+  ...on AcfHeaderAnimation {
 	apiVersion
 	blockEditorCategoryName
 	headerAnimation {
@@ -33,162 +174,80 @@ fragment AcfHeaderAnimationFragment on AcfHeaderAnimation {
 		}
 	}
 	attributes {
-		alignment: align
+		align
 		backgroundColor
 		textColor
+    className
 	}
 }
-
-fragment AcfSignupFormFragment on AcfSignupForm {
-	innerBlocks {
-		name
-		parentClientId
-		clientId
-		...CoreParagraphFragment
-		...CoreHeadingFragment
-		...CoreColumnsFragment
-		...CoreGroupFragment
-		...CoreButtonFragment
-		...CoreButtonsFragment
-		...CoreSpacerFragment
-		...AcfHomeSectionFragment
-	}
-	attributes {
-		alignment: align
-		backgroundColor
-		textColor
-	}
-}
-fragment AcfHomeSectionFragment on AcfHomeSection {
-	attributes {
-		alignment: align
-		backgroundColor
-		textColor
-	}
-	innerBlocks {
-		name
-		parentClientId
-		clientId
-		...CoreParagraphFragment
-		...CoreHeadingFragment
-		...CoreColumnsFragment
-		...CoreGroupFragment
-		...CoreButtonFragment
-		...CoreButtonsFragment
-		...CoreSpacerFragment
-	}
-	homeSection {
-		accordeonlabel
-		defaultActive
-	}
-}
-
-fragment SeoFragment on PostTypeSEO {
-	metaDesc
-	metaKeywords
-	opengraphSiteName
-	opengraphTitle
-	opengraphPublisher
-	opengraphUrl
-	title
-	twitterDescription
-	twitterTitle
-	twitterImage {
-		altText
-		mediaDetails {
-			...MediaDetailsFragment
-		}
-	}
-	opengraphImage {
-		altText
-		mediaDetails {
-			...MediaDetailsFragment
-		}
-	}
-}
-
-fragment MediaDetailsFragment on MediaDetails {
-	sizes {
-		name
-		sourceUrl
-		width
-		height
-	}
-}
-
-fragment CoreGroupFragment on CoreGroup {
-	attributes {
-		backgroundColor
-		align
-		style
-	}
-}
-
-fragment CoreButtonFragment on CoreButton {
-	attributes {
-		backgroundColor
-		style
-		fontSize
-		linkTarget
-		text
-		url
-		className
-	}
-	innerBlocks {
-		apiVersion
-		blockEditorCategoryName
-		clientId
-		name
-		parentClientId
-		renderedHtml
-	}
-}
-
-fragment CoreColumnsFragment on CoreColumns {
-	attributes {
-		layout
-		className
-		verticalAlignment
-		style
-		align
-	}
-}
-
-fragment CoreParagraphFragment on CoreParagraph {
-	attributes {
-		content
-		fontFamily
-		fontSize
-		textColor
-		align
-	}
-}
-
-fragment CoreHeadingFragment on CoreHeading {
-	attributes {
-		content
-		fontFamily
-		fontSize
-		textColor
-		textAlign
-		level
-		align
-	}
-}
-
-fragment CoreSpacerFragment on CoreSpacer {
-	attributes {
-		height
-		style
-	}
-}
-
-fragment CoreButtonsFragment on CoreButtons {
-	attributes {
-		align
-		layout
-		style
-		className
-		cssClassName
-	}
+  ... on CoreHeading {
+    attributes {
+      content
+      className
+      fontFamily
+      fontSize
+      textColor
+      textAlign
+      level
+      align
+    }
+  }
+  ... on CoreColumns {
+    attributes {
+      backgroundColor
+      className
+      layout
+      className
+      verticalAlignment
+      style
+      align
+      isStackedOnMobile
+    }
+  }
+  ... on CoreColumn {
+    attributes {
+      backgroundColor
+      layout
+      className
+      verticalAlignment
+      style
+    }
+  }
+  ... on CoreGroup {
+    attributes {
+      backgroundColor
+      className
+      align
+      style
+    }
+  }
+  ... on CoreButton {
+    attributes {
+      backgroundColor
+      style
+      className
+      fontSize
+      linkTarget
+      text
+      url
+    }
+    innerBlocks {
+      ...BlockBasicFields
+    }
+  }
+  ... on CoreButtons {
+    attributes {
+      align
+      className
+      layout
+    }
+  }
+  ... on CoreSpacer {
+    attributes {
+      height
+      className
+      style
+      className
+    }
+  }
 }

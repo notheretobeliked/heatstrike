@@ -133,11 +133,3 @@ export type ImageObject = {
   mediaDetails: MediaDetails
   // Add optional properties here if needed
 }
-
-export function isCoreButtonsBlock(block: EditorBlock): block is CoreButtonsBlock {
-  return block.name === 'core/buttons';
-}
-
-export function isCoreButtonBlock(block: EditorBlock): block is CoreButtonBlock {
-  return block.name === 'core/button';
-}

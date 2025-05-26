@@ -51,6 +51,13 @@ const DEFAULT_FIELDS: ActionNetworkField[] = [
 		type: 'text',
 		required: true,
 		placeholder: 'Your postcode*'
+	},
+	{
+		name: 'phone_number',
+		htmlName: 'phone',
+		type: 'text',
+		required: false,
+		placeholder: 'Phone number'
 	}
 ]
 
@@ -210,7 +217,13 @@ export const GET: RequestHandler = async ({ url, request }) => {
 			fields.push(...customFields)
 		}
 
-		return json({ fields })
+		return json({ fields }, {
+			headers: {
+				'Cache-Control': 'max-age=60',
+				'CDN-Cache-Control': 'max-age=7200',
+				'Vercel-CDN-Cache-Control': 'max-age=7200'
+			}
+		})
 	} catch (error) {
 		console.error('Error fetching form details:', error)
 		// Include more error details in the response
