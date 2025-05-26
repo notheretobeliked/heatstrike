@@ -50,7 +50,7 @@
 	<div class="relative w-36 h-36">
 		<svg
 			class="w-full h-full"
-			preserveAspectRatio=preserveAspectRatio
+			preserveAspectRatio="xMidYMid meet"
 			viewBox="0 0 95 95"
 			xmlns="http://www.w3.org/2000/svg"
 		>
