@@ -74,21 +74,10 @@ export interface CoreButtonBlock extends EditorBlock {
 
 export interface EditorBlock {
   name: string
-  clientId: string
   parentClientId: string | null
-  attributes: {
-    [key: string]: any
-  }
+  clientId: string
+  attributes: Attributes
   children?: EditorBlock[]
-  innerBlocks?: EditorBlock[]
-  signupForm?: {
-    formId: string
-    emailField: boolean
-    phoneField: boolean
-    postcodeField: boolean
-    unionList: boolean
-    workplace: boolean
-  }
 }
 
 export interface Attributes {
@@ -143,12 +132,4 @@ export type ImageObject = {
   caption: string | null
   mediaDetails: MediaDetails
   // Add optional properties here if needed
-}
-
-export function isCoreButtonsBlock(block: EditorBlock): block is CoreButtonsBlock {
-  return block.name === 'core/buttons';
-}
-
-export function isCoreButtonBlock(block: EditorBlock): block is CoreButtonBlock {
-  return block.name === 'core/button';
 }

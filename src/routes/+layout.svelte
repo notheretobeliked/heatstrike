@@ -1,14 +1,28 @@
 <script lang="ts">
 	import '../app.css'
 	import { page } from '$app/stores'
-	import type { PageData } from './$types'
+	import type { MenuItem } from '$lib/types/wp-types'
 	import Twitter from '$components/SEO/Twitter.svelte'
 	import OpenGraph from '$components/SEO/OpenGraph.svelte'
 	import Header from '$components/Header.svelte'
-	export let data: PageData
+	
+	export let data: {
+		seo: any;
+		menu: { menuItems?: { nodes: MenuItem[] } | null };
+		uri: string;
+		temp: number | null;
+	}
+	
 	let { seo, menu, uri, temp } = data
 
-	const menuItems = menu?.menuItems?.nodes ?? []
+	// Get base menu items
+	const baseMenuItems = menu?.menuItems?.nodes ?? []
+	
+	// Reactive menu items with current page tracking
+	$: menuItems = baseMenuItems.map((item: MenuItem) => ({
+		...item,
+		current: item.uri?.replace(/\/$/, '') === $page.url.pathname?.replace(/\/$/, '')
+	}))
 	
 	// Only set SEO variables if seo object exists
 	const hasSeoData = !!seo
@@ -23,6 +37,7 @@
 		uri
 		seo
 	}
+
 </script>
 
 {#key $page.url.pathname}
@@ -45,7 +60,7 @@
 			/>
 		</svg>
 		<p class="-rotate-12 w-36 top-10 text-center absolute px-7">
-			10 Downing Street: <strong>{temp}°C</strong>
+			10 Downing Street: <strong>{temp ?? '--'}°C</strong>
 		</p>
 	</div>
 </div>

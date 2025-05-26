@@ -1,0 +1,30 @@
+query Posts {
+  posts {
+    nodes {
+      title
+      slug
+      uri
+      featuredImage {
+        node {
+          mediaDetails {
+            sizes(exclude: [MEDIUM_LARGE, MEDIUM]) {
+              sourceUrl
+              height
+              width
+              mimeType
+              name
+            }
+          }
+        }
+      }
+      categories {
+        nodes {
+          slug
+          name
+        }
+      }
+      date
+    }
+  }
+
+}

@@ -51,6 +51,13 @@ const DEFAULT_FIELDS: ActionNetworkField[] = [
 		type: 'text',
 		required: true,
 		placeholder: 'Your postcode*'
+	},
+	{
+		name: 'phone_number',
+		htmlName: 'phone',
+		type: 'text',
+		required: false,
+		placeholder: 'Phone number'
 	}
 ]
 
