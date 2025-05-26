@@ -17,7 +17,7 @@
 {#if menuItems.length > 0}
 	<header class="fixed top-0 left-0 right-0 z-50">
 		<nav class="w-full flex px-4 pt-4 justify-between items-center h-12 md:h-24">
-			<div class="fixed inset-2 z-50 md:hidden">
+			<div class="fixed left-2 top-2 z-50 md:hidden">
 				<Hamburger bind:open --color="black" type="spin" />
 			</div>
 

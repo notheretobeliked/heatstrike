@@ -55,7 +55,7 @@ export const classNames = (
 			break
 		case '':
 		default:
-			sizeClasses = 'text-sm md:text-base'
+			sizeClasses = 'text-base lg:text-lg'
 			break
 	}
 
