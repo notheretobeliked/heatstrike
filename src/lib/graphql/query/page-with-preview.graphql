@@ -1,0 +1,304 @@
+query PageContentWithPreview($uri: String = "", $includePreview: Boolean = false, $id: ID, $asPreview: Boolean = false) {
+  # Query by URI for regular content
+  nodeByUri(uri: $uri) @skip(if: $asPreview) {
+    __typename
+    ... on Page {
+      id
+      databaseId
+      title
+      date
+      status @include(if: $includePreview)
+      modified @include(if: $includePreview)
+      editorBlocks {
+        ...CommonBlockFields
+      }
+    }
+    ... on Post {
+      id
+      databaseId
+      title
+      date
+      status @include(if: $includePreview)
+      modified @include(if: $includePreview)
+      featuredImage {
+        node {
+          altText
+          mediaDetails {
+            sizes {
+              name
+              mimeType
+              height
+              width
+              sourceUrl
+            }
+          }
+        }
+      }
+      editorBlocks {
+        ...CommonBlockFields
+      }
+    }
+  }
+  
+  # Query by ID for preview content - simplified without asPreview
+  page(id: $id, idType: DATABASE_ID) @include(if: $asPreview) {
+    __typename
+    id
+    databaseId
+    title
+    date
+    status
+    modified
+    content
+    editorBlocks {
+      ...CommonBlockFields
+    }
+  }
+  
+  # Also try querying as a post for preview content
+  post(id: $id, idType: DATABASE_ID) @include(if: $asPreview) {
+    __typename
+    id
+    databaseId
+    title
+    date
+    status
+    modified
+    content
+    featuredImage {
+      node {
+        altText
+        mediaDetails {
+          sizes {
+            name
+            mimeType
+            height
+            width
+            sourceUrl
+          }
+        }
+      }
+    }
+    editorBlocks {
+      ...CommonBlockFields
+    }
+  }
+}
+
+fragment BlockBasicFields on EditorBlock {
+  name
+  parentClientId
+  clientId
+  __typename
+}
+
+fragment CommonBlockFields on EditorBlock {
+  ...BlockBasicFields
+  ... on CoreVideo {
+    attributes {
+      autoplay
+      preload
+      src
+      muted
+      controls
+      caption
+      poster
+      align
+      loop
+      className
+    }
+  }
+  ... on CoreEmbed {
+    renderedHtml
+    attributes {
+      align
+      url
+      className
+    }
+  }
+  ... on AcfSignupForm {
+    signupForm {
+      formId
+      emailField
+      phoneField
+      postcodeField
+      unionList
+      workplace
+    }
+    attributes {
+      align
+      backgroundColor
+      textColor
+      className
+    }
+  }
+  ... on AcfHomeSection {
+    attributes {
+      align
+      backgroundColor
+      textColor
+      className
+    }
+    innerBlocks {
+      name
+      parentClientId
+      clientId
+    }
+    homeSection {
+      accordeonlabel
+      defaultActive
+    }
+  }
+  ... on CoreQuery {
+    apiVersion
+    blockEditorCategoryName
+    isDynamic
+    attributes {
+      align
+      layout
+      metadata
+      query
+    }
+  }
+  ... on CorePostTemplate {
+    attributes {
+      align
+      backgroundColor
+      fontFamily
+      fontSize
+      layout
+      metadata
+    }
+  }
+  ... on CoreImage {
+    mediaDetails {
+      sizes(exclude: [MEDIUM_LARGE, MEDIUM]) {
+        sourceUrl
+        height
+        width
+        mimeType
+        name
+      }
+    }
+    attributes {
+      title
+      alt
+      url
+      caption
+      aspectRatio
+      className
+    }
+  }
+  ... on CoreParagraph {
+    attributes {
+      content
+      fontFamily
+      fontSize
+      textColor
+      align
+      className
+    }
+  }
+  ... on CoreFootnotes {
+    renderedHtml
+    innerBlocks {
+      name
+    }
+    attributes {
+      metadata
+      className
+    }
+  }
+  ... on CoreMore {
+    attributes {
+      customText
+    }
+  }
+  ...on AcfHeaderAnimation {
+    apiVersion
+    blockEditorCategoryName
+    headerAnimation {
+      statements {
+        statement
+        bgcolor
+        textcolor
+      }
+    }
+    attributes {
+      align
+      backgroundColor
+      textColor
+      className
+    }
+  }
+  ... on CoreHeading {
+    attributes {
+      content
+      className
+      fontFamily
+      fontSize
+      textColor
+      textAlign
+      level
+      align
+    }
+  }
+  ... on CoreColumns {
+    attributes {
+      backgroundColor
+      className
+      layout
+      className
+      verticalAlignment
+      style
+      align
+      isStackedOnMobile
+    }
+  }
+  ... on CoreColumn {
+    attributes {
+      backgroundColor
+      layout
+      className
+      verticalAlignment
+      style
+    }
+  }
+  ... on CoreGroup {
+    attributes {
+      backgroundColor
+      className
+      align
+      style
+    }
+  }
+  ... on CoreButton {
+    attributes {
+      backgroundColor
+      style
+      className
+      fontSize
+      linkTarget
+      text
+      url
+    }
+    innerBlocks {
+      ...BlockBasicFields
+    }
+  }
+  ... on CoreButtons {
+    attributes {
+      align
+      className
+      layout
+    }
+  }
+  ... on CoreSpacer {
+    attributes {
+      height
+      className
+      style
+      className
+    }
+  }
+}

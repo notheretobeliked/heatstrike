@@ -1,5 +1,4 @@
 import { GRAPHQL_ENDPOINT } from '$env/static/private'
-
 import { error } from '@sveltejs/kit'
 
 export function checkResponse(response: Response) {
@@ -15,13 +14,31 @@ export function checkResponse(response: Response) {
 
 export async function graphqlQuery<TData = any, TVariables = any>(
 	query: string,
-	variables: TVariables
+	variables: TVariables,
+	options?: {
+		includeAuth?: boolean
+		request?: Request
+		token?: string
+	}
 ): Promise<Response> {
+	const headers: Record<string, string> = {
+		'content-type': 'application/json'
+	}
+
+	// If we have a preview token, use it instead of cookies
+	if (options?.token) {
+		headers['X-Preview-Token'] = options.token
+	} else if (options?.includeAuth && options?.request) {
+		// Fallback to cookie forwarding if no token
+		const cookieHeader = options.request.headers.get('cookie')
+		if (cookieHeader) {
+			headers['Cookie'] = cookieHeader
+		}
+	}
+
 	return fetch(GRAPHQL_ENDPOINT, {
 		method: 'POST',
-		headers: {
-			'content-type': 'application/json'
-		},
+		headers,
 		body: JSON.stringify({
 			query,
 			variables
