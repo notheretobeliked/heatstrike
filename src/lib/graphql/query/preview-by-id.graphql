@@ -139,6 +139,7 @@ fragment CommonBlockFields on EditorBlock {
     }
     attributes {
       title
+      align
       alt
       url
       caption

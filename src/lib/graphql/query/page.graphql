@@ -130,6 +130,7 @@ fragment CommonBlockFields on EditorBlock {
       }
     }
     attributes {
+	  align
       title
       alt
       url
