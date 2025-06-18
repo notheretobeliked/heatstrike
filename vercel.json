@@ -1,0 +1,8 @@
+{
+  "crons": [
+    {
+      "path": "/api/action-network/counter/update",
+      "schedule": "*/30 * * * *"
+    }
+  ]
+} 
