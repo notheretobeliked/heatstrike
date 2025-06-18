@@ -6,37 +6,42 @@
 	}
 
 	let { block }: Props = $props();
-	const columns = block.children.length
 	const isStackedOnMobile: boolean = block.attributes?.isStackedOnMobile ?? false
 	
-	// Helper function to get the appropriate grid columns class
-	function getGridColsClass(cols: number): string {
-		switch (cols) {
-			case 2: return 'grid-cols-2';
-			case 3: return 'grid-cols-3';
-			case 4: return 'grid-cols-4';
-			case 5: return 'grid-cols-5';
-			case 6: return 'grid-cols-6';
-			default: return 'grid-cols-1';
-		}
+	// Create CSS grid template columns from individual column widths
+	function getGridTemplateColumns(): string {
+		return (block as any).children
+			.map((child: any) => child.attributes?.width || '1fr')
+			.join(' ');
 	}
 	
-	function getMdGridColsClass(cols: number): string {
-		switch (cols) {
-			case 2: return 'md:grid-cols-2';
-			case 3: return 'md:grid-cols-3';
-			case 4: return 'md:grid-cols-4';
-			case 5: return 'md:grid-cols-5';
-			case 6: return 'md:grid-cols-6';
-			default: return 'md:grid-cols-1';
-		}
+	// Get the grid style object
+	function getGridStyle(): string {
+		const gridTemplateColumns = getGridTemplateColumns();
+		return `grid-template-columns: ${gridTemplateColumns};`;
+	}
+	
+	// Get CSS classes for responsive behavior
+	function getCssClasses(): string {
+		const baseClasses = `${block.attributes?.className || ''} corecolumns grid`;
+		return baseClasses.trim();
 	}
 </script>
 
 <div
-	class="{block.attributes?.className} grid {isStackedOnMobile ? `grid-cols-1 ${getMdGridColsClass(columns)}` : getGridColsClass(columns)}  corecolumns"
+	class="{getCssClasses()}  gap-4"
+	data-stacked={isStackedOnMobile}
+	style={isStackedOnMobile ? `grid-template-columns: 1fr; --grid-columns: ${getGridTemplateColumns()};` : getGridStyle()}
 >
-	{#each block.children as block, index}
-		<BlockRenderer {block} />
+	{#each (block as any).children as childBlock, index}
+		<BlockRenderer block={childBlock} />
 	{/each}
 </div>
+
+<style>
+	@media (min-width: 768px) {
+		.corecolumns[data-stacked="true"] {
+			grid-template-columns: var(--grid-columns) !important;
+		}
+	}
+</style>
