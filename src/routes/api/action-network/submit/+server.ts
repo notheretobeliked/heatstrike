@@ -8,6 +8,7 @@ const FIELD_NAME_MAP: Record<string, string> = {
 	'lastname': 'Last Name',
 	'email': 'Email',
 	'postcode': 'Postcode',
+	'phone': 'Phone',
 	'trade_union_member': 'Trade Union Member',
 	'trade_union': 'Trade Union',
 	'workplace': 'Workplace'
@@ -61,6 +62,14 @@ export const POST: RequestHandler = async ({ request, url }) => {
 						status: 'subscribed'
 					}
 				],
+				phone_numbers: formData.phone && formData.phone.trim() !== ''
+					? [
+							{
+								number: formData.phone,
+								status: 'subscribed'
+							}
+					  ]
+					: [],
 				postal_addresses: formData.postcode && formData.postcode.trim() !== ''
 					? [
 							{
