@@ -13,3 +13,7 @@ strong {
 h2 {
     @apply font-anton uppercase !text-2xl;
 }
+
+.app-content p a {
+    @apply border-b border-black hover:text-extremedanger hover:border-extremedanger transition-colors duration-200;
+}

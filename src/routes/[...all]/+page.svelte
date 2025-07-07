@@ -27,7 +27,7 @@
 	canEdit={data.previewData?.canEdit || false}
 />
 
-<div class="{isHomePage ? 'homepage' : ''} ">
+<div class="{isHomePage ? 'homepage' : ''} app-content">
 	{#each editorBlocks as block, index (block.clientId)}
 		<BlockRenderer {block} />
 	{/each}
