@@ -16,7 +16,8 @@
 		AcfHeaderAnimation as AcfHeaderAnimationType,
 		AcfSignupForm as AcfSignupFormType,
 		AcfHomeSection as AcfHomeSectionType,
-		CoreVideo as CoreVideoType
+		CoreVideo as CoreVideoType,
+		AcfTickerNumber as AcfTickerNumbertype
 	} from '$lib/graphql/generated'
 
 	interface NormalizedBlock {
@@ -47,6 +48,7 @@
 		| (AcfSignupFormType & NormalizedBlock)
 		| (AcfHomeSectionType & NormalizedBlock)
 		| (CoreVideoType & NormalizedBlock)
+		| (AcfTickerNumber & NormalizedBlock )
 
 
 	import CoreParagraph from '$components/blocks/CoreParagraph.svelte'
@@ -64,6 +66,7 @@
 	import CoreListItem from './blocks/CoreListItem.svelte'
 	import CoreVideo from './blocks/CoreVideo.svelte'
 	import AcfHeaderAnimation from './blocks/AcfHeaderAnimation.svelte'
+	import AcfTickerNumber from './blocks/AcfTickerNumber.svelte'
 	import AcfHomeSection from './blocks/AcfHomeSection.svelte'
 	import AcfSignupForm from './blocks/AcfSignupForm.svelte'
 	interface Props {
@@ -261,6 +264,10 @@
 
 	{#if block.name === 'acf/home-section'}
 		<AcfHomeSection {block} />
+	{/if}
+
+	{#if block.name === 'acf/ticker-number'}
+		<AcfTickerNumber {block} />
 	{/if}
 
 </div>

@@ -1,5 +1,7 @@
 schema: http://heatstrike.test/wp/graphql
-documents: './src/**/*.graphql'
+documents: 
+  - './src/**/*.graphql'
+  - '!./src/**/*preview*.graphql'
 generates:
   ./src/lib/graphql/generated.ts:
     plugins:

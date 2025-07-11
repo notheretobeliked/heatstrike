@@ -56,7 +56,7 @@
 </div>
 
 <style lang="postcss">
-	:global(.header-title) {
+	:global(h1.header-title) {
 		@apply !self-center !font-anton !fluid-text-xl !uppercase !text-center md:!px-14;
 	}
 </style>
