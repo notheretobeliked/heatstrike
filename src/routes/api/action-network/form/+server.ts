@@ -11,6 +11,16 @@ type ActionNetworkField = {
 	placeholder?: string
 }
 
+// In-memory cache to prevent hitting rate limits
+const formCache = new Map<string, { data: any, timestamp: number }>()
+const customFieldsCache = { data: null as any, timestamp: 0 }
+const CACHE_DURATION = 10 * 60 * 1000 // 10 minutes
+
+// Helper function to check if cache is valid
+function isCacheValid(timestamp: number): boolean {
+	return Date.now() - timestamp < CACHE_DURATION
+}
+
 // Helper function to create HTML-safe names
 function createHtmlSafeName(fieldName: string): string {
 	return fieldName
@@ -150,46 +160,77 @@ export const GET: RequestHandler = async ({ url, request }) => {
 	}
 
 	try {
-		// First, fetch the form details from Action Network
-		const formResponse = await fetch(`https://actionnetwork.org/api/v2/forms/${formId}`, {
-			headers: {
-				'OSDI-API-Token': AN_KEY,
-				'Content-Type': 'application/json'
-			}
-		})
+		let formData: any
+		let customFieldsData: any
 
-		const formResponseText = await formResponse.text()
-		if (!formResponse.ok) {
-			console.error('Action Network form error:', formResponseText)
-			return json({ 
-				error: 'Failed to fetch form details',
-				status: formResponse.status,
-				details: formResponseText
-			}, { status: formResponse.status })
+		// Check cache for form data first
+		const cachedForm = formCache.get(formId)
+		if (cachedForm && isCacheValid(cachedForm.timestamp)) {
+			console.log('Using cached form data for:', formId)
+			formData = cachedForm.data
+		} else {
+			// Fetch fresh form data
+			console.log('Fetching fresh form data for:', formId)
+			const formResponse = await fetch(`https://actionnetwork.org/api/v2/forms/${formId}`, {
+				headers: {
+					'OSDI-API-Token': AN_KEY,
+					'Content-Type': 'application/json'
+				}
+			})
+
+			const formResponseText = await formResponse.text()
+			if (!formResponse.ok) {
+				console.error('Action Network form error:')
+				console.error('Status:', formResponse.status)
+				console.error('Status Text:', formResponse.statusText)
+				console.error('Response:', formResponseText)
+				console.error('Form ID:', formId)
+				console.error('Request URL:', `https://actionnetwork.org/api/v2/forms/${formId}`)
+				
+				return json({ 
+					error: 'Failed to fetch form details',
+					status: formResponse.status,
+					statusText: formResponse.statusText,
+					details: formResponseText,
+					formId: formId
+				}, { status: formResponse.status })
+			}
+
+			formData = JSON.parse(formResponseText)
+			// Cache the form data
+			formCache.set(formId, { data: formData, timestamp: Date.now() })
 		}
 
-		const formData = JSON.parse(formResponseText)
+		// Check cache for custom fields
+		if (customFieldsCache.data && isCacheValid(customFieldsCache.timestamp)) {
+			console.log('Using cached custom fields data')
+			customFieldsData = customFieldsCache.data
+		} else {
+			// Fetch fresh custom fields data
+			console.log('Fetching fresh custom fields data')
+			const customFieldsResponse = await fetch('https://actionnetwork.org/api/v2/metadata/custom_fields', {
+				headers: {
+					'OSDI-API-Token': AN_KEY,
+					'Content-Type': 'application/json'
+				}
+			})
 
-		// Then, fetch the custom fields metadata
-		const customFieldsResponse = await fetch('https://actionnetwork.org/api/v2/metadata/custom_fields', {
-			headers: {
-				'OSDI-API-Token': AN_KEY,
-				'Content-Type': 'application/json'
+			const customFieldsResponseText = await customFieldsResponse.text()
+			
+			if (!customFieldsResponse.ok) {
+				console.error('Action Network custom fields error:', customFieldsResponseText)
+				return json({ 
+					error: 'Failed to fetch custom fields',
+					status: customFieldsResponse.status,
+					details: customFieldsResponseText
+				}, { status: customFieldsResponse.status })
 			}
-		})
 
-		const customFieldsResponseText = await customFieldsResponse.text()
-		
-		if (!customFieldsResponse.ok) {
-			console.error('Action Network custom fields error:', customFieldsResponseText)
-			return json({ 
-				error: 'Failed to fetch custom fields',
-				status: customFieldsResponse.status,
-				details: customFieldsResponseText
-			}, { status: customFieldsResponse.status })
+			customFieldsData = JSON.parse(customFieldsResponseText)
+			// Cache the custom fields data
+			customFieldsCache.data = customFieldsData
+			customFieldsCache.timestamp = Date.now()
 		}
-
-		const customFieldsData = JSON.parse(customFieldsResponseText)
 
 		// Start with default fields
 		const fields = [...DEFAULT_FIELDS]
@@ -214,9 +255,9 @@ export const GET: RequestHandler = async ({ url, request }) => {
 
 		return json({ fields }, {
 			headers: {
-				'Cache-Control': 'max-age=60',
-				'CDN-Cache-Control': 'max-age=7200',
-				'Vercel-CDN-Cache-Control': 'max-age=7200'
+				'Cache-Control': 'max-age=300', // 5 minutes browser cache
+				'CDN-Cache-Control': 'max-age=3600', // 1 hour CDN cache
+				'Vercel-CDN-Cache-Control': 'max-age=3600' // 1 hour Vercel cache
 			}
 		})
 	} catch (error) {

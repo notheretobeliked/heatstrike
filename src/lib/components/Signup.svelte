@@ -17,6 +17,127 @@
 		options?: string[]
 	}
 
+	// Static field definitions - no API calls needed!
+	const FIELD_DEFINITIONS: Record<string, FormField> = {
+		email: {
+			name: 'email',
+			htmlName: 'email',
+			type: 'email',
+			required: true,
+			placeholder: 'Your email*'
+		},
+		phone: {
+			name: 'phone_number',
+			htmlName: 'phone',
+			type: 'tel',
+			required: false,
+			placeholder: 'Phone number'
+		},
+		postcode: {
+			name: 'postal_code',
+			htmlName: 'postcode',
+			type: 'text',
+			required: true,
+			placeholder: 'Your postcode*'
+		},
+		trade_union: {
+			name: 'Trade Union',
+			htmlName: 'trade_union',
+			type: 'select',
+			required: false,
+			placeholder: 'Which trade union are you a part of?',
+			options: [
+				'No union',
+				'Accord',
+				'Advance',
+				'Aegis',
+				'AEP',
+				'AFA-CWA',
+				'Artists\' Union England',
+				'ASLEF',
+				'BALPA',
+				'BDA',
+				'BECTU Sector of Prospect',
+				'BFAWU',
+				'BOSTU',
+				'Community',
+				'CSP',
+				'CWU',
+				'EIS',
+				'Equity',
+				'FBU',
+				'FDA',
+				'GMB',
+				'HCSA',
+				'MU',
+				'NAHT',
+				'Napo',
+				'NARS',
+				'NASUWT',
+				'National House Building Council Staff Association',
+				'National Society for Education in Art and Design (NSEAD)',
+				'Nautilus International',
+				'NEU',
+				'NGSU',
+				'NUJ',
+				'NUM',
+				'PCS',
+				'PFA',
+				'POA',
+				'Prospect',
+				'RCM',
+				'RMT',
+				'Royal College of Podiatry',
+				'SoR',
+				'TSSA',
+				'UCAC',
+				'UCU',
+				'UNISON',
+				'Unite',
+				'URTU',
+				'UVW',
+				'USDAW',
+				'WGGB',
+				'IWGB',
+				'Other Union'
+			]
+		},
+		workplace: {
+			name: 'Workplace',
+			htmlName: 'workplace',
+			type: 'text',
+			required: false,
+			placeholder: 'Where do you work? (optional)'
+		}
+	}
+
+	// Always include default fields
+	const DEFAULT_FIELDS: FormField[] = [
+		{
+			name: 'given_name',
+			htmlName: 'firstname',
+			type: 'text',
+			required: true,
+			placeholder: 'First name'
+		},
+		{
+			name: 'family_name',
+			htmlName: 'lastname',
+			type: 'text',
+			required: true,
+			placeholder: 'Last name'
+		}
+	]
+
+	// Trade union member checkbox (always included when trade union is enabled)
+	const TRADE_UNION_MEMBER_FIELD: FormField = {
+		name: 'Trade Union Member',
+		htmlName: 'trade_union_member',
+		type: 'checkbox',
+		required: false,
+		placeholder: 'Are you a member of a trade union?'
+	}
+
 	let fields = $state<FormField[]>([]);
 	let isFocused = $state(false);
 	let isLoading = $state(false);
@@ -41,43 +162,39 @@
 		}
 	}
 
-	onMount(async () => {
-		try {
-			const queryParams = new URLSearchParams({
-				formId,
-				...(additionalFields.length > 0 && {
-					additionalFields: additionalFields.join(',')
-				})
-			})
+	function buildFields() {
+		// Start with default fields
+		const allFields = [...DEFAULT_FIELDS]
 
-			const response = await fetch(`/api/action-network/form?${queryParams}`)
-			const data = await response.json()
-
-			if (!response.ok) {
-				throw new Error(data.error)
+		// Add fields based on additionalFields configuration
+		for (const fieldKey of additionalFields) {
+			if (fieldKey === 'trade_union') {
+				// Add both checkbox and select for trade union
+				allFields.push(TRADE_UNION_MEMBER_FIELD)
+				allFields.push(FIELD_DEFINITIONS.trade_union)
+			} else if (FIELD_DEFINITIONS[fieldKey]) {
+				allFields.push(FIELD_DEFINITIONS[fieldKey])
 			}
-
-			fields = data.fields.map((field: FormField) => ({
-				...field,
-				name: field.name,
-				htmlName: field.htmlName
-			}))
-
-			// Reorganize field groups
-			const personalFieldNames = ['firstname', 'lastname', 'email']
-			const contactFieldNames = ['postcode', 'phone']
-			const unionFieldNames = ['trade_union_member', 'trade_union']
-
-			fieldGroups = {
-				personal: fields.filter((f) => personalFieldNames.includes(f.htmlName)),
-				contact: fields.filter((f) => contactFieldNames.includes(f.htmlName)),
-				union: fields.filter((f) => unionFieldNames.includes(f.htmlName)),
-				other: fields.filter((f) => f.htmlName === 'workplace')
-			}
-		} catch (error) {
-			errorMessage = 'Failed to load form fields'
-			console.error('Error loading form fields:', error)
 		}
+
+		fields = allFields
+
+		// Reorganize field groups
+		const personalFieldNames = ['firstname', 'lastname', 'email']
+		const contactFieldNames = ['postcode', 'phone']
+		const unionFieldNames = ['trade_union_member', 'trade_union']
+
+		fieldGroups = {
+			personal: fields.filter((f) => personalFieldNames.includes(f.htmlName)),
+			contact: fields.filter((f) => contactFieldNames.includes(f.htmlName)),
+			union: fields.filter((f) => unionFieldNames.includes(f.htmlName)),
+			other: fields.filter((f) => f.htmlName === 'workplace')
+		}
+	}
+
+	onMount(() => {
+		// Build fields from static definitions - no API call needed!
+		buildFields()
 	})
 
 	function handleFocus() {
