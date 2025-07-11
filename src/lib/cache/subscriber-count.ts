@@ -5,6 +5,17 @@ let cachedCount: number | null = null
 let lastUpdated: number | null = null
 const CACHE_DURATION = 30 * 60 * 1000 // 30 minutes in milliseconds
 
+// Custom error class for rate limiting
+class RateLimitError extends Error {
+	public retryAfter?: number
+	
+	constructor(message: string, retryAfter?: number) {
+		super(message)
+		this.name = 'RateLimitError'
+		this.retryAfter = retryAfter
+	}
+}
+
 // Function to fetch the total count
 async function fetchTotalCount(): Promise<number> {
 	let totalSubscribers = 0
@@ -19,6 +30,18 @@ async function fetchTotalCount(): Promise<number> {
 		})
 
 		if (!response.ok) {
+			if (response.status === 429) {
+				// Check for Retry-After header
+				const retryAfter = response.headers.get('Retry-After')
+				const retryAfterSeconds = retryAfter ? parseInt(retryAfter, 10) : undefined
+				
+				console.log('Rate limited by Action Network API', {
+					status: response.status,
+					retryAfter: retryAfterSeconds ? `${retryAfterSeconds} seconds` : 'not specified'
+				})
+				
+				throw new RateLimitError(`Rate limited: ${response.status}`, retryAfterSeconds)
+			}
 			throw new Error(`API error: ${response.status}`)
 		}
 
@@ -48,18 +71,38 @@ async function updateCacheInBackground() {
 		lastUpdated = Date.now()
 		console.log(`Cache updated: ${newCount} subscribers at ${new Date().toISOString()}`)
 	} catch (error) {
-		console.error('Background cache update failed:', error)
+		if (error instanceof RateLimitError) {
+			console.log('Background cache update rate limited, keeping existing cache')
+		} else {
+			console.error('Background cache update failed:', error)
+		}
 	}
 }
 
 // Function to force update cache
-async function forceUpdateCache(): Promise<{ count: number; timestamp: number }> {
-	const newCount = await fetchTotalCount()
-	const timestamp = Date.now()
-	cachedCount = newCount
-	lastUpdated = timestamp
-	console.log(`Force cache update: ${newCount} subscribers at ${new Date().toISOString()}`)
-	return { count: newCount, timestamp }
+async function forceUpdateCache(): Promise<{ count: number; timestamp: number; retryAfter?: number }> {
+	try {
+		const newCount = await fetchTotalCount()
+		const timestamp = Date.now()
+		cachedCount = newCount
+		lastUpdated = timestamp
+		console.log(`Force cache update: ${newCount} subscribers at ${new Date().toISOString()}`)
+		return { count: newCount, timestamp }
+	} catch (error) {
+		if (error instanceof RateLimitError) {
+			// If we have cached data, return it instead of throwing
+			if (cachedCount !== null && lastUpdated) {
+				console.log('Force update rate limited, returning cached data')
+				return { 
+					count: cachedCount, 
+					timestamp: lastUpdated,
+					retryAfter: error.retryAfter
+				}
+			}
+		}
+		// Re-throw if it's not a rate limit error or we have no cached data
+		throw error
+	}
 }
 
 // Function to get cached data
@@ -68,17 +111,33 @@ async function getCachedData(forceFresh = false): Promise<{
 	timestamp: number;
 	cached: boolean;
 	source: string;
+	retryAfter?: number;
 }> {
 	const now = Date.now()
 
 	// If forcing fresh data
 	if (forceFresh) {
-		const { count, timestamp } = await forceUpdateCache()
-		return {
-			count,
-			timestamp,
-			cached: false,
-			source: 'force_fresh'
+		try {
+			const result = await forceUpdateCache()
+			return {
+				count: result.count,
+				timestamp: result.timestamp,
+				cached: false,
+				source: result.retryAfter ? 'force_fresh_rate_limited' : 'force_fresh',
+				retryAfter: result.retryAfter
+			}
+		} catch (error) {
+			// If force fresh fails and we have cached data, return it
+			if (cachedCount !== null && lastUpdated) {
+				return {
+					count: cachedCount,
+					timestamp: lastUpdated,
+					cached: true,
+					source: 'fallback_cache_due_to_error'
+				}
+			}
+			// If no cached data, re-throw the error
+			throw error
 		}
 	}
 
@@ -109,22 +168,30 @@ async function getCachedData(forceFresh = false): Promise<{
 	}
 
 	// If no cached value exists yet (first load), we need to wait for the initial fetch
-	const initialCount = await fetchTotalCount()
-	const timestamp = now
-	
-	// Update cache
-	cachedCount = initialCount
-	lastUpdated = timestamp
+	try {
+		const initialCount = await fetchTotalCount()
+		const timestamp = now
+		
+		// Update cache
+		cachedCount = initialCount
+		lastUpdated = timestamp
 
-	return {
-		count: initialCount,
-		timestamp,
-		cached: false,
-		source: 'fresh'
+		return {
+			count: initialCount,
+			timestamp,
+			cached: false,
+			source: 'fresh'
+		}
+	} catch (error) {
+		if (error instanceof RateLimitError) {
+			// If no cached data and we're rate limited, we have to throw
+			throw new Error(`Rate limited and no cached data available. Retry after: ${error.retryAfter ? error.retryAfter + ' seconds' : 'unknown'}`)
+		}
+		throw error
 	}
 }
 
 // Initialize cache on module load
 updateCacheInBackground()
 
-export { getCachedData, forceUpdateCache, updateCacheInBackground } 
+export { getCachedData, forceUpdateCache, updateCacheInBackground, RateLimitError } 

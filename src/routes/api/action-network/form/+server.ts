@@ -2,8 +2,6 @@ import { AN_KEY } from '$env/static/private'
 import { json } from '@sveltejs/kit'
 import type { RequestHandler } from './$types'
 
-
-
 type ActionNetworkField = {
 	name: string        // Original name with spaces (for Action Network)
 	htmlName?: string   // Sanitized name for HTML attributes
@@ -147,7 +145,6 @@ export const GET: RequestHandler = async ({ url, request }) => {
 	const additionalFieldsParam = url.searchParams.get('additionalFields') || new URL(request.url).searchParams.get('additionalFields')
 	const additionalFields = additionalFieldsParam?.split(',') || []
 
-
 	if (!formId) {
 		return json({ error: 'Form ID is required' }, { status: 400 })
 	}
@@ -172,7 +169,6 @@ export const GET: RequestHandler = async ({ url, request }) => {
 		}
 
 		const formData = JSON.parse(formResponseText)
-
 
 		// Then, fetch the custom fields metadata
 		const customFieldsResponse = await fetch('https://actionnetwork.org/api/v2/metadata/custom_fields', {
@@ -203,7 +199,6 @@ export const GET: RequestHandler = async ({ url, request }) => {
 
 		// Add any requested additional custom fields
 		if (additionalFields.length > 0 && customFieldsData['action_network:custom_fields']) {
-			
 			const customFields = customFieldsData['action_network:custom_fields']
 				.filter((field: any) => additionalFields.includes(field.name))
 				.map((field: any) => ({
@@ -226,7 +221,6 @@ export const GET: RequestHandler = async ({ url, request }) => {
 		})
 	} catch (error) {
 		console.error('Error fetching form details:', error)
-		// Include more error details in the response
 		return json({ 
 			error: 'Failed to fetch form details',
 			details: error instanceof Error ? error.message : String(error)
