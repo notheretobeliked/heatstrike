@@ -151,11 +151,8 @@ async function getCachedData(forceFresh = false): Promise<{
 		}
 	}
 
-	// If cache is expired, trigger background update
-	if (!lastUpdated || now - lastUpdated > CACHE_DURATION) {
-		// Don't await - let it update in background
-		updateCacheInBackground()
-	}
+	// Cache updates are only done via cron job or manual triggers
+	// No automatic background updates to avoid rate limiting
 
 	// If we have a cached value (even if expired), return it immediately
 	if (cachedCount !== null) {
@@ -167,31 +164,17 @@ async function getCachedData(forceFresh = false): Promise<{
 		}
 	}
 
-	// If no cached value exists yet (first load), we need to wait for the initial fetch
-	try {
-		const initialCount = await fetchTotalCount()
-		const timestamp = now
-		
-		// Update cache
-		cachedCount = initialCount
-		lastUpdated = timestamp
-
-		return {
-			count: initialCount,
-			timestamp,
-			cached: false,
-			source: 'fresh'
-		}
-	} catch (error) {
-		if (error instanceof RateLimitError) {
-			// If no cached data and we're rate limited, we have to throw
-			throw new Error(`Rate limited and no cached data available. Retry after: ${error.retryAfter ? error.retryAfter + ' seconds' : 'unknown'}`)
-		}
-		throw error
+	// If no cached value exists yet (first load), return a default value
+	// The cache will only be populated by the cron job or manual updates
+	return {
+		count: 1000000, // Default fallback value
+		timestamp: now,
+		cached: false,
+		source: 'default_fallback'
 	}
 }
 
-// Initialize cache on module load
-updateCacheInBackground()
+// NOTE: Cache is only updated when explicitly requested via API endpoints
+// No automatic background updates to avoid rate limiting issues
 
 export { getCachedData, forceUpdateCache, updateCacheInBackground, RateLimitError } 

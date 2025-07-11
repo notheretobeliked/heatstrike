@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { CoreEmbed } from '$lib/graphql/generated'
-	import Chuffed from '$lib/components/Chuffed.svelte'
 
 	interface Props {
 		block: CoreEmbed
@@ -49,9 +48,7 @@
 	const isChuffedEmbed = embedUrl.includes('chuffed.org/iframe')
 </script>
 
-{#if isChuffedEmbed}
-	<Chuffed url={embedUrl} />
-{:else if embedUrl !== ''}
+{#if embedUrl !== ''}
 	<div
 		class="relative w-full {embedUrl.includes('soundcloud.com') ? 'h-[166px]' : 'pt-[56.25%]'} mb-4"
 	>
