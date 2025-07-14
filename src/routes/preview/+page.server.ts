@@ -1,5 +1,5 @@
 import { WORDPRESS_URL } from '$env/static/private'
-export const prerender = true // Disable prerendering for preview functionality
+export const prerender = false // Disable prerendering for preview functionality
 
 import PageContent from '$lib/graphql/query/page.graphql?raw'
 import PageContentWithPreview from '$lib/graphql/query/page-with-preview.graphql?raw'
@@ -13,6 +13,11 @@ import { flatListToHierarchical } from '$lib/server/utilities'
 
 export const load: PageServerLoad = async function load({ params, url, fetch, request }) {
 	const uri = `/${params.all || ''}`.replace(/\/+/g, '/') // Normalize multiple slashes
+	
+	// Check if this is a preview request
+	const isPreview = url.searchParams.has('preview') || url.searchParams.has('p') || url.searchParams.has('page_id')
+	const previewId = url.searchParams.get('p') || url.searchParams.get('page_id') // WordPress preview by ID
+	const previewToken = url.searchParams.get('token') // Preview token from WordPress
 
 	if (uri.match(/\.(jpg|png|gif|svg|css|js)$/i)) {
 		error(404, 'Not a page route')
@@ -20,12 +25,69 @@ export const load: PageServerLoad = async function load({ params, url, fetch, re
 
 	// Handle authentication for previews
 	let authResult: { authenticated: boolean; token?: string } = { authenticated: false }
+	if (isPreview) {
+		// Check if we have a preview token from the URL
+		if (previewToken) {
+			authResult = { 
+				authenticated: true, 
+				token: previewToken 
+			}
+		} else {
+			// No token provided - redirect to WordPress to get one
+			const returnUrl = encodeURIComponent(url.href)
+			const loginUrl = `${WORDPRESS_URL}/wp/wp-login.php?redirect_to=${returnUrl}`
+			throw redirect(302, loginUrl)
+		}
+	}
 
 	try {
 		let pageResponse: Response
 
-		pageResponse = await graphqlQuery(PageContent, { uri: uri })
-
+		if (isPreview && previewId && previewToken) {
+			// Use preview query by ID with token authentication
+			pageResponse = await graphqlQuery(
+				PreviewById, 
+				{ 
+					id: previewId
+				},
+				{
+					token: previewToken
+				}
+			)
+		} else if (isPreview && previewId) {
+			// Preview request with ID but no token - use the complex query
+			pageResponse = await graphqlQuery(
+				PageContentWithPreview, 
+				{ 
+					id: previewId,
+					asPreview: true,
+					includePreview: true
+				},
+				{
+					includeAuth: true,
+					request: request,
+					token: authResult.token
+				}
+			)
+		} else if (isPreview) {
+			// Preview request but no ID - try by URI with preview enabled
+			pageResponse = await graphqlQuery(
+				PageContentWithPreview, 
+				{ 
+					uri: uri,
+					includePreview: true,
+					asPreview: false
+				},
+				{
+					includeAuth: true,
+					request: request,
+					token: authResult.token
+				}
+			)
+		} else {
+			// Use regular query for public content
+			pageResponse = await graphqlQuery(PageContent, { uri: uri })
+		}
 
 		checkResponse(pageResponse)
 		const pageData = await pageResponse.json()
@@ -40,9 +102,19 @@ export const load: PageServerLoad = async function load({ params, url, fetch, re
 		
 		if (!node) {
 			// For previews, try to be more helpful
+			if (isPreview && previewId) {
+				error(404, `Preview not found for post ID: ${previewId}`)
+			}
 			error(404, `Page not found for URI: ${uri}`)
 		}
 
+		// Additional preview validation
+		if (isPreview && node) {
+			// Ensure we can actually see this preview content
+			if (node.status && !['publish', 'draft', 'private', 'pending', 'inherit'].includes(node.status)) {
+				error(404, 'Preview not available')
+			}
+		}
 
 		let editorBlocks: EditorBlock[] = node?.editorBlocks
 			? flatListToHierarchical(node.editorBlocks)
@@ -52,8 +124,16 @@ export const load: PageServerLoad = async function load({ params, url, fetch, re
 			data: pageData.data,
 			uri: uri,
 			editorBlocks: editorBlocks,
+			isPreview: isPreview,
 			authenticated: authResult.authenticated,
-
+			// Include preview-specific metadata
+			...(isPreview && node && {
+				previewData: {
+					status: node.status || 'unknown',
+					lastModified: node.modified || node.date,
+					canEdit: authResult.authenticated
+				}
+			})
 		}
 	} catch (err: unknown) {
 		// Check if it's already an HTTP error (like a 404)
