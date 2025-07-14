@@ -1,5 +1,5 @@
 import { WORDPRESS_URL } from '$env/static/private'
-export const prerender = false // Disable prerendering for preview functionality
+export const prerender = true // Disable prerendering for preview functionality
 
 import PageContent from '$lib/graphql/query/page.graphql?raw'
 import PageContentWithPreview from '$lib/graphql/query/page-with-preview.graphql?raw'
