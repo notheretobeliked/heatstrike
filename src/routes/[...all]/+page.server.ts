@@ -1,12 +1,11 @@
 import { WORDPRESS_URL } from '$env/static/private'
-export const config = {
-	isr: {
-		expiration: 3600,
-		bypassToken: 'f58cea45-43a1-4c1b-8b07-68900345f542'
-	}
-}
+export const prerender = true // Disable prerendering for preview functionality
+
 import PageContent from '$lib/graphql/query/page.graphql?raw'
+import PageContentWithPreview from '$lib/graphql/query/page-with-preview.graphql?raw'
+import PreviewById from '$lib/graphql/query/preview-by-id.graphql?raw'
 import { checkResponse, graphqlQuery } from '$lib/utilities/graphql'
+import { checkWordPressAuth, canUserPreview } from '$lib/server/wordpress-auth'
 import { error, isHttpError, redirect } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
 import type { EditorBlock } from '$lib/types/wp-types'
@@ -27,6 +26,7 @@ export const load: PageServerLoad = async function load({ params, url, fetch, re
 
 		pageResponse = await graphqlQuery(PageContent, { uri: uri })
 
+
 		checkResponse(pageResponse)
 		const pageData = await pageResponse.json()
 
@@ -37,11 +37,12 @@ export const load: PageServerLoad = async function load({ params, url, fetch, re
 
 		// Check if we have content
 		const node = pageData?.data?.page || pageData?.data?.post || pageData?.data?.nodeByUri
-
+		
 		if (!node) {
 			// For previews, try to be more helpful
 			error(404, `Page not found for URI: ${uri}`)
 		}
+
 
 		let editorBlocks: EditorBlock[] = node?.editorBlocks
 			? flatListToHierarchical(node.editorBlocks)
@@ -51,14 +52,15 @@ export const load: PageServerLoad = async function load({ params, url, fetch, re
 			data: pageData.data,
 			uri: uri,
 			editorBlocks: editorBlocks,
-			authenticated: authResult.authenticated
+			authenticated: authResult.authenticated,
+
 		}
 	} catch (err: unknown) {
 		// Check if it's already an HTTP error (like a 404)
 		if (isHttpError(err)) {
 			throw err
 		}
-
+		
 		// Check if it's a response with status
 		if (err instanceof Response) {
 			const status = err.status
@@ -67,16 +69,14 @@ export const load: PageServerLoad = async function load({ params, url, fetch, re
 			}
 			error(status || 500, `Error fetching page: ${await err.text()}`)
 		}
-
+		
 		// For errors with status property (from GraphQL or other sources)
 		const httpError = err as { status?: number; message?: string }
-		if (
-			httpError.status === 404 ||
-			(httpError.message && httpError.message.includes('not found'))
-		) {
+		if (httpError.status === 404 || 
+		    (httpError.message && httpError.message.includes('not found'))) {
 			error(404, httpError.message || `Page not found for URI: ${uri}`)
 		}
-
+		
 		// For any other error
 		const errorMessage = err instanceof Error ? err.message : 'Internal Server Error'
 		error(500, errorMessage)
