@@ -2,7 +2,7 @@ import { WORDPRESS_URL } from '$env/static/private'
 export const config = {
 	isr: {
 		expiration: 3600,
-		bypassToken: 'REPLACE_ME_WITH_SECRET_VALUE'
+		bypassToken: 'f58cea45-43a1-4c1b-8b07-68900345f542'
 	}
 }
 import PageContent from '$lib/graphql/query/page.graphql?raw'
