@@ -336,7 +336,7 @@
 								/>
 								<label for={field.htmlName} class="label flex flex-row items-center gap-2">
 									<div class="relative w-5 h-5">
-										<div class="absolute inset-0 border-2 border-black rounded-sm" />
+										<div class="absolute inset-0 border-2 border-black rounded-sm"></div>
 										<svg width="20" height="20" viewBox="0 0 400 400" class="absolute inset-0">
 											<g>
 												<path

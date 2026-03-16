@@ -9,13 +9,12 @@
 	}
 
 	let { block }: Props = $props()
-	const children = block.children ?? []
-
-	const bgColor = block?.attributes?.backgroundColor ?? 'white'
+	let children = $derived(block.children ?? [])
+	let bgColor = $derived(block?.attributes?.backgroundColor ?? 'white')
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	let isExpanded = $state((block as any).homeSection?.defaultActive ?? false)
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const buttonLabel = (block as any).homeSection?.accordeonlabel ?? 'Read more'
+	let buttonLabel = $derived((block as any).homeSection?.accordeonlabel ?? 'Read more')
 
 	function toggleAccordion(event: Event) {
 		event.preventDefault()
@@ -23,15 +22,17 @@
 		isExpanded = !isExpanded
 	}
 
-	const headerBlock: EditorBlock | null = children[0]
-		? {
-				...children[0],
-				attributes: {
-					...children[0].attributes,
-					className: 'header-title'
+	let headerBlock = $derived.by((): EditorBlock | null =>
+		children[0]
+			? {
+					...children[0],
+					attributes: {
+						...children[0].attributes,
+						className: 'header-title'
+					}
 				}
-			}
-		: null
+			: null
+	)
 </script>
 
 <div class="px-2 md:px-0 py-4">

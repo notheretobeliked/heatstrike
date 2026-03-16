@@ -9,14 +9,14 @@
 	let { block }: Props = $props()
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const signupForm = (block as any).signupForm ?? {}
-	const additionalFields = [
+	let signupForm = $derived((block as any).signupForm ?? {})
+	let additionalFields = $derived([
 		...(signupForm.emailField ? ['email'] : []),
 		...(signupForm.phoneField ? ['phone'] : []),
 		...(signupForm.postcodeField ? ['postcode'] : []),
 		...(signupForm.unionList ? ['trade_union'] : []),
 		...(signupForm.workplace ? ['workplace'] : [])
-	]
+	])
 </script>
 
 <div class="px-2 md:px-0">

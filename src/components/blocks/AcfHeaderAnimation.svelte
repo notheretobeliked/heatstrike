@@ -10,7 +10,7 @@
 	let { block }: Props = $props()
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const statements = (block as any).headerAnimation?.statements ?? []
+	let statements = $derived((block as any).headerAnimation?.statements ?? [])
 
 	let currentIndex = $state(0)
 	let interval: ReturnType<typeof setInterval>
@@ -48,4 +48,4 @@
 		{/each}
 	</div>
 </div>
-<div class="h-[50vh] md:h-[50vh]" />
+<div class="h-[50vh] md:h-[50vh]"></div>

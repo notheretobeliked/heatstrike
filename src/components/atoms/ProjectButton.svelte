@@ -29,9 +29,11 @@
 		onclick = undefined
 	}: Props = $props()
 
-	const colourClasses = active
-		? 'bg-black hover:bg-extremedanger text-caution'
-		: `${colourClass} ${textColourClass} hover:text-extremedanger`
+	let colourClasses = $derived(
+		active
+			? 'bg-black hover:bg-extremedanger text-caution'
+			: `${colourClass} ${textColourClass} hover:text-extremedanger`
+	)
 
 	function handleClick(event: MouseEvent) {
 		if (url === '#') {
@@ -44,9 +46,11 @@
 		}
 	}
 
-	const words = label.split(' ')
+	let words = $derived(label.split(' '))
 
-	const baseClasses = `${colourClasses} uppercase font-semibold text-center rounded-full border-black transition-all duration-500 hover:bg-caution hover:border-black py-2 px-4 border ${textClass} cursor-pointer ${fullWidth ? 'w-full block text-center' : 'inline-block w-fit'} ${shrink ? 'flex-shrink-0 flex-grow-0' : ''} ${selfAlign}`
+	let baseClasses = $derived(
+		`${colourClasses} uppercase font-semibold text-center rounded-full border-black transition-all duration-500 hover:bg-caution hover:border-black py-2 px-4 border ${textClass} cursor-pointer ${fullWidth ? 'w-full block text-center' : 'inline-block w-fit'} ${shrink ? 'flex-shrink-0 flex-grow-0' : ''} ${selfAlign}`
+	)
 </script>
 
 {#if type === 'submit'}

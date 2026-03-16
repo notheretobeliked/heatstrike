@@ -9,11 +9,11 @@
 	let { block }: Props = $props()
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const incrementBy = (block as any).tickerNumber?.incrementBy ?? 0
+	let incrementBy = $derived((block as any).tickerNumber?.incrementBy ?? 0)
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const counter = (block as any).currentCount ?? 1000
-	const finalCount = counter + incrementBy
-	const textColor = block.attributes?.textColor ?? 'black'
+	let counter = $derived((block as any).currentCount ?? 1000)
+	let finalCount = $derived(counter + incrementBy)
+	let textColor = $derived(block.attributes?.textColor ?? 'black')
 
 	function formatNumberWithCommas(num: number): string {
 		return num.toLocaleString('en-US')
