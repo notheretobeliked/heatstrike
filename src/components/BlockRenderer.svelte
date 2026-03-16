@@ -34,8 +34,18 @@
 	import CoreQueryPaginationNumbers from './blocks/CoreQueryPaginationNumbers.svelte'
 	import CoreQueryPaginationNext from './blocks/CoreQueryPaginationNext.svelte'
 
+	// ACF block imports (project-specific)
+	import AcfHeaderAnimation from './blocks/AcfHeaderAnimation.svelte'
+	import AcfHomeSection from './blocks/AcfHomeSection.svelte'
+	import AcfSignupForm from './blocks/AcfSignupForm.svelte'
+	import AcfTickerNumber from './blocks/AcfTickerNumber.svelte'
+
 	// Component map keyed by block type (matches GraphQL `type` field)
 	const blockComponents: Record<string, Component<{ block: EditorBlock }>> = {
+		AcfHeaderAnimation,
+		AcfHomeSection,
+		AcfSignupForm,
+		AcfTickerNumber,
 		CoreAccordion,
 		CoreAccordionItem,
 		CoreButton,
@@ -164,7 +174,7 @@
 				return 'alignwide w-full max-w-screen-xl mx-auto'
 			case 'none':
 			case 'center':
-				return 'w-full max-w-[1320px] mx-auto'
+				return 'w-full lg:max-w-screen-md mx-auto'
 			default:
 				return 'w-full'
 		}

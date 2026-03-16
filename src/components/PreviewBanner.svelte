@@ -64,9 +64,9 @@
 		left: 0;
 		right: 0;
 		z-index: 9999;
-		background-color: #fef3c7;
-		color: #92400e;
-		border-bottom: 2px solid #d97706;
+		background-color: #e8ff4a;
+		color: #cd0000;
+		border-bottom: 2px solid #cd0000;
 		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
 	}
 </style>

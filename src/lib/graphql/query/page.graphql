@@ -239,6 +239,68 @@ fragment CommonBlockFields on EditorBlock {
 			...ResolvedPostFields
 		}
 	}
+	... on AcfSignupForm {
+		signupForm {
+			formId
+			emailField
+			phoneField
+			postcodeField
+			unionList
+			workplace
+		}
+		attributes {
+			align
+			backgroundColor
+			textColor
+			className
+		}
+	}
+	... on AcfHomeSection {
+		attributes {
+			align
+			backgroundColor
+			textColor
+			className
+		}
+		innerBlocks {
+			name
+			parentClientId
+			clientId
+		}
+		homeSection {
+			accordeonlabel
+			defaultActive
+		}
+	}
+	... on AcfHeaderAnimation {
+		apiVersion
+		blockEditorCategoryName
+		headerAnimation {
+			statements {
+				statement
+				bgcolor
+				textcolor
+			}
+		}
+		attributes {
+			align
+			backgroundColor
+			textColor
+			className
+		}
+	}
+	... on AcfTickerNumber {
+		currentCount
+		attributes {
+			align
+			backgroundColor
+			textColor
+			className
+		}
+		tickerNumber {
+			incrementBy
+		}
+	}
 }
 
 fragment ResolvedPostFields on ResolvedPost {

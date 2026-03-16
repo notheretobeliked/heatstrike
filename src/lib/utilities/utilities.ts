@@ -62,7 +62,12 @@ export const classNames = (
 	if (fontFamily) {
 		switch (fontFamily) {
 			case 'sans':
+			case 'inter':
 				classes.push('font-sans')
+				break
+			case 'anton':
+			case 'display':
+				classes.push('font-anton')
 				break
 		}
 	}
