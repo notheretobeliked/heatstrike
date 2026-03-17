@@ -11,8 +11,10 @@
 	let { block }: Props = $props()
 	let children = $derived(block.children ?? [])
 	let bgColor = $derived(block?.attributes?.backgroundColor ?? 'white')
+	// Initial value only — intentionally not reactive
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	let isExpanded = $state((block as any).homeSection?.defaultActive ?? false)
+	const initialExpanded = (block as any).homeSection?.defaultActive ?? false
+	let isExpanded = $state(initialExpanded)
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	let buttonLabel = $derived((block as any).homeSection?.accordeonlabel ?? 'Read more')
 
