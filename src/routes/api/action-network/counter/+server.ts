@@ -30,7 +30,7 @@ export const GET: RequestHandler = async ({ url }) => {
 		return json(response)
 	} catch (error) {
 		console.error('Error fetching subscriber count:', error)
-		
+
 		// Handle rate limiting errors specifically
 		if (error instanceof RateLimitError) {
 			return json(
@@ -41,7 +41,7 @@ export const GET: RequestHandler = async ({ url }) => {
 					details: error.message,
 					message: 'Please try again later'
 				},
-				{ 
+				{
 					status: 429,
 					headers: error.retryAfter ? {
 						'Retry-After': error.retryAfter.toString()

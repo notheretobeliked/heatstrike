@@ -6,7 +6,7 @@ export const POST: RequestHandler = async () => {
 	try {
 		console.log('Force update triggered - fetching fresh data')
 		const { count, timestamp } = await forceUpdateCache()
-		
+
 		return json({
 			success: true,
 			count,
@@ -23,4 +23,4 @@ export const POST: RequestHandler = async () => {
 			{ status: 500 }
 		)
 	}
-} 
+}

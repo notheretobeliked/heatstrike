@@ -1,10 +1,17 @@
-import { defineConfig } from '@playwright/test';
+import { defineConfig } from '@playwright/test'
 
 export default defineConfig({
-	webServer: {
-		command: 'npm run build && npm run preview',
-		port: 4173
+	testDir: 'e2e',
+	timeout: 30000,
+	retries: 0,
+	use: {
+		baseURL: process.env.BASE_URL || 'http://localhost:5173',
+		trace: 'on-first-retry'
 	},
-
-	testDir: 'e2e'
-});
+	projects: [
+		{
+			name: 'chromium',
+			use: { browserName: 'chromium' }
+		}
+	]
+})

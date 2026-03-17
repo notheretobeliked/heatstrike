@@ -1,51 +1,32 @@
 <script lang="ts">
 	import '../app.css'
 	import { page } from '$app/stores'
-	import type { MenuItem } from '$lib/types/wp-types'
+	import type { LayoutData } from './$types'
+	import type { ImageObject } from '$lib/types/wp-types'
 	import Twitter from '$components/SEO/Twitter.svelte'
 	import OpenGraph from '$components/SEO/OpenGraph.svelte'
 	import Header from '$components/Header.svelte'
-	
-	export let data: {
-		seo: any;
-		menu: { menuItems?: { nodes: MenuItem[] } | null };
-		uri: string;
-		temp: number | null;
-	}
-	
-	let { seo, menu, uri, temp } = data
 
-	// Get base menu items
-	const baseMenuItems = menu?.menuItems?.nodes ?? []
-	
-	// Reactive menu items with current page tracking
-	$: menuItems = baseMenuItems.map((item: MenuItem) => ({
-		...item,
-		current: item.uri?.replace(/\/$/, '') === $page.url.pathname?.replace(/\/$/, '')
-	}))
-	
-	// Only set SEO variables if seo object exists
-	const hasSeoData = !!seo
-	const image = hasSeoData ? seo.opengraphImage : null
-	const metadescription = hasSeoData ? seo.metaDesc : ''
-	const pageTitle = hasSeoData ? seo.title : ''
-	const siteUrl = hasSeoData ? seo.opengraphUrl : ''
-	const siteTitle = hasSeoData ? seo.opengraphSiteName : ''
-
-	$: {
-		menuItems
-		uri
-		seo
+	interface Props {
+		data: LayoutData
+		children?: import('svelte').Snippet
 	}
 
+	let { data, children }: Props = $props()
+	let menuItems = $derived(data.menu.menuItems?.nodes)
+	let image = $derived((data.seo.opengraphImage ?? null) as ImageObject | null)
+	let metadescription = $derived((data.seo.metaDesc ?? '') as string)
+	let pageTitle = $derived((data.seo.title ?? '') as string)
+	let siteUrl = $derived((data.seo.opengraphUrl ?? '') as string)
+	let siteTitle = $derived((data.seo.opengraphSiteName ?? '') as string)
+	let temp = $derived(data.temp)
 </script>
 
 {#key $page.url.pathname}
-	{#if hasSeoData}
-		<OpenGraph {image} {metadescription} {pageTitle} {siteTitle} {siteUrl} />
-		<Twitter {image} {metadescription} {pageTitle} {siteUrl} />
-	{/if}
+	<OpenGraph {image} {metadescription} {pageTitle} {siteTitle} {siteUrl} />
+	<Twitter {image} {metadescription} {pageTitle} {siteUrl} />
 {/key}
+
 <div class="absolute md:fixed bottom-[45vh] md:bottom-[40vh] scale-75 md:scale-100 left-6 md:left-24 z-50">
 	<div class="relative w-36 h-36">
 		<svg
@@ -59,7 +40,7 @@
 				class="fill-caution stroke-extremecaution"
 			/>
 		</svg>
-		<p class="-rotate-12 w-36 top-10 text-center absolute px-7">
+		<p class="-rotate-12 w-36 top-10 text-center absolute px-7 text-sm leading-tight mb-0">
 			10 Downing Street: <strong>{temp ?? '--'}°C</strong>
 		</p>
 	</div>
@@ -69,4 +50,6 @@
 	<Header {menuItems} />
 {/key}
 
-<slot />
+<main id="main-content" class="md:px-0">
+	{@render children?.()}
+</main>

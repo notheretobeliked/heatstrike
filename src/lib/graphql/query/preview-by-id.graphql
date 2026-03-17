@@ -1,263 +1,293 @@
 query PreviewById($id: ID!) {
-  # Try as page first - with preview support
-  page(id: $id, idType: DATABASE_ID, asPreview: true) {
-    __typename
-    id
-    databaseId
-    title
-    date
-    status
-    modified
-    editorBlocks {
-      ...CommonBlockFields
-    }
-  }
-  
-  # Also try as post - with preview support
-  post(id: $id, idType: DATABASE_ID, asPreview: true) {
-    __typename
-    id
-    databaseId
-    title
-    date
-    status
-    modified
-    featuredImage {
-      node {
-        altText
-        mediaDetails {
-          sizes {
-            name
-            mimeType
-            height
-            width
-            sourceUrl
-          }
-        }
-      }
-    }
-    editorBlocks {
-      ...CommonBlockFields
-    }
-  }
+	# Try as page first - simplified without asPreview (auth handled by token)
+	page(id: $id, idType: DATABASE_ID) {
+		__typename
+		id
+		databaseId
+		title
+		date
+		status
+		modified
+		editorBlocks {
+			...CommonBlockFields
+		}
+	}
+
+	# Also try as post - simplified without asPreview (auth handled by token)
+	post(id: $id, idType: DATABASE_ID) {
+		__typename
+		id
+		databaseId
+		title
+		date
+		status
+		modified
+		featuredImage {
+			node {
+				altText
+				mediaDetails {
+					sizes {
+						name
+						mimeType
+						height
+						width
+						sourceUrl
+					}
+				}
+			}
+		}
+		editorBlocks {
+			...CommonBlockFields
+		}
+	}
 }
 
 fragment BlockBasicFields on EditorBlock {
-  name
-  parentClientId
-  clientId
-  __typename
+	name
+	parentClientId
+	clientId
+	type
 }
 
 fragment CommonBlockFields on EditorBlock {
-  ...BlockBasicFields
-  ... on CoreVideo {
-    attributes {
-      autoplay
-      preload
-      src
-      muted
-      controls
-      caption
-      poster
-      align
-      loop
-      className
-    }
-  }
-  ... on CoreEmbed {
-    renderedHtml
-    attributes {
-      align
-      url
-      className
-    }
-  }
-  ... on AcfSignupForm {
-    signupForm {
-      formId
-      emailField
-      phoneField
-      postcodeField
-      unionList
-      workplace
-    }
-    attributes {
-      align
-      backgroundColor
-      textColor
-      className
-    }
-  }
-  ... on AcfHomeSection {
-    attributes {
-      align
-      backgroundColor
-      textColor
-      className
-    }
-    innerBlocks {
-      name
-      parentClientId
-      clientId
-    }
-    homeSection {
-      accordeonlabel
-      defaultActive
-    }
-  }
-  ... on CoreQuery {
-    apiVersion
-    blockEditorCategoryName
-    isDynamic
-    attributes {
-      align
-      layout
-      metadata
-      query
-    }
-  }
-  ... on CorePostTemplate {
-    attributes {
-      align
-      backgroundColor
-      fontFamily
-      fontSize
-      layout
-      metadata
-    }
-  }
-  ... on CoreImage {
-    mediaDetails {
-      sizes(exclude: [MEDIUM_LARGE, MEDIUM]) {
-        sourceUrl
-        height
-        width
-        mimeType
-        name
-      }
-    }
-    attributes {
-      title
-      align
-      alt
-      url
-      caption
-      aspectRatio
-      className
-    }
-  }
-  ... on CoreParagraph {
-    attributes {
-      content
-      fontFamily
-      fontSize
-      textColor
-      align
-      className
-    }
-  }
-  ... on CoreFootnotes {
-    renderedHtml
-    innerBlocks {
-      name
-    }
-    attributes {
-      metadata
-      className
-    }
-  }
-  ... on CoreMore {
-    attributes {
-      customText
-    }
-  }
-  ...on AcfHeaderAnimation {
-    apiVersion
-    blockEditorCategoryName
-    headerAnimation {
-      statements {
-        statement
-        bgcolor
-        textcolor
-      }
-    }
-    attributes {
-      align
-      backgroundColor
-      textColor
-      className
-    }
-  }
-  ... on CoreHeading {
-    attributes {
-      content
-      className
-      fontFamily
-      fontSize
-      textColor
-      textAlign
-      level
-      align
-    }
-  }
-  ... on CoreColumns {
-    attributes {
-      backgroundColor
-      className
-      layout
-      className
-      verticalAlignment
-      style
-      align
-      isStackedOnMobile
-    }
-  }
-  ... on CoreColumn {
-    attributes {
-      backgroundColor
-      layout
-      className
-      verticalAlignment
-      style
-      width
-    }
-  }
-  ... on CoreGroup {
-    attributes {
-      backgroundColor
-      className
-      align
-      style
-    }
-  }
-  ... on CoreButton {
-    attributes {
-      backgroundColor
-      style
-      className
-      fontSize
-      linkTarget
-      text
-      url
-    }
-    innerBlocks {
-      ...BlockBasicFields
-    }
-  }
-  ... on CoreButtons {
-    attributes {
-      align
-      className
-      layout
-    }
-  }
-  ... on CoreSpacer {
-    attributes {
-      height
-      className
-      style
-      className
-    }
-  }
-} 
+	...BlockBasicFields
+	... on CoreVideo {
+		attributes {
+			autoplay
+			preload
+			src
+			metadata
+			muted
+			controls
+			caption
+			poster
+			align
+			loop
+			className
+		}
+	}
+	... on CorePostTitle {
+		renderedHtml
+		attributes {
+			className
+			fontFamily
+			fontSize
+			textColor
+			textAlign
+			level
+			align
+		}
+	}
+	... on CoreEmbed {
+		renderedHtml
+		attributes {
+			align
+			url
+		}
+	}
+	... on CoreImage {
+		mediaDetails {
+			sizes(exclude: [MEDIUM_LARGE, MEDIUM]) {
+				sourceUrl
+				height
+				width
+				mimeType
+				name
+			}
+		}
+		attributes {
+			title
+			alt
+			url
+			caption
+			aspectRatio
+			className
+		}
+	}
+	... on CoreParagraph {
+		attributes {
+			content
+			fontFamily
+			fontSize
+			textColor
+			align
+			className
+		}
+	}
+	... on CoreFootnotes {
+		renderedHtml
+		innerBlocks {
+			name
+		}
+		attributes {
+			metadata
+		}
+	}
+	... on CoreMore {
+		attributes {
+			customText
+		}
+	}
+	... on CoreList {
+		attributes {
+			ordered
+			reversed
+			start
+			textColor
+			type
+		}
+	}
+	... on CoreListItem {
+		attributes {
+			content
+			fontSize
+			fontFamily
+			textColor
+		}
+	}
+	... on CoreHeading {
+		attributes {
+			content
+			className
+			fontFamily
+			fontSize
+			textColor
+			textAlign
+			level
+			align
+		}
+	}
+	... on CoreColumns {
+		attributes {
+			backgroundColor
+			layout
+			className
+			verticalAlignment
+			style
+			align
+			isStackedOnMobile
+		}
+	}
+	... on CoreColumn {
+		attributes {
+			backgroundColor
+			layout
+			className
+			verticalAlignment
+			width
+			style
+		}
+	}
+	... on CoreGroup {
+		attributes {
+			backgroundColor
+			align
+			style
+		}
+	}
+	... on CoreButton {
+		attributes {
+			backgroundColor
+			style
+			fontSize
+			linkTarget
+			text
+			url
+		}
+		innerBlocks {
+			apiVersion
+			blockEditorCategoryName
+			clientId
+			name
+			parentClientId
+			renderedHtml
+		}
+	}
+	... on CoreButtons {
+		attributes {
+			align
+			layout
+		}
+	}
+	... on CoreSpacer {
+		attributes {
+			height
+			style
+		}
+	}
+	... on CoreQuote {
+		attributes {
+			citation
+			layout
+			textAlign
+			className
+			fontFamily
+			fontSize
+			textColor
+			align
+			value
+		}
+	}
+	... on AcfSignupForm {
+		signupForm {
+			formId
+			emailField
+			phoneField
+			postcodeField
+			unionList
+			workplace
+		}
+		attributes {
+			align
+			backgroundColor
+			textColor
+			className
+		}
+	}
+	... on AcfHomeSection {
+		attributes {
+			align
+			backgroundColor
+			textColor
+			className
+		}
+		innerBlocks {
+			name
+			parentClientId
+			clientId
+		}
+		homeSection {
+			accordeonlabel
+			defaultActive
+		}
+	}
+	... on AcfHeaderAnimation {
+		apiVersion
+		blockEditorCategoryName
+		headerAnimation {
+			statements {
+				statement
+				bgcolor
+				textcolor
+			}
+		}
+		attributes {
+			align
+			backgroundColor
+			textColor
+			className
+		}
+	}
+	... on AcfTickerNumber {
+		currentCount
+		attributes {
+			align
+			backgroundColor
+			textColor
+			className
+		}
+		tickerNumber {
+			incrementBy
+		}
+	}
+}

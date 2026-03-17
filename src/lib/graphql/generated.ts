@@ -1,4 +1,4 @@
-import { DocumentNode } from 'graphql';
+import type { DocumentNode } from 'graphql';
 import gql from 'graphql-tag';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
@@ -16,244 +16,6 @@ export type Scalars = {
   Float: { input: number; output: number; }
   BlockAttributesArray: { input: any; output: any; }
   BlockAttributesObject: { input: any; output: any; }
-};
-
-/** A Field Group managed by ACF */
-export type AcfFieldGroup = {
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-};
-
-/** Fields associated with an ACF Field Group */
-export type AcfFieldGroupFields = {
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-};
-
-/** A block used for editing the site */
-export type AcfHeaderAnimation = EditorBlock & PageEditorBlock & PostEditorBlock & WithAcfHeaderAnimation & {
-  __typename?: 'AcfHeaderAnimation';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']['output']>;
-  /** Attributes of the AcfHeaderAnimation Block Type */
-  attributes?: Maybe<AcfHeaderAnimationAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']['output']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']['output']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  /** Fields of the HeaderAnimation ACF Field Group */
-  headerAnimation?: Maybe<HeaderAnimation>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean']['output'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']['output']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']['output']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']['output']>;
-  /** The (GraphQL) type of the block */
-  type?: Maybe<Scalars['String']['output']>;
-};
-
-/** Attributes of the AcfHeaderAnimation Block Type */
-export type AcfHeaderAnimationAttributes = {
-  __typename?: 'AcfHeaderAnimationAttributes';
-  /** The &quot;align&quot; field on the &quot;AcfHeaderAnimationAttributes&quot; block or block attributes */
-  align?: Maybe<Scalars['String']['output']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;AcfHeaderAnimationAttributes&quot; block or block attributes */
-  backgroundColor?: Maybe<Scalars['String']['output']>;
-  /** The &quot;className&quot; field on the &quot;AcfHeaderAnimationAttributes&quot; block or block attributes */
-  className?: Maybe<Scalars['String']['output']>;
-  /** The &quot;data&quot; field on the &quot;AcfHeaderAnimationAttributes&quot; block or block attributes */
-  data: Scalars['BlockAttributesObject']['output'];
-  /** The &quot;lock&quot; field on the &quot;AcfHeaderAnimationAttributes&quot; block or block attributes */
-  lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
-  /** The &quot;metadata&quot; field on the &quot;AcfHeaderAnimationAttributes&quot; block or block attributes */
-  metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
-  /** The &quot;mode&quot; field on the &quot;AcfHeaderAnimationAttributes&quot; block or block attributes */
-  mode: Scalars['String']['output'];
-  /** The &quot;name&quot; field on the &quot;AcfHeaderAnimationAttributes&quot; block or block attributes */
-  name: Scalars['String']['output'];
-  /** The &quot;style&quot; field on the &quot;AcfHeaderAnimationAttributes&quot; block or block attributes */
-  style?: Maybe<Scalars['BlockAttributesObject']['output']>;
-  /** The &quot;textColor&quot; field on the &quot;AcfHeaderAnimationAttributes&quot; block or block attributes */
-  textColor?: Maybe<Scalars['String']['output']>;
-};
-
-/** A block used for editing the site */
-export type AcfHomeSection = EditorBlock & PageEditorBlock & PostEditorBlock & WithAcfHomeSection & {
-  __typename?: 'AcfHomeSection';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']['output']>;
-  /** Attributes of the AcfHomeSection Block Type */
-  attributes?: Maybe<AcfHomeSectionAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']['output']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']['output']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  /** Fields of the HomeSection ACF Field Group */
-  homeSection?: Maybe<HomeSection>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean']['output'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']['output']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']['output']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']['output']>;
-  /** The (GraphQL) type of the block */
-  type?: Maybe<Scalars['String']['output']>;
-};
-
-/** Attributes of the AcfHomeSection Block Type */
-export type AcfHomeSectionAttributes = {
-  __typename?: 'AcfHomeSectionAttributes';
-  /** The &quot;align&quot; field on the &quot;AcfHomeSectionAttributes&quot; block or block attributes */
-  align?: Maybe<Scalars['String']['output']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;AcfHomeSectionAttributes&quot; block or block attributes */
-  backgroundColor?: Maybe<Scalars['String']['output']>;
-  /** The &quot;className&quot; field on the &quot;AcfHomeSectionAttributes&quot; block or block attributes */
-  className?: Maybe<Scalars['String']['output']>;
-  /** The &quot;data&quot; field on the &quot;AcfHomeSectionAttributes&quot; block or block attributes */
-  data: Scalars['BlockAttributesObject']['output'];
-  /** The &quot;lock&quot; field on the &quot;AcfHomeSectionAttributes&quot; block or block attributes */
-  lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
-  /** The &quot;metadata&quot; field on the &quot;AcfHomeSectionAttributes&quot; block or block attributes */
-  metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
-  /** The &quot;mode&quot; field on the &quot;AcfHomeSectionAttributes&quot; block or block attributes */
-  mode: Scalars['String']['output'];
-  /** The &quot;name&quot; field on the &quot;AcfHomeSectionAttributes&quot; block or block attributes */
-  name: Scalars['String']['output'];
-  /** The &quot;style&quot; field on the &quot;AcfHomeSectionAttributes&quot; block or block attributes */
-  style?: Maybe<Scalars['BlockAttributesObject']['output']>;
-  /** The &quot;textColor&quot; field on the &quot;AcfHomeSectionAttributes&quot; block or block attributes */
-  textColor?: Maybe<Scalars['String']['output']>;
-};
-
-/** A block used for editing the site */
-export type AcfSignupForm = EditorBlock & PageEditorBlock & PostEditorBlock & WithAcfSignupForm & {
-  __typename?: 'AcfSignupForm';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']['output']>;
-  /** Attributes of the AcfSignupForm Block Type */
-  attributes?: Maybe<AcfSignupFormAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']['output']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']['output']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean']['output'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']['output']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']['output']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']['output']>;
-  /** Fields of the SignupForm ACF Field Group */
-  signupForm?: Maybe<SignupForm>;
-  /** The (GraphQL) type of the block */
-  type?: Maybe<Scalars['String']['output']>;
-};
-
-/** Attributes of the AcfSignupForm Block Type */
-export type AcfSignupFormAttributes = {
-  __typename?: 'AcfSignupFormAttributes';
-  /** The &quot;align&quot; field on the &quot;AcfSignupFormAttributes&quot; block or block attributes */
-  align?: Maybe<Scalars['String']['output']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;AcfSignupFormAttributes&quot; block or block attributes */
-  backgroundColor?: Maybe<Scalars['String']['output']>;
-  /** The &quot;className&quot; field on the &quot;AcfSignupFormAttributes&quot; block or block attributes */
-  className?: Maybe<Scalars['String']['output']>;
-  /** The &quot;data&quot; field on the &quot;AcfSignupFormAttributes&quot; block or block attributes */
-  data: Scalars['BlockAttributesObject']['output'];
-  /** The &quot;lock&quot; field on the &quot;AcfSignupFormAttributes&quot; block or block attributes */
-  lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
-  /** The &quot;metadata&quot; field on the &quot;AcfSignupFormAttributes&quot; block or block attributes */
-  metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
-  /** The &quot;mode&quot; field on the &quot;AcfSignupFormAttributes&quot; block or block attributes */
-  mode: Scalars['String']['output'];
-  /** The &quot;name&quot; field on the &quot;AcfSignupFormAttributes&quot; block or block attributes */
-  name: Scalars['String']['output'];
-  /** The &quot;style&quot; field on the &quot;AcfSignupFormAttributes&quot; block or block attributes */
-  style?: Maybe<Scalars['BlockAttributesObject']['output']>;
-  /** The &quot;textColor&quot; field on the &quot;AcfSignupFormAttributes&quot; block or block attributes */
-  textColor?: Maybe<Scalars['String']['output']>;
-};
-
-/** A block used for editing the site */
-export type AcfTickerNumber = EditorBlock & PageEditorBlock & PostEditorBlock & WithAcfTickerNumber & {
-  __typename?: 'AcfTickerNumber';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']['output']>;
-  /** Attributes of the AcfTickerNumber Block Type */
-  attributes?: Maybe<AcfTickerNumberAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']['output']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']['output']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  /** The current base subscriber count from Action Network */
-  currentCount?: Maybe<Scalars['Int']['output']>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean']['output'];
-  /** When the subscriber count was last updated (ISO 8601 format) */
-  lastUpdated?: Maybe<Scalars['String']['output']>;
-  /** The name of the block */
-  name?: Maybe<Scalars['String']['output']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']['output']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']['output']>;
-  /** Fields of the TickerNumber ACF Field Group */
-  tickerNumber?: Maybe<TickerNumber>;
-  /** The (GraphQL) type of the block */
-  type?: Maybe<Scalars['String']['output']>;
-};
-
-/** Attributes of the AcfTickerNumber Block Type */
-export type AcfTickerNumberAttributes = {
-  __typename?: 'AcfTickerNumberAttributes';
-  /** The &quot;align&quot; field on the &quot;AcfTickerNumberAttributes&quot; block or block attributes */
-  align?: Maybe<Scalars['String']['output']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;AcfTickerNumberAttributes&quot; block or block attributes */
-  backgroundColor?: Maybe<Scalars['String']['output']>;
-  /** The &quot;className&quot; field on the &quot;AcfTickerNumberAttributes&quot; block or block attributes */
-  className?: Maybe<Scalars['String']['output']>;
-  /** The &quot;data&quot; field on the &quot;AcfTickerNumberAttributes&quot; block or block attributes */
-  data: Scalars['BlockAttributesObject']['output'];
-  /** The &quot;lock&quot; field on the &quot;AcfTickerNumberAttributes&quot; block or block attributes */
-  lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
-  /** The &quot;metadata&quot; field on the &quot;AcfTickerNumberAttributes&quot; block or block attributes */
-  metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
-  /** The &quot;mode&quot; field on the &quot;AcfTickerNumberAttributes&quot; block or block attributes */
-  mode: Scalars['String']['output'];
-  /** The &quot;name&quot; field on the &quot;AcfTickerNumberAttributes&quot; block or block attributes */
-  name: Scalars['String']['output'];
-  /** The &quot;style&quot; field on the &quot;AcfTickerNumberAttributes&quot; block or block attributes */
-  style?: Maybe<Scalars['BlockAttributesObject']['output']>;
-  /** The &quot;textColor&quot; field on the &quot;AcfTickerNumberAttributes&quot; block or block attributes */
-  textColor?: Maybe<Scalars['String']['output']>;
 };
 
 /** Avatars are profile images for users. WordPress by default uses the Gravatar service to host and fetch avatars from. */
@@ -313,8 +75,6 @@ export type Category = DatabaseIdentifier & HierarchicalNode & HierarchicalTermN
   categoryId?: Maybe<Scalars['Int']['output']>;
   /** Connection between the category type and its children categories. */
   children?: Maybe<CategoryToCategoryConnection>;
-  /** @deprecated Deprecated in favor of using Next.js pages */
-  conditionalTags?: Maybe<ConditionalTags>;
   /** Connection between the Category type and the ContentNode type */
   contentNodes?: Maybe<CategoryToContentNodeConnection>;
   /** The number of objects connected to the object */
@@ -361,7 +121,6 @@ export type Category = DatabaseIdentifier & HierarchicalNode & HierarchicalTermN
   taxonomy?: Maybe<CategoryToTaxonomyConnectionEdge>;
   /** The name of the taxonomy that the object is associated with */
   taxonomyName?: Maybe<Scalars['String']['output']>;
-  templates?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   /** The ID of the term group that this term object belongs to */
   termGroupId?: Maybe<Scalars['Int']['output']>;
   /** The taxonomy ID that the object is associated with */
@@ -805,8 +564,6 @@ export type Comment = DatabaseIdentifier & Node & UniformResourceIdentifiable & 
   commentId?: Maybe<Scalars['Int']['output']>;
   /** Connection between the Comment type and the ContentNode type */
   commentedOn?: Maybe<CommentToContentNodeConnectionEdge>;
-  /** @deprecated Deprecated in favor of using Next.js pages */
-  conditionalTags?: Maybe<ConditionalTags>;
   /** Content of the comment. This field is equivalent to WP_Comment-&gt;comment_content and the value matching the &quot;comment_content&quot; column in SQL. */
   content?: Maybe<Scalars['String']['output']>;
   /** The unique identifier stored in the database */
@@ -843,7 +600,6 @@ export type Comment = DatabaseIdentifier & Node & UniformResourceIdentifiable & 
   replies?: Maybe<CommentToCommentConnection>;
   /** The approval status of the comment. This field is equivalent to WP_Comment-&gt;comment_approved and the value matching the &quot;comment_approved&quot; column in SQL. */
   status?: Maybe<CommentStatusEnum>;
-  templates?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   /** Type of comment. This field is equivalent to WP_Comment-&gt;comment_type and the value matching the &quot;comment_type&quot; column in SQL. */
   type?: Maybe<Scalars['String']['output']>;
   /** The unique resource identifier path */
@@ -879,7 +635,7 @@ export type CommentAuthor = Commenter & DatabaseIdentifier & Node & {
   avatar?: Maybe<Avatar>;
   /** The unique identifier stored in the database */
   databaseId: Scalars['Int']['output'];
-  /** The email for the comment author */
+  /** The email for the comment author. */
   email?: Maybe<Scalars['String']['output']>;
   /** The globally unique identifier for the comment author object */
   id: Scalars['ID']['output'];
@@ -947,7 +703,7 @@ export enum CommentStatusEnum {
   Hold = 'HOLD',
   /** Comments with the Spam status */
   Spam = 'SPAM',
-  /** Comments with the Trash status */
+  /** Comments with the Bin status */
   Trash = 'TRASH'
 }
 
@@ -1053,7 +809,7 @@ export type CommentToCommenterConnectionEdge = CommenterConnectionEdge & Edge & 
   __typename?: 'CommentToCommenterConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
   cursor?: Maybe<Scalars['String']['output']>;
-  /** The email address representing the author for this particular comment */
+  /** Email address representing the author for this particular comment */
   email?: Maybe<Scalars['String']['output']>;
   /** IP address of the author at the time of making this comment. This field is equivalent to WP_Comment-&gt;comment_author_IP and the value matching the &quot;comment_author_IP&quot; column in SQL. */
   ipAddress?: Maybe<Scalars['String']['output']>;
@@ -1207,121 +963,6 @@ export enum CommentsConnectionOrderbyEnum {
   UserId = 'USER_ID'
 }
 
-/** GraphQL representation of WordPress Conditional Tags. */
-export type ConditionalTags = {
-  __typename?: 'ConditionalTags';
-  /**
-   * Determines whether the query is for an existing archive page.
-   * @deprecated Deprecated in favor of using Next.js pages
-   */
-  isArchive?: Maybe<Scalars['Boolean']['output']>;
-  /**
-   * Determines whether the query is for an existing attachment page.
-   * @deprecated Deprecated in favor of using Next.js pages
-   */
-  isAttachment?: Maybe<Scalars['Boolean']['output']>;
-  /**
-   * Determines whether the query is for an existing author archive page.
-   * @deprecated Deprecated in favor of using Next.js pages
-   */
-  isAuthor?: Maybe<Scalars['Boolean']['output']>;
-  /**
-   * Determines whether the query is for an existing category archive page.
-   * @deprecated Deprecated in favor of using Next.js pages
-   */
-  isCategory?: Maybe<Scalars['Boolean']['output']>;
-  /**
-   * Determines whether the query is for an existing date archive.
-   * @deprecated Deprecated in favor of using Next.js pages
-   */
-  isDate?: Maybe<Scalars['Boolean']['output']>;
-  /**
-   * Determines whether the query is for an existing day archive.
-   * @deprecated Deprecated in favor of using Next.js pages
-   */
-  isDay?: Maybe<Scalars['Boolean']['output']>;
-  /**
-   * Determines whether the query is for the front page of the site.
-   * @deprecated Deprecated in favor of using Next.js pages
-   */
-  isFrontPage?: Maybe<Scalars['Boolean']['output']>;
-  /**
-   * Determines whether the query is for the blog homepage.
-   * @deprecated Deprecated in favor of using Next.js pages
-   */
-  isHome?: Maybe<Scalars['Boolean']['output']>;
-  /**
-   * Determines whether the query is for an existing month archive.
-   * @deprecated Deprecated in favor of using Next.js pages
-   */
-  isMonth?: Maybe<Scalars['Boolean']['output']>;
-  /**
-   * Determines whether this site has more than one author.
-   * @deprecated Deprecated in favor of using Next.js pages
-   */
-  isMultiAuthor?: Maybe<Scalars['Boolean']['output']>;
-  /**
-   * Determines whether the query is for an existing single page.
-   * @deprecated Deprecated in favor of using Next.js pages
-   */
-  isPage?: Maybe<Scalars['Boolean']['output']>;
-  /**
-   * Determines whether currently in a page template.
-   * @deprecated Deprecated in favor of using Next.js pages
-   */
-  isPageTemplate?: Maybe<Scalars['Boolean']['output']>;
-  /**
-   * Determines whether the query is for an existing post type archive page.
-   * @deprecated Deprecated in favor of using Next.js pages
-   */
-  isPostTypeArchive?: Maybe<Scalars['Boolean']['output']>;
-  /**
-   * Determines whether the query is for a post or page preview.
-   * @deprecated Deprecated in favor of using Next.js pages
-   */
-  isPreview?: Maybe<Scalars['Boolean']['output']>;
-  /**
-   * Determines whether the query is for the Privacy Policy page.
-   * @deprecated Deprecated in favor of using Next.js pages
-   */
-  isPrivacyPolicy?: Maybe<Scalars['Boolean']['output']>;
-  /**
-   * Determines whether the query is for a search.
-   * @deprecated Deprecated in favor of using Next.js pages
-   */
-  isSearch?: Maybe<Scalars['Boolean']['output']>;
-  /**
-   * Determines whether the query is for an existing single post.
-   * @deprecated Deprecated in favor of using Next.js pages
-   */
-  isSingle?: Maybe<Scalars['Boolean']['output']>;
-  /**
-   * Determines whether the query is for an existing single post of any post type (post, attachment, page, custom post types).
-   * @deprecated Deprecated in favor of using Next.js pages
-   */
-  isSingular?: Maybe<Scalars['Boolean']['output']>;
-  /**
-   * Determines whether a post is sticky.
-   * @deprecated Deprecated in favor of using Next.js pages
-   */
-  isSticky?: Maybe<Scalars['Boolean']['output']>;
-  /**
-   * Determines whether the query is for an existing tag archive page.
-   * @deprecated Deprecated in favor of using Next.js pages
-   */
-  isTag?: Maybe<Scalars['Boolean']['output']>;
-  /**
-   * Determines whether the query is for an existing custom taxonomy archive page.
-   * @deprecated Deprecated in favor of using Next.js pages
-   */
-  isTax?: Maybe<Scalars['Boolean']['output']>;
-  /**
-   * Determines whether the query is for an existing year archive.
-   * @deprecated Deprecated in favor of using Next.js pages
-   */
-  isYear?: Maybe<Scalars['Boolean']['output']>;
-};
-
 /** A paginated relationship between objects. Supports cursor-based pagination with edges containing relationship metadata and nodes containing the related objects. */
 export type Connection = {
   /** A list of edges (relational context) between connected nodes */
@@ -1334,8 +975,6 @@ export type Connection = {
 
 /** Base interface for content objects like posts, pages, and media items. Provides common fields available across these content types. */
 export type ContentNode = {
-  /** @deprecated Deprecated in favor of using Next.js pages */
-  conditionalTags?: Maybe<ConditionalTags>;
   /** Connection between the ContentNode type and the ContentType type */
   contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
   /** The name of the Content Type the node belongs to */
@@ -1394,7 +1033,6 @@ export type ContentNode = {
   status?: Maybe<Scalars['String']['output']>;
   /** The template assigned to a node of content */
   template?: Maybe<ContentTemplate>;
-  templates?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   /** The unique resource identifier path */
   uri?: Maybe<Scalars['String']['output']>;
 };
@@ -1569,8 +1207,6 @@ export type ContentType = Node & UniformResourceIdentifiable & {
   __typename?: 'ContentType';
   /** Whether this content type should can be exported. */
   canExport?: Maybe<Scalars['Boolean']['output']>;
-  /** @deprecated Deprecated in favor of using Next.js pages */
-  conditionalTags?: Maybe<ConditionalTags>;
   /** Connection between the ContentType type and the Taxonomy type */
   connectedTaxonomies?: Maybe<ContentTypeToTaxonomyConnection>;
   /** Connection between the ContentType type and the ContentNode type */
@@ -1633,7 +1269,6 @@ export type ContentType = Node & UniformResourceIdentifiable & {
   showInRest?: Maybe<Scalars['Boolean']['output']>;
   /** Whether to generate and allow a UI for managing this content type in the admin. */
   showUi?: Maybe<Scalars['Boolean']['output']>;
-  templates?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   /** The unique resource identifier path */
   uri?: Maybe<Scalars['String']['output']>;
 };
@@ -1834,6 +1469,258 @@ export enum ContentTypesOfTagEnum {
   /** The Type of Content object */
   Post = 'POST'
 }
+
+/** A block used for editing the site */
+export type CoreAccordion = BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock & {
+  __typename?: 'CoreAccordion';
+  /** The anchor field for the block. */
+  anchor?: Maybe<Scalars['String']['output']>;
+  /** The API version of the Gutenberg Block */
+  apiVersion?: Maybe<Scalars['Int']['output']>;
+  /** Attributes of the CoreAccordion Block Type */
+  attributes?: Maybe<CoreAccordionAttributes>;
+  /** The name of the category the Block belongs to */
+  blockEditorCategoryName?: Maybe<Scalars['String']['output']>;
+  /** The id of the Block */
+  clientId?: Maybe<Scalars['String']['output']>;
+  /** CSS Classnames to apply to the block */
+  cssClassNames?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The inner blocks of the Block */
+  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
+  /** Whether the block is Dynamic (server rendered) */
+  isDynamic: Scalars['Boolean']['output'];
+  /** The name of the block */
+  name?: Maybe<Scalars['String']['output']>;
+  /** The parent id of the Block */
+  parentClientId?: Maybe<Scalars['String']['output']>;
+  /** The rendered HTML for the block */
+  renderedHtml?: Maybe<Scalars['String']['output']>;
+  /** The (GraphQL) type of the block */
+  type?: Maybe<Scalars['String']['output']>;
+};
+
+/** Attributes of the CoreAccordion Block Type */
+export type CoreAccordionAttributes = BlockWithSupportsAnchor & {
+  __typename?: 'CoreAccordionAttributes';
+  /** The &quot;align&quot; field on the &quot;CoreAccordionAttributes&quot; block or block attributes */
+  align?: Maybe<Scalars['String']['output']>;
+  /** The anchor field for the block. */
+  anchor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;ariaLabel&quot; field on the &quot;CoreAccordionAttributes&quot; block or block attributes */
+  ariaLabel?: Maybe<Scalars['String']['output']>;
+  /** The &quot;autoclose&quot; field on the &quot;CoreAccordionAttributes&quot; block or block attributes */
+  autoclose: Scalars['Boolean']['output'];
+  /** The &quot;backgroundColor&quot; field on the &quot;CoreAccordionAttributes&quot; block or block attributes */
+  backgroundColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;borderColor&quot; field on the &quot;CoreAccordionAttributes&quot; block or block attributes */
+  borderColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;className&quot; field on the &quot;CoreAccordionAttributes&quot; block or block attributes */
+  className?: Maybe<Scalars['String']['output']>;
+  /** The &quot;fontFamily&quot; field on the &quot;CoreAccordionAttributes&quot; block or block attributes */
+  fontFamily?: Maybe<Scalars['String']['output']>;
+  /** The &quot;fontSize&quot; field on the &quot;CoreAccordionAttributes&quot; block or block attributes */
+  fontSize?: Maybe<Scalars['String']['output']>;
+  /** The &quot;gradient&quot; field on the &quot;CoreAccordionAttributes&quot; block or block attributes */
+  gradient?: Maybe<Scalars['String']['output']>;
+  /** The &quot;headingLevel&quot; field on the &quot;CoreAccordionAttributes&quot; block or block attributes */
+  headingLevel: Scalars['Float']['output'];
+  /** The &quot;iconPosition&quot; field on the &quot;CoreAccordionAttributes&quot; block or block attributes */
+  iconPosition: Scalars['String']['output'];
+  /** The &quot;layout&quot; field on the &quot;CoreAccordionAttributes&quot; block or block attributes */
+  layout?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;levelOptions&quot; field on the &quot;CoreAccordionAttributes&quot; block or block attributes */
+  levelOptions?: Maybe<Scalars['BlockAttributesArray']['output']>;
+  /** The &quot;lock&quot; field on the &quot;CoreAccordionAttributes&quot; block or block attributes */
+  lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;metadata&quot; field on the &quot;CoreAccordionAttributes&quot; block or block attributes */
+  metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;showIcon&quot; field on the &quot;CoreAccordionAttributes&quot; block or block attributes */
+  showIcon: Scalars['Boolean']['output'];
+  /** The &quot;style&quot; field on the &quot;CoreAccordionAttributes&quot; block or block attributes */
+  style?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;textColor&quot; field on the &quot;CoreAccordionAttributes&quot; block or block attributes */
+  textColor?: Maybe<Scalars['String']['output']>;
+};
+
+/** A block used for editing the site */
+export type CoreAccordionHeading = BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock & {
+  __typename?: 'CoreAccordionHeading';
+  /** The anchor field for the block. */
+  anchor?: Maybe<Scalars['String']['output']>;
+  /** The API version of the Gutenberg Block */
+  apiVersion?: Maybe<Scalars['Int']['output']>;
+  /** Attributes of the CoreAccordionHeading Block Type */
+  attributes?: Maybe<CoreAccordionHeadingAttributes>;
+  /** The name of the category the Block belongs to */
+  blockEditorCategoryName?: Maybe<Scalars['String']['output']>;
+  /** The id of the Block */
+  clientId?: Maybe<Scalars['String']['output']>;
+  /** CSS Classnames to apply to the block */
+  cssClassNames?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The inner blocks of the Block */
+  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
+  /** Whether the block is Dynamic (server rendered) */
+  isDynamic: Scalars['Boolean']['output'];
+  /** The name of the block */
+  name?: Maybe<Scalars['String']['output']>;
+  /** The parent id of the Block */
+  parentClientId?: Maybe<Scalars['String']['output']>;
+  /** The rendered HTML for the block */
+  renderedHtml?: Maybe<Scalars['String']['output']>;
+  /** The (GraphQL) type of the block */
+  type?: Maybe<Scalars['String']['output']>;
+};
+
+/** Attributes of the CoreAccordionHeading Block Type */
+export type CoreAccordionHeadingAttributes = BlockWithSupportsAnchor & {
+  __typename?: 'CoreAccordionHeadingAttributes';
+  /** The anchor field for the block. */
+  anchor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;backgroundColor&quot; field on the &quot;CoreAccordionHeadingAttributes&quot; block or block attributes */
+  backgroundColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;borderColor&quot; field on the &quot;CoreAccordionHeadingAttributes&quot; block or block attributes */
+  borderColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;className&quot; field on the &quot;CoreAccordionHeadingAttributes&quot; block or block attributes */
+  className?: Maybe<Scalars['String']['output']>;
+  /** The &quot;fontFamily&quot; field on the &quot;CoreAccordionHeadingAttributes&quot; block or block attributes */
+  fontFamily?: Maybe<Scalars['String']['output']>;
+  /** The &quot;fontSize&quot; field on the &quot;CoreAccordionHeadingAttributes&quot; block or block attributes */
+  fontSize?: Maybe<Scalars['String']['output']>;
+  /** The &quot;gradient&quot; field on the &quot;CoreAccordionHeadingAttributes&quot; block or block attributes */
+  gradient?: Maybe<Scalars['String']['output']>;
+  /** The &quot;iconPosition&quot; field on the &quot;CoreAccordionHeadingAttributes&quot; block or block attributes */
+  iconPosition: Scalars['String']['output'];
+  /** The &quot;level&quot; field on the &quot;CoreAccordionHeadingAttributes&quot; block or block attributes */
+  level?: Maybe<Scalars['Float']['output']>;
+  /** The &quot;lock&quot; field on the &quot;CoreAccordionHeadingAttributes&quot; block or block attributes */
+  lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;metadata&quot; field on the &quot;CoreAccordionHeadingAttributes&quot; block or block attributes */
+  metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;openByDefault&quot; field on the &quot;CoreAccordionHeadingAttributes&quot; block or block attributes */
+  openByDefault: Scalars['Boolean']['output'];
+  /** The &quot;showIcon&quot; field on the &quot;CoreAccordionHeadingAttributes&quot; block or block attributes */
+  showIcon: Scalars['Boolean']['output'];
+  /** The &quot;style&quot; field on the &quot;CoreAccordionHeadingAttributes&quot; block or block attributes */
+  style?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;textColor&quot; field on the &quot;CoreAccordionHeadingAttributes&quot; block or block attributes */
+  textColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;title&quot; field on the &quot;CoreAccordionHeadingAttributes&quot; block or block attributes */
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+/** A block used for editing the site */
+export type CoreAccordionItem = EditorBlock & PageEditorBlock & PostEditorBlock & {
+  __typename?: 'CoreAccordionItem';
+  /** The API version of the Gutenberg Block */
+  apiVersion?: Maybe<Scalars['Int']['output']>;
+  /** Attributes of the CoreAccordionItem Block Type */
+  attributes?: Maybe<CoreAccordionItemAttributes>;
+  /** The name of the category the Block belongs to */
+  blockEditorCategoryName?: Maybe<Scalars['String']['output']>;
+  /** The id of the Block */
+  clientId?: Maybe<Scalars['String']['output']>;
+  /** CSS Classnames to apply to the block */
+  cssClassNames?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The inner blocks of the Block */
+  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
+  /** Whether the block is Dynamic (server rendered) */
+  isDynamic: Scalars['Boolean']['output'];
+  /** The name of the block */
+  name?: Maybe<Scalars['String']['output']>;
+  /** The parent id of the Block */
+  parentClientId?: Maybe<Scalars['String']['output']>;
+  /** The rendered HTML for the block */
+  renderedHtml?: Maybe<Scalars['String']['output']>;
+  /** The (GraphQL) type of the block */
+  type?: Maybe<Scalars['String']['output']>;
+};
+
+/** Attributes of the CoreAccordionItem Block Type */
+export type CoreAccordionItemAttributes = {
+  __typename?: 'CoreAccordionItemAttributes';
+  /** The &quot;backgroundColor&quot; field on the &quot;CoreAccordionItemAttributes&quot; block or block attributes */
+  backgroundColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;borderColor&quot; field on the &quot;CoreAccordionItemAttributes&quot; block or block attributes */
+  borderColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;className&quot; field on the &quot;CoreAccordionItemAttributes&quot; block or block attributes */
+  className?: Maybe<Scalars['String']['output']>;
+  /** The &quot;fontFamily&quot; field on the &quot;CoreAccordionItemAttributes&quot; block or block attributes */
+  fontFamily?: Maybe<Scalars['String']['output']>;
+  /** The &quot;fontSize&quot; field on the &quot;CoreAccordionItemAttributes&quot; block or block attributes */
+  fontSize?: Maybe<Scalars['String']['output']>;
+  /** The &quot;gradient&quot; field on the &quot;CoreAccordionItemAttributes&quot; block or block attributes */
+  gradient?: Maybe<Scalars['String']['output']>;
+  /** The &quot;layout&quot; field on the &quot;CoreAccordionItemAttributes&quot; block or block attributes */
+  layout?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;lock&quot; field on the &quot;CoreAccordionItemAttributes&quot; block or block attributes */
+  lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;metadata&quot; field on the &quot;CoreAccordionItemAttributes&quot; block or block attributes */
+  metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;openByDefault&quot; field on the &quot;CoreAccordionItemAttributes&quot; block or block attributes */
+  openByDefault: Scalars['Boolean']['output'];
+  /** The &quot;style&quot; field on the &quot;CoreAccordionItemAttributes&quot; block or block attributes */
+  style?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;textColor&quot; field on the &quot;CoreAccordionItemAttributes&quot; block or block attributes */
+  textColor?: Maybe<Scalars['String']['output']>;
+};
+
+/** A block used for editing the site */
+export type CoreAccordionPanel = EditorBlock & PageEditorBlock & PostEditorBlock & {
+  __typename?: 'CoreAccordionPanel';
+  /** The API version of the Gutenberg Block */
+  apiVersion?: Maybe<Scalars['Int']['output']>;
+  /** Attributes of the CoreAccordionPanel Block Type */
+  attributes?: Maybe<CoreAccordionPanelAttributes>;
+  /** The name of the category the Block belongs to */
+  blockEditorCategoryName?: Maybe<Scalars['String']['output']>;
+  /** The id of the Block */
+  clientId?: Maybe<Scalars['String']['output']>;
+  /** CSS Classnames to apply to the block */
+  cssClassNames?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The inner blocks of the Block */
+  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
+  /** Whether the block is Dynamic (server rendered) */
+  isDynamic: Scalars['Boolean']['output'];
+  /** The name of the block */
+  name?: Maybe<Scalars['String']['output']>;
+  /** The parent id of the Block */
+  parentClientId?: Maybe<Scalars['String']['output']>;
+  /** The rendered HTML for the block */
+  renderedHtml?: Maybe<Scalars['String']['output']>;
+  /** The (GraphQL) type of the block */
+  type?: Maybe<Scalars['String']['output']>;
+};
+
+/** Attributes of the CoreAccordionPanel Block Type */
+export type CoreAccordionPanelAttributes = {
+  __typename?: 'CoreAccordionPanelAttributes';
+  /** The &quot;backgroundColor&quot; field on the &quot;CoreAccordionPanelAttributes&quot; block or block attributes */
+  backgroundColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;borderColor&quot; field on the &quot;CoreAccordionPanelAttributes&quot; block or block attributes */
+  borderColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;className&quot; field on the &quot;CoreAccordionPanelAttributes&quot; block or block attributes */
+  className?: Maybe<Scalars['String']['output']>;
+  /** The &quot;fontFamily&quot; field on the &quot;CoreAccordionPanelAttributes&quot; block or block attributes */
+  fontFamily?: Maybe<Scalars['String']['output']>;
+  /** The &quot;fontSize&quot; field on the &quot;CoreAccordionPanelAttributes&quot; block or block attributes */
+  fontSize?: Maybe<Scalars['String']['output']>;
+  /** The &quot;gradient&quot; field on the &quot;CoreAccordionPanelAttributes&quot; block or block attributes */
+  gradient?: Maybe<Scalars['String']['output']>;
+  /** The &quot;isSelected&quot; field on the &quot;CoreAccordionPanelAttributes&quot; block or block attributes */
+  isSelected: Scalars['Boolean']['output'];
+  /** The &quot;layout&quot; field on the &quot;CoreAccordionPanelAttributes&quot; block or block attributes */
+  layout?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;lock&quot; field on the &quot;CoreAccordionPanelAttributes&quot; block or block attributes */
+  lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;metadata&quot; field on the &quot;CoreAccordionPanelAttributes&quot; block or block attributes */
+  metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;openByDefault&quot; field on the &quot;CoreAccordionPanelAttributes&quot; block or block attributes */
+  openByDefault: Scalars['Boolean']['output'];
+  /** The &quot;style&quot; field on the &quot;CoreAccordionPanelAttributes&quot; block or block attributes */
+  style?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;textColor&quot; field on the &quot;CoreAccordionPanelAttributes&quot; block or block attributes */
+  textColor?: Maybe<Scalars['String']['output']>;
+};
 
 /** A block used for editing the site */
 export type CoreArchives = EditorBlock & PageEditorBlock & PostEditorBlock & {
@@ -2407,8 +2294,6 @@ export type CoreColumn = BlockWithSupportsAnchor & EditorBlock & PageEditorBlock
 /** Attributes of the CoreColumn Block Type */
 export type CoreColumnAttributes = BlockWithSupportsAnchor & {
   __typename?: 'CoreColumnAttributes';
-  /** The &quot;allowedBlocks&quot; field on the &quot;CoreColumnAttributes&quot; block or block attributes */
-  allowedBlocks?: Maybe<Scalars['BlockAttributesArray']['output']>;
   /** The anchor field for the block. */
   anchor?: Maybe<Scalars['String']['output']>;
   /** The &quot;backgroundColor&quot; field on the &quot;CoreColumnAttributes&quot; block or block attributes */
@@ -3189,8 +3074,6 @@ export type CoreCoverAttributes = BlockWithSupportsAnchor & {
   __typename?: 'CoreCoverAttributes';
   /** The &quot;align&quot; field on the &quot;CoreCoverAttributes&quot; block or block attributes */
   align?: Maybe<Scalars['String']['output']>;
-  /** The &quot;allowedBlocks&quot; field on the &quot;CoreCoverAttributes&quot; block or block attributes */
-  allowedBlocks?: Maybe<Scalars['BlockAttributesArray']['output']>;
   /** The &quot;alt&quot; field on the &quot;CoreCoverAttributes&quot; block or block attributes */
   alt: Scalars['String']['output'];
   /** The anchor field for the block. */
@@ -3239,6 +3122,8 @@ export type CoreCoverAttributes = BlockWithSupportsAnchor & {
   minHeightUnit?: Maybe<Scalars['String']['output']>;
   /** The &quot;overlayColor&quot; field on the &quot;CoreCoverAttributes&quot; block or block attributes */
   overlayColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;poster&quot; field on the &quot;CoreCoverAttributes&quot; block or block attributes */
+  poster?: Maybe<Scalars['String']['output']>;
   /** The &quot;sizeSlug&quot; field on the &quot;CoreCoverAttributes&quot; block or block attributes */
   sizeSlug?: Maybe<Scalars['String']['output']>;
   /** The &quot;style&quot; field on the &quot;CoreCoverAttributes&quot; block or block attributes */
@@ -3287,8 +3172,6 @@ export type CoreDetailsAttributes = BlockWithSupportsAnchor & {
   __typename?: 'CoreDetailsAttributes';
   /** The &quot;align&quot; field on the &quot;CoreDetailsAttributes&quot; block or block attributes */
   align?: Maybe<Scalars['String']['output']>;
-  /** The &quot;allowedBlocks&quot; field on the &quot;CoreDetailsAttributes&quot; block or block attributes */
-  allowedBlocks?: Maybe<Scalars['BlockAttributesArray']['output']>;
   /** The anchor field for the block. */
   anchor?: Maybe<Scalars['String']['output']>;
   /** The &quot;backgroundColor&quot; field on the &quot;CoreDetailsAttributes&quot; block or block attributes */
@@ -3579,6 +3462,8 @@ export type CoreGalleryAttributes = BlockWithSupportsAnchor & {
   allowResize: Scalars['Boolean']['output'];
   /** The anchor field for the block. */
   anchor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;aspectRatio&quot; field on the &quot;CoreGalleryAttributes&quot; block or block attributes */
+  aspectRatio: Scalars['String']['output'];
   /** The &quot;backgroundColor&quot; field on the &quot;CoreGalleryAttributes&quot; block or block attributes */
   backgroundColor?: Maybe<Scalars['String']['output']>;
   /** The &quot;borderColor&quot; field on the &quot;CoreGalleryAttributes&quot; block or block attributes */
@@ -3670,8 +3555,6 @@ export type CoreGroupAttributes = BlockWithSupportsAnchor & {
   __typename?: 'CoreGroupAttributes';
   /** The &quot;align&quot; field on the &quot;CoreGroupAttributes&quot; block or block attributes */
   align?: Maybe<Scalars['String']['output']>;
-  /** The &quot;allowedBlocks&quot; field on the &quot;CoreGroupAttributes&quot; block or block attributes */
-  allowedBlocks?: Maybe<Scalars['BlockAttributesArray']['output']>;
   /** The anchor field for the block. */
   anchor?: Maybe<Scalars['String']['output']>;
   /** The &quot;ariaLabel&quot; field on the &quot;CoreGroupAttributes&quot; block or block attributes */
@@ -4029,6 +3912,8 @@ export type CoreLatestPosts = EditorBlock & PageEditorBlock & PostEditorBlock & 
   parentClientId?: Maybe<Scalars['String']['output']>;
   /** The rendered HTML for the block */
   renderedHtml?: Maybe<Scalars['String']['output']>;
+  /** The resolved posts based on block attributes. */
+  resolvedPosts?: Maybe<Array<Maybe<ResolvedPost>>>;
   /** The (GraphQL) type of the block */
   type?: Maybe<Scalars['String']['output']>;
 };
@@ -4323,6 +4208,48 @@ export type CoreLoginoutAttributes = {
 };
 
 /** A block used for editing the site */
+export type CoreMath = EditorBlock & PageEditorBlock & PostEditorBlock & {
+  __typename?: 'CoreMath';
+  /** The API version of the Gutenberg Block */
+  apiVersion?: Maybe<Scalars['Int']['output']>;
+  /** Attributes of the CoreMath Block Type */
+  attributes?: Maybe<CoreMathAttributes>;
+  /** The name of the category the Block belongs to */
+  blockEditorCategoryName?: Maybe<Scalars['String']['output']>;
+  /** The id of the Block */
+  clientId?: Maybe<Scalars['String']['output']>;
+  /** CSS Classnames to apply to the block */
+  cssClassNames?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The inner blocks of the Block */
+  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
+  /** Whether the block is Dynamic (server rendered) */
+  isDynamic: Scalars['Boolean']['output'];
+  /** The name of the block */
+  name?: Maybe<Scalars['String']['output']>;
+  /** The parent id of the Block */
+  parentClientId?: Maybe<Scalars['String']['output']>;
+  /** The rendered HTML for the block */
+  renderedHtml?: Maybe<Scalars['String']['output']>;
+  /** The (GraphQL) type of the block */
+  type?: Maybe<Scalars['String']['output']>;
+};
+
+/** Attributes of the CoreMath Block Type */
+export type CoreMathAttributes = {
+  __typename?: 'CoreMathAttributes';
+  /** The &quot;className&quot; field on the &quot;CoreMathAttributes&quot; block or block attributes */
+  className?: Maybe<Scalars['String']['output']>;
+  /** The &quot;latex&quot; field on the &quot;CoreMathAttributes&quot; block or block attributes */
+  latex?: Maybe<Scalars['String']['output']>;
+  /** The &quot;lock&quot; field on the &quot;CoreMathAttributes&quot; block or block attributes */
+  lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;mathML&quot; field on the &quot;CoreMathAttributes&quot; block or block attributes */
+  mathML?: Maybe<Scalars['String']['output']>;
+  /** The &quot;metadata&quot; field on the &quot;CoreMathAttributes&quot; block or block attributes */
+  metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
+};
+
+/** A block used for editing the site */
 export type CoreMediaText = BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock & {
   __typename?: 'CoreMediaText';
   /** The anchor field for the block. */
@@ -4356,8 +4283,6 @@ export type CoreMediaTextAttributes = BlockWithSupportsAnchor & {
   __typename?: 'CoreMediaTextAttributes';
   /** The &quot;align&quot; field on the &quot;CoreMediaTextAttributes&quot; block or block attributes */
   align?: Maybe<Scalars['String']['output']>;
-  /** The &quot;allowedBlocks&quot; field on the &quot;CoreMediaTextAttributes&quot; block or block attributes */
-  allowedBlocks?: Maybe<Scalars['BlockAttributesArray']['output']>;
   /** The anchor field for the block. */
   anchor?: Maybe<Scalars['String']['output']>;
   /** The &quot;backgroundColor&quot; field on the &quot;CoreMediaTextAttributes&quot; block or block attributes */
@@ -5193,6 +5118,60 @@ export type CorePostCommentsAttributes = {
 };
 
 /** A block used for editing the site */
+export type CorePostCommentsCount = EditorBlock & PageEditorBlock & PostEditorBlock & {
+  __typename?: 'CorePostCommentsCount';
+  /** The API version of the Gutenberg Block */
+  apiVersion?: Maybe<Scalars['Int']['output']>;
+  /** Attributes of the CorePostCommentsCount Block Type */
+  attributes?: Maybe<CorePostCommentsCountAttributes>;
+  /** The name of the category the Block belongs to */
+  blockEditorCategoryName?: Maybe<Scalars['String']['output']>;
+  /** The id of the Block */
+  clientId?: Maybe<Scalars['String']['output']>;
+  /** CSS Classnames to apply to the block */
+  cssClassNames?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The inner blocks of the Block */
+  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
+  /** Whether the block is Dynamic (server rendered) */
+  isDynamic: Scalars['Boolean']['output'];
+  /** The name of the block */
+  name?: Maybe<Scalars['String']['output']>;
+  /** The parent id of the Block */
+  parentClientId?: Maybe<Scalars['String']['output']>;
+  /** The rendered HTML for the block */
+  renderedHtml?: Maybe<Scalars['String']['output']>;
+  /** The (GraphQL) type of the block */
+  type?: Maybe<Scalars['String']['output']>;
+};
+
+/** Attributes of the CorePostCommentsCount Block Type */
+export type CorePostCommentsCountAttributes = {
+  __typename?: 'CorePostCommentsCountAttributes';
+  /** The &quot;backgroundColor&quot; field on the &quot;CorePostCommentsCountAttributes&quot; block or block attributes */
+  backgroundColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;borderColor&quot; field on the &quot;CorePostCommentsCountAttributes&quot; block or block attributes */
+  borderColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;className&quot; field on the &quot;CorePostCommentsCountAttributes&quot; block or block attributes */
+  className?: Maybe<Scalars['String']['output']>;
+  /** The &quot;fontFamily&quot; field on the &quot;CorePostCommentsCountAttributes&quot; block or block attributes */
+  fontFamily?: Maybe<Scalars['String']['output']>;
+  /** The &quot;fontSize&quot; field on the &quot;CorePostCommentsCountAttributes&quot; block or block attributes */
+  fontSize?: Maybe<Scalars['String']['output']>;
+  /** The &quot;gradient&quot; field on the &quot;CorePostCommentsCountAttributes&quot; block or block attributes */
+  gradient?: Maybe<Scalars['String']['output']>;
+  /** The &quot;lock&quot; field on the &quot;CorePostCommentsCountAttributes&quot; block or block attributes */
+  lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;metadata&quot; field on the &quot;CorePostCommentsCountAttributes&quot; block or block attributes */
+  metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;style&quot; field on the &quot;CorePostCommentsCountAttributes&quot; block or block attributes */
+  style?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;textAlign&quot; field on the &quot;CorePostCommentsCountAttributes&quot; block or block attributes */
+  textAlign?: Maybe<Scalars['String']['output']>;
+  /** The &quot;textColor&quot; field on the &quot;CorePostCommentsCountAttributes&quot; block or block attributes */
+  textColor?: Maybe<Scalars['String']['output']>;
+};
+
+/** A block used for editing the site */
 export type CorePostCommentsForm = EditorBlock & PageEditorBlock & PostEditorBlock & {
   __typename?: 'CorePostCommentsForm';
   /** The API version of the Gutenberg Block */
@@ -5242,6 +5221,56 @@ export type CorePostCommentsFormAttributes = {
   textAlign?: Maybe<Scalars['String']['output']>;
   /** The &quot;textColor&quot; field on the &quot;CorePostCommentsFormAttributes&quot; block or block attributes */
   textColor?: Maybe<Scalars['String']['output']>;
+};
+
+/** A block used for editing the site */
+export type CorePostCommentsLink = EditorBlock & PageEditorBlock & PostEditorBlock & {
+  __typename?: 'CorePostCommentsLink';
+  /** The API version of the Gutenberg Block */
+  apiVersion?: Maybe<Scalars['Int']['output']>;
+  /** Attributes of the CorePostCommentsLink Block Type */
+  attributes?: Maybe<CorePostCommentsLinkAttributes>;
+  /** The name of the category the Block belongs to */
+  blockEditorCategoryName?: Maybe<Scalars['String']['output']>;
+  /** The id of the Block */
+  clientId?: Maybe<Scalars['String']['output']>;
+  /** CSS Classnames to apply to the block */
+  cssClassNames?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The inner blocks of the Block */
+  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
+  /** Whether the block is Dynamic (server rendered) */
+  isDynamic: Scalars['Boolean']['output'];
+  /** The name of the block */
+  name?: Maybe<Scalars['String']['output']>;
+  /** The parent id of the Block */
+  parentClientId?: Maybe<Scalars['String']['output']>;
+  /** The rendered HTML for the block */
+  renderedHtml?: Maybe<Scalars['String']['output']>;
+  /** The (GraphQL) type of the block */
+  type?: Maybe<Scalars['String']['output']>;
+};
+
+/** Attributes of the CorePostCommentsLink Block Type */
+export type CorePostCommentsLinkAttributes = {
+  __typename?: 'CorePostCommentsLinkAttributes';
+  /** The &quot;backgroundColor&quot; field on the &quot;CorePostCommentsLinkAttributes&quot; block or block attributes */
+  backgroundColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;borderColor&quot; field on the &quot;CorePostCommentsLinkAttributes&quot; block or block attributes */
+  borderColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;className&quot; field on the &quot;CorePostCommentsLinkAttributes&quot; block or block attributes */
+  className?: Maybe<Scalars['String']['output']>;
+  /** The &quot;fontFamily&quot; field on the &quot;CorePostCommentsLinkAttributes&quot; block or block attributes */
+  fontFamily?: Maybe<Scalars['String']['output']>;
+  /** The &quot;fontSize&quot; field on the &quot;CorePostCommentsLinkAttributes&quot; block or block attributes */
+  fontSize?: Maybe<Scalars['String']['output']>;
+  /** The &quot;lock&quot; field on the &quot;CorePostCommentsLinkAttributes&quot; block or block attributes */
+  lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;metadata&quot; field on the &quot;CorePostCommentsLinkAttributes&quot; block or block attributes */
+  metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;style&quot; field on the &quot;CorePostCommentsLinkAttributes&quot; block or block attributes */
+  style?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;textAlign&quot; field on the &quot;CorePostCommentsLinkAttributes&quot; block or block attributes */
+  textAlign?: Maybe<Scalars['String']['output']>;
 };
 
 /** A block used for editing the site */
@@ -5296,6 +5325,8 @@ export type CorePostContentAttributes = {
   metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
   /** The &quot;style&quot; field on the &quot;CorePostContentAttributes&quot; block or block attributes */
   style?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;tagName&quot; field on the &quot;CorePostContentAttributes&quot; block or block attributes */
+  tagName: Scalars['String']['output'];
   /** The &quot;textColor&quot; field on the &quot;CorePostContentAttributes&quot; block or block attributes */
   textColor?: Maybe<Scalars['String']['output']>;
 };
@@ -5336,8 +5367,8 @@ export type CorePostDateAttributes = {
   borderColor?: Maybe<Scalars['String']['output']>;
   /** The &quot;className&quot; field on the &quot;CorePostDateAttributes&quot; block or block attributes */
   className?: Maybe<Scalars['String']['output']>;
-  /** The &quot;displayType&quot; field on the &quot;CorePostDateAttributes&quot; block or block attributes */
-  displayType: Scalars['String']['output'];
+  /** The &quot;datetime&quot; field on the &quot;CorePostDateAttributes&quot; block or block attributes */
+  datetime?: Maybe<Scalars['String']['output']>;
   /** The &quot;fontFamily&quot; field on the &quot;CorePostDateAttributes&quot; block or block attributes */
   fontFamily?: Maybe<Scalars['String']['output']>;
   /** The &quot;fontSize&quot; field on the &quot;CorePostDateAttributes&quot; block or block attributes */
@@ -5734,6 +5765,66 @@ export type CorePostTermsToTermNodeConnectionPageInfo = PageInfo & TermNodeConne
 };
 
 /** A block used for editing the site */
+export type CorePostTimeToRead = EditorBlock & PageEditorBlock & PostEditorBlock & {
+  __typename?: 'CorePostTimeToRead';
+  /** The API version of the Gutenberg Block */
+  apiVersion?: Maybe<Scalars['Int']['output']>;
+  /** Attributes of the CorePostTimeToRead Block Type */
+  attributes?: Maybe<CorePostTimeToReadAttributes>;
+  /** The name of the category the Block belongs to */
+  blockEditorCategoryName?: Maybe<Scalars['String']['output']>;
+  /** The id of the Block */
+  clientId?: Maybe<Scalars['String']['output']>;
+  /** CSS Classnames to apply to the block */
+  cssClassNames?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The inner blocks of the Block */
+  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
+  /** Whether the block is Dynamic (server rendered) */
+  isDynamic: Scalars['Boolean']['output'];
+  /** The name of the block */
+  name?: Maybe<Scalars['String']['output']>;
+  /** The parent id of the Block */
+  parentClientId?: Maybe<Scalars['String']['output']>;
+  /** The rendered HTML for the block */
+  renderedHtml?: Maybe<Scalars['String']['output']>;
+  /** The (GraphQL) type of the block */
+  type?: Maybe<Scalars['String']['output']>;
+};
+
+/** Attributes of the CorePostTimeToRead Block Type */
+export type CorePostTimeToReadAttributes = {
+  __typename?: 'CorePostTimeToReadAttributes';
+  /** The &quot;averageReadingSpeed&quot; field on the &quot;CorePostTimeToReadAttributes&quot; block or block attributes */
+  averageReadingSpeed: Scalars['Float']['output'];
+  /** The &quot;backgroundColor&quot; field on the &quot;CorePostTimeToReadAttributes&quot; block or block attributes */
+  backgroundColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;borderColor&quot; field on the &quot;CorePostTimeToReadAttributes&quot; block or block attributes */
+  borderColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;className&quot; field on the &quot;CorePostTimeToReadAttributes&quot; block or block attributes */
+  className?: Maybe<Scalars['String']['output']>;
+  /** The &quot;displayAsRange&quot; field on the &quot;CorePostTimeToReadAttributes&quot; block or block attributes */
+  displayAsRange: Scalars['Boolean']['output'];
+  /** The &quot;displayMode&quot; field on the &quot;CorePostTimeToReadAttributes&quot; block or block attributes */
+  displayMode: Scalars['String']['output'];
+  /** The &quot;fontFamily&quot; field on the &quot;CorePostTimeToReadAttributes&quot; block or block attributes */
+  fontFamily?: Maybe<Scalars['String']['output']>;
+  /** The &quot;fontSize&quot; field on the &quot;CorePostTimeToReadAttributes&quot; block or block attributes */
+  fontSize?: Maybe<Scalars['String']['output']>;
+  /** The &quot;gradient&quot; field on the &quot;CorePostTimeToReadAttributes&quot; block or block attributes */
+  gradient?: Maybe<Scalars['String']['output']>;
+  /** The &quot;lock&quot; field on the &quot;CorePostTimeToReadAttributes&quot; block or block attributes */
+  lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;metadata&quot; field on the &quot;CorePostTimeToReadAttributes&quot; block or block attributes */
+  metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;style&quot; field on the &quot;CorePostTimeToReadAttributes&quot; block or block attributes */
+  style?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;textAlign&quot; field on the &quot;CorePostTimeToReadAttributes&quot; block or block attributes */
+  textAlign?: Maybe<Scalars['String']['output']>;
+  /** The &quot;textColor&quot; field on the &quot;CorePostTimeToReadAttributes&quot; block or block attributes */
+  textColor?: Maybe<Scalars['String']['output']>;
+};
+
+/** A block used for editing the site */
 export type CorePostTitle = EditorBlock & PageEditorBlock & PostEditorBlock & {
   __typename?: 'CorePostTitle';
   /** The API version of the Gutenberg Block */
@@ -5944,6 +6035,8 @@ export type CoreQuery = EditorBlock & PageEditorBlock & PostEditorBlock & {
   parentClientId?: Maybe<Scalars['String']['output']>;
   /** The rendered HTML for the block */
   renderedHtml?: Maybe<Scalars['String']['output']>;
+  /** The resolved posts based on query block attributes. */
+  resolvedPosts?: Maybe<Array<Maybe<ResolvedPost>>>;
   /** The (GraphQL) type of the block */
   type?: Maybe<Scalars['String']['output']>;
 };
@@ -6539,6 +6632,10 @@ export type CoreRssAttributes = {
   lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
   /** The &quot;metadata&quot; field on the &quot;CoreRssAttributes&quot; block or block attributes */
   metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;openInNewTab&quot; field on the &quot;CoreRssAttributes&quot; block or block attributes */
+  openInNewTab: Scalars['Boolean']['output'];
+  /** The &quot;rel&quot; field on the &quot;CoreRssAttributes&quot; block or block attributes */
+  rel?: Maybe<Scalars['String']['output']>;
   /** The &quot;style&quot; field on the &quot;CoreRssAttributes&quot; block or block attributes */
   style?: Maybe<Scalars['BlockAttributesObject']['output']>;
   /** The &quot;textColor&quot; field on the &quot;CoreRssAttributes&quot; block or block attributes */
@@ -7042,7 +7139,7 @@ export type CoreSpacerAttributes = BlockWithSupportsAnchor & {
   /** The &quot;className&quot; field on the &quot;CoreSpacerAttributes&quot; block or block attributes */
   className?: Maybe<Scalars['String']['output']>;
   /** The &quot;height&quot; field on the &quot;CoreSpacerAttributes&quot; block or block attributes */
-  height: Scalars['String']['output'];
+  height?: Maybe<Scalars['String']['output']>;
   /** The &quot;lock&quot; field on the &quot;CoreSpacerAttributes&quot; block or block attributes */
   lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
   /** The &quot;metadata&quot; field on the &quot;CoreSpacerAttributes&quot; block or block attributes */
@@ -7298,6 +7395,60 @@ export type CoreTemplatePartAttributes = {
 };
 
 /** A block used for editing the site */
+export type CoreTermCount = EditorBlock & PageEditorBlock & PostEditorBlock & {
+  __typename?: 'CoreTermCount';
+  /** The API version of the Gutenberg Block */
+  apiVersion?: Maybe<Scalars['Int']['output']>;
+  /** Attributes of the CoreTermCount Block Type */
+  attributes?: Maybe<CoreTermCountAttributes>;
+  /** The name of the category the Block belongs to */
+  blockEditorCategoryName?: Maybe<Scalars['String']['output']>;
+  /** The id of the Block */
+  clientId?: Maybe<Scalars['String']['output']>;
+  /** CSS Classnames to apply to the block */
+  cssClassNames?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The inner blocks of the Block */
+  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
+  /** Whether the block is Dynamic (server rendered) */
+  isDynamic: Scalars['Boolean']['output'];
+  /** The name of the block */
+  name?: Maybe<Scalars['String']['output']>;
+  /** The parent id of the Block */
+  parentClientId?: Maybe<Scalars['String']['output']>;
+  /** The rendered HTML for the block */
+  renderedHtml?: Maybe<Scalars['String']['output']>;
+  /** The (GraphQL) type of the block */
+  type?: Maybe<Scalars['String']['output']>;
+};
+
+/** Attributes of the CoreTermCount Block Type */
+export type CoreTermCountAttributes = {
+  __typename?: 'CoreTermCountAttributes';
+  /** The &quot;backgroundColor&quot; field on the &quot;CoreTermCountAttributes&quot; block or block attributes */
+  backgroundColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;borderColor&quot; field on the &quot;CoreTermCountAttributes&quot; block or block attributes */
+  borderColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;bracketType&quot; field on the &quot;CoreTermCountAttributes&quot; block or block attributes */
+  bracketType: Scalars['String']['output'];
+  /** The &quot;className&quot; field on the &quot;CoreTermCountAttributes&quot; block or block attributes */
+  className?: Maybe<Scalars['String']['output']>;
+  /** The &quot;fontFamily&quot; field on the &quot;CoreTermCountAttributes&quot; block or block attributes */
+  fontFamily?: Maybe<Scalars['String']['output']>;
+  /** The &quot;fontSize&quot; field on the &quot;CoreTermCountAttributes&quot; block or block attributes */
+  fontSize?: Maybe<Scalars['String']['output']>;
+  /** The &quot;gradient&quot; field on the &quot;CoreTermCountAttributes&quot; block or block attributes */
+  gradient?: Maybe<Scalars['String']['output']>;
+  /** The &quot;lock&quot; field on the &quot;CoreTermCountAttributes&quot; block or block attributes */
+  lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;metadata&quot; field on the &quot;CoreTermCountAttributes&quot; block or block attributes */
+  metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;style&quot; field on the &quot;CoreTermCountAttributes&quot; block or block attributes */
+  style?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;textColor&quot; field on the &quot;CoreTermCountAttributes&quot; block or block attributes */
+  textColor?: Maybe<Scalars['String']['output']>;
+};
+
+/** A block used for editing the site */
 export type CoreTermDescription = EditorBlock & PageEditorBlock & PostEditorBlock & {
   __typename?: 'CoreTermDescription';
   /** The API version of the Gutenberg Block */
@@ -7349,6 +7500,168 @@ export type CoreTermDescriptionAttributes = {
   textAlign?: Maybe<Scalars['String']['output']>;
   /** The &quot;textColor&quot; field on the &quot;CoreTermDescriptionAttributes&quot; block or block attributes */
   textColor?: Maybe<Scalars['String']['output']>;
+};
+
+/** A block used for editing the site */
+export type CoreTermName = EditorBlock & PageEditorBlock & PostEditorBlock & {
+  __typename?: 'CoreTermName';
+  /** The API version of the Gutenberg Block */
+  apiVersion?: Maybe<Scalars['Int']['output']>;
+  /** Attributes of the CoreTermName Block Type */
+  attributes?: Maybe<CoreTermNameAttributes>;
+  /** The name of the category the Block belongs to */
+  blockEditorCategoryName?: Maybe<Scalars['String']['output']>;
+  /** The id of the Block */
+  clientId?: Maybe<Scalars['String']['output']>;
+  /** CSS Classnames to apply to the block */
+  cssClassNames?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The inner blocks of the Block */
+  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
+  /** Whether the block is Dynamic (server rendered) */
+  isDynamic: Scalars['Boolean']['output'];
+  /** The name of the block */
+  name?: Maybe<Scalars['String']['output']>;
+  /** The parent id of the Block */
+  parentClientId?: Maybe<Scalars['String']['output']>;
+  /** The rendered HTML for the block */
+  renderedHtml?: Maybe<Scalars['String']['output']>;
+  /** The (GraphQL) type of the block */
+  type?: Maybe<Scalars['String']['output']>;
+};
+
+/** Attributes of the CoreTermName Block Type */
+export type CoreTermNameAttributes = {
+  __typename?: 'CoreTermNameAttributes';
+  /** The &quot;align&quot; field on the &quot;CoreTermNameAttributes&quot; block or block attributes */
+  align?: Maybe<Scalars['String']['output']>;
+  /** The &quot;backgroundColor&quot; field on the &quot;CoreTermNameAttributes&quot; block or block attributes */
+  backgroundColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;borderColor&quot; field on the &quot;CoreTermNameAttributes&quot; block or block attributes */
+  borderColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;className&quot; field on the &quot;CoreTermNameAttributes&quot; block or block attributes */
+  className?: Maybe<Scalars['String']['output']>;
+  /** The &quot;fontFamily&quot; field on the &quot;CoreTermNameAttributes&quot; block or block attributes */
+  fontFamily?: Maybe<Scalars['String']['output']>;
+  /** The &quot;fontSize&quot; field on the &quot;CoreTermNameAttributes&quot; block or block attributes */
+  fontSize?: Maybe<Scalars['String']['output']>;
+  /** The &quot;gradient&quot; field on the &quot;CoreTermNameAttributes&quot; block or block attributes */
+  gradient?: Maybe<Scalars['String']['output']>;
+  /** The &quot;isLink&quot; field on the &quot;CoreTermNameAttributes&quot; block or block attributes */
+  isLink: Scalars['Boolean']['output'];
+  /** The &quot;level&quot; field on the &quot;CoreTermNameAttributes&quot; block or block attributes */
+  level: Scalars['Float']['output'];
+  /** The &quot;lock&quot; field on the &quot;CoreTermNameAttributes&quot; block or block attributes */
+  lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;metadata&quot; field on the &quot;CoreTermNameAttributes&quot; block or block attributes */
+  metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;style&quot; field on the &quot;CoreTermNameAttributes&quot; block or block attributes */
+  style?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;textAlign&quot; field on the &quot;CoreTermNameAttributes&quot; block or block attributes */
+  textAlign?: Maybe<Scalars['String']['output']>;
+  /** The &quot;textColor&quot; field on the &quot;CoreTermNameAttributes&quot; block or block attributes */
+  textColor?: Maybe<Scalars['String']['output']>;
+};
+
+/** A block used for editing the site */
+export type CoreTermTemplate = EditorBlock & PageEditorBlock & PostEditorBlock & {
+  __typename?: 'CoreTermTemplate';
+  /** The API version of the Gutenberg Block */
+  apiVersion?: Maybe<Scalars['Int']['output']>;
+  /** Attributes of the CoreTermTemplate Block Type */
+  attributes?: Maybe<CoreTermTemplateAttributes>;
+  /** The name of the category the Block belongs to */
+  blockEditorCategoryName?: Maybe<Scalars['String']['output']>;
+  /** The id of the Block */
+  clientId?: Maybe<Scalars['String']['output']>;
+  /** CSS Classnames to apply to the block */
+  cssClassNames?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The inner blocks of the Block */
+  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
+  /** Whether the block is Dynamic (server rendered) */
+  isDynamic: Scalars['Boolean']['output'];
+  /** The name of the block */
+  name?: Maybe<Scalars['String']['output']>;
+  /** The parent id of the Block */
+  parentClientId?: Maybe<Scalars['String']['output']>;
+  /** The rendered HTML for the block */
+  renderedHtml?: Maybe<Scalars['String']['output']>;
+  /** The (GraphQL) type of the block */
+  type?: Maybe<Scalars['String']['output']>;
+};
+
+/** Attributes of the CoreTermTemplate Block Type */
+export type CoreTermTemplateAttributes = {
+  __typename?: 'CoreTermTemplateAttributes';
+  /** The &quot;align&quot; field on the &quot;CoreTermTemplateAttributes&quot; block or block attributes */
+  align?: Maybe<Scalars['String']['output']>;
+  /** The &quot;backgroundColor&quot; field on the &quot;CoreTermTemplateAttributes&quot; block or block attributes */
+  backgroundColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;borderColor&quot; field on the &quot;CoreTermTemplateAttributes&quot; block or block attributes */
+  borderColor?: Maybe<Scalars['String']['output']>;
+  /** The &quot;className&quot; field on the &quot;CoreTermTemplateAttributes&quot; block or block attributes */
+  className?: Maybe<Scalars['String']['output']>;
+  /** The &quot;fontFamily&quot; field on the &quot;CoreTermTemplateAttributes&quot; block or block attributes */
+  fontFamily?: Maybe<Scalars['String']['output']>;
+  /** The &quot;fontSize&quot; field on the &quot;CoreTermTemplateAttributes&quot; block or block attributes */
+  fontSize?: Maybe<Scalars['String']['output']>;
+  /** The &quot;gradient&quot; field on the &quot;CoreTermTemplateAttributes&quot; block or block attributes */
+  gradient?: Maybe<Scalars['String']['output']>;
+  /** The &quot;layout&quot; field on the &quot;CoreTermTemplateAttributes&quot; block or block attributes */
+  layout?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;lock&quot; field on the &quot;CoreTermTemplateAttributes&quot; block or block attributes */
+  lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;metadata&quot; field on the &quot;CoreTermTemplateAttributes&quot; block or block attributes */
+  metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;style&quot; field on the &quot;CoreTermTemplateAttributes&quot; block or block attributes */
+  style?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;textColor&quot; field on the &quot;CoreTermTemplateAttributes&quot; block or block attributes */
+  textColor?: Maybe<Scalars['String']['output']>;
+};
+
+/** A block used for editing the site */
+export type CoreTermsQuery = EditorBlock & PageEditorBlock & PostEditorBlock & {
+  __typename?: 'CoreTermsQuery';
+  /** The API version of the Gutenberg Block */
+  apiVersion?: Maybe<Scalars['Int']['output']>;
+  /** Attributes of the CoreTermsQuery Block Type */
+  attributes?: Maybe<CoreTermsQueryAttributes>;
+  /** The name of the category the Block belongs to */
+  blockEditorCategoryName?: Maybe<Scalars['String']['output']>;
+  /** The id of the Block */
+  clientId?: Maybe<Scalars['String']['output']>;
+  /** CSS Classnames to apply to the block */
+  cssClassNames?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** The inner blocks of the Block */
+  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
+  /** Whether the block is Dynamic (server rendered) */
+  isDynamic: Scalars['Boolean']['output'];
+  /** The name of the block */
+  name?: Maybe<Scalars['String']['output']>;
+  /** The parent id of the Block */
+  parentClientId?: Maybe<Scalars['String']['output']>;
+  /** The rendered HTML for the block */
+  renderedHtml?: Maybe<Scalars['String']['output']>;
+  /** The (GraphQL) type of the block */
+  type?: Maybe<Scalars['String']['output']>;
+};
+
+/** Attributes of the CoreTermsQuery Block Type */
+export type CoreTermsQueryAttributes = {
+  __typename?: 'CoreTermsQueryAttributes';
+  /** The &quot;align&quot; field on the &quot;CoreTermsQueryAttributes&quot; block or block attributes */
+  align?: Maybe<Scalars['String']['output']>;
+  /** The &quot;className&quot; field on the &quot;CoreTermsQueryAttributes&quot; block or block attributes */
+  className?: Maybe<Scalars['String']['output']>;
+  /** The &quot;layout&quot; field on the &quot;CoreTermsQueryAttributes&quot; block or block attributes */
+  layout?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;lock&quot; field on the &quot;CoreTermsQueryAttributes&quot; block or block attributes */
+  lock?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;metadata&quot; field on the &quot;CoreTermsQueryAttributes&quot; block or block attributes */
+  metadata?: Maybe<Scalars['BlockAttributesObject']['output']>;
+  /** The &quot;tagName&quot; field on the &quot;CoreTermsQueryAttributes&quot; block or block attributes */
+  tagName: Scalars['String']['output'];
+  /** The &quot;termQuery&quot; field on the &quot;CoreTermsQueryAttributes&quot; block or block attributes */
+  termQuery: Scalars['BlockAttributesObject']['output'];
 };
 
 /** A block used for editing the site */
@@ -8312,6 +8625,10 @@ export type GeneralSettings = {
   email?: Maybe<Scalars['String']['output']>;
   /** WordPress locale code. */
   language?: Maybe<Scalars['String']['output']>;
+  /** The media item representing the site icon configured in site settings, used as the site&#039;s favicon and app icon. */
+  siteIcon?: Maybe<GeneralSettingsToMediaItemConnectionEdge>;
+  /** Site icon URL configured in site settings, used as the site&#039;s favicon and app icon. */
+  siteIconUrl?: Maybe<Scalars['String']['output']>;
   /** A day number of the week that the week should start on. */
   startOfWeek?: Maybe<Scalars['Int']['output']>;
   /** A time format for all time strings. */
@@ -8324,89 +8641,19 @@ export type GeneralSettings = {
   url?: Maybe<Scalars['String']['output']>;
 };
 
-/** Input for the generateAuthorizationCode mutation. */
-export type GenerateAuthorizationCodeInput = {
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: InputMaybe<Scalars['String']['input']>;
-  /** Email for WordPress user */
-  email?: InputMaybe<Scalars['String']['input']>;
-  /** Password for WordPress user */
-  password?: InputMaybe<Scalars['String']['input']>;
-  /** Username for WordPress user */
-  username?: InputMaybe<Scalars['String']['input']>;
+
+/** The general setting type */
+export type GeneralSettingsSiteIconUrlArgs = {
+  size?: InputMaybe<Scalars['Int']['input']>;
 };
 
-/** The payload for the generateAuthorizationCode mutation. */
-export type GenerateAuthorizationCodePayload = {
-  __typename?: 'GenerateAuthorizationCodePayload';
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']['output']>;
-  /** Authorization code used for requesting refresh/access tokens */
-  code?: Maybe<Scalars['String']['output']>;
-  /** Error encountered during user authentication, if any */
-  error?: Maybe<Scalars['String']['output']>;
-};
-
-/** Types of styles to load */
-export enum GlobalStylesheetTypesEnum {
-  BaseLayoutStyles = 'BASE_LAYOUT_STYLES',
-  Presets = 'PRESETS',
-  Styles = 'STYLES',
-  Variables = 'VARIABLES'
-}
-
-/** The &quot;HeaderAnimation&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
-export type HeaderAnimation = AcfFieldGroup & AcfFieldGroupFields & HeaderAnimation_Fields & {
-  __typename?: 'HeaderAnimation';
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;repeater&quot; Field Type added to the schema as part of the &quot;HeaderAnimation&quot; Field Group */
-  statements?: Maybe<Array<Maybe<HeaderAnimationStatements>>>;
-};
-
-/** The &quot;HeaderAnimationStatements&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
-export type HeaderAnimationStatements = AcfFieldGroup & AcfFieldGroupFields & HeaderAnimationStatements_Fields & {
-  __typename?: 'HeaderAnimationStatements';
-  /** Field of the &quot;select&quot; Field Type added to the schema as part of the &quot;HeaderAnimationStatements&quot; Field Group */
-  bgcolor?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;HeaderAnimationStatements&quot; Field Group */
-  statement?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;select&quot; Field Type added to the schema as part of the &quot;HeaderAnimationStatements&quot; Field Group */
-  textcolor?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-};
-
-/** Interface representing fields of the ACF &quot;HeaderAnimationStatements&quot; Field Group */
-export type HeaderAnimationStatements_Fields = {
-  /** Field of the &quot;select&quot; Field Type added to the schema as part of the &quot;HeaderAnimationStatements&quot; Field Group */
-  bgcolor?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;HeaderAnimationStatements&quot; Field Group */
-  statement?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;select&quot; Field Type added to the schema as part of the &quot;HeaderAnimationStatements&quot; Field Group */
-  textcolor?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-};
-
-/** Interface representing fields of the ACF &quot;HeaderAnimation&quot; Field Group */
-export type HeaderAnimation_Fields = {
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;repeater&quot; Field Type added to the schema as part of the &quot;HeaderAnimation&quot; Field Group */
-  statements?: Maybe<Array<Maybe<HeaderAnimationStatements>>>;
+/** Connection between the GeneralSettings type and the MediaItem type */
+export type GeneralSettingsToMediaItemConnectionEdge = Edge & MediaItemConnectionEdge & OneToOneConnection & {
+  __typename?: 'GeneralSettingsToMediaItemConnectionEdge';
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** The node of the connection, without the edges */
+  node: MediaItem;
 };
 
 /** Content that can be organized in a parent-child structure. Provides fields for navigating up and down the hierarchy and maintaining structured relationships. */
@@ -8415,8 +8662,6 @@ export type HierarchicalContentNode = {
   ancestors?: Maybe<HierarchicalContentNodeToContentNodeAncestorsConnection>;
   /** Connection between the HierarchicalContentNode type and the ContentNode type */
   children?: Maybe<HierarchicalContentNodeToContentNodeChildrenConnection>;
-  /** @deprecated Deprecated in favor of using Next.js pages */
-  conditionalTags?: Maybe<ConditionalTags>;
   /** Connection between the ContentNode type and the ContentType type */
   contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
   /** The name of the Content Type the node belongs to */
@@ -8481,7 +8726,6 @@ export type HierarchicalContentNode = {
   status?: Maybe<Scalars['String']['output']>;
   /** The template assigned to a node of content */
   template?: Maybe<ContentTemplate>;
-  templates?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   /** The unique resource identifier path */
   uri?: Maybe<Scalars['String']['output']>;
 };
@@ -8697,8 +8941,6 @@ export type HierarchicalNode = {
 
 /** Term node with hierarchical (parent/child) relationships */
 export type HierarchicalTermNode = {
-  /** @deprecated Deprecated in favor of using Next.js pages */
-  conditionalTags?: Maybe<ConditionalTags>;
   /** The number of objects connected to the object */
   count?: Maybe<Scalars['Int']['output']>;
   /** The unique identifier stored in the database */
@@ -8735,7 +8977,6 @@ export type HierarchicalTermNode = {
   slug?: Maybe<Scalars['String']['output']>;
   /** The name of the taxonomy that the object is associated with */
   taxonomyName?: Maybe<Scalars['String']['output']>;
-  templates?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   /** The ID of the term group that this term object belongs to */
   termGroupId?: Maybe<Scalars['Int']['output']>;
   /** The taxonomy ID that the object is associated with */
@@ -8760,33 +9001,6 @@ export type HierarchicalTermNodeEnqueuedStylesheetsArgs = {
   before?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
-};
-
-/** The &quot;HomeSection&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
-export type HomeSection = AcfFieldGroup & AcfFieldGroupFields & HomeSection_Fields & {
-  __typename?: 'HomeSection';
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;HomeSection&quot; Field Group */
-  accordeonlabel?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;true_false&quot; Field Type added to the schema as part of the &quot;HomeSection&quot; Field Group */
-  defaultActive?: Maybe<Scalars['Boolean']['output']>;
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-};
-
-/** Interface representing fields of the ACF &quot;HomeSection&quot; Field Group */
-export type HomeSection_Fields = {
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;HomeSection&quot; Field Group */
-  accordeonlabel?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;true_false&quot; Field Type added to the schema as part of the &quot;HomeSection&quot; Field Group */
-  defaultActive?: Maybe<Scalars['Boolean']['output']>;
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
 };
 
 /** File details for a Media Item */
@@ -8836,8 +9050,6 @@ export type MediaItem = ContentNode & DatabaseIdentifier & HierarchicalContentNo
   commentStatus?: Maybe<Scalars['String']['output']>;
   /** Connection between the MediaItem type and the Comment type */
   comments?: Maybe<MediaItemToCommentConnection>;
-  /** @deprecated Deprecated in favor of using Next.js pages */
-  conditionalTags?: Maybe<ConditionalTags>;
   /** Connection between the ContentNode type and the ContentType type */
   contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
   /** The name of the Content Type the node belongs to */
@@ -8933,7 +9145,6 @@ export type MediaItem = ContentNode & DatabaseIdentifier & HierarchicalContentNo
   status?: Maybe<Scalars['String']['output']>;
   /** The template assigned to a node of content */
   template?: Maybe<ContentTemplate>;
-  templates?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
   title?: Maybe<Scalars['String']['output']>;
   /** The unique resource identifier path */
@@ -9428,8 +9639,6 @@ export type MenuItemConnectionPageInfo = {
 
 /** Content that can be referenced by navigation menu items. Provides the essential fields needed to create links within navigation structures. */
 export type MenuItemLinkable = {
-  /** @deprecated Deprecated in favor of using Next.js pages */
-  conditionalTags?: Maybe<ConditionalTags>;
   /** The unique identifier stored in the database */
   databaseId: Scalars['Int']['output'];
   /** The globally unique ID for the object */
@@ -9444,7 +9653,6 @@ export type MenuItemLinkable = {
   isPostsPage: Scalars['Boolean']['output'];
   /** Whether the node is a Term */
   isTermNode: Scalars['Boolean']['output'];
-  templates?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   /** The unique resource identifier path */
   uri?: Maybe<Scalars['String']['output']>;
 };
@@ -9465,7 +9673,7 @@ export enum MenuItemNodeIdTypeEnum {
   Id = 'ID'
 }
 
-/** Deprecated in favor of MenuItemLinkeable Interface */
+/** Deprecated in favor of MenuItemLinkable Interface */
 export type MenuItemObjectUnion = Category | Page | Post | Tag;
 
 /** Connection between the MenuItem type and the Menu type */
@@ -9535,10 +9743,6 @@ export type MenuItemToMenuItemLinkableConnectionEdge = Edge & MenuItemLinkableCo
 
 /** Designated areas where navigation menus can be displayed. Represents the named regions in the interface where menus can be assigned. */
 export enum MenuLocationEnum {
-  /** Put the menu in the footer location */
-  Footer = 'FOOTER',
-  /** Put the menu in the primary location */
-  Primary = 'PRIMARY',
   /** Put the menu in the primary_navigation location */
   PrimaryNavigation = 'PRIMARY_NAVIGATION'
 }
@@ -10014,8 +10218,6 @@ export type Page = ContentNode & DatabaseIdentifier & HierarchicalContentNode & 
   commentStatus?: Maybe<Scalars['String']['output']>;
   /** Connection between the Page type and the Comment type */
   comments?: Maybe<PageToCommentConnection>;
-  /** @deprecated Deprecated in favor of using Next.js pages */
-  conditionalTags?: Maybe<ConditionalTags>;
   /** The content of the post. */
   content?: Maybe<Scalars['String']['output']>;
   /** Connection between the ContentNode type and the ContentType type */
@@ -10093,7 +10295,7 @@ export type Page = ContentNode & DatabaseIdentifier & HierarchicalContentNode & 
   parentId?: Maybe<Scalars['ID']['output']>;
   /** The password for the page object. */
   password?: Maybe<Scalars['String']['output']>;
-  /** Connection between the Page type and the page type */
+  /** Connection between the page type and the page type */
   preview?: Maybe<PageToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -10111,7 +10313,6 @@ export type Page = ContentNode & DatabaseIdentifier & HierarchicalContentNode & 
   status?: Maybe<Scalars['String']['output']>;
   /** The template assigned to a node of content */
   template?: Maybe<ContentTemplate>;
-  templates?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
   title?: Maybe<Scalars['String']['output']>;
   /** The unique resource identifier path */
@@ -10369,7 +10570,7 @@ export type PageToCommentConnectionWhereArgs = {
   userId?: InputMaybe<Scalars['ID']['input']>;
 };
 
-/** Connection between the Page type and the page type */
+/** Connection between the page type and the page type */
 export type PageToPreviewConnectionEdge = Edge & OneToOneConnection & PageConnectionEdge & {
   __typename?: 'PageToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -10554,8 +10755,6 @@ export type Post = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & 
   commentStatus?: Maybe<Scalars['String']['output']>;
   /** Connection between the Post type and the Comment type */
   comments?: Maybe<PostToCommentConnection>;
-  /** @deprecated Deprecated in favor of using Next.js pages */
-  conditionalTags?: Maybe<ConditionalTags>;
   /** The content of the post. */
   content?: Maybe<Scalars['String']['output']>;
   /** Connection between the ContentNode type and the ContentType type */
@@ -10638,7 +10837,7 @@ export type Post = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & 
    * @deprecated Deprecated in favor of the databaseId field
    */
   postId: Scalars['Int']['output'];
-  /** Connection between the Post type and the post type */
+  /** Connection between the post type and the post type */
   preview?: Maybe<PostToPreviewConnectionEdge>;
   /** The database id of the preview node */
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
@@ -10658,7 +10857,6 @@ export type Post = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & 
   tags?: Maybe<PostToTagConnection>;
   /** The template assigned to the node */
   template?: Maybe<ContentTemplate>;
-  templates?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   /** Connection between the Post type and the TermNode type */
   terms?: Maybe<PostToTermNodeConnection>;
   /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
@@ -10859,8 +11057,6 @@ export type PostEditorBlock = {
 /** A standardized classification system for content presentation styles. These formats can be used to display content differently based on type, such as &quot;standard&quot;, &quot;gallery&quot;, &quot;video&quot;, etc. */
 export type PostFormat = DatabaseIdentifier & Node & TermNode & UniformResourceIdentifiable & {
   __typename?: 'PostFormat';
-  /** @deprecated Deprecated in favor of using Next.js pages */
-  conditionalTags?: Maybe<ConditionalTags>;
   /** Connection between the PostFormat type and the ContentNode type */
   contentNodes?: Maybe<PostFormatToContentNodeConnection>;
   /** The number of objects connected to the object */
@@ -10906,7 +11102,6 @@ export type PostFormat = DatabaseIdentifier & Node & TermNode & UniformResourceI
   taxonomy?: Maybe<PostFormatToTaxonomyConnectionEdge>;
   /** The name of the taxonomy that the object is associated with */
   taxonomyName?: Maybe<Scalars['String']['output']>;
-  templates?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   /** The ID of the term group that this term object belongs to */
   termGroupId?: Maybe<Scalars['Int']['output']>;
   /** The taxonomy ID that the object is associated with */
@@ -11492,7 +11687,7 @@ export type PostToCommentConnectionWhereArgs = {
   userId?: InputMaybe<Scalars['ID']['input']>;
 };
 
-/** Connection between the Post type and the post type */
+/** Connection between the post type and the post type */
 export type PostToParentConnectionEdge = Edge & OneToOneConnection & PostConnectionEdge & {
   __typename?: 'PostToParentConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -11504,7 +11699,7 @@ export type PostToParentConnectionEdge = Edge & OneToOneConnection & PostConnect
   node: Post;
 };
 
-/** Connection between the Post type and the post type */
+/** Connection between the post type and the post type */
 export type PostToPostConnection = Connection & PostConnection & {
   __typename?: 'PostToPostConnection';
   /** Edges for the PostToPostConnection connection */
@@ -11626,7 +11821,7 @@ export type PostToPostFormatConnectionWhereArgs = {
   updateTermMetaCache?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
-/** Connection between the Post type and the post type */
+/** Connection between the post type and the post type */
 export type PostToPreviewConnectionEdge = Edge & OneToOneConnection & PostConnectionEdge & {
   __typename?: 'PostToPreviewConnectionEdge';
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -12081,6 +12276,34 @@ export type ResetUserPasswordPayload = {
   user?: Maybe<User>;
 };
 
+/** A resolved post with title, date, URI, and featured image. */
+export type ResolvedPost = {
+  __typename?: 'ResolvedPost';
+  date?: Maybe<Scalars['String']['output']>;
+  excerpt?: Maybe<Scalars['String']['output']>;
+  featuredImage?: Maybe<ResolvedPostImage>;
+  title?: Maybe<Scalars['String']['output']>;
+  uri?: Maybe<Scalars['String']['output']>;
+};
+
+/** A featured image for a resolved post. */
+export type ResolvedPostImage = {
+  __typename?: 'ResolvedPostImage';
+  altText?: Maybe<Scalars['String']['output']>;
+  sizes?: Maybe<Array<Maybe<ResolvedPostImageSize>>>;
+  sourceUrl?: Maybe<Scalars['String']['output']>;
+};
+
+/** An image size variant. */
+export type ResolvedPostImageSize = {
+  __typename?: 'ResolvedPostImageSize';
+  height?: Maybe<Scalars['String']['output']>;
+  mimeType?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  sourceUrl?: Maybe<Scalars['String']['output']>;
+  width?: Maybe<Scalars['String']['output']>;
+};
+
 /** Input for the restoreComment mutation. */
 export type RestoreCommentInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
@@ -12135,8 +12358,6 @@ export type RootMutation = {
   deleteTag?: Maybe<DeleteTagPayload>;
   /** The deleteUser mutation */
   deleteUser?: Maybe<DeleteUserPayload>;
-  /** The generateAuthorizationCode mutation */
-  generateAuthorizationCode?: Maybe<GenerateAuthorizationCodePayload>;
   /** Increase the count. */
   increaseCount?: Maybe<Scalars['Int']['output']>;
   /** The registerUser mutation */
@@ -12265,12 +12486,6 @@ export type RootMutationDeleteUserArgs = {
 
 
 /** The root mutation */
-export type RootMutationGenerateAuthorizationCodeArgs = {
-  input: GenerateAuthorizationCodeInput;
-};
-
-
-/** The root mutation */
 export type RootMutationIncreaseCountArgs = {
   count?: InputMaybe<Scalars['Int']['input']>;
 };
@@ -12380,8 +12595,6 @@ export type RootQuery = {
   discussionSettings?: Maybe<DiscussionSettings>;
   /** Fields of the &#039;GeneralSettings&#039; settings group */
   generalSettings?: Maybe<GeneralSettings>;
-  /** Returns the stylesheet resulting of merging core, theme, and user data. */
-  globalStylesheet?: Maybe<Scalars['String']['output']>;
   /** An object of the mediaItem Type.  */
   mediaItem?: Maybe<MediaItem>;
   /**
@@ -12429,6 +12642,10 @@ export type RootQuery = {
   postFormats?: Maybe<RootQueryToPostFormatConnection>;
   /** Connection between the RootQuery type and the post type */
   posts?: Maybe<RootQueryToPostConnection>;
+  /** Fetch posts with pagination for any post type. */
+  queryPosts?: Maybe<Array<Maybe<ResolvedPost>>>;
+  /** Get total post count for pagination. */
+  queryPostsCount?: Maybe<Scalars['Int']['output']>;
   /** Fields of the &#039;ReadingSettings&#039; settings group */
   readingSettings?: Maybe<ReadingSettings>;
   /** Connection between the RootQuery type and the EnqueuedScript type */
@@ -12439,10 +12656,6 @@ export type RootQuery = {
   revisions?: Maybe<RootQueryToRevisionsConnection>;
   /** Returns seo site data */
   seo?: Maybe<SeoConfig>;
-  /** Total number of Action Network subscribers */
-  subscriberCount?: Maybe<Scalars['Int']['output']>;
-  /** Last updated timestamp for subscriber count */
-  subscriberCountTimestamp?: Maybe<Scalars['String']['output']>;
   /** A 0bject */
   tag?: Maybe<Tag>;
   /** Connection between the RootQuery type and the tag type */
@@ -12540,12 +12753,6 @@ export type RootQueryContentTypesArgs = {
   before?: InputMaybe<Scalars['String']['input']>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
-};
-
-
-/** The root entry point into the Graph */
-export type RootQueryGlobalStylesheetArgs = {
-  types?: InputMaybe<Array<InputMaybe<GlobalStylesheetTypesEnum>>>;
 };
 
 
@@ -12705,6 +12912,22 @@ export type RootQueryPostsArgs = {
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<RootQueryToPostConnectionWhereArgs>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryQueryPostsArgs = {
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order?: InputMaybe<Scalars['String']['input']>;
+  orderBy?: InputMaybe<Scalars['String']['input']>;
+  perPage?: InputMaybe<Scalars['Int']['input']>;
+  postType?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryQueryPostsCountArgs = {
+  postType?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -14470,54 +14693,9 @@ export type Settings = {
   writingSettingsUseSmilies?: Maybe<Scalars['Boolean']['output']>;
 };
 
-/** The &quot;SignupForm&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
-export type SignupForm = AcfFieldGroup & AcfFieldGroupFields & SignupForm_Fields & {
-  __typename?: 'SignupForm';
-  /** Field of the &quot;true_false&quot; Field Type added to the schema as part of the &quot;SignupForm&quot; Field Group */
-  emailField?: Maybe<Scalars['Boolean']['output']>;
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;SignupForm&quot; Field Group */
-  formId?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;true_false&quot; Field Type added to the schema as part of the &quot;SignupForm&quot; Field Group */
-  phoneField?: Maybe<Scalars['Boolean']['output']>;
-  /** Field of the &quot;true_false&quot; Field Type added to the schema as part of the &quot;SignupForm&quot; Field Group */
-  postcodeField?: Maybe<Scalars['Boolean']['output']>;
-  /** Field of the &quot;true_false&quot; Field Type added to the schema as part of the &quot;SignupForm&quot; Field Group */
-  unionList?: Maybe<Scalars['Boolean']['output']>;
-  /** Field of the &quot;true_false&quot; Field Type added to the schema as part of the &quot;SignupForm&quot; Field Group */
-  workplace?: Maybe<Scalars['Boolean']['output']>;
-};
-
-/** Interface representing fields of the ACF &quot;SignupForm&quot; Field Group */
-export type SignupForm_Fields = {
-  /** Field of the &quot;true_false&quot; Field Type added to the schema as part of the &quot;SignupForm&quot; Field Group */
-  emailField?: Maybe<Scalars['Boolean']['output']>;
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;text&quot; Field Type added to the schema as part of the &quot;SignupForm&quot; Field Group */
-  formId?: Maybe<Scalars['String']['output']>;
-  /** Field of the &quot;true_false&quot; Field Type added to the schema as part of the &quot;SignupForm&quot; Field Group */
-  phoneField?: Maybe<Scalars['Boolean']['output']>;
-  /** Field of the &quot;true_false&quot; Field Type added to the schema as part of the &quot;SignupForm&quot; Field Group */
-  postcodeField?: Maybe<Scalars['Boolean']['output']>;
-  /** Field of the &quot;true_false&quot; Field Type added to the schema as part of the &quot;SignupForm&quot; Field Group */
-  unionList?: Maybe<Scalars['Boolean']['output']>;
-  /** Field of the &quot;true_false&quot; Field Type added to the schema as part of the &quot;SignupForm&quot; Field Group */
-  workplace?: Maybe<Scalars['Boolean']['output']>;
-};
-
 /** A taxonomy term used to organize and classify content. Tags do not have a hierarchy and are generally used for more specific classifications. */
 export type Tag = DatabaseIdentifier & MenuItemLinkable & Node & TermNode & UniformResourceIdentifiable & {
   __typename?: 'Tag';
-  /** @deprecated Deprecated in favor of using Next.js pages */
-  conditionalTags?: Maybe<ConditionalTags>;
   /** Connection between the Tag type and the ContentNode type */
   contentNodes?: Maybe<TagToContentNodeConnection>;
   /** The number of objects connected to the object */
@@ -14563,7 +14741,6 @@ export type Tag = DatabaseIdentifier & MenuItemLinkable & Node & TermNode & Unif
   taxonomy?: Maybe<TagToTaxonomyConnectionEdge>;
   /** The name of the taxonomy that the object is associated with */
   taxonomyName?: Maybe<Scalars['String']['output']>;
-  templates?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   /** The ID of the term group that this term object belongs to */
   termGroupId?: Maybe<Scalars['Int']['output']>;
   /** The taxonomy ID that the object is associated with */
@@ -15056,8 +15233,6 @@ export type TaxonomyToTermNodeConnectionPageInfo = PageInfo & TermNodeConnection
 
 /** Base interface for taxonomy terms such as categories and tags. Terms are used to organize and classify content. */
 export type TermNode = {
-  /** @deprecated Deprecated in favor of using Next.js pages */
-  conditionalTags?: Maybe<ConditionalTags>;
   /** The number of objects connected to the object */
   count?: Maybe<Scalars['Int']['output']>;
   /** Identifies the primary key from the database. */
@@ -15090,7 +15265,6 @@ export type TermNode = {
   slug?: Maybe<Scalars['String']['output']>;
   /** The name of the taxonomy that the object is associated with */
   taxonomyName?: Maybe<Scalars['String']['output']>;
-  templates?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   /** The ID of the term group that this term object belongs to */
   termGroupId?: Maybe<Scalars['Int']['output']>;
   /** The taxonomy ID that the object is associated with */
@@ -15310,33 +15484,8 @@ export type ThemeConnectionPageInfo = {
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
-/** The &quot;TickerNumber&quot; Field Group. Added to the Schema by &quot;WPGraphQL for ACF&quot;. */
-export type TickerNumber = AcfFieldGroup & AcfFieldGroupFields & TickerNumber_Fields & {
-  __typename?: 'TickerNumber';
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-  /** Add this number to the current subscriber count */
-  incrementBy?: Maybe<Scalars['Float']['output']>;
-};
-
-/** Interface representing fields of the ACF &quot;TickerNumber&quot; Field Group */
-export type TickerNumber_Fields = {
-  /**
-   * The name of the field group
-   * @deprecated Use __typename instead
-   */
-  fieldGroupName?: Maybe<Scalars['String']['output']>;
-  /** Add this number to the current subscriber count */
-  incrementBy?: Maybe<Scalars['Float']['output']>;
-};
-
 /** An interface for content that can be accessed via a unique URI/URL path. Implemented by content types that have their own permalinks. */
 export type UniformResourceIdentifiable = {
-  /** @deprecated Deprecated in favor of using Next.js pages */
-  conditionalTags?: Maybe<ConditionalTags>;
   /** The globally unique ID for the object */
   id: Scalars['ID']['output'];
   /** Whether the node is a Comment */
@@ -15349,7 +15498,6 @@ export type UniformResourceIdentifiable = {
   isPostsPage: Scalars['Boolean']['output'];
   /** Whether the node is a Term */
   isTermNode: Scalars['Boolean']['output'];
-  templates?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   /** The unique resource identifier path */
   uri?: Maybe<Scalars['String']['output']>;
 };
@@ -15716,6 +15864,8 @@ export type UpdateUserPayload = {
 /** A registered user account. Users can be assigned roles, author content, and have various capabilities within the site. */
 export type User = Commenter & DatabaseIdentifier & Node & UniformResourceIdentifiable & {
   __typename?: 'User';
+  /** The admin color scheme preference for the user. Possible values include &quot;fresh&quot;, &quot;light&quot;, &quot;blue&quot;, &quot;coffee&quot;, &quot;ectoplasm&quot;, &quot;midnight&quot;, &quot;ocean&quot;, &quot;sunrise&quot;. Default is &quot;fresh&quot;. */
+  adminColor?: Maybe<Scalars['String']['output']>;
   /** Avatar object for user. The avatar object can be retrieved in different sizes by specifying the size argument. */
   avatar?: Maybe<Avatar>;
   /** User metadata option name. Usually it will be &quot;wp_capabilities&quot;. */
@@ -15724,8 +15874,6 @@ export type User = Commenter & DatabaseIdentifier & Node & UniformResourceIdenti
   capabilities?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   /** Connection between the User type and the Comment type */
   comments?: Maybe<UserToCommentConnection>;
-  /** @deprecated Deprecated in favor of using Next.js pages */
-  conditionalTags?: Maybe<ConditionalTags>;
   /** Identifies the primary key from the database. */
   databaseId: Scalars['Int']['output'];
   /** Description of the user. */
@@ -15740,6 +15888,12 @@ export type User = Commenter & DatabaseIdentifier & Node & UniformResourceIdenti
   extraCapabilities?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   /** First name of the user. This is equivalent to the WP_User-&gt;user_first_name property. */
   firstName?: Maybe<Scalars['String']['output']>;
+  /** Whether the user has enabled keyboard shortcuts for comment moderation. Defaults to false. */
+  hasCommentShortcutsEnabled?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the user has enabled the visual editor. When enabled, the WYSIWYG editor is used for content editing. Defaults to true. */
+  hasRichEditingEnabled?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the user has enabled syntax highlighting when editing code within the post editor. Defaults to true. */
+  hasSyntaxHighlightingEnabled?: Maybe<Scalars['Boolean']['output']>;
   /** The globally unique identifier for the user object. */
   id: Scalars['ID']['output'];
   /** Whether the node is a Comment */
@@ -15780,10 +15934,8 @@ export type User = Commenter & DatabaseIdentifier & Node & UniformResourceIdenti
   seo?: Maybe<SeoUser>;
   /** Whether the Toolbar should be displayed when the user is viewing the site. */
   shouldShowAdminToolbar?: Maybe<Scalars['Boolean']['output']>;
-  shouldShowFaustToolbar?: Maybe<Scalars['Boolean']['output']>;
   /** The slug for the user. This field is equivalent to WP_User-&gt;user_nicename */
   slug?: Maybe<Scalars['String']['output']>;
-  templates?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   /** The unique resource identifier path */
   uri?: Maybe<Scalars['String']['output']>;
   /** A website url that is associated with the user. */
@@ -16591,30 +16743,6 @@ export type WpPageInfo = {
   startCursor?: Maybe<Scalars['String']['output']>;
 };
 
-/** Provides access to fields of the &quot;HeaderAnimation&quot; ACF Field Group via the &quot;headerAnimation&quot; field */
-export type WithAcfHeaderAnimation = {
-  /** Fields of the HeaderAnimation ACF Field Group */
-  headerAnimation?: Maybe<HeaderAnimation>;
-};
-
-/** Provides access to fields of the &quot;HomeSection&quot; ACF Field Group via the &quot;homeSection&quot; field */
-export type WithAcfHomeSection = {
-  /** Fields of the HomeSection ACF Field Group */
-  homeSection?: Maybe<HomeSection>;
-};
-
-/** Provides access to fields of the &quot;SignupForm&quot; ACF Field Group via the &quot;signupForm&quot; field */
-export type WithAcfSignupForm = {
-  /** Fields of the SignupForm ACF Field Group */
-  signupForm?: Maybe<SignupForm>;
-};
-
-/** Provides access to fields of the &quot;TickerNumber&quot; ACF Field Group via the &quot;tickerNumber&quot; field */
-export type WithAcfTickerNumber = {
-  /** Fields of the TickerNumber ACF Field Group */
-  tickerNumber?: Maybe<TickerNumber>;
-};
-
 /** The writing setting type */
 export type WritingSettings = {
   __typename?: 'WritingSettings';
@@ -16767,445 +16895,472 @@ export type YoastSeoBreadcrumbsAttributes = {
 };
 
 export type PageMetaQueryVariables = Exact<{
-  uri: Scalars['ID']['input'];
+  uri: Scalars['String']['input'];
 }>;
 
 
-export type PageMetaQuery = { __typename?: 'RootQuery', menu?: { __typename?: 'Menu', menuItems?: { __typename?: 'MenuToMenuItemConnection', nodes: Array<{ __typename?: 'MenuItem', label?: string | null, order?: number | null, uri?: string | null }> } | null } | null, page?: { __typename?: 'Page', seo?: { __typename?: 'PostTypeSEO', metaDesc?: string | null, metaKeywords?: string | null, opengraphSiteName?: string | null, opengraphTitle?: string | null, opengraphPublisher?: string | null, opengraphUrl?: string | null, title?: string | null, twitterDescription?: string | null, twitterTitle?: string | null, twitterImage?: { __typename?: 'MediaItem', altText?: string | null, caption?: string | null, mediaDetails?: { __typename?: 'MediaDetails', sizes?: Array<{ __typename?: 'MediaSize', name?: string | null, sourceUrl?: string | null, width?: string | null, height?: string | null } | null> | null } | null } | null, opengraphImage?: { __typename?: 'MediaItem', altText?: string | null, caption?: string | null, mediaDetails?: { __typename?: 'MediaDetails', sizes?: Array<{ __typename?: 'MediaSize', name?: string | null, sourceUrl?: string | null, width?: string | null, height?: string | null } | null> | null } | null } | null } | null } | null };
+export type PageMetaQuery = { __typename?: 'RootQuery', menus?: { __typename?: 'RootQueryToMenuConnection', nodes: Array<{ __typename?: 'Menu', name?: string | null, locations?: Array<MenuLocationEnum | null> | null, menuItems?: { __typename?: 'MenuToMenuItemConnection', nodes: Array<{ __typename?: 'MenuItem', label?: string | null, order?: number | null, uri?: string | null }> } | null }> } | null, page?: { __typename?: 'Category' } | { __typename?: 'Comment' } | { __typename?: 'ContentType' } | { __typename?: 'MediaItem' } | { __typename?: 'Page', seo?: { __typename?: 'PostTypeSEO', metaDesc?: string | null, metaKeywords?: string | null, opengraphSiteName?: string | null, opengraphTitle?: string | null, opengraphPublisher?: string | null, opengraphUrl?: string | null, title?: string | null, twitterDescription?: string | null, twitterTitle?: string | null, twitterImage?: { __typename?: 'MediaItem', altText?: string | null, caption?: string | null, mediaDetails?: { __typename?: 'MediaDetails', sizes?: Array<{ __typename?: 'MediaSize', name?: string | null, sourceUrl?: string | null, width?: string | null, height?: string | null } | null> | null } | null } | null, opengraphImage?: { __typename?: 'MediaItem', altText?: string | null, caption?: string | null, mediaDetails?: { __typename?: 'MediaDetails', sizes?: Array<{ __typename?: 'MediaSize', name?: string | null, sourceUrl?: string | null, width?: string | null, height?: string | null } | null> | null } | null } | null } | null } | { __typename?: 'Post', seo?: { __typename?: 'PostTypeSEO', metaDesc?: string | null, metaKeywords?: string | null, opengraphSiteName?: string | null, opengraphTitle?: string | null, opengraphPublisher?: string | null, opengraphUrl?: string | null, title?: string | null, twitterDescription?: string | null, twitterTitle?: string | null, twitterImage?: { __typename?: 'MediaItem', altText?: string | null, caption?: string | null, mediaDetails?: { __typename?: 'MediaDetails', sizes?: Array<{ __typename?: 'MediaSize', name?: string | null, sourceUrl?: string | null, width?: string | null, height?: string | null } | null> | null } | null } | null, opengraphImage?: { __typename?: 'MediaItem', altText?: string | null, caption?: string | null, mediaDetails?: { __typename?: 'MediaDetails', sizes?: Array<{ __typename?: 'MediaSize', name?: string | null, sourceUrl?: string | null, width?: string | null, height?: string | null } | null> | null } | null } | null } | null } | { __typename?: 'PostFormat' } | { __typename?: 'Tag' } | { __typename?: 'User' } | null };
 
 export type SeoFragmentFragment = { __typename?: 'PostTypeSEO', metaDesc?: string | null, metaKeywords?: string | null, opengraphSiteName?: string | null, opengraphTitle?: string | null, opengraphPublisher?: string | null, opengraphUrl?: string | null, title?: string | null, twitterDescription?: string | null, twitterTitle?: string | null, twitterImage?: { __typename?: 'MediaItem', altText?: string | null, caption?: string | null, mediaDetails?: { __typename?: 'MediaDetails', sizes?: Array<{ __typename?: 'MediaSize', name?: string | null, sourceUrl?: string | null, width?: string | null, height?: string | null } | null> | null } | null } | null, opengraphImage?: { __typename?: 'MediaItem', altText?: string | null, caption?: string | null, mediaDetails?: { __typename?: 'MediaDetails', sizes?: Array<{ __typename?: 'MediaSize', name?: string | null, sourceUrl?: string | null, width?: string | null, height?: string | null } | null> | null } | null } | null };
-
-export type MediaDetailsFragmentFragment = { __typename?: 'MediaDetails', sizes?: Array<{ __typename?: 'MediaSize', name?: string | null, sourceUrl?: string | null, width?: string | null, height?: string | null } | null> | null };
 
 export type PageContentQueryVariables = Exact<{
   uri?: InputMaybe<Scalars['String']['input']>;
 }>;
 
 
-export type PageContentQuery = { __typename?: 'RootQuery', nodeByUri?: { __typename?: 'Category' } | { __typename?: 'Comment' } | { __typename?: 'ContentType' } | { __typename?: 'MediaItem' } | { __typename?: 'Page', id: string, title?: string | null, date?: string | null, editorBlocks?: Array<{ __typename: 'AcfHeaderAnimation', apiVersion?: number | null, blockEditorCategoryName?: string | null, name?: string | null, parentClientId?: string | null, clientId?: string | null, headerAnimation?: { __typename?: 'HeaderAnimation', statements?: Array<{ __typename?: 'HeaderAnimationStatements', statement?: string | null, bgcolor?: Array<string | null> | null, textcolor?: Array<string | null> | null } | null> | null } | null, attributes?: { __typename?: 'AcfHeaderAnimationAttributes', align?: string | null, backgroundColor?: string | null, textColor?: string | null, className?: string | null } | null } | { __typename: 'AcfHomeSection', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'AcfHomeSectionAttributes', align?: string | null, backgroundColor?: string | null, textColor?: string | null, className?: string | null } | null, innerBlocks?: Array<{ __typename?: 'AcfHeaderAnimation', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'AcfHomeSection', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'AcfSignupForm', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'AcfTickerNumber', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreArchives', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreAudio', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreAvatar', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreButton', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreButtons', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCalendar', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCategories', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCode', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreColumn', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreColumns', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentAuthorName', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentContent', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentDate', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentEditLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentReplyLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentTemplate', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreComments', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentsPagination', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentsPaginationNext', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentsPaginationNumbers', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentsPaginationPrevious', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentsTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCover', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreDetails', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreEmbed', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreFile', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreFootnotes', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreFreeform', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreGallery', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreGroup', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreHeading', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreHomeLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreHtml', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreImage', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreLatestComments', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreLatestPosts', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreLegacyWidget', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreList', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreListItem', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreLoginout', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreMediaText', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreMissing', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreMore', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreNavigation', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreNavigationLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreNavigationSubmenu', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreNextpage', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePageList', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePageListItem', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreParagraph', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePattern', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostAuthor', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostAuthorBiography', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostAuthorName', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostComments', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostCommentsForm', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostContent', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostDate', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostExcerpt', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostFeaturedImage', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostNavigationLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostTemplate', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostTerms', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePreformatted', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePullquote', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreQuery', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreQueryNoResults', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreQueryPagination', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreQueryPaginationNext', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreQueryPaginationNumbers', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreQueryPaginationPrevious', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreQueryTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreQueryTotal', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreQuote', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreReadMore', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreRss', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreSearch', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreSeparator', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreShortcode', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreSiteLogo', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreSiteTagline', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreSiteTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreSocialLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreSocialLinks', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreSpacer', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreTable', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreTagCloud', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreTemplatePart', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreTermDescription', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreTextColumns', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreVerse', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreVideo', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreWidgetGroup', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'YoastFaqBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'YoastHowToBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'YoastSeoBreadcrumbs', name?: string | null, parentClientId?: string | null, clientId?: string | null } | null> | null, homeSection?: { __typename?: 'HomeSection', accordeonlabel?: string | null, defaultActive?: boolean | null } | null } | { __typename: 'AcfSignupForm', name?: string | null, parentClientId?: string | null, clientId?: string | null, signupForm?: { __typename?: 'SignupForm', formId?: string | null, emailField?: boolean | null, phoneField?: boolean | null, postcodeField?: boolean | null, unionList?: boolean | null, workplace?: boolean | null } | null, attributes?: { __typename?: 'AcfSignupFormAttributes', align?: string | null, backgroundColor?: string | null, textColor?: string | null, className?: string | null } | null } | { __typename: 'AcfTickerNumber', currentCount?: number | null, name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'AcfTickerNumberAttributes', align?: string | null, backgroundColor?: string | null, textColor?: string | null, className?: string | null } | null, tickerNumber?: { __typename?: 'TickerNumber', incrementBy?: number | null } | null } | { __typename: 'CoreArchives', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreAudio', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreAvatar', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreButton', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreButtonAttributes', backgroundColor?: string | null, style?: any | null, className?: string | null, fontSize?: string | null, linkTarget?: string | null, text?: string | null, url?: string | null } | null, innerBlocks?: Array<{ __typename: 'AcfHeaderAnimation', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'AcfHomeSection', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'AcfSignupForm', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'AcfTickerNumber', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreArchives', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreAudio', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreAvatar', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreButton', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreButtons', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCalendar', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCategories', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCode', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreColumn', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreColumns', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentAuthorName', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentContent', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentDate', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentEditLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentReplyLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentTemplate', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreComments', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentsPagination', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentsPaginationNext', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentsPaginationNumbers', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentsPaginationPrevious', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentsTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCover', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreDetails', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreEmbed', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreFile', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreFootnotes', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreFreeform', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreGallery', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreGroup', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreHeading', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreHomeLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreHtml', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreImage', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreLatestComments', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreLatestPosts', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreLegacyWidget', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreList', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreListItem', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreLoginout', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreMediaText', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreMissing', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreMore', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreNavigation', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreNavigationLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreNavigationSubmenu', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreNextpage', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePageList', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePageListItem', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreParagraph', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePattern', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostAuthor', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostAuthorBiography', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostAuthorName', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostComments', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostCommentsForm', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostContent', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostDate', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostExcerpt', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostFeaturedImage', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostNavigationLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostTemplate', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostTerms', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePreformatted', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePullquote', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQuery', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryNoResults', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryPagination', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryPaginationNext', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryPaginationNumbers', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryPaginationPrevious', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryTotal', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQuote', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreReadMore', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreRss', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSearch', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSeparator', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreShortcode', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSiteLogo', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSiteTagline', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSiteTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSocialLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSocialLinks', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSpacer', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreTable', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreTagCloud', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreTemplatePart', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreTermDescription', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreTextColumns', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreVerse', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreVideo', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreWidgetGroup', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'YoastFaqBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'YoastHowToBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'YoastSeoBreadcrumbs', name?: string | null, parentClientId?: string | null, clientId?: string | null } | null> | null } | { __typename: 'CoreButtons', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreButtonsAttributes', align?: string | null, className?: string | null, layout?: any | null } | null } | { __typename: 'CoreCalendar', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCategories', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCode', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreColumn', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreColumnAttributes', backgroundColor?: string | null, layout?: any | null, className?: string | null, verticalAlignment?: string | null, style?: any | null, width?: string | null } | null } | { __typename: 'CoreColumns', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreColumnsAttributes', backgroundColor?: string | null, className?: string | null, layout?: any | null, verticalAlignment?: string | null, style?: any | null, align?: string | null, isStackedOnMobile: boolean } | null } | { __typename: 'CoreCommentAuthorName', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentContent', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentDate', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentEditLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentReplyLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentTemplate', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreComments', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentsPagination', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentsPaginationNext', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentsPaginationNumbers', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentsPaginationPrevious', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentsTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCover', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreDetails', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreEmbed', renderedHtml?: string | null, name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreEmbedAttributes', align?: string | null, url?: string | null, className?: string | null } | null } | { __typename: 'CoreFile', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreFootnotes', renderedHtml?: string | null, name?: string | null, parentClientId?: string | null, clientId?: string | null, innerBlocks?: Array<{ __typename?: 'AcfHeaderAnimation', name?: string | null } | { __typename?: 'AcfHomeSection', name?: string | null } | { __typename?: 'AcfSignupForm', name?: string | null } | { __typename?: 'AcfTickerNumber', name?: string | null } | { __typename?: 'CoreArchives', name?: string | null } | { __typename?: 'CoreAudio', name?: string | null } | { __typename?: 'CoreAvatar', name?: string | null } | { __typename?: 'CoreBlock', name?: string | null } | { __typename?: 'CoreButton', name?: string | null } | { __typename?: 'CoreButtons', name?: string | null } | { __typename?: 'CoreCalendar', name?: string | null } | { __typename?: 'CoreCategories', name?: string | null } | { __typename?: 'CoreCode', name?: string | null } | { __typename?: 'CoreColumn', name?: string | null } | { __typename?: 'CoreColumns', name?: string | null } | { __typename?: 'CoreCommentAuthorName', name?: string | null } | { __typename?: 'CoreCommentContent', name?: string | null } | { __typename?: 'CoreCommentDate', name?: string | null } | { __typename?: 'CoreCommentEditLink', name?: string | null } | { __typename?: 'CoreCommentReplyLink', name?: string | null } | { __typename?: 'CoreCommentTemplate', name?: string | null } | { __typename?: 'CoreComments', name?: string | null } | { __typename?: 'CoreCommentsPagination', name?: string | null } | { __typename?: 'CoreCommentsPaginationNext', name?: string | null } | { __typename?: 'CoreCommentsPaginationNumbers', name?: string | null } | { __typename?: 'CoreCommentsPaginationPrevious', name?: string | null } | { __typename?: 'CoreCommentsTitle', name?: string | null } | { __typename?: 'CoreCover', name?: string | null } | { __typename?: 'CoreDetails', name?: string | null } | { __typename?: 'CoreEmbed', name?: string | null } | { __typename?: 'CoreFile', name?: string | null } | { __typename?: 'CoreFootnotes', name?: string | null } | { __typename?: 'CoreFreeform', name?: string | null } | { __typename?: 'CoreGallery', name?: string | null } | { __typename?: 'CoreGroup', name?: string | null } | { __typename?: 'CoreHeading', name?: string | null } | { __typename?: 'CoreHomeLink', name?: string | null } | { __typename?: 'CoreHtml', name?: string | null } | { __typename?: 'CoreImage', name?: string | null } | { __typename?: 'CoreLatestComments', name?: string | null } | { __typename?: 'CoreLatestPosts', name?: string | null } | { __typename?: 'CoreLegacyWidget', name?: string | null } | { __typename?: 'CoreList', name?: string | null } | { __typename?: 'CoreListItem', name?: string | null } | { __typename?: 'CoreLoginout', name?: string | null } | { __typename?: 'CoreMediaText', name?: string | null } | { __typename?: 'CoreMissing', name?: string | null } | { __typename?: 'CoreMore', name?: string | null } | { __typename?: 'CoreNavigation', name?: string | null } | { __typename?: 'CoreNavigationLink', name?: string | null } | { __typename?: 'CoreNavigationSubmenu', name?: string | null } | { __typename?: 'CoreNextpage', name?: string | null } | { __typename?: 'CorePageList', name?: string | null } | { __typename?: 'CorePageListItem', name?: string | null } | { __typename?: 'CoreParagraph', name?: string | null } | { __typename?: 'CorePattern', name?: string | null } | { __typename?: 'CorePostAuthor', name?: string | null } | { __typename?: 'CorePostAuthorBiography', name?: string | null } | { __typename?: 'CorePostAuthorName', name?: string | null } | { __typename?: 'CorePostComments', name?: string | null } | { __typename?: 'CorePostCommentsForm', name?: string | null } | { __typename?: 'CorePostContent', name?: string | null } | { __typename?: 'CorePostDate', name?: string | null } | { __typename?: 'CorePostExcerpt', name?: string | null } | { __typename?: 'CorePostFeaturedImage', name?: string | null } | { __typename?: 'CorePostNavigationLink', name?: string | null } | { __typename?: 'CorePostTemplate', name?: string | null } | { __typename?: 'CorePostTerms', name?: string | null } | { __typename?: 'CorePostTitle', name?: string | null } | { __typename?: 'CorePreformatted', name?: string | null } | { __typename?: 'CorePullquote', name?: string | null } | { __typename?: 'CoreQuery', name?: string | null } | { __typename?: 'CoreQueryNoResults', name?: string | null } | { __typename?: 'CoreQueryPagination', name?: string | null } | { __typename?: 'CoreQueryPaginationNext', name?: string | null } | { __typename?: 'CoreQueryPaginationNumbers', name?: string | null } | { __typename?: 'CoreQueryPaginationPrevious', name?: string | null } | { __typename?: 'CoreQueryTitle', name?: string | null } | { __typename?: 'CoreQueryTotal', name?: string | null } | { __typename?: 'CoreQuote', name?: string | null } | { __typename?: 'CoreReadMore', name?: string | null } | { __typename?: 'CoreRss', name?: string | null } | { __typename?: 'CoreSearch', name?: string | null } | { __typename?: 'CoreSeparator', name?: string | null } | { __typename?: 'CoreShortcode', name?: string | null } | { __typename?: 'CoreSiteLogo', name?: string | null } | { __typename?: 'CoreSiteTagline', name?: string | null } | { __typename?: 'CoreSiteTitle', name?: string | null } | { __typename?: 'CoreSocialLink', name?: string | null } | { __typename?: 'CoreSocialLinks', name?: string | null } | { __typename?: 'CoreSpacer', name?: string | null } | { __typename?: 'CoreTable', name?: string | null } | { __typename?: 'CoreTagCloud', name?: string | null } | { __typename?: 'CoreTemplatePart', name?: string | null } | { __typename?: 'CoreTermDescription', name?: string | null } | { __typename?: 'CoreTextColumns', name?: string | null } | { __typename?: 'CoreVerse', name?: string | null } | { __typename?: 'CoreVideo', name?: string | null } | { __typename?: 'CoreWidgetGroup', name?: string | null } | { __typename?: 'YoastFaqBlock', name?: string | null } | { __typename?: 'YoastHowToBlock', name?: string | null } | { __typename?: 'YoastSeoBreadcrumbs', name?: string | null } | null> | null, attributes?: { __typename?: 'CoreFootnotesAttributes', metadata?: any | null, className?: string | null } | null } | { __typename: 'CoreFreeform', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreGallery', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreGroup', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreGroupAttributes', backgroundColor?: string | null, className?: string | null, align?: string | null, style?: any | null } | null } | { __typename: 'CoreHeading', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreHeadingAttributes', content?: string | null, className?: string | null, fontFamily?: string | null, fontSize?: string | null, textColor?: string | null, textAlign?: string | null, level: number, align?: string | null } | null } | { __typename: 'CoreHomeLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreHtml', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreImage', name?: string | null, parentClientId?: string | null, clientId?: string | null, mediaDetails?: { __typename?: 'MediaDetails', sizes?: Array<{ __typename?: 'MediaSize', sourceUrl?: string | null, height?: string | null, width?: string | null, mimeType?: string | null, name?: string | null } | null> | null } | null, attributes?: { __typename?: 'CoreImageAttributes', align?: string | null, title?: string | null, alt: string, url?: string | null, caption?: string | null, aspectRatio?: string | null, className?: string | null } | null } | { __typename: 'CoreLatestComments', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreLatestPosts', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreLegacyWidget', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreList', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreListItem', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreLoginout', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreMediaText', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreMissing', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreMore', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreMoreAttributes', customText: string } | null } | { __typename: 'CoreNavigation', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreNavigationLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreNavigationSubmenu', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreNextpage', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePageList', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePageListItem', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreParagraph', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreParagraphAttributes', content?: string | null, fontFamily?: string | null, fontSize?: string | null, textColor?: string | null, align?: string | null, className?: string | null } | null } | { __typename: 'CorePattern', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostAuthor', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostAuthorBiography', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostAuthorName', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostComments', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostCommentsForm', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostContent', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostDate', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostExcerpt', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostFeaturedImage', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostNavigationLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostTemplate', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CorePostTemplateAttributes', align?: string | null, backgroundColor?: string | null, fontFamily?: string | null, fontSize?: string | null, layout?: any | null, metadata?: any | null } | null } | { __typename: 'CorePostTerms', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePreformatted', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePullquote', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQuery', apiVersion?: number | null, blockEditorCategoryName?: string | null, isDynamic: boolean, name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreQueryAttributes', align?: string | null, layout?: any | null, metadata?: any | null, query: any } | null } | { __typename: 'CoreQueryNoResults', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryPagination', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryPaginationNext', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryPaginationNumbers', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryPaginationPrevious', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryTotal', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQuote', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreReadMore', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreRss', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSearch', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSeparator', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreShortcode', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSiteLogo', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSiteTagline', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSiteTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSocialLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSocialLinks', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSpacer', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreSpacerAttributes', height: string, className?: string | null, style?: any | null } | null } | { __typename: 'CoreTable', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreTagCloud', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreTemplatePart', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreTermDescription', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreTextColumns', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreVerse', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreVideo', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreVideoAttributes', autoplay?: boolean | null, preload: string, src?: string | null, muted?: boolean | null, controls: boolean, caption?: string | null, poster?: string | null, align?: string | null, loop?: boolean | null, className?: string | null } | null } | { __typename: 'CoreWidgetGroup', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'YoastFaqBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'YoastHowToBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'YoastSeoBreadcrumbs', name?: string | null, parentClientId?: string | null, clientId?: string | null } | null> | null } | { __typename?: 'Post', id: string, title?: string | null, date?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', altText?: string | null, mediaDetails?: { __typename?: 'MediaDetails', sizes?: Array<{ __typename?: 'MediaSize', name?: string | null, mimeType?: string | null, height?: string | null, width?: string | null, sourceUrl?: string | null } | null> | null } | null } } | null, editorBlocks?: Array<{ __typename: 'AcfHeaderAnimation', apiVersion?: number | null, blockEditorCategoryName?: string | null, name?: string | null, parentClientId?: string | null, clientId?: string | null, headerAnimation?: { __typename?: 'HeaderAnimation', statements?: Array<{ __typename?: 'HeaderAnimationStatements', statement?: string | null, bgcolor?: Array<string | null> | null, textcolor?: Array<string | null> | null } | null> | null } | null, attributes?: { __typename?: 'AcfHeaderAnimationAttributes', align?: string | null, backgroundColor?: string | null, textColor?: string | null, className?: string | null } | null } | { __typename: 'AcfHomeSection', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'AcfHomeSectionAttributes', align?: string | null, backgroundColor?: string | null, textColor?: string | null, className?: string | null } | null, innerBlocks?: Array<{ __typename?: 'AcfHeaderAnimation', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'AcfHomeSection', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'AcfSignupForm', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'AcfTickerNumber', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreArchives', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreAudio', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreAvatar', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreButton', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreButtons', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCalendar', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCategories', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCode', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreColumn', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreColumns', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentAuthorName', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentContent', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentDate', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentEditLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentReplyLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentTemplate', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreComments', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentsPagination', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentsPaginationNext', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentsPaginationNumbers', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentsPaginationPrevious', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentsTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCover', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreDetails', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreEmbed', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreFile', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreFootnotes', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreFreeform', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreGallery', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreGroup', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreHeading', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreHomeLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreHtml', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreImage', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreLatestComments', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreLatestPosts', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreLegacyWidget', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreList', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreListItem', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreLoginout', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreMediaText', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreMissing', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreMore', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreNavigation', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreNavigationLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreNavigationSubmenu', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreNextpage', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePageList', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePageListItem', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreParagraph', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePattern', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostAuthor', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostAuthorBiography', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostAuthorName', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostComments', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostCommentsForm', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostContent', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostDate', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostExcerpt', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostFeaturedImage', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostNavigationLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostTemplate', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostTerms', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePreformatted', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePullquote', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreQuery', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreQueryNoResults', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreQueryPagination', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreQueryPaginationNext', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreQueryPaginationNumbers', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreQueryPaginationPrevious', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreQueryTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreQueryTotal', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreQuote', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreReadMore', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreRss', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreSearch', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreSeparator', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreShortcode', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreSiteLogo', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreSiteTagline', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreSiteTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreSocialLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreSocialLinks', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreSpacer', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreTable', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreTagCloud', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreTemplatePart', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreTermDescription', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreTextColumns', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreVerse', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreVideo', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreWidgetGroup', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'YoastFaqBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'YoastHowToBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'YoastSeoBreadcrumbs', name?: string | null, parentClientId?: string | null, clientId?: string | null } | null> | null, homeSection?: { __typename?: 'HomeSection', accordeonlabel?: string | null, defaultActive?: boolean | null } | null } | { __typename: 'AcfSignupForm', name?: string | null, parentClientId?: string | null, clientId?: string | null, signupForm?: { __typename?: 'SignupForm', formId?: string | null, emailField?: boolean | null, phoneField?: boolean | null, postcodeField?: boolean | null, unionList?: boolean | null, workplace?: boolean | null } | null, attributes?: { __typename?: 'AcfSignupFormAttributes', align?: string | null, backgroundColor?: string | null, textColor?: string | null, className?: string | null } | null } | { __typename: 'AcfTickerNumber', currentCount?: number | null, name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'AcfTickerNumberAttributes', align?: string | null, backgroundColor?: string | null, textColor?: string | null, className?: string | null } | null, tickerNumber?: { __typename?: 'TickerNumber', incrementBy?: number | null } | null } | { __typename: 'CoreArchives', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreAudio', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreAvatar', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreButton', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreButtonAttributes', backgroundColor?: string | null, style?: any | null, className?: string | null, fontSize?: string | null, linkTarget?: string | null, text?: string | null, url?: string | null } | null, innerBlocks?: Array<{ __typename: 'AcfHeaderAnimation', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'AcfHomeSection', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'AcfSignupForm', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'AcfTickerNumber', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreArchives', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreAudio', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreAvatar', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreButton', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreButtons', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCalendar', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCategories', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCode', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreColumn', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreColumns', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentAuthorName', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentContent', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentDate', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentEditLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentReplyLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentTemplate', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreComments', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentsPagination', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentsPaginationNext', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentsPaginationNumbers', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentsPaginationPrevious', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentsTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCover', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreDetails', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreEmbed', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreFile', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreFootnotes', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreFreeform', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreGallery', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreGroup', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreHeading', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreHomeLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreHtml', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreImage', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreLatestComments', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreLatestPosts', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreLegacyWidget', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreList', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreListItem', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreLoginout', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreMediaText', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreMissing', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreMore', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreNavigation', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreNavigationLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreNavigationSubmenu', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreNextpage', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePageList', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePageListItem', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreParagraph', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePattern', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostAuthor', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostAuthorBiography', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostAuthorName', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostComments', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostCommentsForm', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostContent', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostDate', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostExcerpt', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostFeaturedImage', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostNavigationLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostTemplate', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostTerms', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePreformatted', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePullquote', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQuery', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryNoResults', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryPagination', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryPaginationNext', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryPaginationNumbers', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryPaginationPrevious', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryTotal', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQuote', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreReadMore', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreRss', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSearch', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSeparator', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreShortcode', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSiteLogo', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSiteTagline', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSiteTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSocialLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSocialLinks', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSpacer', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreTable', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreTagCloud', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreTemplatePart', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreTermDescription', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreTextColumns', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreVerse', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreVideo', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreWidgetGroup', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'YoastFaqBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'YoastHowToBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'YoastSeoBreadcrumbs', name?: string | null, parentClientId?: string | null, clientId?: string | null } | null> | null } | { __typename: 'CoreButtons', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreButtonsAttributes', align?: string | null, className?: string | null, layout?: any | null } | null } | { __typename: 'CoreCalendar', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCategories', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCode', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreColumn', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreColumnAttributes', backgroundColor?: string | null, layout?: any | null, className?: string | null, verticalAlignment?: string | null, style?: any | null, width?: string | null } | null } | { __typename: 'CoreColumns', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreColumnsAttributes', backgroundColor?: string | null, className?: string | null, layout?: any | null, verticalAlignment?: string | null, style?: any | null, align?: string | null, isStackedOnMobile: boolean } | null } | { __typename: 'CoreCommentAuthorName', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentContent', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentDate', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentEditLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentReplyLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentTemplate', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreComments', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentsPagination', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentsPaginationNext', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentsPaginationNumbers', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentsPaginationPrevious', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentsTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCover', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreDetails', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreEmbed', renderedHtml?: string | null, name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreEmbedAttributes', align?: string | null, url?: string | null, className?: string | null } | null } | { __typename: 'CoreFile', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreFootnotes', renderedHtml?: string | null, name?: string | null, parentClientId?: string | null, clientId?: string | null, innerBlocks?: Array<{ __typename?: 'AcfHeaderAnimation', name?: string | null } | { __typename?: 'AcfHomeSection', name?: string | null } | { __typename?: 'AcfSignupForm', name?: string | null } | { __typename?: 'AcfTickerNumber', name?: string | null } | { __typename?: 'CoreArchives', name?: string | null } | { __typename?: 'CoreAudio', name?: string | null } | { __typename?: 'CoreAvatar', name?: string | null } | { __typename?: 'CoreBlock', name?: string | null } | { __typename?: 'CoreButton', name?: string | null } | { __typename?: 'CoreButtons', name?: string | null } | { __typename?: 'CoreCalendar', name?: string | null } | { __typename?: 'CoreCategories', name?: string | null } | { __typename?: 'CoreCode', name?: string | null } | { __typename?: 'CoreColumn', name?: string | null } | { __typename?: 'CoreColumns', name?: string | null } | { __typename?: 'CoreCommentAuthorName', name?: string | null } | { __typename?: 'CoreCommentContent', name?: string | null } | { __typename?: 'CoreCommentDate', name?: string | null } | { __typename?: 'CoreCommentEditLink', name?: string | null } | { __typename?: 'CoreCommentReplyLink', name?: string | null } | { __typename?: 'CoreCommentTemplate', name?: string | null } | { __typename?: 'CoreComments', name?: string | null } | { __typename?: 'CoreCommentsPagination', name?: string | null } | { __typename?: 'CoreCommentsPaginationNext', name?: string | null } | { __typename?: 'CoreCommentsPaginationNumbers', name?: string | null } | { __typename?: 'CoreCommentsPaginationPrevious', name?: string | null } | { __typename?: 'CoreCommentsTitle', name?: string | null } | { __typename?: 'CoreCover', name?: string | null } | { __typename?: 'CoreDetails', name?: string | null } | { __typename?: 'CoreEmbed', name?: string | null } | { __typename?: 'CoreFile', name?: string | null } | { __typename?: 'CoreFootnotes', name?: string | null } | { __typename?: 'CoreFreeform', name?: string | null } | { __typename?: 'CoreGallery', name?: string | null } | { __typename?: 'CoreGroup', name?: string | null } | { __typename?: 'CoreHeading', name?: string | null } | { __typename?: 'CoreHomeLink', name?: string | null } | { __typename?: 'CoreHtml', name?: string | null } | { __typename?: 'CoreImage', name?: string | null } | { __typename?: 'CoreLatestComments', name?: string | null } | { __typename?: 'CoreLatestPosts', name?: string | null } | { __typename?: 'CoreLegacyWidget', name?: string | null } | { __typename?: 'CoreList', name?: string | null } | { __typename?: 'CoreListItem', name?: string | null } | { __typename?: 'CoreLoginout', name?: string | null } | { __typename?: 'CoreMediaText', name?: string | null } | { __typename?: 'CoreMissing', name?: string | null } | { __typename?: 'CoreMore', name?: string | null } | { __typename?: 'CoreNavigation', name?: string | null } | { __typename?: 'CoreNavigationLink', name?: string | null } | { __typename?: 'CoreNavigationSubmenu', name?: string | null } | { __typename?: 'CoreNextpage', name?: string | null } | { __typename?: 'CorePageList', name?: string | null } | { __typename?: 'CorePageListItem', name?: string | null } | { __typename?: 'CoreParagraph', name?: string | null } | { __typename?: 'CorePattern', name?: string | null } | { __typename?: 'CorePostAuthor', name?: string | null } | { __typename?: 'CorePostAuthorBiography', name?: string | null } | { __typename?: 'CorePostAuthorName', name?: string | null } | { __typename?: 'CorePostComments', name?: string | null } | { __typename?: 'CorePostCommentsForm', name?: string | null } | { __typename?: 'CorePostContent', name?: string | null } | { __typename?: 'CorePostDate', name?: string | null } | { __typename?: 'CorePostExcerpt', name?: string | null } | { __typename?: 'CorePostFeaturedImage', name?: string | null } | { __typename?: 'CorePostNavigationLink', name?: string | null } | { __typename?: 'CorePostTemplate', name?: string | null } | { __typename?: 'CorePostTerms', name?: string | null } | { __typename?: 'CorePostTitle', name?: string | null } | { __typename?: 'CorePreformatted', name?: string | null } | { __typename?: 'CorePullquote', name?: string | null } | { __typename?: 'CoreQuery', name?: string | null } | { __typename?: 'CoreQueryNoResults', name?: string | null } | { __typename?: 'CoreQueryPagination', name?: string | null } | { __typename?: 'CoreQueryPaginationNext', name?: string | null } | { __typename?: 'CoreQueryPaginationNumbers', name?: string | null } | { __typename?: 'CoreQueryPaginationPrevious', name?: string | null } | { __typename?: 'CoreQueryTitle', name?: string | null } | { __typename?: 'CoreQueryTotal', name?: string | null } | { __typename?: 'CoreQuote', name?: string | null } | { __typename?: 'CoreReadMore', name?: string | null } | { __typename?: 'CoreRss', name?: string | null } | { __typename?: 'CoreSearch', name?: string | null } | { __typename?: 'CoreSeparator', name?: string | null } | { __typename?: 'CoreShortcode', name?: string | null } | { __typename?: 'CoreSiteLogo', name?: string | null } | { __typename?: 'CoreSiteTagline', name?: string | null } | { __typename?: 'CoreSiteTitle', name?: string | null } | { __typename?: 'CoreSocialLink', name?: string | null } | { __typename?: 'CoreSocialLinks', name?: string | null } | { __typename?: 'CoreSpacer', name?: string | null } | { __typename?: 'CoreTable', name?: string | null } | { __typename?: 'CoreTagCloud', name?: string | null } | { __typename?: 'CoreTemplatePart', name?: string | null } | { __typename?: 'CoreTermDescription', name?: string | null } | { __typename?: 'CoreTextColumns', name?: string | null } | { __typename?: 'CoreVerse', name?: string | null } | { __typename?: 'CoreVideo', name?: string | null } | { __typename?: 'CoreWidgetGroup', name?: string | null } | { __typename?: 'YoastFaqBlock', name?: string | null } | { __typename?: 'YoastHowToBlock', name?: string | null } | { __typename?: 'YoastSeoBreadcrumbs', name?: string | null } | null> | null, attributes?: { __typename?: 'CoreFootnotesAttributes', metadata?: any | null, className?: string | null } | null } | { __typename: 'CoreFreeform', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreGallery', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreGroup', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreGroupAttributes', backgroundColor?: string | null, className?: string | null, align?: string | null, style?: any | null } | null } | { __typename: 'CoreHeading', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreHeadingAttributes', content?: string | null, className?: string | null, fontFamily?: string | null, fontSize?: string | null, textColor?: string | null, textAlign?: string | null, level: number, align?: string | null } | null } | { __typename: 'CoreHomeLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreHtml', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreImage', name?: string | null, parentClientId?: string | null, clientId?: string | null, mediaDetails?: { __typename?: 'MediaDetails', sizes?: Array<{ __typename?: 'MediaSize', sourceUrl?: string | null, height?: string | null, width?: string | null, mimeType?: string | null, name?: string | null } | null> | null } | null, attributes?: { __typename?: 'CoreImageAttributes', align?: string | null, title?: string | null, alt: string, url?: string | null, caption?: string | null, aspectRatio?: string | null, className?: string | null } | null } | { __typename: 'CoreLatestComments', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreLatestPosts', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreLegacyWidget', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreList', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreListItem', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreLoginout', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreMediaText', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreMissing', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreMore', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreMoreAttributes', customText: string } | null } | { __typename: 'CoreNavigation', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreNavigationLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreNavigationSubmenu', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreNextpage', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePageList', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePageListItem', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreParagraph', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreParagraphAttributes', content?: string | null, fontFamily?: string | null, fontSize?: string | null, textColor?: string | null, align?: string | null, className?: string | null } | null } | { __typename: 'CorePattern', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostAuthor', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostAuthorBiography', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostAuthorName', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostComments', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostCommentsForm', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostContent', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostDate', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostExcerpt', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostFeaturedImage', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostNavigationLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostTemplate', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CorePostTemplateAttributes', align?: string | null, backgroundColor?: string | null, fontFamily?: string | null, fontSize?: string | null, layout?: any | null, metadata?: any | null } | null } | { __typename: 'CorePostTerms', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePreformatted', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePullquote', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQuery', apiVersion?: number | null, blockEditorCategoryName?: string | null, isDynamic: boolean, name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreQueryAttributes', align?: string | null, layout?: any | null, metadata?: any | null, query: any } | null } | { __typename: 'CoreQueryNoResults', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryPagination', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryPaginationNext', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryPaginationNumbers', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryPaginationPrevious', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryTotal', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQuote', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreReadMore', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreRss', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSearch', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSeparator', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreShortcode', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSiteLogo', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSiteTagline', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSiteTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSocialLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSocialLinks', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSpacer', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreSpacerAttributes', height: string, className?: string | null, style?: any | null } | null } | { __typename: 'CoreTable', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreTagCloud', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreTemplatePart', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreTermDescription', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreTextColumns', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreVerse', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreVideo', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreVideoAttributes', autoplay?: boolean | null, preload: string, src?: string | null, muted?: boolean | null, controls: boolean, caption?: string | null, poster?: string | null, align?: string | null, loop?: boolean | null, className?: string | null } | null } | { __typename: 'CoreWidgetGroup', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'YoastFaqBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'YoastHowToBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'YoastSeoBreadcrumbs', name?: string | null, parentClientId?: string | null, clientId?: string | null } | null> | null } | { __typename?: 'PostFormat' } | { __typename?: 'Tag' } | { __typename?: 'User' } | null };
+export type PageContentQuery = { __typename?: 'RootQuery', nodeByUri?: { __typename?: 'Category' } | { __typename?: 'Comment' } | { __typename?: 'ContentType' } | { __typename?: 'MediaItem' } | { __typename?: 'Page', id: string, title?: string | null, date?: string | null, editorBlocks?: Array<{ __typename?: 'CoreAccordion', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreAccordionHeading', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreAccordionItem', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreAccordionPanel', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreArchives', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreAudio', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreAvatar', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreButton', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreButtonAttributes', backgroundColor?: string | null, textColor?: string | null, borderColor?: string | null, className?: string | null, style?: any | null, fontSize?: string | null, fontFamily?: string | null, linkTarget?: string | null, text?: string | null, url?: string | null } | null } | { __typename?: 'CoreButtons', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreButtonsAttributes', align?: string | null, layout?: any | null } | null } | { __typename?: 'CoreCalendar', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreCategories', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreCode', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreColumn', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreColumnAttributes', backgroundColor?: string | null, textColor?: string | null, layout?: any | null, className?: string | null, verticalAlignment?: string | null, width?: string | null, style?: any | null } | null } | { __typename?: 'CoreColumns', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreColumnsAttributes', backgroundColor?: string | null, textColor?: string | null, layout?: any | null, className?: string | null, verticalAlignment?: string | null, style?: any | null, align?: string | null, isStackedOnMobile: boolean } | null } | { __typename?: 'CoreCommentAuthorName', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreCommentContent', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreCommentDate', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreCommentEditLink', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreCommentReplyLink', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreCommentTemplate', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreComments', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreCommentsPagination', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreCommentsPaginationNext', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreCommentsPaginationNumbers', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreCommentsPaginationPrevious', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreCommentsTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreCover', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreDetails', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreEmbed', renderedHtml?: string | null, name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreEmbedAttributes', align?: string | null, url?: string | null } | null } | { __typename?: 'CoreFile', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreFootnotes', renderedHtml?: string | null, name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, innerBlocks?: Array<{ __typename?: 'CoreAccordion', name?: string | null } | { __typename?: 'CoreAccordionHeading', name?: string | null } | { __typename?: 'CoreAccordionItem', name?: string | null } | { __typename?: 'CoreAccordionPanel', name?: string | null } | { __typename?: 'CoreArchives', name?: string | null } | { __typename?: 'CoreAudio', name?: string | null } | { __typename?: 'CoreAvatar', name?: string | null } | { __typename?: 'CoreBlock', name?: string | null } | { __typename?: 'CoreButton', name?: string | null } | { __typename?: 'CoreButtons', name?: string | null } | { __typename?: 'CoreCalendar', name?: string | null } | { __typename?: 'CoreCategories', name?: string | null } | { __typename?: 'CoreCode', name?: string | null } | { __typename?: 'CoreColumn', name?: string | null } | { __typename?: 'CoreColumns', name?: string | null } | { __typename?: 'CoreCommentAuthorName', name?: string | null } | { __typename?: 'CoreCommentContent', name?: string | null } | { __typename?: 'CoreCommentDate', name?: string | null } | { __typename?: 'CoreCommentEditLink', name?: string | null } | { __typename?: 'CoreCommentReplyLink', name?: string | null } | { __typename?: 'CoreCommentTemplate', name?: string | null } | { __typename?: 'CoreComments', name?: string | null } | { __typename?: 'CoreCommentsPagination', name?: string | null } | { __typename?: 'CoreCommentsPaginationNext', name?: string | null } | { __typename?: 'CoreCommentsPaginationNumbers', name?: string | null } | { __typename?: 'CoreCommentsPaginationPrevious', name?: string | null } | { __typename?: 'CoreCommentsTitle', name?: string | null } | { __typename?: 'CoreCover', name?: string | null } | { __typename?: 'CoreDetails', name?: string | null } | { __typename?: 'CoreEmbed', name?: string | null } | { __typename?: 'CoreFile', name?: string | null } | { __typename?: 'CoreFootnotes', name?: string | null } | { __typename?: 'CoreFreeform', name?: string | null } | { __typename?: 'CoreGallery', name?: string | null } | { __typename?: 'CoreGroup', name?: string | null } | { __typename?: 'CoreHeading', name?: string | null } | { __typename?: 'CoreHomeLink', name?: string | null } | { __typename?: 'CoreHtml', name?: string | null } | { __typename?: 'CoreImage', name?: string | null } | { __typename?: 'CoreLatestComments', name?: string | null } | { __typename?: 'CoreLatestPosts', name?: string | null } | { __typename?: 'CoreLegacyWidget', name?: string | null } | { __typename?: 'CoreList', name?: string | null } | { __typename?: 'CoreListItem', name?: string | null } | { __typename?: 'CoreLoginout', name?: string | null } | { __typename?: 'CoreMath', name?: string | null } | { __typename?: 'CoreMediaText', name?: string | null } | { __typename?: 'CoreMissing', name?: string | null } | { __typename?: 'CoreMore', name?: string | null } | { __typename?: 'CoreNavigation', name?: string | null } | { __typename?: 'CoreNavigationLink', name?: string | null } | { __typename?: 'CoreNavigationSubmenu', name?: string | null } | { __typename?: 'CoreNextpage', name?: string | null } | { __typename?: 'CorePageList', name?: string | null } | { __typename?: 'CorePageListItem', name?: string | null } | { __typename?: 'CoreParagraph', name?: string | null } | { __typename?: 'CorePattern', name?: string | null } | { __typename?: 'CorePostAuthor', name?: string | null } | { __typename?: 'CorePostAuthorBiography', name?: string | null } | { __typename?: 'CorePostAuthorName', name?: string | null } | { __typename?: 'CorePostComments', name?: string | null } | { __typename?: 'CorePostCommentsCount', name?: string | null } | { __typename?: 'CorePostCommentsForm', name?: string | null } | { __typename?: 'CorePostCommentsLink', name?: string | null } | { __typename?: 'CorePostContent', name?: string | null } | { __typename?: 'CorePostDate', name?: string | null } | { __typename?: 'CorePostExcerpt', name?: string | null } | { __typename?: 'CorePostFeaturedImage', name?: string | null } | { __typename?: 'CorePostNavigationLink', name?: string | null } | { __typename?: 'CorePostTemplate', name?: string | null } | { __typename?: 'CorePostTerms', name?: string | null } | { __typename?: 'CorePostTimeToRead', name?: string | null } | { __typename?: 'CorePostTitle', name?: string | null } | { __typename?: 'CorePreformatted', name?: string | null } | { __typename?: 'CorePullquote', name?: string | null } | { __typename?: 'CoreQuery', name?: string | null } | { __typename?: 'CoreQueryNoResults', name?: string | null } | { __typename?: 'CoreQueryPagination', name?: string | null } | { __typename?: 'CoreQueryPaginationNext', name?: string | null } | { __typename?: 'CoreQueryPaginationNumbers', name?: string | null } | { __typename?: 'CoreQueryPaginationPrevious', name?: string | null } | { __typename?: 'CoreQueryTitle', name?: string | null } | { __typename?: 'CoreQueryTotal', name?: string | null } | { __typename?: 'CoreQuote', name?: string | null } | { __typename?: 'CoreReadMore', name?: string | null } | { __typename?: 'CoreRss', name?: string | null } | { __typename?: 'CoreSearch', name?: string | null } | { __typename?: 'CoreSeparator', name?: string | null } | { __typename?: 'CoreShortcode', name?: string | null } | { __typename?: 'CoreSiteLogo', name?: string | null } | { __typename?: 'CoreSiteTagline', name?: string | null } | { __typename?: 'CoreSiteTitle', name?: string | null } | { __typename?: 'CoreSocialLink', name?: string | null } | { __typename?: 'CoreSocialLinks', name?: string | null } | { __typename?: 'CoreSpacer', name?: string | null } | { __typename?: 'CoreTable', name?: string | null } | { __typename?: 'CoreTagCloud', name?: string | null } | { __typename?: 'CoreTemplatePart', name?: string | null } | { __typename?: 'CoreTermCount', name?: string | null } | { __typename?: 'CoreTermDescription', name?: string | null } | { __typename?: 'CoreTermName', name?: string | null } | { __typename?: 'CoreTermTemplate', name?: string | null } | { __typename?: 'CoreTermsQuery', name?: string | null } | { __typename?: 'CoreTextColumns', name?: string | null } | { __typename?: 'CoreVerse', name?: string | null } | { __typename?: 'CoreVideo', name?: string | null } | { __typename?: 'CoreWidgetGroup', name?: string | null } | { __typename?: 'YoastFaqBlock', name?: string | null } | { __typename?: 'YoastHowToBlock', name?: string | null } | { __typename?: 'YoastSeoBreadcrumbs', name?: string | null } | null> | null, attributes?: { __typename?: 'CoreFootnotesAttributes', metadata?: any | null } | null } | { __typename?: 'CoreFreeform', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreGallery', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreGroup', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreGroupAttributes', backgroundColor?: string | null, textColor?: string | null, align?: string | null, style?: any | null } | null } | { __typename?: 'CoreHeading', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreHeadingAttributes', content?: string | null, className?: string | null, fontFamily?: string | null, fontSize?: string | null, textColor?: string | null, textAlign?: string | null, level: number, align?: string | null } | null } | { __typename?: 'CoreHomeLink', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreHtml', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreImage', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, mediaDetails?: { __typename?: 'MediaDetails', sizes?: Array<{ __typename?: 'MediaSize', sourceUrl?: string | null, height?: string | null, width?: string | null, mimeType?: string | null, name?: string | null } | null> | null } | null, attributes?: { __typename?: 'CoreImageAttributes', title?: string | null, alt: string, url?: string | null, caption?: string | null, aspectRatio?: string | null, className?: string | null, align?: string | null } | null } | { __typename?: 'CoreLatestComments', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreLatestPosts', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreLatestPostsAttributes', postsToShow: number, displayPostDate: boolean, className?: string | null, align?: string | null } | null, resolvedPosts?: Array<{ __typename?: 'ResolvedPost', title?: string | null, date?: string | null, uri?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'ResolvedPostImage', sourceUrl?: string | null, altText?: string | null, sizes?: Array<{ __typename?: 'ResolvedPostImageSize', sourceUrl?: string | null, width?: string | null, height?: string | null, name?: string | null, mimeType?: string | null } | null> | null } | null } | null> | null } | { __typename?: 'CoreLegacyWidget', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreList', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreListAttributes', ordered: boolean, reversed?: boolean | null, start?: number | null, textColor?: string | null, type?: string | null } | null } | { __typename?: 'CoreListItem', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreListItemAttributes', content?: string | null, fontSize?: string | null, fontFamily?: string | null, textColor?: string | null } | null } | { __typename?: 'CoreLoginout', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreMath', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreMediaText', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreMissing', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreMore', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreMoreAttributes', customText: string } | null } | { __typename?: 'CoreNavigation', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreNavigationLink', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreNavigationSubmenu', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreNextpage', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePageList', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePageListItem', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreParagraph', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreParagraphAttributes', content?: string | null, fontFamily?: string | null, fontSize?: string | null, textColor?: string | null, align?: string | null, className?: string | null } | null } | { __typename?: 'CorePattern', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePostAuthor', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePostAuthorBiography', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePostAuthorName', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePostComments', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePostCommentsCount', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePostCommentsForm', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePostCommentsLink', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePostContent', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePostDate', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePostExcerpt', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePostFeaturedImage', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePostNavigationLink', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePostTemplate', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePostTerms', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePostTimeToRead', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePostTitle', renderedHtml?: string | null, name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CorePostTitleAttributes', className?: string | null, fontFamily?: string | null, fontSize?: string | null, textColor?: string | null, textAlign?: string | null, level: number, align?: string | null } | null } | { __typename?: 'CorePreformatted', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePullquote', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreQuery', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreQueryAttributes', align?: string | null, className?: string | null } | null, resolvedPosts?: Array<{ __typename?: 'ResolvedPost', title?: string | null, date?: string | null, uri?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'ResolvedPostImage', sourceUrl?: string | null, altText?: string | null, sizes?: Array<{ __typename?: 'ResolvedPostImageSize', sourceUrl?: string | null, width?: string | null, height?: string | null, name?: string | null, mimeType?: string | null } | null> | null } | null } | null> | null } | { __typename?: 'CoreQueryNoResults', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreQueryPagination', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreQueryPaginationNext', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreQueryPaginationNumbers', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreQueryPaginationPrevious', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreQueryTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreQueryTotal', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreQuote', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreQuoteAttributes', citation?: string | null, layout?: any | null, textAlign?: string | null, className?: string | null, fontFamily?: string | null, fontSize?: string | null, textColor?: string | null, align?: string | null, value: string } | null } | { __typename?: 'CoreReadMore', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreRss', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreSearch', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreSeparator', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreShortcode', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreSiteLogo', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreSiteTagline', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreSiteTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreSocialLink', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreSocialLinks', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreSpacer', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreSpacerAttributes', height?: string | null, style?: any | null } | null } | { __typename?: 'CoreTable', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreTagCloud', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreTemplatePart', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreTermCount', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreTermDescription', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreTermName', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreTermTemplate', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreTermsQuery', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreTextColumns', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreVerse', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreVideo', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreVideoAttributes', autoplay?: boolean | null, preload: string, src?: string | null, metadata?: any | null, muted?: boolean | null, controls: boolean, caption?: string | null, poster?: string | null, align?: string | null, loop?: boolean | null, className?: string | null } | null } | { __typename?: 'CoreWidgetGroup', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'YoastFaqBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'YoastHowToBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'YoastSeoBreadcrumbs', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | null> | null } | { __typename?: 'Post', id: string, title?: string | null, date?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', altText?: string | null, mediaDetails?: { __typename?: 'MediaDetails', sizes?: Array<{ __typename?: 'MediaSize', name?: string | null, mimeType?: string | null, height?: string | null, width?: string | null, sourceUrl?: string | null } | null> | null } | null } } | null, editorBlocks?: Array<{ __typename?: 'CoreAccordion', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreAccordionHeading', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreAccordionItem', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreAccordionPanel', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreArchives', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreAudio', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreAvatar', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreButton', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreButtonAttributes', backgroundColor?: string | null, textColor?: string | null, borderColor?: string | null, className?: string | null, style?: any | null, fontSize?: string | null, fontFamily?: string | null, linkTarget?: string | null, text?: string | null, url?: string | null } | null } | { __typename?: 'CoreButtons', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreButtonsAttributes', align?: string | null, layout?: any | null } | null } | { __typename?: 'CoreCalendar', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreCategories', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreCode', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreColumn', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreColumnAttributes', backgroundColor?: string | null, textColor?: string | null, layout?: any | null, className?: string | null, verticalAlignment?: string | null, width?: string | null, style?: any | null } | null } | { __typename?: 'CoreColumns', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreColumnsAttributes', backgroundColor?: string | null, textColor?: string | null, layout?: any | null, className?: string | null, verticalAlignment?: string | null, style?: any | null, align?: string | null, isStackedOnMobile: boolean } | null } | { __typename?: 'CoreCommentAuthorName', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreCommentContent', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreCommentDate', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreCommentEditLink', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreCommentReplyLink', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreCommentTemplate', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreComments', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreCommentsPagination', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreCommentsPaginationNext', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreCommentsPaginationNumbers', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreCommentsPaginationPrevious', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreCommentsTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreCover', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreDetails', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreEmbed', renderedHtml?: string | null, name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreEmbedAttributes', align?: string | null, url?: string | null } | null } | { __typename?: 'CoreFile', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreFootnotes', renderedHtml?: string | null, name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, innerBlocks?: Array<{ __typename?: 'CoreAccordion', name?: string | null } | { __typename?: 'CoreAccordionHeading', name?: string | null } | { __typename?: 'CoreAccordionItem', name?: string | null } | { __typename?: 'CoreAccordionPanel', name?: string | null } | { __typename?: 'CoreArchives', name?: string | null } | { __typename?: 'CoreAudio', name?: string | null } | { __typename?: 'CoreAvatar', name?: string | null } | { __typename?: 'CoreBlock', name?: string | null } | { __typename?: 'CoreButton', name?: string | null } | { __typename?: 'CoreButtons', name?: string | null } | { __typename?: 'CoreCalendar', name?: string | null } | { __typename?: 'CoreCategories', name?: string | null } | { __typename?: 'CoreCode', name?: string | null } | { __typename?: 'CoreColumn', name?: string | null } | { __typename?: 'CoreColumns', name?: string | null } | { __typename?: 'CoreCommentAuthorName', name?: string | null } | { __typename?: 'CoreCommentContent', name?: string | null } | { __typename?: 'CoreCommentDate', name?: string | null } | { __typename?: 'CoreCommentEditLink', name?: string | null } | { __typename?: 'CoreCommentReplyLink', name?: string | null } | { __typename?: 'CoreCommentTemplate', name?: string | null } | { __typename?: 'CoreComments', name?: string | null } | { __typename?: 'CoreCommentsPagination', name?: string | null } | { __typename?: 'CoreCommentsPaginationNext', name?: string | null } | { __typename?: 'CoreCommentsPaginationNumbers', name?: string | null } | { __typename?: 'CoreCommentsPaginationPrevious', name?: string | null } | { __typename?: 'CoreCommentsTitle', name?: string | null } | { __typename?: 'CoreCover', name?: string | null } | { __typename?: 'CoreDetails', name?: string | null } | { __typename?: 'CoreEmbed', name?: string | null } | { __typename?: 'CoreFile', name?: string | null } | { __typename?: 'CoreFootnotes', name?: string | null } | { __typename?: 'CoreFreeform', name?: string | null } | { __typename?: 'CoreGallery', name?: string | null } | { __typename?: 'CoreGroup', name?: string | null } | { __typename?: 'CoreHeading', name?: string | null } | { __typename?: 'CoreHomeLink', name?: string | null } | { __typename?: 'CoreHtml', name?: string | null } | { __typename?: 'CoreImage', name?: string | null } | { __typename?: 'CoreLatestComments', name?: string | null } | { __typename?: 'CoreLatestPosts', name?: string | null } | { __typename?: 'CoreLegacyWidget', name?: string | null } | { __typename?: 'CoreList', name?: string | null } | { __typename?: 'CoreListItem', name?: string | null } | { __typename?: 'CoreLoginout', name?: string | null } | { __typename?: 'CoreMath', name?: string | null } | { __typename?: 'CoreMediaText', name?: string | null } | { __typename?: 'CoreMissing', name?: string | null } | { __typename?: 'CoreMore', name?: string | null } | { __typename?: 'CoreNavigation', name?: string | null } | { __typename?: 'CoreNavigationLink', name?: string | null } | { __typename?: 'CoreNavigationSubmenu', name?: string | null } | { __typename?: 'CoreNextpage', name?: string | null } | { __typename?: 'CorePageList', name?: string | null } | { __typename?: 'CorePageListItem', name?: string | null } | { __typename?: 'CoreParagraph', name?: string | null } | { __typename?: 'CorePattern', name?: string | null } | { __typename?: 'CorePostAuthor', name?: string | null } | { __typename?: 'CorePostAuthorBiography', name?: string | null } | { __typename?: 'CorePostAuthorName', name?: string | null } | { __typename?: 'CorePostComments', name?: string | null } | { __typename?: 'CorePostCommentsCount', name?: string | null } | { __typename?: 'CorePostCommentsForm', name?: string | null } | { __typename?: 'CorePostCommentsLink', name?: string | null } | { __typename?: 'CorePostContent', name?: string | null } | { __typename?: 'CorePostDate', name?: string | null } | { __typename?: 'CorePostExcerpt', name?: string | null } | { __typename?: 'CorePostFeaturedImage', name?: string | null } | { __typename?: 'CorePostNavigationLink', name?: string | null } | { __typename?: 'CorePostTemplate', name?: string | null } | { __typename?: 'CorePostTerms', name?: string | null } | { __typename?: 'CorePostTimeToRead', name?: string | null } | { __typename?: 'CorePostTitle', name?: string | null } | { __typename?: 'CorePreformatted', name?: string | null } | { __typename?: 'CorePullquote', name?: string | null } | { __typename?: 'CoreQuery', name?: string | null } | { __typename?: 'CoreQueryNoResults', name?: string | null } | { __typename?: 'CoreQueryPagination', name?: string | null } | { __typename?: 'CoreQueryPaginationNext', name?: string | null } | { __typename?: 'CoreQueryPaginationNumbers', name?: string | null } | { __typename?: 'CoreQueryPaginationPrevious', name?: string | null } | { __typename?: 'CoreQueryTitle', name?: string | null } | { __typename?: 'CoreQueryTotal', name?: string | null } | { __typename?: 'CoreQuote', name?: string | null } | { __typename?: 'CoreReadMore', name?: string | null } | { __typename?: 'CoreRss', name?: string | null } | { __typename?: 'CoreSearch', name?: string | null } | { __typename?: 'CoreSeparator', name?: string | null } | { __typename?: 'CoreShortcode', name?: string | null } | { __typename?: 'CoreSiteLogo', name?: string | null } | { __typename?: 'CoreSiteTagline', name?: string | null } | { __typename?: 'CoreSiteTitle', name?: string | null } | { __typename?: 'CoreSocialLink', name?: string | null } | { __typename?: 'CoreSocialLinks', name?: string | null } | { __typename?: 'CoreSpacer', name?: string | null } | { __typename?: 'CoreTable', name?: string | null } | { __typename?: 'CoreTagCloud', name?: string | null } | { __typename?: 'CoreTemplatePart', name?: string | null } | { __typename?: 'CoreTermCount', name?: string | null } | { __typename?: 'CoreTermDescription', name?: string | null } | { __typename?: 'CoreTermName', name?: string | null } | { __typename?: 'CoreTermTemplate', name?: string | null } | { __typename?: 'CoreTermsQuery', name?: string | null } | { __typename?: 'CoreTextColumns', name?: string | null } | { __typename?: 'CoreVerse', name?: string | null } | { __typename?: 'CoreVideo', name?: string | null } | { __typename?: 'CoreWidgetGroup', name?: string | null } | { __typename?: 'YoastFaqBlock', name?: string | null } | { __typename?: 'YoastHowToBlock', name?: string | null } | { __typename?: 'YoastSeoBreadcrumbs', name?: string | null } | null> | null, attributes?: { __typename?: 'CoreFootnotesAttributes', metadata?: any | null } | null } | { __typename?: 'CoreFreeform', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreGallery', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreGroup', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreGroupAttributes', backgroundColor?: string | null, textColor?: string | null, align?: string | null, style?: any | null } | null } | { __typename?: 'CoreHeading', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreHeadingAttributes', content?: string | null, className?: string | null, fontFamily?: string | null, fontSize?: string | null, textColor?: string | null, textAlign?: string | null, level: number, align?: string | null } | null } | { __typename?: 'CoreHomeLink', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreHtml', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreImage', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, mediaDetails?: { __typename?: 'MediaDetails', sizes?: Array<{ __typename?: 'MediaSize', sourceUrl?: string | null, height?: string | null, width?: string | null, mimeType?: string | null, name?: string | null } | null> | null } | null, attributes?: { __typename?: 'CoreImageAttributes', title?: string | null, alt: string, url?: string | null, caption?: string | null, aspectRatio?: string | null, className?: string | null, align?: string | null } | null } | { __typename?: 'CoreLatestComments', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreLatestPosts', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreLatestPostsAttributes', postsToShow: number, displayPostDate: boolean, className?: string | null, align?: string | null } | null, resolvedPosts?: Array<{ __typename?: 'ResolvedPost', title?: string | null, date?: string | null, uri?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'ResolvedPostImage', sourceUrl?: string | null, altText?: string | null, sizes?: Array<{ __typename?: 'ResolvedPostImageSize', sourceUrl?: string | null, width?: string | null, height?: string | null, name?: string | null, mimeType?: string | null } | null> | null } | null } | null> | null } | { __typename?: 'CoreLegacyWidget', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreList', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreListAttributes', ordered: boolean, reversed?: boolean | null, start?: number | null, textColor?: string | null, type?: string | null } | null } | { __typename?: 'CoreListItem', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreListItemAttributes', content?: string | null, fontSize?: string | null, fontFamily?: string | null, textColor?: string | null } | null } | { __typename?: 'CoreLoginout', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreMath', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreMediaText', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreMissing', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreMore', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreMoreAttributes', customText: string } | null } | { __typename?: 'CoreNavigation', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreNavigationLink', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreNavigationSubmenu', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreNextpage', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePageList', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePageListItem', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreParagraph', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreParagraphAttributes', content?: string | null, fontFamily?: string | null, fontSize?: string | null, textColor?: string | null, align?: string | null, className?: string | null } | null } | { __typename?: 'CorePattern', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePostAuthor', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePostAuthorBiography', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePostAuthorName', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePostComments', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePostCommentsCount', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePostCommentsForm', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePostCommentsLink', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePostContent', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePostDate', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePostExcerpt', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePostFeaturedImage', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePostNavigationLink', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePostTemplate', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePostTerms', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePostTimeToRead', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePostTitle', renderedHtml?: string | null, name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CorePostTitleAttributes', className?: string | null, fontFamily?: string | null, fontSize?: string | null, textColor?: string | null, textAlign?: string | null, level: number, align?: string | null } | null } | { __typename?: 'CorePreformatted', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CorePullquote', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreQuery', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreQueryAttributes', align?: string | null, className?: string | null } | null, resolvedPosts?: Array<{ __typename?: 'ResolvedPost', title?: string | null, date?: string | null, uri?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'ResolvedPostImage', sourceUrl?: string | null, altText?: string | null, sizes?: Array<{ __typename?: 'ResolvedPostImageSize', sourceUrl?: string | null, width?: string | null, height?: string | null, name?: string | null, mimeType?: string | null } | null> | null } | null } | null> | null } | { __typename?: 'CoreQueryNoResults', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreQueryPagination', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreQueryPaginationNext', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreQueryPaginationNumbers', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreQueryPaginationPrevious', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreQueryTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreQueryTotal', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreQuote', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreQuoteAttributes', citation?: string | null, layout?: any | null, textAlign?: string | null, className?: string | null, fontFamily?: string | null, fontSize?: string | null, textColor?: string | null, align?: string | null, value: string } | null } | { __typename?: 'CoreReadMore', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreRss', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreSearch', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreSeparator', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreShortcode', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreSiteLogo', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreSiteTagline', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreSiteTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreSocialLink', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreSocialLinks', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreSpacer', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreSpacerAttributes', height?: string | null, style?: any | null } | null } | { __typename?: 'CoreTable', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreTagCloud', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreTemplatePart', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreTermCount', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreTermDescription', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreTermName', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreTermTemplate', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreTermsQuery', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreTextColumns', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreVerse', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'CoreVideo', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreVideoAttributes', autoplay?: boolean | null, preload: string, src?: string | null, metadata?: any | null, muted?: boolean | null, controls: boolean, caption?: string | null, poster?: string | null, align?: string | null, loop?: boolean | null, className?: string | null } | null } | { __typename?: 'CoreWidgetGroup', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'YoastFaqBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'YoastHowToBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | { __typename?: 'YoastSeoBreadcrumbs', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null } | null> | null } | { __typename?: 'PostFormat' } | { __typename?: 'Tag' } | { __typename?: 'User' } | null };
 
-type BlockBasicFields_AcfHeaderAnimation_Fragment = { __typename: 'AcfHeaderAnimation', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreAccordion_Fragment = { __typename?: 'CoreAccordion', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_AcfHomeSection_Fragment = { __typename: 'AcfHomeSection', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreAccordionHeading_Fragment = { __typename?: 'CoreAccordionHeading', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_AcfSignupForm_Fragment = { __typename: 'AcfSignupForm', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreAccordionItem_Fragment = { __typename?: 'CoreAccordionItem', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_AcfTickerNumber_Fragment = { __typename: 'AcfTickerNumber', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreAccordionPanel_Fragment = { __typename?: 'CoreAccordionPanel', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreArchives_Fragment = { __typename: 'CoreArchives', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreArchives_Fragment = { __typename?: 'CoreArchives', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreAudio_Fragment = { __typename: 'CoreAudio', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreAudio_Fragment = { __typename?: 'CoreAudio', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreAvatar_Fragment = { __typename: 'CoreAvatar', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreAvatar_Fragment = { __typename?: 'CoreAvatar', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreBlock_Fragment = { __typename: 'CoreBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreBlock_Fragment = { __typename?: 'CoreBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreButton_Fragment = { __typename: 'CoreButton', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreButton_Fragment = { __typename?: 'CoreButton', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreButtons_Fragment = { __typename: 'CoreButtons', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreButtons_Fragment = { __typename?: 'CoreButtons', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreCalendar_Fragment = { __typename: 'CoreCalendar', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreCalendar_Fragment = { __typename?: 'CoreCalendar', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreCategories_Fragment = { __typename: 'CoreCategories', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreCategories_Fragment = { __typename?: 'CoreCategories', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreCode_Fragment = { __typename: 'CoreCode', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreCode_Fragment = { __typename?: 'CoreCode', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreColumn_Fragment = { __typename: 'CoreColumn', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreColumn_Fragment = { __typename?: 'CoreColumn', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreColumns_Fragment = { __typename: 'CoreColumns', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreColumns_Fragment = { __typename?: 'CoreColumns', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreCommentAuthorName_Fragment = { __typename: 'CoreCommentAuthorName', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreCommentAuthorName_Fragment = { __typename?: 'CoreCommentAuthorName', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreCommentContent_Fragment = { __typename: 'CoreCommentContent', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreCommentContent_Fragment = { __typename?: 'CoreCommentContent', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreCommentDate_Fragment = { __typename: 'CoreCommentDate', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreCommentDate_Fragment = { __typename?: 'CoreCommentDate', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreCommentEditLink_Fragment = { __typename: 'CoreCommentEditLink', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreCommentEditLink_Fragment = { __typename?: 'CoreCommentEditLink', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreCommentReplyLink_Fragment = { __typename: 'CoreCommentReplyLink', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreCommentReplyLink_Fragment = { __typename?: 'CoreCommentReplyLink', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreCommentTemplate_Fragment = { __typename: 'CoreCommentTemplate', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreCommentTemplate_Fragment = { __typename?: 'CoreCommentTemplate', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreComments_Fragment = { __typename: 'CoreComments', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreComments_Fragment = { __typename?: 'CoreComments', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreCommentsPagination_Fragment = { __typename: 'CoreCommentsPagination', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreCommentsPagination_Fragment = { __typename?: 'CoreCommentsPagination', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreCommentsPaginationNext_Fragment = { __typename: 'CoreCommentsPaginationNext', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreCommentsPaginationNext_Fragment = { __typename?: 'CoreCommentsPaginationNext', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreCommentsPaginationNumbers_Fragment = { __typename: 'CoreCommentsPaginationNumbers', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreCommentsPaginationNumbers_Fragment = { __typename?: 'CoreCommentsPaginationNumbers', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreCommentsPaginationPrevious_Fragment = { __typename: 'CoreCommentsPaginationPrevious', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreCommentsPaginationPrevious_Fragment = { __typename?: 'CoreCommentsPaginationPrevious', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreCommentsTitle_Fragment = { __typename: 'CoreCommentsTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreCommentsTitle_Fragment = { __typename?: 'CoreCommentsTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreCover_Fragment = { __typename: 'CoreCover', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreCover_Fragment = { __typename?: 'CoreCover', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreDetails_Fragment = { __typename: 'CoreDetails', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreDetails_Fragment = { __typename?: 'CoreDetails', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreEmbed_Fragment = { __typename: 'CoreEmbed', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreEmbed_Fragment = { __typename?: 'CoreEmbed', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreFile_Fragment = { __typename: 'CoreFile', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreFile_Fragment = { __typename?: 'CoreFile', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreFootnotes_Fragment = { __typename: 'CoreFootnotes', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreFootnotes_Fragment = { __typename?: 'CoreFootnotes', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreFreeform_Fragment = { __typename: 'CoreFreeform', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreFreeform_Fragment = { __typename?: 'CoreFreeform', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreGallery_Fragment = { __typename: 'CoreGallery', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreGallery_Fragment = { __typename?: 'CoreGallery', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreGroup_Fragment = { __typename: 'CoreGroup', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreGroup_Fragment = { __typename?: 'CoreGroup', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreHeading_Fragment = { __typename: 'CoreHeading', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreHeading_Fragment = { __typename?: 'CoreHeading', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreHomeLink_Fragment = { __typename: 'CoreHomeLink', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreHomeLink_Fragment = { __typename?: 'CoreHomeLink', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreHtml_Fragment = { __typename: 'CoreHtml', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreHtml_Fragment = { __typename?: 'CoreHtml', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreImage_Fragment = { __typename: 'CoreImage', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreImage_Fragment = { __typename?: 'CoreImage', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreLatestComments_Fragment = { __typename: 'CoreLatestComments', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreLatestComments_Fragment = { __typename?: 'CoreLatestComments', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreLatestPosts_Fragment = { __typename: 'CoreLatestPosts', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreLatestPosts_Fragment = { __typename?: 'CoreLatestPosts', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreLegacyWidget_Fragment = { __typename: 'CoreLegacyWidget', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreLegacyWidget_Fragment = { __typename?: 'CoreLegacyWidget', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreList_Fragment = { __typename: 'CoreList', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreList_Fragment = { __typename?: 'CoreList', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreListItem_Fragment = { __typename: 'CoreListItem', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreListItem_Fragment = { __typename?: 'CoreListItem', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreLoginout_Fragment = { __typename: 'CoreLoginout', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreLoginout_Fragment = { __typename?: 'CoreLoginout', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreMediaText_Fragment = { __typename: 'CoreMediaText', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreMath_Fragment = { __typename?: 'CoreMath', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreMissing_Fragment = { __typename: 'CoreMissing', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreMediaText_Fragment = { __typename?: 'CoreMediaText', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreMore_Fragment = { __typename: 'CoreMore', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreMissing_Fragment = { __typename?: 'CoreMissing', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreNavigation_Fragment = { __typename: 'CoreNavigation', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreMore_Fragment = { __typename?: 'CoreMore', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreNavigationLink_Fragment = { __typename: 'CoreNavigationLink', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreNavigation_Fragment = { __typename?: 'CoreNavigation', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreNavigationSubmenu_Fragment = { __typename: 'CoreNavigationSubmenu', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreNavigationLink_Fragment = { __typename?: 'CoreNavigationLink', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreNextpage_Fragment = { __typename: 'CoreNextpage', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreNavigationSubmenu_Fragment = { __typename?: 'CoreNavigationSubmenu', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CorePageList_Fragment = { __typename: 'CorePageList', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreNextpage_Fragment = { __typename?: 'CoreNextpage', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CorePageListItem_Fragment = { __typename: 'CorePageListItem', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CorePageList_Fragment = { __typename?: 'CorePageList', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreParagraph_Fragment = { __typename: 'CoreParagraph', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CorePageListItem_Fragment = { __typename?: 'CorePageListItem', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CorePattern_Fragment = { __typename: 'CorePattern', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreParagraph_Fragment = { __typename?: 'CoreParagraph', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CorePostAuthor_Fragment = { __typename: 'CorePostAuthor', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CorePattern_Fragment = { __typename?: 'CorePattern', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CorePostAuthorBiography_Fragment = { __typename: 'CorePostAuthorBiography', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CorePostAuthor_Fragment = { __typename?: 'CorePostAuthor', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CorePostAuthorName_Fragment = { __typename: 'CorePostAuthorName', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CorePostAuthorBiography_Fragment = { __typename?: 'CorePostAuthorBiography', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CorePostComments_Fragment = { __typename: 'CorePostComments', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CorePostAuthorName_Fragment = { __typename?: 'CorePostAuthorName', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CorePostCommentsForm_Fragment = { __typename: 'CorePostCommentsForm', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CorePostComments_Fragment = { __typename?: 'CorePostComments', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CorePostContent_Fragment = { __typename: 'CorePostContent', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CorePostCommentsCount_Fragment = { __typename?: 'CorePostCommentsCount', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CorePostDate_Fragment = { __typename: 'CorePostDate', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CorePostCommentsForm_Fragment = { __typename?: 'CorePostCommentsForm', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CorePostExcerpt_Fragment = { __typename: 'CorePostExcerpt', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CorePostCommentsLink_Fragment = { __typename?: 'CorePostCommentsLink', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CorePostFeaturedImage_Fragment = { __typename: 'CorePostFeaturedImage', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CorePostContent_Fragment = { __typename?: 'CorePostContent', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CorePostNavigationLink_Fragment = { __typename: 'CorePostNavigationLink', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CorePostDate_Fragment = { __typename?: 'CorePostDate', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CorePostTemplate_Fragment = { __typename: 'CorePostTemplate', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CorePostExcerpt_Fragment = { __typename?: 'CorePostExcerpt', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CorePostTerms_Fragment = { __typename: 'CorePostTerms', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CorePostFeaturedImage_Fragment = { __typename?: 'CorePostFeaturedImage', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CorePostTitle_Fragment = { __typename: 'CorePostTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CorePostNavigationLink_Fragment = { __typename?: 'CorePostNavigationLink', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CorePreformatted_Fragment = { __typename: 'CorePreformatted', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CorePostTemplate_Fragment = { __typename?: 'CorePostTemplate', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CorePullquote_Fragment = { __typename: 'CorePullquote', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CorePostTerms_Fragment = { __typename?: 'CorePostTerms', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreQuery_Fragment = { __typename: 'CoreQuery', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CorePostTimeToRead_Fragment = { __typename?: 'CorePostTimeToRead', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreQueryNoResults_Fragment = { __typename: 'CoreQueryNoResults', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CorePostTitle_Fragment = { __typename?: 'CorePostTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreQueryPagination_Fragment = { __typename: 'CoreQueryPagination', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CorePreformatted_Fragment = { __typename?: 'CorePreformatted', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreQueryPaginationNext_Fragment = { __typename: 'CoreQueryPaginationNext', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CorePullquote_Fragment = { __typename?: 'CorePullquote', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreQueryPaginationNumbers_Fragment = { __typename: 'CoreQueryPaginationNumbers', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreQuery_Fragment = { __typename?: 'CoreQuery', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreQueryPaginationPrevious_Fragment = { __typename: 'CoreQueryPaginationPrevious', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreQueryNoResults_Fragment = { __typename?: 'CoreQueryNoResults', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreQueryTitle_Fragment = { __typename: 'CoreQueryTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreQueryPagination_Fragment = { __typename?: 'CoreQueryPagination', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreQueryTotal_Fragment = { __typename: 'CoreQueryTotal', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreQueryPaginationNext_Fragment = { __typename?: 'CoreQueryPaginationNext', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreQuote_Fragment = { __typename: 'CoreQuote', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreQueryPaginationNumbers_Fragment = { __typename?: 'CoreQueryPaginationNumbers', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreReadMore_Fragment = { __typename: 'CoreReadMore', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreQueryPaginationPrevious_Fragment = { __typename?: 'CoreQueryPaginationPrevious', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreRss_Fragment = { __typename: 'CoreRss', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreQueryTitle_Fragment = { __typename?: 'CoreQueryTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreSearch_Fragment = { __typename: 'CoreSearch', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreQueryTotal_Fragment = { __typename?: 'CoreQueryTotal', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreSeparator_Fragment = { __typename: 'CoreSeparator', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreQuote_Fragment = { __typename?: 'CoreQuote', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreShortcode_Fragment = { __typename: 'CoreShortcode', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreReadMore_Fragment = { __typename?: 'CoreReadMore', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreSiteLogo_Fragment = { __typename: 'CoreSiteLogo', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreRss_Fragment = { __typename?: 'CoreRss', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreSiteTagline_Fragment = { __typename: 'CoreSiteTagline', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreSearch_Fragment = { __typename?: 'CoreSearch', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreSiteTitle_Fragment = { __typename: 'CoreSiteTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreSeparator_Fragment = { __typename?: 'CoreSeparator', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreSocialLink_Fragment = { __typename: 'CoreSocialLink', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreShortcode_Fragment = { __typename?: 'CoreShortcode', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreSocialLinks_Fragment = { __typename: 'CoreSocialLinks', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreSiteLogo_Fragment = { __typename?: 'CoreSiteLogo', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreSpacer_Fragment = { __typename: 'CoreSpacer', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreSiteTagline_Fragment = { __typename?: 'CoreSiteTagline', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreTable_Fragment = { __typename: 'CoreTable', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreSiteTitle_Fragment = { __typename?: 'CoreSiteTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreTagCloud_Fragment = { __typename: 'CoreTagCloud', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreSocialLink_Fragment = { __typename?: 'CoreSocialLink', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreTemplatePart_Fragment = { __typename: 'CoreTemplatePart', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreSocialLinks_Fragment = { __typename?: 'CoreSocialLinks', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreTermDescription_Fragment = { __typename: 'CoreTermDescription', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreSpacer_Fragment = { __typename?: 'CoreSpacer', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreTextColumns_Fragment = { __typename: 'CoreTextColumns', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreTable_Fragment = { __typename?: 'CoreTable', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreVerse_Fragment = { __typename: 'CoreVerse', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreTagCloud_Fragment = { __typename?: 'CoreTagCloud', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreVideo_Fragment = { __typename: 'CoreVideo', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreTemplatePart_Fragment = { __typename?: 'CoreTemplatePart', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_CoreWidgetGroup_Fragment = { __typename: 'CoreWidgetGroup', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreTermCount_Fragment = { __typename?: 'CoreTermCount', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_YoastFaqBlock_Fragment = { __typename: 'YoastFaqBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreTermDescription_Fragment = { __typename?: 'CoreTermDescription', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_YoastHowToBlock_Fragment = { __typename: 'YoastHowToBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreTermName_Fragment = { __typename?: 'CoreTermName', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type BlockBasicFields_YoastSeoBreadcrumbs_Fragment = { __typename: 'YoastSeoBreadcrumbs', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_CoreTermTemplate_Fragment = { __typename?: 'CoreTermTemplate', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-export type BlockBasicFieldsFragment = BlockBasicFields_AcfHeaderAnimation_Fragment | BlockBasicFields_AcfHomeSection_Fragment | BlockBasicFields_AcfSignupForm_Fragment | BlockBasicFields_AcfTickerNumber_Fragment | BlockBasicFields_CoreArchives_Fragment | BlockBasicFields_CoreAudio_Fragment | BlockBasicFields_CoreAvatar_Fragment | BlockBasicFields_CoreBlock_Fragment | BlockBasicFields_CoreButton_Fragment | BlockBasicFields_CoreButtons_Fragment | BlockBasicFields_CoreCalendar_Fragment | BlockBasicFields_CoreCategories_Fragment | BlockBasicFields_CoreCode_Fragment | BlockBasicFields_CoreColumn_Fragment | BlockBasicFields_CoreColumns_Fragment | BlockBasicFields_CoreCommentAuthorName_Fragment | BlockBasicFields_CoreCommentContent_Fragment | BlockBasicFields_CoreCommentDate_Fragment | BlockBasicFields_CoreCommentEditLink_Fragment | BlockBasicFields_CoreCommentReplyLink_Fragment | BlockBasicFields_CoreCommentTemplate_Fragment | BlockBasicFields_CoreComments_Fragment | BlockBasicFields_CoreCommentsPagination_Fragment | BlockBasicFields_CoreCommentsPaginationNext_Fragment | BlockBasicFields_CoreCommentsPaginationNumbers_Fragment | BlockBasicFields_CoreCommentsPaginationPrevious_Fragment | BlockBasicFields_CoreCommentsTitle_Fragment | BlockBasicFields_CoreCover_Fragment | BlockBasicFields_CoreDetails_Fragment | BlockBasicFields_CoreEmbed_Fragment | BlockBasicFields_CoreFile_Fragment | BlockBasicFields_CoreFootnotes_Fragment | BlockBasicFields_CoreFreeform_Fragment | BlockBasicFields_CoreGallery_Fragment | BlockBasicFields_CoreGroup_Fragment | BlockBasicFields_CoreHeading_Fragment | BlockBasicFields_CoreHomeLink_Fragment | BlockBasicFields_CoreHtml_Fragment | BlockBasicFields_CoreImage_Fragment | BlockBasicFields_CoreLatestComments_Fragment | BlockBasicFields_CoreLatestPosts_Fragment | BlockBasicFields_CoreLegacyWidget_Fragment | BlockBasicFields_CoreList_Fragment | BlockBasicFields_CoreListItem_Fragment | BlockBasicFields_CoreLoginout_Fragment | BlockBasicFields_CoreMediaText_Fragment | BlockBasicFields_CoreMissing_Fragment | BlockBasicFields_CoreMore_Fragment | BlockBasicFields_CoreNavigation_Fragment | BlockBasicFields_CoreNavigationLink_Fragment | BlockBasicFields_CoreNavigationSubmenu_Fragment | BlockBasicFields_CoreNextpage_Fragment | BlockBasicFields_CorePageList_Fragment | BlockBasicFields_CorePageListItem_Fragment | BlockBasicFields_CoreParagraph_Fragment | BlockBasicFields_CorePattern_Fragment | BlockBasicFields_CorePostAuthor_Fragment | BlockBasicFields_CorePostAuthorBiography_Fragment | BlockBasicFields_CorePostAuthorName_Fragment | BlockBasicFields_CorePostComments_Fragment | BlockBasicFields_CorePostCommentsForm_Fragment | BlockBasicFields_CorePostContent_Fragment | BlockBasicFields_CorePostDate_Fragment | BlockBasicFields_CorePostExcerpt_Fragment | BlockBasicFields_CorePostFeaturedImage_Fragment | BlockBasicFields_CorePostNavigationLink_Fragment | BlockBasicFields_CorePostTemplate_Fragment | BlockBasicFields_CorePostTerms_Fragment | BlockBasicFields_CorePostTitle_Fragment | BlockBasicFields_CorePreformatted_Fragment | BlockBasicFields_CorePullquote_Fragment | BlockBasicFields_CoreQuery_Fragment | BlockBasicFields_CoreQueryNoResults_Fragment | BlockBasicFields_CoreQueryPagination_Fragment | BlockBasicFields_CoreQueryPaginationNext_Fragment | BlockBasicFields_CoreQueryPaginationNumbers_Fragment | BlockBasicFields_CoreQueryPaginationPrevious_Fragment | BlockBasicFields_CoreQueryTitle_Fragment | BlockBasicFields_CoreQueryTotal_Fragment | BlockBasicFields_CoreQuote_Fragment | BlockBasicFields_CoreReadMore_Fragment | BlockBasicFields_CoreRss_Fragment | BlockBasicFields_CoreSearch_Fragment | BlockBasicFields_CoreSeparator_Fragment | BlockBasicFields_CoreShortcode_Fragment | BlockBasicFields_CoreSiteLogo_Fragment | BlockBasicFields_CoreSiteTagline_Fragment | BlockBasicFields_CoreSiteTitle_Fragment | BlockBasicFields_CoreSocialLink_Fragment | BlockBasicFields_CoreSocialLinks_Fragment | BlockBasicFields_CoreSpacer_Fragment | BlockBasicFields_CoreTable_Fragment | BlockBasicFields_CoreTagCloud_Fragment | BlockBasicFields_CoreTemplatePart_Fragment | BlockBasicFields_CoreTermDescription_Fragment | BlockBasicFields_CoreTextColumns_Fragment | BlockBasicFields_CoreVerse_Fragment | BlockBasicFields_CoreVideo_Fragment | BlockBasicFields_CoreWidgetGroup_Fragment | BlockBasicFields_YoastFaqBlock_Fragment | BlockBasicFields_YoastHowToBlock_Fragment | BlockBasicFields_YoastSeoBreadcrumbs_Fragment;
+type BlockBasicFields_CoreTermsQuery_Fragment = { __typename?: 'CoreTermsQuery', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_AcfHeaderAnimation_Fragment = { __typename: 'AcfHeaderAnimation', apiVersion?: number | null, blockEditorCategoryName?: string | null, name?: string | null, parentClientId?: string | null, clientId?: string | null, headerAnimation?: { __typename?: 'HeaderAnimation', statements?: Array<{ __typename?: 'HeaderAnimationStatements', statement?: string | null, bgcolor?: Array<string | null> | null, textcolor?: Array<string | null> | null } | null> | null } | null, attributes?: { __typename?: 'AcfHeaderAnimationAttributes', align?: string | null, backgroundColor?: string | null, textColor?: string | null, className?: string | null } | null };
+type BlockBasicFields_CoreTextColumns_Fragment = { __typename?: 'CoreTextColumns', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_AcfHomeSection_Fragment = { __typename: 'AcfHomeSection', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'AcfHomeSectionAttributes', align?: string | null, backgroundColor?: string | null, textColor?: string | null, className?: string | null } | null, innerBlocks?: Array<{ __typename?: 'AcfHeaderAnimation', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'AcfHomeSection', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'AcfSignupForm', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'AcfTickerNumber', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreArchives', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreAudio', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreAvatar', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreButton', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreButtons', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCalendar', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCategories', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCode', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreColumn', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreColumns', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentAuthorName', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentContent', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentDate', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentEditLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentReplyLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentTemplate', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreComments', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentsPagination', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentsPaginationNext', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentsPaginationNumbers', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentsPaginationPrevious', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCommentsTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreCover', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreDetails', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreEmbed', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreFile', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreFootnotes', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreFreeform', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreGallery', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreGroup', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreHeading', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreHomeLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreHtml', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreImage', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreLatestComments', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreLatestPosts', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreLegacyWidget', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreList', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreListItem', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreLoginout', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreMediaText', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreMissing', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreMore', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreNavigation', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreNavigationLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreNavigationSubmenu', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreNextpage', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePageList', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePageListItem', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreParagraph', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePattern', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostAuthor', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostAuthorBiography', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostAuthorName', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostComments', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostCommentsForm', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostContent', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostDate', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostExcerpt', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostFeaturedImage', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostNavigationLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostTemplate', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostTerms', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePostTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePreformatted', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CorePullquote', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreQuery', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreQueryNoResults', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreQueryPagination', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreQueryPaginationNext', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreQueryPaginationNumbers', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreQueryPaginationPrevious', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreQueryTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreQueryTotal', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreQuote', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreReadMore', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreRss', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreSearch', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreSeparator', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreShortcode', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreSiteLogo', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreSiteTagline', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreSiteTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreSocialLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreSocialLinks', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreSpacer', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreTable', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreTagCloud', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreTemplatePart', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreTermDescription', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreTextColumns', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreVerse', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreVideo', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'CoreWidgetGroup', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'YoastFaqBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'YoastHowToBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename?: 'YoastSeoBreadcrumbs', name?: string | null, parentClientId?: string | null, clientId?: string | null } | null> | null, homeSection?: { __typename?: 'HomeSection', accordeonlabel?: string | null, defaultActive?: boolean | null } | null };
+type BlockBasicFields_CoreVerse_Fragment = { __typename?: 'CoreVerse', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_AcfSignupForm_Fragment = { __typename: 'AcfSignupForm', name?: string | null, parentClientId?: string | null, clientId?: string | null, signupForm?: { __typename?: 'SignupForm', formId?: string | null, emailField?: boolean | null, phoneField?: boolean | null, postcodeField?: boolean | null, unionList?: boolean | null, workplace?: boolean | null } | null, attributes?: { __typename?: 'AcfSignupFormAttributes', align?: string | null, backgroundColor?: string | null, textColor?: string | null, className?: string | null } | null };
+type BlockBasicFields_CoreVideo_Fragment = { __typename?: 'CoreVideo', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_AcfTickerNumber_Fragment = { __typename: 'AcfTickerNumber', currentCount?: number | null, name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'AcfTickerNumberAttributes', align?: string | null, backgroundColor?: string | null, textColor?: string | null, className?: string | null } | null, tickerNumber?: { __typename?: 'TickerNumber', incrementBy?: number | null } | null };
+type BlockBasicFields_CoreWidgetGroup_Fragment = { __typename?: 'CoreWidgetGroup', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreArchives_Fragment = { __typename: 'CoreArchives', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_YoastFaqBlock_Fragment = { __typename?: 'YoastFaqBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreAudio_Fragment = { __typename: 'CoreAudio', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_YoastHowToBlock_Fragment = { __typename?: 'YoastHowToBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreAvatar_Fragment = { __typename: 'CoreAvatar', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type BlockBasicFields_YoastSeoBreadcrumbs_Fragment = { __typename?: 'YoastSeoBreadcrumbs', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreBlock_Fragment = { __typename: 'CoreBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+export type BlockBasicFieldsFragment = BlockBasicFields_CoreAccordion_Fragment | BlockBasicFields_CoreAccordionHeading_Fragment | BlockBasicFields_CoreAccordionItem_Fragment | BlockBasicFields_CoreAccordionPanel_Fragment | BlockBasicFields_CoreArchives_Fragment | BlockBasicFields_CoreAudio_Fragment | BlockBasicFields_CoreAvatar_Fragment | BlockBasicFields_CoreBlock_Fragment | BlockBasicFields_CoreButton_Fragment | BlockBasicFields_CoreButtons_Fragment | BlockBasicFields_CoreCalendar_Fragment | BlockBasicFields_CoreCategories_Fragment | BlockBasicFields_CoreCode_Fragment | BlockBasicFields_CoreColumn_Fragment | BlockBasicFields_CoreColumns_Fragment | BlockBasicFields_CoreCommentAuthorName_Fragment | BlockBasicFields_CoreCommentContent_Fragment | BlockBasicFields_CoreCommentDate_Fragment | BlockBasicFields_CoreCommentEditLink_Fragment | BlockBasicFields_CoreCommentReplyLink_Fragment | BlockBasicFields_CoreCommentTemplate_Fragment | BlockBasicFields_CoreComments_Fragment | BlockBasicFields_CoreCommentsPagination_Fragment | BlockBasicFields_CoreCommentsPaginationNext_Fragment | BlockBasicFields_CoreCommentsPaginationNumbers_Fragment | BlockBasicFields_CoreCommentsPaginationPrevious_Fragment | BlockBasicFields_CoreCommentsTitle_Fragment | BlockBasicFields_CoreCover_Fragment | BlockBasicFields_CoreDetails_Fragment | BlockBasicFields_CoreEmbed_Fragment | BlockBasicFields_CoreFile_Fragment | BlockBasicFields_CoreFootnotes_Fragment | BlockBasicFields_CoreFreeform_Fragment | BlockBasicFields_CoreGallery_Fragment | BlockBasicFields_CoreGroup_Fragment | BlockBasicFields_CoreHeading_Fragment | BlockBasicFields_CoreHomeLink_Fragment | BlockBasicFields_CoreHtml_Fragment | BlockBasicFields_CoreImage_Fragment | BlockBasicFields_CoreLatestComments_Fragment | BlockBasicFields_CoreLatestPosts_Fragment | BlockBasicFields_CoreLegacyWidget_Fragment | BlockBasicFields_CoreList_Fragment | BlockBasicFields_CoreListItem_Fragment | BlockBasicFields_CoreLoginout_Fragment | BlockBasicFields_CoreMath_Fragment | BlockBasicFields_CoreMediaText_Fragment | BlockBasicFields_CoreMissing_Fragment | BlockBasicFields_CoreMore_Fragment | BlockBasicFields_CoreNavigation_Fragment | BlockBasicFields_CoreNavigationLink_Fragment | BlockBasicFields_CoreNavigationSubmenu_Fragment | BlockBasicFields_CoreNextpage_Fragment | BlockBasicFields_CorePageList_Fragment | BlockBasicFields_CorePageListItem_Fragment | BlockBasicFields_CoreParagraph_Fragment | BlockBasicFields_CorePattern_Fragment | BlockBasicFields_CorePostAuthor_Fragment | BlockBasicFields_CorePostAuthorBiography_Fragment | BlockBasicFields_CorePostAuthorName_Fragment | BlockBasicFields_CorePostComments_Fragment | BlockBasicFields_CorePostCommentsCount_Fragment | BlockBasicFields_CorePostCommentsForm_Fragment | BlockBasicFields_CorePostCommentsLink_Fragment | BlockBasicFields_CorePostContent_Fragment | BlockBasicFields_CorePostDate_Fragment | BlockBasicFields_CorePostExcerpt_Fragment | BlockBasicFields_CorePostFeaturedImage_Fragment | BlockBasicFields_CorePostNavigationLink_Fragment | BlockBasicFields_CorePostTemplate_Fragment | BlockBasicFields_CorePostTerms_Fragment | BlockBasicFields_CorePostTimeToRead_Fragment | BlockBasicFields_CorePostTitle_Fragment | BlockBasicFields_CorePreformatted_Fragment | BlockBasicFields_CorePullquote_Fragment | BlockBasicFields_CoreQuery_Fragment | BlockBasicFields_CoreQueryNoResults_Fragment | BlockBasicFields_CoreQueryPagination_Fragment | BlockBasicFields_CoreQueryPaginationNext_Fragment | BlockBasicFields_CoreQueryPaginationNumbers_Fragment | BlockBasicFields_CoreQueryPaginationPrevious_Fragment | BlockBasicFields_CoreQueryTitle_Fragment | BlockBasicFields_CoreQueryTotal_Fragment | BlockBasicFields_CoreQuote_Fragment | BlockBasicFields_CoreReadMore_Fragment | BlockBasicFields_CoreRss_Fragment | BlockBasicFields_CoreSearch_Fragment | BlockBasicFields_CoreSeparator_Fragment | BlockBasicFields_CoreShortcode_Fragment | BlockBasicFields_CoreSiteLogo_Fragment | BlockBasicFields_CoreSiteTagline_Fragment | BlockBasicFields_CoreSiteTitle_Fragment | BlockBasicFields_CoreSocialLink_Fragment | BlockBasicFields_CoreSocialLinks_Fragment | BlockBasicFields_CoreSpacer_Fragment | BlockBasicFields_CoreTable_Fragment | BlockBasicFields_CoreTagCloud_Fragment | BlockBasicFields_CoreTemplatePart_Fragment | BlockBasicFields_CoreTermCount_Fragment | BlockBasicFields_CoreTermDescription_Fragment | BlockBasicFields_CoreTermName_Fragment | BlockBasicFields_CoreTermTemplate_Fragment | BlockBasicFields_CoreTermsQuery_Fragment | BlockBasicFields_CoreTextColumns_Fragment | BlockBasicFields_CoreVerse_Fragment | BlockBasicFields_CoreVideo_Fragment | BlockBasicFields_CoreWidgetGroup_Fragment | BlockBasicFields_YoastFaqBlock_Fragment | BlockBasicFields_YoastHowToBlock_Fragment | BlockBasicFields_YoastSeoBreadcrumbs_Fragment;
 
-type CommonBlockFields_CoreButton_Fragment = { __typename: 'CoreButton', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreButtonAttributes', backgroundColor?: string | null, style?: any | null, className?: string | null, fontSize?: string | null, linkTarget?: string | null, text?: string | null, url?: string | null } | null, innerBlocks?: Array<{ __typename: 'AcfHeaderAnimation', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'AcfHomeSection', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'AcfSignupForm', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'AcfTickerNumber', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreArchives', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreAudio', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreAvatar', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreButton', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreButtons', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCalendar', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCategories', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCode', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreColumn', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreColumns', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentAuthorName', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentContent', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentDate', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentEditLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentReplyLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentTemplate', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreComments', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentsPagination', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentsPaginationNext', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentsPaginationNumbers', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentsPaginationPrevious', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCommentsTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreCover', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreDetails', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreEmbed', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreFile', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreFootnotes', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreFreeform', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreGallery', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreGroup', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreHeading', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreHomeLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreHtml', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreImage', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreLatestComments', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreLatestPosts', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreLegacyWidget', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreList', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreListItem', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreLoginout', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreMediaText', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreMissing', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreMore', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreNavigation', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreNavigationLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreNavigationSubmenu', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreNextpage', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePageList', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePageListItem', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreParagraph', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePattern', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostAuthor', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostAuthorBiography', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostAuthorName', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostComments', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostCommentsForm', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostContent', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostDate', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostExcerpt', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostFeaturedImage', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostNavigationLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostTemplate', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostTerms', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePostTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePreformatted', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CorePullquote', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQuery', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryNoResults', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryPagination', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryPaginationNext', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryPaginationNumbers', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryPaginationPrevious', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQueryTotal', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreQuote', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreReadMore', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreRss', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSearch', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSeparator', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreShortcode', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSiteLogo', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSiteTagline', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSiteTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSocialLink', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSocialLinks', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreSpacer', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreTable', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreTagCloud', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreTemplatePart', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreTermDescription', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreTextColumns', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreVerse', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreVideo', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'CoreWidgetGroup', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'YoastFaqBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'YoastHowToBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null } | { __typename: 'YoastSeoBreadcrumbs', name?: string | null, parentClientId?: string | null, clientId?: string | null } | null> | null };
+type CommonBlockFields_CoreAccordion_Fragment = { __typename?: 'CoreAccordion', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreButtons_Fragment = { __typename: 'CoreButtons', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreButtonsAttributes', align?: string | null, className?: string | null, layout?: any | null } | null };
+type CommonBlockFields_CoreAccordionHeading_Fragment = { __typename?: 'CoreAccordionHeading', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreCalendar_Fragment = { __typename: 'CoreCalendar', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreAccordionItem_Fragment = { __typename?: 'CoreAccordionItem', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreCategories_Fragment = { __typename: 'CoreCategories', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreAccordionPanel_Fragment = { __typename?: 'CoreAccordionPanel', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreCode_Fragment = { __typename: 'CoreCode', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreArchives_Fragment = { __typename?: 'CoreArchives', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreColumn_Fragment = { __typename: 'CoreColumn', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreColumnAttributes', backgroundColor?: string | null, layout?: any | null, className?: string | null, verticalAlignment?: string | null, style?: any | null, width?: string | null } | null };
+type CommonBlockFields_CoreAudio_Fragment = { __typename?: 'CoreAudio', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreColumns_Fragment = { __typename: 'CoreColumns', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreColumnsAttributes', backgroundColor?: string | null, className?: string | null, layout?: any | null, verticalAlignment?: string | null, style?: any | null, align?: string | null, isStackedOnMobile: boolean } | null };
+type CommonBlockFields_CoreAvatar_Fragment = { __typename?: 'CoreAvatar', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreCommentAuthorName_Fragment = { __typename: 'CoreCommentAuthorName', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreBlock_Fragment = { __typename?: 'CoreBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreCommentContent_Fragment = { __typename: 'CoreCommentContent', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreButton_Fragment = { __typename?: 'CoreButton', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreButtonAttributes', backgroundColor?: string | null, textColor?: string | null, borderColor?: string | null, className?: string | null, style?: any | null, fontSize?: string | null, fontFamily?: string | null, linkTarget?: string | null, text?: string | null, url?: string | null } | null };
 
-type CommonBlockFields_CoreCommentDate_Fragment = { __typename: 'CoreCommentDate', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreButtons_Fragment = { __typename?: 'CoreButtons', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreButtonsAttributes', align?: string | null, layout?: any | null } | null };
 
-type CommonBlockFields_CoreCommentEditLink_Fragment = { __typename: 'CoreCommentEditLink', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreCalendar_Fragment = { __typename?: 'CoreCalendar', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreCommentReplyLink_Fragment = { __typename: 'CoreCommentReplyLink', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreCategories_Fragment = { __typename?: 'CoreCategories', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreCommentTemplate_Fragment = { __typename: 'CoreCommentTemplate', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreCode_Fragment = { __typename?: 'CoreCode', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreComments_Fragment = { __typename: 'CoreComments', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreColumn_Fragment = { __typename?: 'CoreColumn', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreColumnAttributes', backgroundColor?: string | null, textColor?: string | null, layout?: any | null, className?: string | null, verticalAlignment?: string | null, width?: string | null, style?: any | null } | null };
 
-type CommonBlockFields_CoreCommentsPagination_Fragment = { __typename: 'CoreCommentsPagination', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreColumns_Fragment = { __typename?: 'CoreColumns', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreColumnsAttributes', backgroundColor?: string | null, textColor?: string | null, layout?: any | null, className?: string | null, verticalAlignment?: string | null, style?: any | null, align?: string | null, isStackedOnMobile: boolean } | null };
 
-type CommonBlockFields_CoreCommentsPaginationNext_Fragment = { __typename: 'CoreCommentsPaginationNext', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreCommentAuthorName_Fragment = { __typename?: 'CoreCommentAuthorName', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreCommentsPaginationNumbers_Fragment = { __typename: 'CoreCommentsPaginationNumbers', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreCommentContent_Fragment = { __typename?: 'CoreCommentContent', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreCommentsPaginationPrevious_Fragment = { __typename: 'CoreCommentsPaginationPrevious', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreCommentDate_Fragment = { __typename?: 'CoreCommentDate', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreCommentsTitle_Fragment = { __typename: 'CoreCommentsTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreCommentEditLink_Fragment = { __typename?: 'CoreCommentEditLink', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreCover_Fragment = { __typename: 'CoreCover', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreCommentReplyLink_Fragment = { __typename?: 'CoreCommentReplyLink', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreDetails_Fragment = { __typename: 'CoreDetails', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreCommentTemplate_Fragment = { __typename?: 'CoreCommentTemplate', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreEmbed_Fragment = { __typename: 'CoreEmbed', renderedHtml?: string | null, name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreEmbedAttributes', align?: string | null, url?: string | null, className?: string | null } | null };
+type CommonBlockFields_CoreComments_Fragment = { __typename?: 'CoreComments', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreFile_Fragment = { __typename: 'CoreFile', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreCommentsPagination_Fragment = { __typename?: 'CoreCommentsPagination', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreFootnotes_Fragment = { __typename: 'CoreFootnotes', renderedHtml?: string | null, name?: string | null, parentClientId?: string | null, clientId?: string | null, innerBlocks?: Array<{ __typename?: 'AcfHeaderAnimation', name?: string | null } | { __typename?: 'AcfHomeSection', name?: string | null } | { __typename?: 'AcfSignupForm', name?: string | null } | { __typename?: 'AcfTickerNumber', name?: string | null } | { __typename?: 'CoreArchives', name?: string | null } | { __typename?: 'CoreAudio', name?: string | null } | { __typename?: 'CoreAvatar', name?: string | null } | { __typename?: 'CoreBlock', name?: string | null } | { __typename?: 'CoreButton', name?: string | null } | { __typename?: 'CoreButtons', name?: string | null } | { __typename?: 'CoreCalendar', name?: string | null } | { __typename?: 'CoreCategories', name?: string | null } | { __typename?: 'CoreCode', name?: string | null } | { __typename?: 'CoreColumn', name?: string | null } | { __typename?: 'CoreColumns', name?: string | null } | { __typename?: 'CoreCommentAuthorName', name?: string | null } | { __typename?: 'CoreCommentContent', name?: string | null } | { __typename?: 'CoreCommentDate', name?: string | null } | { __typename?: 'CoreCommentEditLink', name?: string | null } | { __typename?: 'CoreCommentReplyLink', name?: string | null } | { __typename?: 'CoreCommentTemplate', name?: string | null } | { __typename?: 'CoreComments', name?: string | null } | { __typename?: 'CoreCommentsPagination', name?: string | null } | { __typename?: 'CoreCommentsPaginationNext', name?: string | null } | { __typename?: 'CoreCommentsPaginationNumbers', name?: string | null } | { __typename?: 'CoreCommentsPaginationPrevious', name?: string | null } | { __typename?: 'CoreCommentsTitle', name?: string | null } | { __typename?: 'CoreCover', name?: string | null } | { __typename?: 'CoreDetails', name?: string | null } | { __typename?: 'CoreEmbed', name?: string | null } | { __typename?: 'CoreFile', name?: string | null } | { __typename?: 'CoreFootnotes', name?: string | null } | { __typename?: 'CoreFreeform', name?: string | null } | { __typename?: 'CoreGallery', name?: string | null } | { __typename?: 'CoreGroup', name?: string | null } | { __typename?: 'CoreHeading', name?: string | null } | { __typename?: 'CoreHomeLink', name?: string | null } | { __typename?: 'CoreHtml', name?: string | null } | { __typename?: 'CoreImage', name?: string | null } | { __typename?: 'CoreLatestComments', name?: string | null } | { __typename?: 'CoreLatestPosts', name?: string | null } | { __typename?: 'CoreLegacyWidget', name?: string | null } | { __typename?: 'CoreList', name?: string | null } | { __typename?: 'CoreListItem', name?: string | null } | { __typename?: 'CoreLoginout', name?: string | null } | { __typename?: 'CoreMediaText', name?: string | null } | { __typename?: 'CoreMissing', name?: string | null } | { __typename?: 'CoreMore', name?: string | null } | { __typename?: 'CoreNavigation', name?: string | null } | { __typename?: 'CoreNavigationLink', name?: string | null } | { __typename?: 'CoreNavigationSubmenu', name?: string | null } | { __typename?: 'CoreNextpage', name?: string | null } | { __typename?: 'CorePageList', name?: string | null } | { __typename?: 'CorePageListItem', name?: string | null } | { __typename?: 'CoreParagraph', name?: string | null } | { __typename?: 'CorePattern', name?: string | null } | { __typename?: 'CorePostAuthor', name?: string | null } | { __typename?: 'CorePostAuthorBiography', name?: string | null } | { __typename?: 'CorePostAuthorName', name?: string | null } | { __typename?: 'CorePostComments', name?: string | null } | { __typename?: 'CorePostCommentsForm', name?: string | null } | { __typename?: 'CorePostContent', name?: string | null } | { __typename?: 'CorePostDate', name?: string | null } | { __typename?: 'CorePostExcerpt', name?: string | null } | { __typename?: 'CorePostFeaturedImage', name?: string | null } | { __typename?: 'CorePostNavigationLink', name?: string | null } | { __typename?: 'CorePostTemplate', name?: string | null } | { __typename?: 'CorePostTerms', name?: string | null } | { __typename?: 'CorePostTitle', name?: string | null } | { __typename?: 'CorePreformatted', name?: string | null } | { __typename?: 'CorePullquote', name?: string | null } | { __typename?: 'CoreQuery', name?: string | null } | { __typename?: 'CoreQueryNoResults', name?: string | null } | { __typename?: 'CoreQueryPagination', name?: string | null } | { __typename?: 'CoreQueryPaginationNext', name?: string | null } | { __typename?: 'CoreQueryPaginationNumbers', name?: string | null } | { __typename?: 'CoreQueryPaginationPrevious', name?: string | null } | { __typename?: 'CoreQueryTitle', name?: string | null } | { __typename?: 'CoreQueryTotal', name?: string | null } | { __typename?: 'CoreQuote', name?: string | null } | { __typename?: 'CoreReadMore', name?: string | null } | { __typename?: 'CoreRss', name?: string | null } | { __typename?: 'CoreSearch', name?: string | null } | { __typename?: 'CoreSeparator', name?: string | null } | { __typename?: 'CoreShortcode', name?: string | null } | { __typename?: 'CoreSiteLogo', name?: string | null } | { __typename?: 'CoreSiteTagline', name?: string | null } | { __typename?: 'CoreSiteTitle', name?: string | null } | { __typename?: 'CoreSocialLink', name?: string | null } | { __typename?: 'CoreSocialLinks', name?: string | null } | { __typename?: 'CoreSpacer', name?: string | null } | { __typename?: 'CoreTable', name?: string | null } | { __typename?: 'CoreTagCloud', name?: string | null } | { __typename?: 'CoreTemplatePart', name?: string | null } | { __typename?: 'CoreTermDescription', name?: string | null } | { __typename?: 'CoreTextColumns', name?: string | null } | { __typename?: 'CoreVerse', name?: string | null } | { __typename?: 'CoreVideo', name?: string | null } | { __typename?: 'CoreWidgetGroup', name?: string | null } | { __typename?: 'YoastFaqBlock', name?: string | null } | { __typename?: 'YoastHowToBlock', name?: string | null } | { __typename?: 'YoastSeoBreadcrumbs', name?: string | null } | null> | null, attributes?: { __typename?: 'CoreFootnotesAttributes', metadata?: any | null, className?: string | null } | null };
+type CommonBlockFields_CoreCommentsPaginationNext_Fragment = { __typename?: 'CoreCommentsPaginationNext', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreFreeform_Fragment = { __typename: 'CoreFreeform', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreCommentsPaginationNumbers_Fragment = { __typename?: 'CoreCommentsPaginationNumbers', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreGallery_Fragment = { __typename: 'CoreGallery', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreCommentsPaginationPrevious_Fragment = { __typename?: 'CoreCommentsPaginationPrevious', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreGroup_Fragment = { __typename: 'CoreGroup', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreGroupAttributes', backgroundColor?: string | null, className?: string | null, align?: string | null, style?: any | null } | null };
+type CommonBlockFields_CoreCommentsTitle_Fragment = { __typename?: 'CoreCommentsTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreHeading_Fragment = { __typename: 'CoreHeading', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreHeadingAttributes', content?: string | null, className?: string | null, fontFamily?: string | null, fontSize?: string | null, textColor?: string | null, textAlign?: string | null, level: number, align?: string | null } | null };
+type CommonBlockFields_CoreCover_Fragment = { __typename?: 'CoreCover', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreHomeLink_Fragment = { __typename: 'CoreHomeLink', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreDetails_Fragment = { __typename?: 'CoreDetails', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreHtml_Fragment = { __typename: 'CoreHtml', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreEmbed_Fragment = { __typename?: 'CoreEmbed', renderedHtml?: string | null, name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreEmbedAttributes', align?: string | null, url?: string | null } | null };
 
-type CommonBlockFields_CoreImage_Fragment = { __typename: 'CoreImage', name?: string | null, parentClientId?: string | null, clientId?: string | null, mediaDetails?: { __typename?: 'MediaDetails', sizes?: Array<{ __typename?: 'MediaSize', sourceUrl?: string | null, height?: string | null, width?: string | null, mimeType?: string | null, name?: string | null } | null> | null } | null, attributes?: { __typename?: 'CoreImageAttributes', align?: string | null, title?: string | null, alt: string, url?: string | null, caption?: string | null, aspectRatio?: string | null, className?: string | null } | null };
+type CommonBlockFields_CoreFile_Fragment = { __typename?: 'CoreFile', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreLatestComments_Fragment = { __typename: 'CoreLatestComments', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreFootnotes_Fragment = { __typename?: 'CoreFootnotes', renderedHtml?: string | null, name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, innerBlocks?: Array<{ __typename?: 'CoreAccordion', name?: string | null } | { __typename?: 'CoreAccordionHeading', name?: string | null } | { __typename?: 'CoreAccordionItem', name?: string | null } | { __typename?: 'CoreAccordionPanel', name?: string | null } | { __typename?: 'CoreArchives', name?: string | null } | { __typename?: 'CoreAudio', name?: string | null } | { __typename?: 'CoreAvatar', name?: string | null } | { __typename?: 'CoreBlock', name?: string | null } | { __typename?: 'CoreButton', name?: string | null } | { __typename?: 'CoreButtons', name?: string | null } | { __typename?: 'CoreCalendar', name?: string | null } | { __typename?: 'CoreCategories', name?: string | null } | { __typename?: 'CoreCode', name?: string | null } | { __typename?: 'CoreColumn', name?: string | null } | { __typename?: 'CoreColumns', name?: string | null } | { __typename?: 'CoreCommentAuthorName', name?: string | null } | { __typename?: 'CoreCommentContent', name?: string | null } | { __typename?: 'CoreCommentDate', name?: string | null } | { __typename?: 'CoreCommentEditLink', name?: string | null } | { __typename?: 'CoreCommentReplyLink', name?: string | null } | { __typename?: 'CoreCommentTemplate', name?: string | null } | { __typename?: 'CoreComments', name?: string | null } | { __typename?: 'CoreCommentsPagination', name?: string | null } | { __typename?: 'CoreCommentsPaginationNext', name?: string | null } | { __typename?: 'CoreCommentsPaginationNumbers', name?: string | null } | { __typename?: 'CoreCommentsPaginationPrevious', name?: string | null } | { __typename?: 'CoreCommentsTitle', name?: string | null } | { __typename?: 'CoreCover', name?: string | null } | { __typename?: 'CoreDetails', name?: string | null } | { __typename?: 'CoreEmbed', name?: string | null } | { __typename?: 'CoreFile', name?: string | null } | { __typename?: 'CoreFootnotes', name?: string | null } | { __typename?: 'CoreFreeform', name?: string | null } | { __typename?: 'CoreGallery', name?: string | null } | { __typename?: 'CoreGroup', name?: string | null } | { __typename?: 'CoreHeading', name?: string | null } | { __typename?: 'CoreHomeLink', name?: string | null } | { __typename?: 'CoreHtml', name?: string | null } | { __typename?: 'CoreImage', name?: string | null } | { __typename?: 'CoreLatestComments', name?: string | null } | { __typename?: 'CoreLatestPosts', name?: string | null } | { __typename?: 'CoreLegacyWidget', name?: string | null } | { __typename?: 'CoreList', name?: string | null } | { __typename?: 'CoreListItem', name?: string | null } | { __typename?: 'CoreLoginout', name?: string | null } | { __typename?: 'CoreMath', name?: string | null } | { __typename?: 'CoreMediaText', name?: string | null } | { __typename?: 'CoreMissing', name?: string | null } | { __typename?: 'CoreMore', name?: string | null } | { __typename?: 'CoreNavigation', name?: string | null } | { __typename?: 'CoreNavigationLink', name?: string | null } | { __typename?: 'CoreNavigationSubmenu', name?: string | null } | { __typename?: 'CoreNextpage', name?: string | null } | { __typename?: 'CorePageList', name?: string | null } | { __typename?: 'CorePageListItem', name?: string | null } | { __typename?: 'CoreParagraph', name?: string | null } | { __typename?: 'CorePattern', name?: string | null } | { __typename?: 'CorePostAuthor', name?: string | null } | { __typename?: 'CorePostAuthorBiography', name?: string | null } | { __typename?: 'CorePostAuthorName', name?: string | null } | { __typename?: 'CorePostComments', name?: string | null } | { __typename?: 'CorePostCommentsCount', name?: string | null } | { __typename?: 'CorePostCommentsForm', name?: string | null } | { __typename?: 'CorePostCommentsLink', name?: string | null } | { __typename?: 'CorePostContent', name?: string | null } | { __typename?: 'CorePostDate', name?: string | null } | { __typename?: 'CorePostExcerpt', name?: string | null } | { __typename?: 'CorePostFeaturedImage', name?: string | null } | { __typename?: 'CorePostNavigationLink', name?: string | null } | { __typename?: 'CorePostTemplate', name?: string | null } | { __typename?: 'CorePostTerms', name?: string | null } | { __typename?: 'CorePostTimeToRead', name?: string | null } | { __typename?: 'CorePostTitle', name?: string | null } | { __typename?: 'CorePreformatted', name?: string | null } | { __typename?: 'CorePullquote', name?: string | null } | { __typename?: 'CoreQuery', name?: string | null } | { __typename?: 'CoreQueryNoResults', name?: string | null } | { __typename?: 'CoreQueryPagination', name?: string | null } | { __typename?: 'CoreQueryPaginationNext', name?: string | null } | { __typename?: 'CoreQueryPaginationNumbers', name?: string | null } | { __typename?: 'CoreQueryPaginationPrevious', name?: string | null } | { __typename?: 'CoreQueryTitle', name?: string | null } | { __typename?: 'CoreQueryTotal', name?: string | null } | { __typename?: 'CoreQuote', name?: string | null } | { __typename?: 'CoreReadMore', name?: string | null } | { __typename?: 'CoreRss', name?: string | null } | { __typename?: 'CoreSearch', name?: string | null } | { __typename?: 'CoreSeparator', name?: string | null } | { __typename?: 'CoreShortcode', name?: string | null } | { __typename?: 'CoreSiteLogo', name?: string | null } | { __typename?: 'CoreSiteTagline', name?: string | null } | { __typename?: 'CoreSiteTitle', name?: string | null } | { __typename?: 'CoreSocialLink', name?: string | null } | { __typename?: 'CoreSocialLinks', name?: string | null } | { __typename?: 'CoreSpacer', name?: string | null } | { __typename?: 'CoreTable', name?: string | null } | { __typename?: 'CoreTagCloud', name?: string | null } | { __typename?: 'CoreTemplatePart', name?: string | null } | { __typename?: 'CoreTermCount', name?: string | null } | { __typename?: 'CoreTermDescription', name?: string | null } | { __typename?: 'CoreTermName', name?: string | null } | { __typename?: 'CoreTermTemplate', name?: string | null } | { __typename?: 'CoreTermsQuery', name?: string | null } | { __typename?: 'CoreTextColumns', name?: string | null } | { __typename?: 'CoreVerse', name?: string | null } | { __typename?: 'CoreVideo', name?: string | null } | { __typename?: 'CoreWidgetGroup', name?: string | null } | { __typename?: 'YoastFaqBlock', name?: string | null } | { __typename?: 'YoastHowToBlock', name?: string | null } | { __typename?: 'YoastSeoBreadcrumbs', name?: string | null } | null> | null, attributes?: { __typename?: 'CoreFootnotesAttributes', metadata?: any | null } | null };
 
-type CommonBlockFields_CoreLatestPosts_Fragment = { __typename: 'CoreLatestPosts', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreFreeform_Fragment = { __typename?: 'CoreFreeform', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreLegacyWidget_Fragment = { __typename: 'CoreLegacyWidget', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreGallery_Fragment = { __typename?: 'CoreGallery', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreList_Fragment = { __typename: 'CoreList', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreGroup_Fragment = { __typename?: 'CoreGroup', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreGroupAttributes', backgroundColor?: string | null, textColor?: string | null, align?: string | null, style?: any | null } | null };
 
-type CommonBlockFields_CoreListItem_Fragment = { __typename: 'CoreListItem', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreHeading_Fragment = { __typename?: 'CoreHeading', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreHeadingAttributes', content?: string | null, className?: string | null, fontFamily?: string | null, fontSize?: string | null, textColor?: string | null, textAlign?: string | null, level: number, align?: string | null } | null };
 
-type CommonBlockFields_CoreLoginout_Fragment = { __typename: 'CoreLoginout', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreHomeLink_Fragment = { __typename?: 'CoreHomeLink', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreMediaText_Fragment = { __typename: 'CoreMediaText', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreHtml_Fragment = { __typename?: 'CoreHtml', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreMissing_Fragment = { __typename: 'CoreMissing', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreImage_Fragment = { __typename?: 'CoreImage', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, mediaDetails?: { __typename?: 'MediaDetails', sizes?: Array<{ __typename?: 'MediaSize', sourceUrl?: string | null, height?: string | null, width?: string | null, mimeType?: string | null, name?: string | null } | null> | null } | null, attributes?: { __typename?: 'CoreImageAttributes', title?: string | null, alt: string, url?: string | null, caption?: string | null, aspectRatio?: string | null, className?: string | null, align?: string | null } | null };
 
-type CommonBlockFields_CoreMore_Fragment = { __typename: 'CoreMore', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreMoreAttributes', customText: string } | null };
+type CommonBlockFields_CoreLatestComments_Fragment = { __typename?: 'CoreLatestComments', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreNavigation_Fragment = { __typename: 'CoreNavigation', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreLatestPosts_Fragment = { __typename?: 'CoreLatestPosts', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreLatestPostsAttributes', postsToShow: number, displayPostDate: boolean, className?: string | null, align?: string | null } | null, resolvedPosts?: Array<{ __typename?: 'ResolvedPost', title?: string | null, date?: string | null, uri?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'ResolvedPostImage', sourceUrl?: string | null, altText?: string | null, sizes?: Array<{ __typename?: 'ResolvedPostImageSize', sourceUrl?: string | null, width?: string | null, height?: string | null, name?: string | null, mimeType?: string | null } | null> | null } | null } | null> | null };
 
-type CommonBlockFields_CoreNavigationLink_Fragment = { __typename: 'CoreNavigationLink', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreLegacyWidget_Fragment = { __typename?: 'CoreLegacyWidget', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreNavigationSubmenu_Fragment = { __typename: 'CoreNavigationSubmenu', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreList_Fragment = { __typename?: 'CoreList', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreListAttributes', ordered: boolean, reversed?: boolean | null, start?: number | null, textColor?: string | null, type?: string | null } | null };
 
-type CommonBlockFields_CoreNextpage_Fragment = { __typename: 'CoreNextpage', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreListItem_Fragment = { __typename?: 'CoreListItem', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreListItemAttributes', content?: string | null, fontSize?: string | null, fontFamily?: string | null, textColor?: string | null } | null };
 
-type CommonBlockFields_CorePageList_Fragment = { __typename: 'CorePageList', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreLoginout_Fragment = { __typename?: 'CoreLoginout', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CorePageListItem_Fragment = { __typename: 'CorePageListItem', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreMath_Fragment = { __typename?: 'CoreMath', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreParagraph_Fragment = { __typename: 'CoreParagraph', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreParagraphAttributes', content?: string | null, fontFamily?: string | null, fontSize?: string | null, textColor?: string | null, align?: string | null, className?: string | null } | null };
+type CommonBlockFields_CoreMediaText_Fragment = { __typename?: 'CoreMediaText', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CorePattern_Fragment = { __typename: 'CorePattern', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreMissing_Fragment = { __typename?: 'CoreMissing', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CorePostAuthor_Fragment = { __typename: 'CorePostAuthor', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreMore_Fragment = { __typename?: 'CoreMore', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreMoreAttributes', customText: string } | null };
 
-type CommonBlockFields_CorePostAuthorBiography_Fragment = { __typename: 'CorePostAuthorBiography', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreNavigation_Fragment = { __typename?: 'CoreNavigation', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CorePostAuthorName_Fragment = { __typename: 'CorePostAuthorName', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreNavigationLink_Fragment = { __typename?: 'CoreNavigationLink', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CorePostComments_Fragment = { __typename: 'CorePostComments', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreNavigationSubmenu_Fragment = { __typename?: 'CoreNavigationSubmenu', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CorePostCommentsForm_Fragment = { __typename: 'CorePostCommentsForm', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreNextpage_Fragment = { __typename?: 'CoreNextpage', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CorePostContent_Fragment = { __typename: 'CorePostContent', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CorePageList_Fragment = { __typename?: 'CorePageList', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CorePostDate_Fragment = { __typename: 'CorePostDate', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CorePageListItem_Fragment = { __typename?: 'CorePageListItem', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CorePostExcerpt_Fragment = { __typename: 'CorePostExcerpt', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreParagraph_Fragment = { __typename?: 'CoreParagraph', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreParagraphAttributes', content?: string | null, fontFamily?: string | null, fontSize?: string | null, textColor?: string | null, align?: string | null, className?: string | null } | null };
 
-type CommonBlockFields_CorePostFeaturedImage_Fragment = { __typename: 'CorePostFeaturedImage', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CorePattern_Fragment = { __typename?: 'CorePattern', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CorePostNavigationLink_Fragment = { __typename: 'CorePostNavigationLink', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CorePostAuthor_Fragment = { __typename?: 'CorePostAuthor', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CorePostTemplate_Fragment = { __typename: 'CorePostTemplate', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CorePostTemplateAttributes', align?: string | null, backgroundColor?: string | null, fontFamily?: string | null, fontSize?: string | null, layout?: any | null, metadata?: any | null } | null };
+type CommonBlockFields_CorePostAuthorBiography_Fragment = { __typename?: 'CorePostAuthorBiography', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CorePostTerms_Fragment = { __typename: 'CorePostTerms', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CorePostAuthorName_Fragment = { __typename?: 'CorePostAuthorName', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CorePostTitle_Fragment = { __typename: 'CorePostTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CorePostComments_Fragment = { __typename?: 'CorePostComments', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CorePreformatted_Fragment = { __typename: 'CorePreformatted', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CorePostCommentsCount_Fragment = { __typename?: 'CorePostCommentsCount', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CorePullquote_Fragment = { __typename: 'CorePullquote', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CorePostCommentsForm_Fragment = { __typename?: 'CorePostCommentsForm', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreQuery_Fragment = { __typename: 'CoreQuery', apiVersion?: number | null, blockEditorCategoryName?: string | null, isDynamic: boolean, name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreQueryAttributes', align?: string | null, layout?: any | null, metadata?: any | null, query: any } | null };
+type CommonBlockFields_CorePostCommentsLink_Fragment = { __typename?: 'CorePostCommentsLink', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreQueryNoResults_Fragment = { __typename: 'CoreQueryNoResults', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CorePostContent_Fragment = { __typename?: 'CorePostContent', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreQueryPagination_Fragment = { __typename: 'CoreQueryPagination', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CorePostDate_Fragment = { __typename?: 'CorePostDate', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreQueryPaginationNext_Fragment = { __typename: 'CoreQueryPaginationNext', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CorePostExcerpt_Fragment = { __typename?: 'CorePostExcerpt', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreQueryPaginationNumbers_Fragment = { __typename: 'CoreQueryPaginationNumbers', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CorePostFeaturedImage_Fragment = { __typename?: 'CorePostFeaturedImage', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreQueryPaginationPrevious_Fragment = { __typename: 'CoreQueryPaginationPrevious', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CorePostNavigationLink_Fragment = { __typename?: 'CorePostNavigationLink', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreQueryTitle_Fragment = { __typename: 'CoreQueryTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CorePostTemplate_Fragment = { __typename?: 'CorePostTemplate', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreQueryTotal_Fragment = { __typename: 'CoreQueryTotal', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CorePostTerms_Fragment = { __typename?: 'CorePostTerms', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreQuote_Fragment = { __typename: 'CoreQuote', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CorePostTimeToRead_Fragment = { __typename?: 'CorePostTimeToRead', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreReadMore_Fragment = { __typename: 'CoreReadMore', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CorePostTitle_Fragment = { __typename?: 'CorePostTitle', renderedHtml?: string | null, name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CorePostTitleAttributes', className?: string | null, fontFamily?: string | null, fontSize?: string | null, textColor?: string | null, textAlign?: string | null, level: number, align?: string | null } | null };
 
-type CommonBlockFields_CoreRss_Fragment = { __typename: 'CoreRss', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CorePreformatted_Fragment = { __typename?: 'CorePreformatted', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreSearch_Fragment = { __typename: 'CoreSearch', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CorePullquote_Fragment = { __typename?: 'CorePullquote', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreSeparator_Fragment = { __typename: 'CoreSeparator', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreQuery_Fragment = { __typename?: 'CoreQuery', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreQueryAttributes', align?: string | null, className?: string | null } | null, resolvedPosts?: Array<{ __typename?: 'ResolvedPost', title?: string | null, date?: string | null, uri?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'ResolvedPostImage', sourceUrl?: string | null, altText?: string | null, sizes?: Array<{ __typename?: 'ResolvedPostImageSize', sourceUrl?: string | null, width?: string | null, height?: string | null, name?: string | null, mimeType?: string | null } | null> | null } | null } | null> | null };
 
-type CommonBlockFields_CoreShortcode_Fragment = { __typename: 'CoreShortcode', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreQueryNoResults_Fragment = { __typename?: 'CoreQueryNoResults', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreSiteLogo_Fragment = { __typename: 'CoreSiteLogo', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreQueryPagination_Fragment = { __typename?: 'CoreQueryPagination', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreSiteTagline_Fragment = { __typename: 'CoreSiteTagline', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreQueryPaginationNext_Fragment = { __typename?: 'CoreQueryPaginationNext', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreSiteTitle_Fragment = { __typename: 'CoreSiteTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreQueryPaginationNumbers_Fragment = { __typename?: 'CoreQueryPaginationNumbers', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreSocialLink_Fragment = { __typename: 'CoreSocialLink', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreQueryPaginationPrevious_Fragment = { __typename?: 'CoreQueryPaginationPrevious', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreSocialLinks_Fragment = { __typename: 'CoreSocialLinks', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreQueryTitle_Fragment = { __typename?: 'CoreQueryTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreSpacer_Fragment = { __typename: 'CoreSpacer', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreSpacerAttributes', height: string, className?: string | null, style?: any | null } | null };
+type CommonBlockFields_CoreQueryTotal_Fragment = { __typename?: 'CoreQueryTotal', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreTable_Fragment = { __typename: 'CoreTable', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreQuote_Fragment = { __typename?: 'CoreQuote', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreQuoteAttributes', citation?: string | null, layout?: any | null, textAlign?: string | null, className?: string | null, fontFamily?: string | null, fontSize?: string | null, textColor?: string | null, align?: string | null, value: string } | null };
 
-type CommonBlockFields_CoreTagCloud_Fragment = { __typename: 'CoreTagCloud', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreReadMore_Fragment = { __typename?: 'CoreReadMore', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreTemplatePart_Fragment = { __typename: 'CoreTemplatePart', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreRss_Fragment = { __typename?: 'CoreRss', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreTermDescription_Fragment = { __typename: 'CoreTermDescription', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreSearch_Fragment = { __typename?: 'CoreSearch', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreTextColumns_Fragment = { __typename: 'CoreTextColumns', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreSeparator_Fragment = { __typename?: 'CoreSeparator', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreVerse_Fragment = { __typename: 'CoreVerse', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreShortcode_Fragment = { __typename?: 'CoreShortcode', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreVideo_Fragment = { __typename: 'CoreVideo', name?: string | null, parentClientId?: string | null, clientId?: string | null, attributes?: { __typename?: 'CoreVideoAttributes', autoplay?: boolean | null, preload: string, src?: string | null, muted?: boolean | null, controls: boolean, caption?: string | null, poster?: string | null, align?: string | null, loop?: boolean | null, className?: string | null } | null };
+type CommonBlockFields_CoreSiteLogo_Fragment = { __typename?: 'CoreSiteLogo', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_CoreWidgetGroup_Fragment = { __typename: 'CoreWidgetGroup', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreSiteTagline_Fragment = { __typename?: 'CoreSiteTagline', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_YoastFaqBlock_Fragment = { __typename: 'YoastFaqBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreSiteTitle_Fragment = { __typename?: 'CoreSiteTitle', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_YoastHowToBlock_Fragment = { __typename: 'YoastHowToBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreSocialLink_Fragment = { __typename?: 'CoreSocialLink', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-type CommonBlockFields_YoastSeoBreadcrumbs_Fragment = { __typename: 'YoastSeoBreadcrumbs', name?: string | null, parentClientId?: string | null, clientId?: string | null };
+type CommonBlockFields_CoreSocialLinks_Fragment = { __typename?: 'CoreSocialLinks', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
 
-export type CommonBlockFieldsFragment = CommonBlockFields_AcfHeaderAnimation_Fragment | CommonBlockFields_AcfHomeSection_Fragment | CommonBlockFields_AcfSignupForm_Fragment | CommonBlockFields_AcfTickerNumber_Fragment | CommonBlockFields_CoreArchives_Fragment | CommonBlockFields_CoreAudio_Fragment | CommonBlockFields_CoreAvatar_Fragment | CommonBlockFields_CoreBlock_Fragment | CommonBlockFields_CoreButton_Fragment | CommonBlockFields_CoreButtons_Fragment | CommonBlockFields_CoreCalendar_Fragment | CommonBlockFields_CoreCategories_Fragment | CommonBlockFields_CoreCode_Fragment | CommonBlockFields_CoreColumn_Fragment | CommonBlockFields_CoreColumns_Fragment | CommonBlockFields_CoreCommentAuthorName_Fragment | CommonBlockFields_CoreCommentContent_Fragment | CommonBlockFields_CoreCommentDate_Fragment | CommonBlockFields_CoreCommentEditLink_Fragment | CommonBlockFields_CoreCommentReplyLink_Fragment | CommonBlockFields_CoreCommentTemplate_Fragment | CommonBlockFields_CoreComments_Fragment | CommonBlockFields_CoreCommentsPagination_Fragment | CommonBlockFields_CoreCommentsPaginationNext_Fragment | CommonBlockFields_CoreCommentsPaginationNumbers_Fragment | CommonBlockFields_CoreCommentsPaginationPrevious_Fragment | CommonBlockFields_CoreCommentsTitle_Fragment | CommonBlockFields_CoreCover_Fragment | CommonBlockFields_CoreDetails_Fragment | CommonBlockFields_CoreEmbed_Fragment | CommonBlockFields_CoreFile_Fragment | CommonBlockFields_CoreFootnotes_Fragment | CommonBlockFields_CoreFreeform_Fragment | CommonBlockFields_CoreGallery_Fragment | CommonBlockFields_CoreGroup_Fragment | CommonBlockFields_CoreHeading_Fragment | CommonBlockFields_CoreHomeLink_Fragment | CommonBlockFields_CoreHtml_Fragment | CommonBlockFields_CoreImage_Fragment | CommonBlockFields_CoreLatestComments_Fragment | CommonBlockFields_CoreLatestPosts_Fragment | CommonBlockFields_CoreLegacyWidget_Fragment | CommonBlockFields_CoreList_Fragment | CommonBlockFields_CoreListItem_Fragment | CommonBlockFields_CoreLoginout_Fragment | CommonBlockFields_CoreMediaText_Fragment | CommonBlockFields_CoreMissing_Fragment | CommonBlockFields_CoreMore_Fragment | CommonBlockFields_CoreNavigation_Fragment | CommonBlockFields_CoreNavigationLink_Fragment | CommonBlockFields_CoreNavigationSubmenu_Fragment | CommonBlockFields_CoreNextpage_Fragment | CommonBlockFields_CorePageList_Fragment | CommonBlockFields_CorePageListItem_Fragment | CommonBlockFields_CoreParagraph_Fragment | CommonBlockFields_CorePattern_Fragment | CommonBlockFields_CorePostAuthor_Fragment | CommonBlockFields_CorePostAuthorBiography_Fragment | CommonBlockFields_CorePostAuthorName_Fragment | CommonBlockFields_CorePostComments_Fragment | CommonBlockFields_CorePostCommentsForm_Fragment | CommonBlockFields_CorePostContent_Fragment | CommonBlockFields_CorePostDate_Fragment | CommonBlockFields_CorePostExcerpt_Fragment | CommonBlockFields_CorePostFeaturedImage_Fragment | CommonBlockFields_CorePostNavigationLink_Fragment | CommonBlockFields_CorePostTemplate_Fragment | CommonBlockFields_CorePostTerms_Fragment | CommonBlockFields_CorePostTitle_Fragment | CommonBlockFields_CorePreformatted_Fragment | CommonBlockFields_CorePullquote_Fragment | CommonBlockFields_CoreQuery_Fragment | CommonBlockFields_CoreQueryNoResults_Fragment | CommonBlockFields_CoreQueryPagination_Fragment | CommonBlockFields_CoreQueryPaginationNext_Fragment | CommonBlockFields_CoreQueryPaginationNumbers_Fragment | CommonBlockFields_CoreQueryPaginationPrevious_Fragment | CommonBlockFields_CoreQueryTitle_Fragment | CommonBlockFields_CoreQueryTotal_Fragment | CommonBlockFields_CoreQuote_Fragment | CommonBlockFields_CoreReadMore_Fragment | CommonBlockFields_CoreRss_Fragment | CommonBlockFields_CoreSearch_Fragment | CommonBlockFields_CoreSeparator_Fragment | CommonBlockFields_CoreShortcode_Fragment | CommonBlockFields_CoreSiteLogo_Fragment | CommonBlockFields_CoreSiteTagline_Fragment | CommonBlockFields_CoreSiteTitle_Fragment | CommonBlockFields_CoreSocialLink_Fragment | CommonBlockFields_CoreSocialLinks_Fragment | CommonBlockFields_CoreSpacer_Fragment | CommonBlockFields_CoreTable_Fragment | CommonBlockFields_CoreTagCloud_Fragment | CommonBlockFields_CoreTemplatePart_Fragment | CommonBlockFields_CoreTermDescription_Fragment | CommonBlockFields_CoreTextColumns_Fragment | CommonBlockFields_CoreVerse_Fragment | CommonBlockFields_CoreVideo_Fragment | CommonBlockFields_CoreWidgetGroup_Fragment | CommonBlockFields_YoastFaqBlock_Fragment | CommonBlockFields_YoastHowToBlock_Fragment | CommonBlockFields_YoastSeoBreadcrumbs_Fragment;
+type CommonBlockFields_CoreSpacer_Fragment = { __typename?: 'CoreSpacer', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreSpacerAttributes', height?: string | null, style?: any | null } | null };
 
-export const MediaDetailsFragmentFragmentDoc = gql`
-    fragment MediaDetailsFragment on MediaDetails {
-  sizes {
-    name
-    sourceUrl
-    width
-    height
-  }
-}
-    `;
+type CommonBlockFields_CoreTable_Fragment = { __typename?: 'CoreTable', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
+
+type CommonBlockFields_CoreTagCloud_Fragment = { __typename?: 'CoreTagCloud', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
+
+type CommonBlockFields_CoreTemplatePart_Fragment = { __typename?: 'CoreTemplatePart', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
+
+type CommonBlockFields_CoreTermCount_Fragment = { __typename?: 'CoreTermCount', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
+
+type CommonBlockFields_CoreTermDescription_Fragment = { __typename?: 'CoreTermDescription', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
+
+type CommonBlockFields_CoreTermName_Fragment = { __typename?: 'CoreTermName', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
+
+type CommonBlockFields_CoreTermTemplate_Fragment = { __typename?: 'CoreTermTemplate', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
+
+type CommonBlockFields_CoreTermsQuery_Fragment = { __typename?: 'CoreTermsQuery', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
+
+type CommonBlockFields_CoreTextColumns_Fragment = { __typename?: 'CoreTextColumns', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
+
+type CommonBlockFields_CoreVerse_Fragment = { __typename?: 'CoreVerse', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
+
+type CommonBlockFields_CoreVideo_Fragment = { __typename?: 'CoreVideo', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null, attributes?: { __typename?: 'CoreVideoAttributes', autoplay?: boolean | null, preload: string, src?: string | null, metadata?: any | null, muted?: boolean | null, controls: boolean, caption?: string | null, poster?: string | null, align?: string | null, loop?: boolean | null, className?: string | null } | null };
+
+type CommonBlockFields_CoreWidgetGroup_Fragment = { __typename?: 'CoreWidgetGroup', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
+
+type CommonBlockFields_YoastFaqBlock_Fragment = { __typename?: 'YoastFaqBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
+
+type CommonBlockFields_YoastHowToBlock_Fragment = { __typename?: 'YoastHowToBlock', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
+
+type CommonBlockFields_YoastSeoBreadcrumbs_Fragment = { __typename?: 'YoastSeoBreadcrumbs', name?: string | null, parentClientId?: string | null, clientId?: string | null, type?: string | null };
+
+export type CommonBlockFieldsFragment = CommonBlockFields_CoreAccordion_Fragment | CommonBlockFields_CoreAccordionHeading_Fragment | CommonBlockFields_CoreAccordionItem_Fragment | CommonBlockFields_CoreAccordionPanel_Fragment | CommonBlockFields_CoreArchives_Fragment | CommonBlockFields_CoreAudio_Fragment | CommonBlockFields_CoreAvatar_Fragment | CommonBlockFields_CoreBlock_Fragment | CommonBlockFields_CoreButton_Fragment | CommonBlockFields_CoreButtons_Fragment | CommonBlockFields_CoreCalendar_Fragment | CommonBlockFields_CoreCategories_Fragment | CommonBlockFields_CoreCode_Fragment | CommonBlockFields_CoreColumn_Fragment | CommonBlockFields_CoreColumns_Fragment | CommonBlockFields_CoreCommentAuthorName_Fragment | CommonBlockFields_CoreCommentContent_Fragment | CommonBlockFields_CoreCommentDate_Fragment | CommonBlockFields_CoreCommentEditLink_Fragment | CommonBlockFields_CoreCommentReplyLink_Fragment | CommonBlockFields_CoreCommentTemplate_Fragment | CommonBlockFields_CoreComments_Fragment | CommonBlockFields_CoreCommentsPagination_Fragment | CommonBlockFields_CoreCommentsPaginationNext_Fragment | CommonBlockFields_CoreCommentsPaginationNumbers_Fragment | CommonBlockFields_CoreCommentsPaginationPrevious_Fragment | CommonBlockFields_CoreCommentsTitle_Fragment | CommonBlockFields_CoreCover_Fragment | CommonBlockFields_CoreDetails_Fragment | CommonBlockFields_CoreEmbed_Fragment | CommonBlockFields_CoreFile_Fragment | CommonBlockFields_CoreFootnotes_Fragment | CommonBlockFields_CoreFreeform_Fragment | CommonBlockFields_CoreGallery_Fragment | CommonBlockFields_CoreGroup_Fragment | CommonBlockFields_CoreHeading_Fragment | CommonBlockFields_CoreHomeLink_Fragment | CommonBlockFields_CoreHtml_Fragment | CommonBlockFields_CoreImage_Fragment | CommonBlockFields_CoreLatestComments_Fragment | CommonBlockFields_CoreLatestPosts_Fragment | CommonBlockFields_CoreLegacyWidget_Fragment | CommonBlockFields_CoreList_Fragment | CommonBlockFields_CoreListItem_Fragment | CommonBlockFields_CoreLoginout_Fragment | CommonBlockFields_CoreMath_Fragment | CommonBlockFields_CoreMediaText_Fragment | CommonBlockFields_CoreMissing_Fragment | CommonBlockFields_CoreMore_Fragment | CommonBlockFields_CoreNavigation_Fragment | CommonBlockFields_CoreNavigationLink_Fragment | CommonBlockFields_CoreNavigationSubmenu_Fragment | CommonBlockFields_CoreNextpage_Fragment | CommonBlockFields_CorePageList_Fragment | CommonBlockFields_CorePageListItem_Fragment | CommonBlockFields_CoreParagraph_Fragment | CommonBlockFields_CorePattern_Fragment | CommonBlockFields_CorePostAuthor_Fragment | CommonBlockFields_CorePostAuthorBiography_Fragment | CommonBlockFields_CorePostAuthorName_Fragment | CommonBlockFields_CorePostComments_Fragment | CommonBlockFields_CorePostCommentsCount_Fragment | CommonBlockFields_CorePostCommentsForm_Fragment | CommonBlockFields_CorePostCommentsLink_Fragment | CommonBlockFields_CorePostContent_Fragment | CommonBlockFields_CorePostDate_Fragment | CommonBlockFields_CorePostExcerpt_Fragment | CommonBlockFields_CorePostFeaturedImage_Fragment | CommonBlockFields_CorePostNavigationLink_Fragment | CommonBlockFields_CorePostTemplate_Fragment | CommonBlockFields_CorePostTerms_Fragment | CommonBlockFields_CorePostTimeToRead_Fragment | CommonBlockFields_CorePostTitle_Fragment | CommonBlockFields_CorePreformatted_Fragment | CommonBlockFields_CorePullquote_Fragment | CommonBlockFields_CoreQuery_Fragment | CommonBlockFields_CoreQueryNoResults_Fragment | CommonBlockFields_CoreQueryPagination_Fragment | CommonBlockFields_CoreQueryPaginationNext_Fragment | CommonBlockFields_CoreQueryPaginationNumbers_Fragment | CommonBlockFields_CoreQueryPaginationPrevious_Fragment | CommonBlockFields_CoreQueryTitle_Fragment | CommonBlockFields_CoreQueryTotal_Fragment | CommonBlockFields_CoreQuote_Fragment | CommonBlockFields_CoreReadMore_Fragment | CommonBlockFields_CoreRss_Fragment | CommonBlockFields_CoreSearch_Fragment | CommonBlockFields_CoreSeparator_Fragment | CommonBlockFields_CoreShortcode_Fragment | CommonBlockFields_CoreSiteLogo_Fragment | CommonBlockFields_CoreSiteTagline_Fragment | CommonBlockFields_CoreSiteTitle_Fragment | CommonBlockFields_CoreSocialLink_Fragment | CommonBlockFields_CoreSocialLinks_Fragment | CommonBlockFields_CoreSpacer_Fragment | CommonBlockFields_CoreTable_Fragment | CommonBlockFields_CoreTagCloud_Fragment | CommonBlockFields_CoreTemplatePart_Fragment | CommonBlockFields_CoreTermCount_Fragment | CommonBlockFields_CoreTermDescription_Fragment | CommonBlockFields_CoreTermName_Fragment | CommonBlockFields_CoreTermTemplate_Fragment | CommonBlockFields_CoreTermsQuery_Fragment | CommonBlockFields_CoreTextColumns_Fragment | CommonBlockFields_CoreVerse_Fragment | CommonBlockFields_CoreVideo_Fragment | CommonBlockFields_CoreWidgetGroup_Fragment | CommonBlockFields_YoastFaqBlock_Fragment | CommonBlockFields_YoastHowToBlock_Fragment | CommonBlockFields_YoastSeoBreadcrumbs_Fragment;
+
+export type ResolvedPostFieldsFragment = { __typename?: 'ResolvedPost', title?: string | null, date?: string | null, uri?: string | null, excerpt?: string | null, featuredImage?: { __typename?: 'ResolvedPostImage', sourceUrl?: string | null, altText?: string | null, sizes?: Array<{ __typename?: 'ResolvedPostImageSize', sourceUrl?: string | null, width?: string | null, height?: string | null, name?: string | null, mimeType?: string | null } | null> | null } | null };
+
+export type PostsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type PostsQuery = { __typename?: 'RootQuery', posts?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', title?: string | null, slug?: string | null, date?: string | null, categories?: { __typename?: 'PostToCategoryConnection', nodes: Array<{ __typename?: 'Category', slug?: string | null, name?: string | null }> } | null }> } | null };
+
 export const SeoFragmentFragmentDoc = gql`
     fragment SeoFragment on PostTypeSEO {
   metaDesc
@@ -17221,24 +17376,53 @@ export const SeoFragmentFragmentDoc = gql`
     altText
     caption
     mediaDetails {
-      ...MediaDetailsFragment
+      sizes {
+        name
+        sourceUrl
+        width
+        height
+      }
     }
   }
   opengraphImage {
     altText
     caption
     mediaDetails {
-      ...MediaDetailsFragment
+      sizes {
+        name
+        sourceUrl
+        width
+        height
+      }
     }
   }
 }
-    ${MediaDetailsFragmentFragmentDoc}`;
+    `;
 export const BlockBasicFieldsFragmentDoc = gql`
     fragment BlockBasicFields on EditorBlock {
   name
   parentClientId
   clientId
-  __typename
+  type
+}
+    `;
+export const ResolvedPostFieldsFragmentDoc = gql`
+    fragment ResolvedPostFields on ResolvedPost {
+  title
+  date
+  uri
+  excerpt
+  featuredImage {
+    sourceUrl
+    altText
+    sizes {
+      sourceUrl
+      width
+      height
+      name
+      mimeType
+    }
+  }
 }
     `;
 export const CommonBlockFieldsFragmentDoc = gql`
@@ -17249,6 +17433,7 @@ export const CommonBlockFieldsFragmentDoc = gql`
       autoplay
       preload
       src
+      metadata
       muted
       controls
       caption
@@ -17258,66 +17443,23 @@ export const CommonBlockFieldsFragmentDoc = gql`
       className
     }
   }
+  ... on CorePostTitle {
+    renderedHtml
+    attributes {
+      className
+      fontFamily
+      fontSize
+      textColor
+      textAlign
+      level
+      align
+    }
+  }
   ... on CoreEmbed {
     renderedHtml
     attributes {
       align
       url
-      className
-    }
-  }
-  ... on AcfSignupForm {
-    signupForm {
-      formId
-      emailField
-      phoneField
-      postcodeField
-      unionList
-      workplace
-    }
-    attributes {
-      align
-      backgroundColor
-      textColor
-      className
-    }
-  }
-  ... on AcfHomeSection {
-    attributes {
-      align
-      backgroundColor
-      textColor
-      className
-    }
-    innerBlocks {
-      name
-      parentClientId
-      clientId
-    }
-    homeSection {
-      accordeonlabel
-      defaultActive
-    }
-  }
-  ... on CoreQuery {
-    apiVersion
-    blockEditorCategoryName
-    isDynamic
-    attributes {
-      align
-      layout
-      metadata
-      query
-    }
-  }
-  ... on CorePostTemplate {
-    attributes {
-      align
-      backgroundColor
-      fontFamily
-      fontSize
-      layout
-      metadata
     }
   }
   ... on CoreImage {
@@ -17331,13 +17473,13 @@ export const CommonBlockFieldsFragmentDoc = gql`
       }
     }
     attributes {
-      align
       title
       alt
       url
       caption
       aspectRatio
       className
+      align
     }
   }
   ... on CoreParagraph {
@@ -17357,7 +17499,6 @@ export const CommonBlockFieldsFragmentDoc = gql`
     }
     attributes {
       metadata
-      className
     }
   }
   ... on CoreMore {
@@ -17365,33 +17506,21 @@ export const CommonBlockFieldsFragmentDoc = gql`
       customText
     }
   }
-  ... on AcfHeaderAnimation {
-    apiVersion
-    blockEditorCategoryName
-    headerAnimation {
-      statements {
-        statement
-        bgcolor
-        textcolor
-      }
-    }
+  ... on CoreList {
     attributes {
-      align
-      backgroundColor
+      ordered
+      reversed
+      start
       textColor
-      className
+      type
     }
   }
-  ... on AcfTickerNumber {
-    currentCount
+  ... on CoreListItem {
     attributes {
-      align
-      backgroundColor
+      content
+      fontSize
+      fontFamily
       textColor
-      className
-    }
-    tickerNumber {
-      incrementBy
     }
   }
   ... on CoreHeading {
@@ -17409,7 +17538,7 @@ export const CommonBlockFieldsFragmentDoc = gql`
   ... on CoreColumns {
     attributes {
       backgroundColor
-      className
+      textColor
       layout
       className
       verticalAlignment
@@ -17421,17 +17550,18 @@ export const CommonBlockFieldsFragmentDoc = gql`
   ... on CoreColumn {
     attributes {
       backgroundColor
+      textColor
       layout
       className
       verticalAlignment
-      style
       width
+      style
     }
   }
   ... on CoreGroup {
     attributes {
       backgroundColor
-      className
+      textColor
       align
       style
     }
@@ -17439,48 +17569,90 @@ export const CommonBlockFieldsFragmentDoc = gql`
   ... on CoreButton {
     attributes {
       backgroundColor
-      style
+      textColor
+      borderColor
       className
+      style
       fontSize
+      fontFamily
       linkTarget
       text
       url
-    }
-    innerBlocks {
-      ...BlockBasicFields
     }
   }
   ... on CoreButtons {
     attributes {
       align
-      className
       layout
     }
   }
   ... on CoreSpacer {
     attributes {
       height
-      className
       style
+    }
+  }
+  ... on CoreQuote {
+    attributes {
+      citation
+      layout
+      textAlign
       className
+      fontFamily
+      fontSize
+      textColor
+      align
+      value
+    }
+  }
+  ... on CoreLatestPosts {
+    attributes {
+      postsToShow
+      displayPostDate
+      className
+      align
+    }
+    resolvedPosts {
+      ...ResolvedPostFields
+    }
+  }
+  ... on CoreQuery {
+    attributes {
+      align
+      className
+    }
+    resolvedPosts {
+      ...ResolvedPostFields
     }
   }
 }
-    ${BlockBasicFieldsFragmentDoc}`;
+    ${BlockBasicFieldsFragmentDoc}
+${ResolvedPostFieldsFragmentDoc}`;
 export const PageMetaDocument = gql`
-    query PageMeta($uri: ID!) {
-  menu(id: "primary-navigation", idType: SLUG) {
-    menuItems {
-      nodes {
-        label
-        order
-        uri
+    query PageMeta($uri: String!) {
+  menus(where: {location: PRIMARY_NAVIGATION}, first: 1) {
+    nodes {
+      name
+      locations
+      menuItems {
+        nodes {
+          label
+          order
+          uri
+        }
       }
     }
   }
-  page(id: $uri, idType: URI) {
-    seo {
-      ...SeoFragment
+  page: nodeByUri(uri: $uri) {
+    ... on Page {
+      seo {
+        ...SeoFragment
+      }
+    }
+    ... on Post {
+      seo {
+        ...SeoFragment
+      }
     }
   }
 }
@@ -17521,6 +17693,23 @@ export const PageContentDocument = gql`
   }
 }
     ${CommonBlockFieldsFragmentDoc}`;
+export const PostsDocument = gql`
+    query Posts {
+  posts {
+    nodes {
+      title
+      slug
+      categories {
+        nodes {
+          slug
+          name
+        }
+      }
+      date
+    }
+  }
+}
+    `;
 export type Requester<C = {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R> | AsyncIterable<R>
 export function getSdk<C>(requester: Requester<C>) {
   return {
@@ -17529,6 +17718,9 @@ export function getSdk<C>(requester: Requester<C>) {
     },
     PageContent(variables?: PageContentQueryVariables, options?: C): Promise<PageContentQuery> {
       return requester<PageContentQuery, PageContentQueryVariables>(PageContentDocument, variables, options) as Promise<PageContentQuery>;
+    },
+    Posts(variables?: PostsQueryVariables, options?: C): Promise<PostsQuery> {
+      return requester<PostsQuery, PostsQueryVariables>(PostsDocument, variables, options) as Promise<PostsQuery>;
     }
   };
 }

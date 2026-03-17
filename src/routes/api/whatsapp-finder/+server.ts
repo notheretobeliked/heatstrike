@@ -60,7 +60,7 @@ export const GET: RequestHandler = async ({ url }) => {
     }
 
     const postcode = url.searchParams.get('postcode');
-    
+
     if (!postcode) {
         return json({ error: 'Postcode is required' }, { status: 400 });
     }
@@ -69,7 +69,7 @@ export const GET: RequestHandler = async ({ url }) => {
         // Use OS Names API to search for the postcode
         const namesApiUrl = `https://api.os.uk/search/names/v1/find?query=${encodeURIComponent(postcode)}&maxresults=1&fq=LOCAL_TYPE:Postcode&key=${OS_KEY}`;
         const response = await fetch(namesApiUrl);
-        
+
         if (!response.ok) {
             const errorText = await response.text();
             console.error('OS Names API error:', errorText);
@@ -77,17 +77,17 @@ export const GET: RequestHandler = async ({ url }) => {
         }
 
         const data = await response.json();
-        
+
         if (data.results && data.results.length > 0) {
             const result = data.results[0].GAZETTEER_ENTRY;
             const region = determineRegion(result);
-            
+
             return json({
                 region: region,
                 whatsappLink: WHATSAPP_LINKS[region] || null
             });
         }
-        
+
         return json({ error: 'Postcode not found' }, { status: 404 });
     } catch (error) {
         console.error('Error finding WhatsApp group:', error);

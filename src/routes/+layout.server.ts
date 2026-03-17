@@ -3,109 +3,173 @@ import type { PageMetaQuery } from '$lib/graphql/generated'
 import { checkResponse, graphqlQuery } from '$lib/utilities/graphql'
 import type { LayoutServerLoad } from './$types'
 import { error, isHttpError } from '@sveltejs/kit'
-import { PUBLIC_SITE_URL } from '$env/static/public' // Ensure this import is correct
+import { PUBLIC_SITE_URL } from '$env/static/public'
+
+interface MenuItemWithCurrent {
+	label?: string | null
+	order?: number | null
+	uri?: string | null
+	current?: boolean
+}
+
+interface NormalizedMenu {
+	menuItems?: {
+		nodes: MenuItemWithCurrent[]
+	} | null
+}
+
+const emptyMenu: NormalizedMenu = {
+	menuItems: {
+		nodes: []
+	}
+}
 
 interface LoadReturn {
 	data: PageMetaQuery
-	menu: NonNullable<PageMetaQuery['menu']>
-	seo: NonNullable<NonNullable<PageMetaQuery['page']>['seo']>
+	menu: NormalizedMenu
+	seo: Record<string, unknown>
 	uri: string
 	temp: number | null
 }
 
-export const load: LayoutServerLoad<LoadReturn> = async function load({ params, url, fetch }) {
+/** Routes that should not trigger a GraphQL query */
+const systemRoutes = [
+	'/apple-touch-icon',
+	'/apple-touch-icon-precomposed',
+	'/.well-known',
+	'/favicon',
+	'/robots.txt',
+	'/sitemap.xml',
+	'/sitemap',
+]
+
+/** Normalize a path by stripping trailing slash (except root) */
+function normalizePath(path: string): string {
+	if (path === '/') return path
+	return path.endsWith('/') ? path.slice(0, -1) : path
+}
+
+export const load: LayoutServerLoad<LoadReturn> = async function load({ url, fetch }) {
 	let uri = url.pathname
-	// Remove language prefix from URI before making the GraphQL query	
 	if (uri === '') {
 		uri = '/'
 	}
 
-	let temp: number | null = null;
+	// Fetch temperature data
+	let temp: number | null = null
+	try {
+		const tempResponse = await fetch('/api/weather-data')
+		if (tempResponse.ok) {
+			const tempData = await tempResponse.json()
+			temp = tempData.temperature
+		}
+	} catch {
+		// Temperature is non-critical, ignore errors
+	}
+
+	// Skip GraphQL queries for system routes and static assets
+	const isSystemRoute = systemRoutes.some(route => uri.startsWith(route))
+	if (isSystemRoute) {
+		return {
+			data: { menus: null, page: null } as unknown as PageMetaQuery,
+			menu: emptyMenu,
+			seo: {
+				title: '',
+				metaDesc: '',
+				opengraphUrl: `${PUBLIC_SITE_URL}${uri}`,
+				opengraphImage: null
+			},
+			uri,
+			temp
+		} satisfies LoadReturn
+	}
 
 	try {
-		// Fetch temperature data using event.fetch
-		const tempResponse = await fetch('/api/weather-data');
-		if (tempResponse.ok) {
-			const tempData = await tempResponse.json();
-			temp = tempData.temperature;
-		}
-
-		const response = await graphqlQuery(PageMeta, { uri: uri })
+		const response = await graphqlQuery(PageMeta, { uri })
 		checkResponse(response)
 
-		const { data }: { data: PageMetaQuery } = await response.json()
+		const json = await response.json()
 
-		// Modify menu items to add 'current' key
-		if (data.menu?.menuItems?.nodes) {
-			data.menu.menuItems.nodes = data.menu.menuItems.nodes.map((node) => ({
-				...node,
-				current: node.uri?.replace(/\/$/, '') === uri?.replace(/\/$/, '')
-			}))
+		// Handle case where GraphQL returns errors or no data
+		if (!json || !json.data) {
+			console.error('GraphQL response missing data:', json)
+			return {
+				data: { menus: null, page: null } as unknown as PageMetaQuery,
+				menu: emptyMenu,
+				seo: {
+					title: 'Website',
+					metaDesc: '',
+					opengraphUrl: `${PUBLIC_SITE_URL}${uri}`,
+					opengraphImage: null
+				},
+				uri,
+				temp
+			} satisfies LoadReturn
 		}
 
-		if (!data.menu) {
-			console.error('Menu data check failed:', data.menu)
-			error(500, 'Missing menu data')
+		const data: PageMetaQuery = json.data
+
+		// Extract menu from menus array (query by location returns array)
+		const firstMenu = data.menus?.nodes?.[0]
+		let menu = firstMenu ?? emptyMenu
+
+		// Modify menu items to add 'current' key (with trailing slash normalization)
+		if (menu.menuItems?.nodes) {
+			menu = {
+				...menu,
+				menuItems: {
+					...menu.menuItems,
+					nodes: menu.menuItems.nodes.map((node) => ({
+						...node,
+						current: normalizePath(node?.uri ?? '') === normalizePath(uri)
+					}))
+				}
+			}
 		}
 
-		// Check if page data is null, but DON'T throw a 404 here
-		// Let the +page.server.ts handle 404s for missing pages
-		if (!data.page) {
-			console.log('Page not found in layout.server.ts, but continuing to let +page.server.ts handle it')
+		if (!firstMenu) {
+			console.warn('No menu found in WordPress. Using empty menu fallback. Create a menu in WordPress under Appearance > Menus.')
 		}
 
-		// Handle SEO data more gracefully
-		let seoData = data.page?.seo
-		
-		if (seoData?.opengraphUrl) {
-			const siteUrl = seoData.opengraphUrl.replace(
-				new URL(seoData.opengraphUrl).origin,
-				PUBLIC_SITE_URL
-			)
+		// Handle SEO data — nodeByUri returns a union; Page and Post have seo
+		type SeoNode = { seo?: Record<string, unknown> | null }
+		const pageNode = data.page as (SeoNode & Record<string, unknown>) | null | undefined
+		let seoData: Record<string, unknown> = pageNode?.seo ?? {}
+		const ogUrl = typeof seoData.opengraphUrl === 'string' ? seoData.opengraphUrl : undefined
+		if (ogUrl) {
+			const siteUrl = ogUrl.replace(new URL(ogUrl).origin, PUBLIC_SITE_URL)
 			seoData = { ...seoData, opengraphUrl: siteUrl }
 		} else {
 			// Provide fallback SEO data
 			seoData = {
-				title: 'Citizen\'s Arrest Network',
-				metaDesc: 'Citizen\'s Arrest Network will hold those making the decisions driving the worst environmental pollution to account.',
+				title: '',
+				metaDesc: '',
 				opengraphUrl: `${PUBLIC_SITE_URL}${uri}`,
 				opengraphImage: null
-				// Add other required SEO fields with default values
 			}
 		}
 
 		return {
 			data,
-			menu: data.menu,
+			menu,
 			seo: seoData,
 			uri,
-			temp,
+			temp
 		} satisfies LoadReturn
 	} catch (err: unknown) {
-		console.error('Caught error in layout.server.ts:', err);
-		
-		// Check if this is a 404 error from +page.server.ts and let it propagate
-		if (isHttpError(err) && err.status === 404) {
-			console.log('Propagating 404 error from +page.server.ts');
-			throw err; // Re-throw the 404 error
-		}
-		
-		// For other HTTP errors
+		// Let SvelteKit HttpErrors propagate (e.g. 404 from +page.server.ts)
 		if (isHttpError(err)) {
-			console.log(`Handling HTTP error: ${err.status} - ${err.body?.message}`);
-			throw err; // Re-throw the original error
+			throw err
 		}
-		
+
+		// Check if it's a response error from the GraphQL query
 		if (err instanceof Response) {
-			const status = err.status || 500;
-			const message = await err.text();
-			console.log(`Handling Response error: ${status} - ${message}`);
-			error(status, message);
+			error(err.status, await err.text())
 		}
-		
-		// For any other type of error
-		const errorMessage = err instanceof Error ? err.message : 'An unexpected error occurred';
-		console.log(`Handling generic error: ${errorMessage}`);
-		error(500, errorMessage);
+
+		// Fallback for unknown errors
+		const errorMessage = err instanceof Error ? err.message : 'An unexpected error occurred'
+		console.error('Unhandled error in layout:', errorMessage)
+		error(500, errorMessage)
 	}
 }

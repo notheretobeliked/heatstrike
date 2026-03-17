@@ -45,10 +45,10 @@ export const POST: RequestHandler = async ({ request, url }) => {
 	try {
 		// Get the base URL from the request
 		const baseUrl = `${url.protocol}//${url.host}`;
-		
+
 		// Get region data if postcode is provided and not empty
-		const regionData = formData.postcode && formData.postcode.trim() !== '' 
-			? await getRegionData(formData.postcode, baseUrl) 
+		const regionData = formData.postcode && formData.postcode.trim() !== ''
+			? await getRegionData(formData.postcode, baseUrl)
 			: null;
 
 		// Transform form data into Action Network format

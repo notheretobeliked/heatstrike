@@ -1,12 +1,12 @@
 <!-- A simple form to search for WhatsApp groups by postcode -->
 <script lang="ts">
 	import { debounce } from 'lodash-es'
-	import Button from '$components/atoms/Button.svelte'
+	import ProjectButton from '$components/atoms/ProjectButton.svelte'
 
-	let postcode = ''
-	let result: { region: string; whatsappLink: string } | null = null
-	let error: string | null = null
-	let loading = false
+	let postcode = $state('')
+	let result: { region: string; whatsappLink: string } | null = $state(null)
+	let error: string | null = $state(null)
+	let loading = $state(false)
 
 	// Debounced search function that only triggers after user stops typing for 300ms
 	const searchPostcode = debounce(async (query: string) => {
@@ -37,14 +37,14 @@
 	}, 300)
 
 	// Watch for changes in the postcode input
-	$: {
+	$effect(() => {
 		searchPostcode(postcode)
-	}
+	})
 </script>
 
 <div class="bg-extremecaution w-screen min-h-[40vh] py-8 flex items-center">
 	<h1
-		class="text-3xl font-anton uppercase text-extremedanger mb-8 text-center w-full !fluid-text-lg md:!px-14"
+		class="fluid-text-lg font-anton uppercase text-extremedanger mb-8 text-center w-full md:px-14"
 	>
 		Find Your Local Heat Strike Group
 	</h1>
@@ -75,7 +75,7 @@
 				<h2 class="text-xl font-semibold mb-4">Your local group is in {result.region}</h2>
 
 				{#if result.whatsappLink}
-					<Button
+					<ProjectButton
 						label="Join Whatsapp group"
 						url={result.whatsappLink}
 						colourClass="bg-caution"

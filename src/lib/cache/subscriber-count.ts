@@ -8,7 +8,7 @@ const CACHE_DURATION = 30 * 60 * 1000 // 30 minutes in milliseconds
 // Custom error class for rate limiting
 class RateLimitError extends Error {
 	public retryAfter?: number
-	
+
 	constructor(message: string, retryAfter?: number) {
 		super(message)
 		this.name = 'RateLimitError'
@@ -34,12 +34,12 @@ async function fetchTotalCount(): Promise<number> {
 				// Check for Retry-After header
 				const retryAfter = response.headers.get('Retry-After')
 				const retryAfterSeconds = retryAfter ? parseInt(retryAfter, 10) : undefined
-				
+
 				console.log('Rate limited by Action Network API', {
 					status: response.status,
 					retryAfter: retryAfterSeconds ? `${retryAfterSeconds} seconds` : 'not specified'
 				})
-				
+
 				throw new RateLimitError(`Rate limited: ${response.status}`, retryAfterSeconds)
 			}
 			throw new Error(`API error: ${response.status}`)
@@ -50,7 +50,7 @@ async function fetchTotalCount(): Promise<number> {
 		if (data._embedded && data._embedded['osdi:people']) {
 			// Filter to only count people with subscribed email status
 			const subscribedPeople = data._embedded['osdi:people'].filter((person: any) => {
-				return person.email_addresses && person.email_addresses.some((email: any) => 
+				return person.email_addresses && person.email_addresses.some((email: any) =>
 					email.status === 'subscribed'
 				)
 			})
@@ -93,8 +93,8 @@ async function forceUpdateCache(): Promise<{ count: number; timestamp: number; r
 			// If we have cached data, return it instead of throwing
 			if (cachedCount !== null && lastUpdated) {
 				console.log('Force update rate limited, returning cached data')
-				return { 
-					count: cachedCount, 
+				return {
+					count: cachedCount,
 					timestamp: lastUpdated,
 					retryAfter: error.retryAfter
 				}
@@ -177,4 +177,4 @@ async function getCachedData(forceFresh = false): Promise<{
 // NOTE: Cache is only updated when explicitly requested via API endpoints
 // No automatic background updates to avoid rate limiting issues
 
-export { getCachedData, forceUpdateCache, updateCacheInBackground, RateLimitError } 
+export { getCachedData, forceUpdateCache, updateCacheInBackground, RateLimitError }

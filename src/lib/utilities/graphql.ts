@@ -12,27 +12,34 @@ export function checkResponse(response: Response) {
 	}
 }
 
-export async function graphqlQuery<TData = any, TVariables = any>(
+interface GraphQLOptions {
+	/** Include authentication headers */
+	includeAuth?: boolean
+	/** Original request (for cookie forwarding) */
+	request?: Request
+	/** Preview token from WordPress */
+	token?: string
+}
+
+export async function graphqlQuery(
 	query: string,
-	variables: TVariables,
-	options?: {
-		includeAuth?: boolean
-		request?: Request
-		token?: string
-	}
+	variables: Record<string, unknown>,
+	options?: GraphQLOptions
 ): Promise<Response> {
-	const headers: Record<string, string> = {
+	const headers: HeadersInit = {
 		'content-type': 'application/json'
 	}
 
-	// If we have a preview token, use it instead of cookies
+	// Add preview token if provided
 	if (options?.token) {
 		headers['X-Preview-Token'] = options.token
-	} else if (options?.includeAuth && options?.request) {
-		// Fallback to cookie forwarding if no token
-		const cookieHeader = options.request.headers.get('cookie')
-		if (cookieHeader) {
-			headers['Cookie'] = cookieHeader
+	}
+
+	// Forward cookies from request if includeAuth is set
+	if (options?.includeAuth && options?.request) {
+		const cookie = options.request.headers.get('cookie')
+		if (cookie) {
+			headers['Cookie'] = cookie
 		}
 	}
 
@@ -43,6 +50,6 @@ export async function graphqlQuery<TData = any, TVariables = any>(
 			query,
 			variables
 		}),
-		cache: 'no-cache' // This tells the fetch to bypass the cache
+		cache: 'no-cache'
 	})
 }

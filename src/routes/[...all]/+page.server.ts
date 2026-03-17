@@ -1,66 +1,61 @@
-import { WORDPRESS_URL } from '$env/static/private'
-export const prerender = true // Disable prerendering for preview functionality
+export const prerender = true
 
 import PageContent from '$lib/graphql/query/page.graphql?raw'
-import PageContentWithPreview from '$lib/graphql/query/page-with-preview.graphql?raw'
-import PreviewById from '$lib/graphql/query/preview-by-id.graphql?raw'
 import { checkResponse, graphqlQuery } from '$lib/utilities/graphql'
-import { checkWordPressAuth, canUserPreview } from '$lib/server/wordpress-auth'
-import { error, isHttpError, redirect } from '@sveltejs/kit'
+import { error, isHttpError } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
 import type { EditorBlock } from '$lib/types/wp-types'
-import { flatListToHierarchical } from '$lib/server/utilities'
+import { flatListToHierarchical, normalizeAssetUrlsInObject } from '$lib/server/utilities'
 
-export const load: PageServerLoad = async function load({ params, url, fetch, request }) {
+export const load: PageServerLoad = async function load({ params, url, fetch }) {
 	const uri = `/${params.all || ''}`.replace(/\/+/g, '/') // Normalize multiple slashes
 
-	if (uri.match(/\.(jpg|png|gif|svg|css|js)$/i)) {
+	// Handle system routes and static assets
+	const systemRoutes = [
+		'/.well-known',
+		'/apple-touch-icon',
+		'/favicon',
+		'/robots.txt',
+		'/sitemap.xml'
+	]
+
+	const isSystemRoute = systemRoutes.some(route => uri.startsWith(route))
+	const isStaticAsset = uri.match(/\.(jpg|png|gif|svg|css|js|ico|webp|avif)$/i)
+
+	if (isSystemRoute || isStaticAsset) {
 		error(404, 'Not a page route')
 	}
 
-	// Handle authentication for previews
-	let authResult: { authenticated: boolean; token?: string } = { authenticated: false }
-
 	try {
-		let pageResponse: Response
-
-		pageResponse = await graphqlQuery(PageContent, { uri: uri })
-
-
+		const pageResponse = await graphqlQuery(PageContent, { uri: uri })
 		checkResponse(pageResponse)
 		const pageData = await pageResponse.json()
 
-		// Handle GraphQL errors
-		if (pageData.errors) {
-			error(500, 'GraphQL query failed')
-		}
-
-		// Check if we have content
-		const node = pageData?.data?.page || pageData?.data?.post || pageData?.data?.nodeByUri
-		
-		if (!node) {
-			// For previews, try to be more helpful
+		// Only throw 404 if we truly have no page data to work with
+		if (!pageData?.data?.nodeByUri) {
 			error(404, `Page not found for URI: ${uri}`)
 		}
 
+		// Normalize asset URLs in page data if CDN is configured
+		normalizeAssetUrlsInObject(pageData)
 
-		let editorBlocks: EditorBlock[] = node?.editorBlocks
-			? flatListToHierarchical(node.editorBlocks)
+		let editorBlocks: EditorBlock[] = pageData.data.nodeByUri.editorBlocks
+			? flatListToHierarchical(pageData.data.nodeByUri.editorBlocks, {}, pageData.data)
 			: []
 
 		return {
 			data: pageData.data,
 			uri: uri,
-			editorBlocks: editorBlocks,
-			authenticated: authResult.authenticated,
-
+			editorBlocks: editorBlocks
 		}
 	} catch (err: unknown) {
+		console.error('Server Error:', err)
+
 		// Check if it's already an HTTP error (like a 404)
 		if (isHttpError(err)) {
 			throw err
 		}
-		
+
 		// Check if it's a response with status
 		if (err instanceof Response) {
 			const status = err.status
@@ -69,14 +64,14 @@ export const load: PageServerLoad = async function load({ params, url, fetch, re
 			}
 			error(status || 500, `Error fetching page: ${await err.text()}`)
 		}
-		
+
 		// For errors with status property (from GraphQL or other sources)
 		const httpError = err as { status?: number; message?: string }
-		if (httpError.status === 404 || 
+		if (httpError.status === 404 ||
 		    (httpError.message && httpError.message.includes('not found'))) {
 			error(404, httpError.message || `Page not found for URI: ${uri}`)
 		}
-		
+
 		// For any other error
 		const errorMessage = err instanceof Error ? err.message : 'Internal Server Error'
 		error(500, errorMessage)

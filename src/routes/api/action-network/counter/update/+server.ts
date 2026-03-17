@@ -24,7 +24,7 @@ async function fetchTotalCount(): Promise<number> {
 		if (data._embedded && data._embedded['osdi:people']) {
 			// Filter to only count people with subscribed email status
 			const subscribedPeople = data._embedded['osdi:people'].filter((person: any) => {
-				return person.email_addresses && person.email_addresses.some((email: any) => 
+				return person.email_addresses && person.email_addresses.some((email: any) =>
 					email.status === 'subscribed'
 				)
 			})
@@ -42,7 +42,7 @@ export const GET: RequestHandler = async () => {
 		// This endpoint is called by Vercel cron job
 		const count = await fetchTotalCount()
 		const timestamp = Date.now()
-		
+
 		return json({
 			success: true,
 			count,
@@ -59,4 +59,4 @@ export const GET: RequestHandler = async () => {
 			{ status: 500 }
 		)
 	}
-} 
+}

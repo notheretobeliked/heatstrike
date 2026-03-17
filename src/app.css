@@ -1,19 +1,172 @@
-/* Write your global styles here, in PostCSS syntax */
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import 'tailwindcss';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Safelist dynamic classes used by BlockRenderer and block components */
+@source inline("fluid-text-base fluid-text-lg fluid-text-xl pt-1 pt-2 pt-3 pt-4 pt-5 pt-6 pt-7 pt-8 pr-1 pr-2 pr-3 pr-4 pr-5 pr-6 pr-7 pr-8 pb-1 pb-2 pb-3 pb-4 pb-5 pb-6 pb-7 pb-8 pl-1 pl-2 pl-3 pl-4 pl-5 pl-6 pl-7 pl-8 mt-1 mt-2 mt-3 mt-4 mt-5 mt-6 mt-7 mt-8 mr-1 mr-2 mr-3 mr-4 mr-5 mr-6 mr-7 mr-8 mb-0 mb-1 mb-2 mb-3 mb-4 mb-5 mb-6 mb-7 mb-8 ml-1 ml-2 ml-3 ml-4 ml-5 ml-6 ml-7 ml-8 gap-1 gap-2 gap-3 gap-4 gap-5 gap-6 gap-7 gap-8 bg-black bg-white bg-caution bg-extremecaution bg-danger bg-extremedanger text-black text-white text-caution text-extremecaution text-danger text-extremedanger md:grid-cols-1 md:grid-cols-2 md:grid-cols-3 md:grid-cols-4 md:grid-cols-5 md:grid-cols-6 stroke-black rotate-3 rotate-6");
 
-strong {
-    @apply font-medium;
+@theme {
+	--font-sans: Inter, sans-serif;
+	--font-anton: Anton, sans-serif;
+
+	/* Reset default colors and define project palette */
+	--color-*: initial;
+	--color-transparent: transparent;
+	--color-current: currentColor;
+	--color-black: #000000;
+	--color-white: #ffffff;
+	--color-caution: #e8ff4a;
+	--color-extremecaution: #ffa05b;
+	--color-danger: #ff521a;
+	--color-extremedanger: #cd0000;
+
+	/* Font sizes */
+	--text-xs: 0.75rem;
+	--text-xs--line-height: 1.25;
+	--text-sm: 0.875rem;
+	--text-sm--line-height: 1.3;
+	--text-base: 1.2rem;
+	--text-base--line-height: 1.35;
+	--text-lg: 1.35rem;
+	--text-lg--line-height: 1.15;
+	--text-xl: 1.5rem;
+	--text-xl--line-height: 1.1;
+	--text-2xl: 1.7rem;
+	--text-2xl--line-height: 1.1;
+	--text-3xl: 1.875rem;
+	--text-3xl--line-height: 1.1;
+	--text-4xl: 2.25rem;
+	--text-4xl--line-height: 1.1;
+	--text-5xl: 3rem;
+	--text-5xl--line-height: 1;
+	--text-6xl: 4rem;
+	--text-6xl--line-height: 1;
+
+	/* Default line height */
+	--tw-leading: 1.25;
+	--default-font-family: Inter, sans-serif;
+
+	/* Breakpoints */
+	--breakpoint-sm: 640px;
+	--breakpoint-md: 668px;
+	--breakpoint-lg: 1024px;
+	--breakpoint-xl: 1204px;
+	--breakpoint-2xl: 1536px;
+
+	/* Custom spacing scale */
+	--spacing-1: 0.25rem;
+	--spacing-2: 0.5rem;
+	--spacing-3: 0.7rem;
+	--spacing-4: 1rem;
+	--spacing-5: 1.5rem;
+	--spacing-6: 2.25rem;
+	--spacing-7: 3.5rem;
+	--spacing-8: 5rem;
 }
 
-h2 {
-    @apply font-anton uppercase !text-2xl;
+@layer base {
+	strong {
+		@apply font-medium;
+	}
+
+	h2 {
+		@apply font-anton uppercase text-2xl my-5;
+	}
+
+	p {
+		@apply font-sans text-base mb-4;
+	}
+
+	h1 {
+		@apply font-sans text-2xl md:text-3xl lg:text-4xl mb-4;
+	}
+
+	h3 {
+		@apply font-sans text-lg md:text-xl mb-3;
+	}
+
+	h4 {
+		@apply font-sans text-base md:text-lg mb-2;
+	}
+
+	h5,
+	h6 {
+		@apply font-sans text-sm md:text-base mb-2;
+	}
+
+	ul,
+	ol {
+		@apply font-sans text-base mb-4 pl-6;
+	}
+
+	ul {
+		@apply list-disc;
+	}
+
+	ol {
+		@apply list-decimal;
+	}
+
+	li {
+		@apply mb-1;
+	}
+
+	blockquote {
+		@apply my-4;
+	}
+
+	a {
+		@apply border-b border-black hover:text-extremedanger hover:border-extremedanger transition-colors duration-200;
+	}
+
+	sup a {
+		@apply border-none text-extremedanger;
+	}
 }
 
-.app-content p a {
-    @apply border-b border-black hover:text-extremedanger hover:border-extremedanger transition-colors duration-200;
+/* Fluid typography — replaces tailwindcss-fluid-type plugin from Tailwind 3.
+   Scales smoothly between 320px (20rem) and 1536px (96rem) viewports. */
+@utility fluid-text-base {
+	font-size: clamp(1.125rem, 1.092rem + 0.16vw, 1.250rem);
+	line-height: 1.1;
+	letter-spacing: -0.1rem;
+}
+
+@utility fluid-text-lg {
+	font-size: clamp(3.404rem, 2.474rem + 4.65vw, 6.938rem);
+	line-height: 1;
+	letter-spacing: -0.05rem;
+}
+
+@utility fluid-text-xl {
+	font-size: clamp(5.453rem, 3.102rem + 11.75vw, 14.386rem);
+	line-height: 1;
+	letter-spacing: -0.05rem;
+}
+
+/* CoreCover: the BlockRenderer wrapper (.core-cover) should not apply its own
+   padding/height — CoreCover handles these internally on its inner div */
+.core-cover:has(> .core-cover) {
+	@apply h-full p-0;
+}
+
+/* Layout utilities */
+.alignwide {
+	@apply max-w-[1100px] mx-auto;
+}
+
+/* Footnotes */
+.footnotes {
+	@apply border-t border-black mt-9 py-3;
+}
+
+.footnotes ol {
+	@apply list-none pl-0;
+}
+
+.footnotes li {
+	@apply text-sm;
+}
+
+.footnotes li::before {
+	content: counter(list-item) '— ';
 }
