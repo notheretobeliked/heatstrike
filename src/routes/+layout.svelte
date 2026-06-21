@@ -53,9 +53,11 @@
 				class="fill-caution stroke-extremecaution"
 			/>
 		</svg>
-		<p class="-rotate-12 w-36 top-10 text-center absolute px-7 text-sm leading-tight mb-0">
-			10 Downing Street: <strong>{temp ?? '--'}°C</strong>
-		</p>
+		<div class="absolute inset-0 flex items-center justify-center">
+			<p class="-rotate-12 text-center px-7 text-sm leading-tight mb-0">
+				10 Downing Street: <strong>{temp ?? '--'}°C</strong>
+			</p>
+		</div>
 	</div>
 </div>
 
