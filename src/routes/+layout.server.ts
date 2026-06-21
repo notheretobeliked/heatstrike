@@ -29,7 +29,6 @@ interface LoadReturn {
 	menu: NormalizedMenu
 	seo: Record<string, unknown>
 	uri: string
-	temp: number | null
 }
 
 /** Routes that should not trigger a GraphQL query */
@@ -49,22 +48,10 @@ function normalizePath(path: string): string {
 	return path.endsWith('/') ? path.slice(0, -1) : path
 }
 
-export const load: LayoutServerLoad<LoadReturn> = async function load({ url, fetch }) {
+export const load: LayoutServerLoad<LoadReturn> = async function load({ url }) {
 	let uri = url.pathname
 	if (uri === '') {
 		uri = '/'
-	}
-
-	// Fetch temperature data
-	let temp: number | null = null
-	try {
-		const tempResponse = await fetch('/api/weather-data')
-		if (tempResponse.ok) {
-			const tempData = await tempResponse.json()
-			temp = tempData.temperature
-		}
-	} catch {
-		// Temperature is non-critical, ignore errors
 	}
 
 	// Skip GraphQL queries for system routes and static assets
@@ -79,8 +66,7 @@ export const load: LayoutServerLoad<LoadReturn> = async function load({ url, fet
 				opengraphUrl: `${PUBLIC_SITE_URL}${uri}`,
 				opengraphImage: null
 			},
-			uri,
-			temp
+			uri
 		} satisfies LoadReturn
 	}
 
@@ -102,8 +88,7 @@ export const load: LayoutServerLoad<LoadReturn> = async function load({ url, fet
 					opengraphUrl: `${PUBLIC_SITE_URL}${uri}`,
 					opengraphImage: null
 				},
-				uri,
-				temp
+				uri
 			} satisfies LoadReturn
 		}
 
@@ -153,8 +138,7 @@ export const load: LayoutServerLoad<LoadReturn> = async function load({ url, fet
 			data,
 			menu,
 			seo: seoData,
-			uri,
-			temp
+			uri
 		} satisfies LoadReturn
 	} catch (err: unknown) {
 		// Let SvelteKit HttpErrors propagate (e.g. 404 from +page.server.ts)

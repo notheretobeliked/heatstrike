@@ -19,7 +19,20 @@
 	let pageTitle = $derived((data.seo.title ?? '') as string)
 	let siteUrl = $derived((data.seo.opengraphUrl ?? '') as string)
 	let siteTitle = $derived((data.seo.opengraphSiteName ?? '') as string)
-	let temp = $derived(data.temp)
+
+	// Fetched client-side so the temperature stays live on prerendered pages
+	// (a build-time value would otherwise be frozen until the next deploy).
+	let temp = $state<number | null>(null)
+	$effect(() => {
+		fetch('/api/weather-data')
+			.then((res) => (res.ok ? res.json() : null))
+			.then((data) => {
+				if (data && typeof data.temperature === 'number') temp = data.temperature
+			})
+			.catch(() => {
+				// Temperature is non-critical; leave the fallback in place.
+			})
+	})
 </script>
 
 {#key $page.url.pathname}
