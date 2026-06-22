@@ -94,8 +94,10 @@
 	// Derived values for reactivity
 	let blockType = $derived(block.type ?? '')
 	let component = $derived(blockComponents[blockType])
+	// Use `||` not `??` so an empty-string align (the default for ACF blocks like
+	// the Signup Form) falls back to 'none' → narrow column, not the full-width default.
 	let align = $derived(
-		forceFull || block.name === 'core/column' ? 'full' : (block.attributes?.align ?? 'none')
+		forceFull || block.name === 'core/column' ? 'full' : (block.attributes?.align || 'none')
 	)
 	let verticalAlignment = $derived(block.attributes?.verticalAlignment ?? null)
 	let bgColor = $derived(block.attributes?.backgroundColor ?? '')
