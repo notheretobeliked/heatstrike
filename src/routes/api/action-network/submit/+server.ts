@@ -51,7 +51,12 @@ export const POST: RequestHandler = async ({ request, url }) => {
 			? await getRegionData(formData.postcode, baseUrl)
 			: null;
 
-		// Transform form data into Action Network format
+		const hasPhone = formData.phone && formData.phone.trim() !== ''
+		const hasPostcode = formData.postcode && formData.postcode.trim() !== ''
+
+		// Transform form data into Action Network format.
+		// Note: only include phone_numbers / postal_addresses when populated —
+		// Action Network's API errors ("each_with_index for nil") on empty arrays.
 		const activistObject = {
 			person: {
 				given_name: formData.firstname || '',
@@ -62,22 +67,22 @@ export const POST: RequestHandler = async ({ request, url }) => {
 						status: 'subscribed'
 					}
 				],
-				phone_numbers: formData.phone && formData.phone.trim() !== ''
-					? [
-							{
-								number: formData.phone,
-								status: 'subscribed'
-							}
-					  ]
-					: [],
-				postal_addresses: formData.postcode && formData.postcode.trim() !== ''
-					? [
-							{
-								postal_code: formData.postcode,
-								country: 'GB'
-							}
-					  ]
-					: [],
+				...(hasPhone && {
+					phone_numbers: [
+						{
+							number: formData.phone,
+							status: 'subscribed'
+						}
+					]
+				}),
+				...(hasPostcode && {
+					postal_addresses: [
+						{
+							postal_code: formData.postcode,
+							country: 'GB'
+						}
+					]
+				}),
 				custom_fields: {
 					...(regionData?.region && { 'Region': regionData.region }),
 					...(formData.trade_union && { 'Trade Union': formData.trade_union }),
