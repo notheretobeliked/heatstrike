@@ -52,6 +52,7 @@
 	},
 	"dependencies": {
 		"lodash-es": "^4.17.23",
-		"svelte-inview": "^4.0.4"
+		"svelte-inview": "^4.0.4",
+		"sveltekit-wp": "link:"
 	}
 }
