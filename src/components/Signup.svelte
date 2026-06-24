@@ -2,6 +2,7 @@
 	import { slide } from 'svelte/transition'
 	import { onMount } from 'svelte'
 	import ProjectButton from '$components/atoms/ProjectButton.svelte'
+	import { bumpSubscriberCount } from '$lib/stores/subscriberCount.svelte'
 
 	let {
 		formId = '1e49bee5-7886-4cc3-9ab5-b987ccce6139',
@@ -233,6 +234,10 @@
 				submissionResult = {
 					region: result.data.region,
 					whatsappLink: result.data.whatsappLink
+				}
+				// Optimistically tick the live counter for genuinely new subscribers.
+				if (result.data?.isNew) {
+					bumpSubscriberCount()
 				}
 			} else {
 				isLoading = false
