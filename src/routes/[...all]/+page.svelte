@@ -8,11 +8,10 @@
 	}
 
 	let { data }: Props = $props()
-	let isHomePage = $derived(data.uri === '/')
 	let editorBlocks = $derived(data.editorBlocks ?? [])
 </script>
 
-<div class="min-h-screen flex flex-col">
+<div class="page-main min-h-screen flex flex-col">
 	{#each editorBlocks as block (block.clientId)}
 		<BlockRenderer {block} />
 	{/each}

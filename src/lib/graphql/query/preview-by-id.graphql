@@ -1,6 +1,7 @@
 query PreviewById($id: ID!) {
-	# Try as page first - simplified without asPreview (auth handled by token)
-	page(id: $id, idType: DATABASE_ID) {
+	# asPreview: true tells WPGraphQL to return the latest autosave/revision
+	# (the unsaved editor changes) rather than the published content.
+	page(id: $id, idType: DATABASE_ID, asPreview: true) {
 		__typename
 		id
 		databaseId
@@ -13,8 +14,8 @@ query PreviewById($id: ID!) {
 		}
 	}
 
-	# Also try as post - simplified without asPreview (auth handled by token)
-	post(id: $id, idType: DATABASE_ID) {
+	# Also try as post, likewise returning the latest autosave/revision.
+	post(id: $id, idType: DATABASE_ID, asPreview: true) {
 		__typename
 		id
 		databaseId
@@ -73,7 +74,6 @@ fragment CommonBlockFields on EditorBlock {
 			fontFamily
 			fontSize
 			textColor
-			textAlign
 			level
 			align
 		}
@@ -101,6 +101,11 @@ fragment CommonBlockFields on EditorBlock {
 			url
 			caption
 			aspectRatio
+			scale
+			width
+			height
+			href
+			linkTarget
 			className
 		}
 	}
@@ -112,6 +117,7 @@ fragment CommonBlockFields on EditorBlock {
 			textColor
 			align
 			className
+			cssClassName
 		}
 	}
 	... on CoreFootnotes {
@@ -145,14 +151,28 @@ fragment CommonBlockFields on EditorBlock {
 			textColor
 		}
 	}
+	... on CoreAccordionItem {
+		attributes {
+		openByDefault
+		}
+	}
+	... on CoreAccordionHeading {
+		attributes {
+			fontSize
+			fontFamily
+			showIcon
+			style
+			title
+		}
+	}
 	... on CoreHeading {
 		attributes {
 			content
 			className
+			cssClassName
 			fontFamily
 			fontSize
 			textColor
-			textAlign
 			level
 			align
 		}
@@ -183,6 +203,14 @@ fragment CommonBlockFields on EditorBlock {
 			backgroundColor
 			align
 			style
+			layout
+			sectionBehavior
+			sectionMinHeight
+			sectionContentAlign
+			sectionReveal
+			sectionRevealDirection
+			sectionRevealStagger
+			sectionParallax
 		}
 	}
 	... on CoreButton {

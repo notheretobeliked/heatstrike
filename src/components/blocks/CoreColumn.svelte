@@ -36,46 +36,25 @@
 	let alignmentClass = $derived(getAlignmentClass(verticalAlignment))
 	let customClasses = $derived(attrs?.className || '')
 	let children = $derived(block.children || [])
-
-	let spacingClasses = $derived.by(() => {
+	// Gap only — padding is applied once on the wrapper by BlockRenderer.
+	// Extracting it here as well produced doubled padding.
+	let gapClass = $derived.by(() => {
 		const raw = attrs?.style
-		if (!raw) return { gap: '', padding: '' }
+		if (!raw) return 'gap-0'
 		try {
 			const style = typeof raw === 'string' ? JSON.parse(raw) : raw
-			const spacing = style?.spacing
-
-			let gap = ''
-			if (spacing?.blockGap) {
-				const tw = presetToSpacing(spacing.blockGap)
-				if (tw) gap = `gap-${tw}`
-			}
-
-			const paddingClasses: string[] = []
-			const padding = spacing?.padding
-			if (padding) {
-				const sides = [
-					['top', 'pt'],
-					['right', 'pr'],
-					['bottom', 'pb'],
-					['left', 'pl']
-				] as const
-				for (const [side, prefix] of sides) {
-					const val = padding[side]
-					if (val) {
-						const tw = presetToSpacing(val)
-						if (tw) paddingClasses.push(`${prefix}-${tw}`)
-					}
-				}
-			}
-
-			return { gap, padding: paddingClasses.join(' ') }
+			const blockGap = style?.spacing?.blockGap
+			if (blockGap === undefined || blockGap === null) return 'gap-0'
+			if (blockGap === '0' || blockGap === 0) return 'gap-0'
+			const tw = presetToSpacing(String(blockGap))
+			return tw ? `gap-${tw}` : 'gap-0'
 		} catch {
-			return { gap: '', padding: '' }
+			return ''
 		}
 	})
 </script>
 
-<div class="flex flex-col h-full grow min-w-0 {alignmentClass} {customClasses} {spacingClasses.gap} {spacingClasses.padding}">
+<div class="flex flex-col h-full grow min-w-0 {alignmentClass} {customClasses} {gapClass}">
 	{#each children as childBlock}
 		<BlockRenderer block={childBlock} />
 	{/each}
