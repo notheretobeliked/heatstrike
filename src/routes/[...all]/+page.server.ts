@@ -1,7 +1,12 @@
 export const prerender = true
 
 import PageContent from '$lib/graphql/query/page.graphql?raw'
-import { checkResponse, graphqlQuery } from '$lib/utilities/graphql'
+import {
+	assertGraphQLSucceeded,
+	checkResponse,
+	graphqlQuery,
+	reportGraphQLErrors
+} from '$lib/utilities/graphql'
 import { error, isHttpError } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
 import type { EditorBlock } from '$lib/types/wp-types'
@@ -31,6 +36,14 @@ export const load: PageServerLoad = async function load({ params, url, fetch }) 
 		checkResponse(pageResponse)
 		const pageData = await pageResponse.json()
 
+		// A rejected query has no `data` at all; that is a broken contract with the
+		// backend, not a missing page, so it must not fall through to the 404 below.
+		assertGraphQLSucceeded(pageData, `page ${uri}`)
+
+		// Partial failures come back as HTTP 200 with a populated `errors` array;
+		// surface them rather than silently rendering blocks with missing attributes.
+		reportGraphQLErrors(pageData, `page ${uri}`)
+
 		// Only throw 404 if we truly have no page data to work with
 		if (!pageData?.data?.nodeByUri) {
 			error(404, `Page not found for URI: ${uri}`)
@@ -39,9 +52,31 @@ export const load: PageServerLoad = async function load({ params, url, fetch }) 
 		// Normalize asset URLs in page data if CDN is configured
 		normalizeAssetUrlsInObject(pageData)
 
-		let editorBlocks: EditorBlock[] = pageData.data.nodeByUri.editorBlocks
-			? flatListToHierarchical(pageData.data.nodeByUri.editorBlocks, {}, pageData.data)
+		const node = pageData.data.nodeByUri
+
+		let editorBlocks: EditorBlock[] = node.editorBlocks
+			? flatListToHierarchical(node.editorBlocks, {}, pageData.data)
 			: []
+
+		// Attach post-level context to blocks (for CorePostDate, CorePostFeaturedImage on single pages)
+		const rawFeaturedImage = node.featuredImage as Record<string, unknown> | undefined
+		const postContext = {
+			postTitle: node.title as string | undefined,
+			postDate: node.date as string | undefined,
+			postUri: uri,
+			postFeaturedImage: (rawFeaturedImage?.node ?? rawFeaturedImage) as Record<string, unknown> | undefined,
+		}
+
+		function attachPostContext(blocks: EditorBlock[]): void {
+			for (const block of blocks) {
+				Object.assign(block, postContext)
+				if (block.children) attachPostContext(block.children)
+			}
+		}
+
+		if (postContext.postDate || postContext.postFeaturedImage) {
+			attachPostContext(editorBlocks)
+		}
 
 		return {
 			data: pageData.data,

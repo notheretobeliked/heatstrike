@@ -149,9 +149,59 @@
 	@apply h-full p-0;
 }
 
-/* Layout utilities */
+/* Content width is owned here, on the page container, rather than per block.
+   Every top-level block (wrapper divs and bare prose alike) is capped at the
+   content width and centered, unless it opts into a wider/full bucket via
+   alignwide/alignfull. This keeps wrapped and unwrapped blocks consistent.
+   Heat Strike: full width below lg, capped at screen-md (768px) from lg up —
+   the layout the site had before the template merge. Backend source of truth
+   is the theme's bud.config.js (app.wpjson layout.contentSize), which generates
+   theme.json on build — keep the two in sync there, not in theme.json directly. */
+.page-main > *:not(.alignfull):not(.alignwide) {
+	@apply max-w-full lg:max-w-screen-md mx-auto;
+}
+
+/* Bare prose elements (paragraphs, headings, lists, quotes) render without a
+   wrapper, so as flex children the rule above's mx-auto would collapse them to
+   content width and centre them. Give them full width. Figures/images and
+   wrapper divs are intentionally excluded — they keep their own width. */
+.page-main > :is(p, h1, h2, h3, h4, h5, h6, ul, ol, blockquote) {
+	@apply w-full;
+}
+
+/* Layout utilities — wide blocks carry `.alignwide`; this is their cap.
+   Heat Strike: screen-xl (1280px), as before the template merge. */
 .alignwide {
-	@apply max-w-[1100px] mx-auto;
+	@apply max-w-screen-xl mx-auto;
+}
+
+/* Heat Strike renders top-level blocks flush (no inter-block gap); spacing
+   comes from the blocks themselves. */
+
+/* Mirror WP's is-layout-constrained behaviour for groups with the "Inner
+   blocks use content width" toggle (CoreGroup adds .section-group-constrained).
+   Children are capped to the site content width; alignfull/alignwide opt out.
+   !important because the wrapper also sets a max-width via utilities. */
+.section-group-constrained > *:not(.alignfull):not(.alignwide) {
+	@apply !w-full !max-w-full lg:!max-w-screen-md !mx-auto;
+}
+
+/* Block-reveal animation */
+.block-reveal {
+	opacity: 0;
+	transform: translateY(12px);
+	transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.block-reveal.block-visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+	.block-reveal {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
 }
 
 /* Footnotes */

@@ -2,6 +2,7 @@
 	import type { EditorBlock } from '$lib/types/wp-types'
 	import type { CoreColumnsAttributes, CoreColumnAttributes } from '$lib/graphql/generated'
 	import BlockRenderer from '$components/BlockRenderer.svelte'
+	import { getContext } from 'svelte'
 
 	interface Props {
 		block: EditorBlock
@@ -9,6 +10,11 @@
 
 	let { block }: Props = $props()
 	let attrs = $derived(block.attributes as CoreColumnsAttributes | undefined)
+
+	// Set by an ancestor CoreGroup in stretch mode. When true, this Columns
+	// (and its Column children) should fill the available height.
+	const fillCtx = getContext<{ value: boolean } | undefined>('section-fill-height')
+	let fillHeight = $derived(fillCtx?.value === true)
 
 	function presetToSpacing(value: string): string | null {
 		const match = value.match(/(?:var:preset\|)?spacing\|(\d+)/)
@@ -47,7 +53,9 @@
 		return 'gap-4'
 	})
 
-	let cssClasses = $derived(`${attrs?.className || ''} corecolumns grid ${gapClass}`.trim())
+	let cssClasses = $derived(
+		`${attrs?.className || ''} corecolumns grid w-full ${gapClass} ${fillHeight ? 'h-full auto-rows-fr' : ''}`.trim()
+	)
 	let gridStyle = $derived(
 		isStackedOnMobile
 			? `grid-template-columns: 1fr; --grid-columns: ${gridTemplateColumns};`

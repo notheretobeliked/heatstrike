@@ -46,7 +46,11 @@
 				onclick={toggleAccordion}
 			>
 				{#if headerBlock}
-					<BlockRenderer block={headerBlock} />
+					<!-- Content width comes from the template's .section-group-constrained
+					     rule (app.css); .page-main only caps top-level blocks. -->
+					<div class="section-group-constrained">
+						<BlockRenderer block={headerBlock} />
+					</div>
 				{/if}
 				<div class="absolute bottom-4 right-4">
 					<ProjectButton
@@ -58,7 +62,7 @@
 				</div>
 			</button>
 			{#if isExpanded}
-				<div class="accordion-content" transition:slide={{ duration: 300 }}>
+				<div class="accordion-content section-group-constrained" transition:slide={{ duration: 300 }}>
 					{#each children.slice(1) as childBlock}
 						<BlockRenderer block={childBlock} />
 					{/each}

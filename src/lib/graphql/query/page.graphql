@@ -64,7 +64,6 @@ fragment CommonBlockFields on EditorBlock {
 			fontFamily
 			fontSize
 			textColor
-			textAlign
 			level
 			align
 		}
@@ -92,6 +91,11 @@ fragment CommonBlockFields on EditorBlock {
 			url
 			caption
 			aspectRatio
+			scale
+			width
+			height
+			href
+			linkTarget
 			className
 			align
 		}
@@ -104,6 +108,7 @@ fragment CommonBlockFields on EditorBlock {
 			textColor
 			align
 			className
+			cssClassName
 		}
 	}
 	... on CoreFootnotes {
@@ -137,14 +142,28 @@ fragment CommonBlockFields on EditorBlock {
 			textColor
 		}
 	}
+	... on CoreAccordionItem {
+		attributes {
+		openByDefault
+		}
+	}
+	... on CoreAccordionHeading {
+		attributes {
+			fontSize
+			fontFamily
+			showIcon
+			style
+			title
+		}
+	}
 	... on CoreHeading {
 		attributes {
 			content
 			className
+			cssClassName
 			fontFamily
 			fontSize
 			textColor
-			textAlign
 			level
 			align
 		}
@@ -178,6 +197,14 @@ fragment CommonBlockFields on EditorBlock {
 			textColor
 			align
 			style
+			layout
+			sectionBehavior
+			sectionMinHeight
+			sectionContentAlign
+			sectionReveal
+			sectionRevealDirection
+			sectionRevealStagger
+			sectionParallax
 		}
 	}
 	... on CoreButton {
